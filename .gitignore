@@ -1,0 +1,15 @@
+
+.idea/*
+.vs/*
+Build/*
+Binaries/*
+Content/__ExternalActors__
+Content/__ExternalObjects__
+Content/Collections
+Content/Developers
+Intermediate/*
+Platforms/*
+Plugins/MultiplayerSessions/Binaries/*
+Plugins/MultiplayerSessions/Intermediate/*
+Plugins/MultiplayerSessions/Resources/*
+Saved/*
