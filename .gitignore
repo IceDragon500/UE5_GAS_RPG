@@ -1,4 +1,5 @@
-
+*.sln
+*.vsconfig
 .idea/*
 .vs/*
 Build/*
@@ -9,5 +10,7 @@ Content/Collections
 Content/Developers
 Intermediate/*
 Platforms/*
-Plugins/*
+Plugins/MultiplayerSessions/Binaries/*
+Plugins/MultiplayerSessions/Intermediate/*
+Plugins/MultiplayerSessions/Resources/*
 Saved/*
