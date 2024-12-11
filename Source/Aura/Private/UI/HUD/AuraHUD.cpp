@@ -29,15 +29,12 @@ void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySyst
 	//UAuraUserWidget* Widget = CreateWidget<UAuraUserWidget>(GetWorld(), OverlayWidgetClass);
 
 	OverlayWidget = Cast<UAuraUserWidget>(Widget);
-	OverlayWidget->SetWidgetController(Widget);
 
 	const FWidgetControllerParams WidgetControllerParams(PC, PS, ABS, AS);
 
 	UOverlayWidgetController* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
 	OverlayWidget->SetWidgetController(WidgetController);
-
-
-	
-	Widget->AddToViewport();
+	WidgetController->BroadcastInitialValues();//通过广播获得属性值
+	Widget->AddToViewport();//显示至屏幕
 }
