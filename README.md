@@ -1,82 +1,82 @@
 # UE5_GAS_RPG
  自学路径
-1. Introduction 12 分钟
+√1. Introduction 12 分钟
 
-2. Jetbrains Rider - Now Free for Non-Commercial Use! 1 分钟
+√2. Jetbrains Rider - Now Free for Non-Commercial Use! 1 分钟
 
-3. Project Creation 5 分钟
+√3. Project Creation 5 分钟
 
-4. Setting up Version Control (Optional) 7 分钟
+√4. Setting up Version Control (Optional) 7 分钟
 
-5. The Base Character Class 10 分钟
+√5. The Base Character Class 10 分钟
 
-6. Player and Enemy Characters 6 分钟
+√6. Player and Enemy Characters 6 分钟
 
-7. Character Blueprint Setup 12 分钟
+√7. Character Blueprint Setup 12 分钟
 
-8. Animation Blueprints 15 分钟
+√8. Animation Blueprints 15 分钟
 
-9. Enhanced Input 10 分钟
+√9. Enhanced Input 10 分钟
 
-10. Aura Player Controller 11 分钟
+√10. Aura Player Controller 11 分钟
 
-11. Movement Input 16 分钟
+√11. Movement Input 16 分钟
 
-12. Game Mode 13 分钟
+√12. Game Mode 13 分钟
 
-13. Enemy Interface 7 分钟
+√13. Enemy Interface 7 分钟
 
-14. Highlight Enemies 19 分钟
+√14. Highlight Enemies 19 分钟
 
-15. Post Process Highlight 13 分钟
+√15. Post Process Highlight 13 分钟
 
 测试 1： Section 2 Quiz
 
-16. The Gameplay Ability System 12 分钟
+√16. The Gameplay Ability System 12 分钟
 
-17. The Main Parts of GAS 9 分钟
+√17. The Main Parts of GAS 9 分钟
 
-18. The Player State 4 分钟
+√18. The Player State 4 分钟
 
-19. Ability System Component and Attribute Set 5 分钟
+√19. Ability System Component and Attribute Set 5 分钟
 
-20. GAS in Multiplayer 10 分钟
+√20. GAS in Multiplayer 10 分钟
 
-21. Constructing the ASC and AS 12 分钟
+√21. Constructing the ASC and AS 12 分钟
 
-22. Replication Mode 8 分钟
+√22. Replication Mode 8 分钟
 
-23. Init Ability Actor Info 22 分钟
+√23. Init Ability Actor Info 22 分钟
 
 测试 2： Section 3 Quiz
 
-24. Attributes 7 分钟
+√24. Attributes 7 分钟
 
-25. Health and Mana 18 分钟
+√25. Health and Mana 18 分钟
 
-26. Attribute Accessors 12 分钟
+√26. Attribute Accessors 12 分钟
 
-27. Effect Actor 24 分钟
+√27. Effect Actor 24 分钟
 
 测试 3： Section 4 Quiz
 
-28. Game UI Architecture 8 分钟
+√28. Game UI Architecture 8 分钟
 
-29. Aura User Widget and Widget Controller 11 分钟
+√29. Aura User Widget and Widget Controller 11 分钟
 
-30. Globe Progress Bar 29 分钟
+√30. Globe Progress Bar 29 分钟
 
-31. Health Globe 11 分钟
+√31. Health Globe 11 分钟
 
-32. Aura HUD 8 分钟
+√32. Aura HUD 8 分钟
 
-33. Overlay Widget Controller 32 分钟
+√33. Overlay Widget Controller 32 分钟
 
-34. Broadcasting Initial Values 26 分钟
+√34. Broadcasting Initial Values 26 分钟
 
-35. Listening for Attribute Changes 12 分钟
+√35. Listening for Attribute Changes 12 分钟
 
-36. Callbacks for Mana Changes 11 分钟
+√36. Callbacks for Mana Changes 11 分钟
 
 测试 4： Section 5 Quiz
 
