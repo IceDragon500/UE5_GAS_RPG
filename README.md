@@ -80,11 +80,11 @@
 
 测试 4： Section 5 Quiz
 
-37. Gameplay Effects 8 分钟
+√37. Gameplay Effects 8 分钟
 
-38. Effect Actor Improved 30 分钟
+√38. Effect Actor Improved 30 分钟
 
-39. Instant Gameplay Effects 20 分钟
+√39. Instant Gameplay Effects 20 分钟
 
 40. Duration Gameplay Effects 18 分钟
 
