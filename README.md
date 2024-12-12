@@ -86,9 +86,9 @@
 
 √39. Instant Gameplay Effects 20 分钟
 
-40. Duration Gameplay Effects 18 分钟
+√40. Duration Gameplay Effects 18 分钟
 
-41. Periodic Gameplay Effects 16 分钟
+√41. Periodic Gameplay Effects 16 分钟
 
 42. Effect Stacking 15 分钟
 
