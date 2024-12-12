@@ -90,7 +90,7 @@
 
 √41. Periodic Gameplay Effects 16 分钟
 
-42. Effect Stacking 15 分钟
+√42. Effect Stacking 15 分钟
 
 43. Infinite Gameplay Effects 13 分钟
 
