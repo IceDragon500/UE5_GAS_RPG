@@ -34,6 +34,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	}
 	*/
 
+	//尝试获取进入区域的角色身上是否有ability system component
 	//这里展示了不用接口的方式获得AbilitySystemComponent的方法
 	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);//尝试查找角色上的能力系统组件，将使用AbilitySystemInterface或退回到组件搜索
 	if(TargetASC == nullptr) return;
@@ -47,6 +48,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	//我们从数据引用的角度去查看这个EffectSpecHandle的DurationType是否是Infinite
 	//等于是用C++的方式去寻找这个属性在编辑器里面是怎么设置的
 	const bool bIsInfinite = EffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;
+	//我们保存一下指定角色的TargetASC和ActiveEffectHandle，相当于就是把进入这个区域的不同aura character保存了下来
 	if(bIsInfinite && InfiniteEffectRemovalPolicy == EEffectRemovalPolicy::RemovalOnEndOverlap)
 	{
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);

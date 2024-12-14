@@ -98,7 +98,7 @@
 
 √45. Infinite Effect Application and Removal 29 分钟
 
-46. PreAttributeChange 12 分钟
+√46. PreAttributeChange 12 分钟
 
 47. PostGameplayEffectExecute 31 分钟
 
