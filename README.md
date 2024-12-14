@@ -96,7 +96,7 @@
 
 √44. Instant and Duration Application Policy 4 分钟
 
-45. Infinite Effect Application and Removal 29 分钟
+√45. Infinite Effect Application and Removal 29 分钟
 
 46. PreAttributeChange 12 分钟
 
