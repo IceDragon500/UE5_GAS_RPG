@@ -2,9 +2,7 @@
 
 
 #include "Actor/AuraEffectActor.h"
-
 #include "AbilitySystemComponent.h"
-#include "AbilitySystemInterface.h"
 #include "AbilitySystemBlueprintLibrary.h"
 
 
@@ -47,4 +45,12 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 
 
+}
+
+void AAuraEffectActor::OnOverlap(AActor* TargetActor)
+{
+}
+
+void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
+{
 }

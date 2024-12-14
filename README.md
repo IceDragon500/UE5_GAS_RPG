@@ -92,7 +92,7 @@
 
 √42. Effect Stacking 15 分钟
 
-43. Infinite Gameplay Effects 13 分钟
+√43. Infinite Gameplay Effects 13 分钟
 
 44. Instant and Duration Application Policy 4 分钟
 
