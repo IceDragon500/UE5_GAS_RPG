@@ -94,7 +94,7 @@
 
 √43. Infinite Gameplay Effects 13 分钟
 
-44. Instant and Duration Application Policy 4 分钟
+√44. Instant and Duration Application Policy 4 分钟
 
 45. Infinite Effect Application and Removal 29 分钟
 
