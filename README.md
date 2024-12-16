@@ -100,7 +100,7 @@
 
 √46. PreAttributeChange 12 分钟
 
-47. PostGameplayEffectExecute 31 分钟
+√47. PostGameplayEffectExecute 31 分钟
 
 48. Curve Tables for Scalable Floats 15 分钟
 
