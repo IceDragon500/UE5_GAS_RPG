@@ -106,9 +106,9 @@
 
 测试 5： Section 6 Quiz
 
-49. Gameplay Tags 6 分钟
+√49. Gameplay Tags 6 分钟
 
-50. Creating Gameplay Tags in the Editor 8 分钟
+√50. Creating Gameplay Tags in the Editor 8 分钟
 
 51. Creating Gameplay Tags from Data Tables 6 分钟
 
