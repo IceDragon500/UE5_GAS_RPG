@@ -102,7 +102,7 @@
 
 √47. PostGameplayEffectExecute 31 分钟
 
-48. Curve Tables for Scalable Floats 15 分钟
+√48. Curve Tables for Scalable Floats 15 分钟
 
 测试 5： Section 6 Quiz
 

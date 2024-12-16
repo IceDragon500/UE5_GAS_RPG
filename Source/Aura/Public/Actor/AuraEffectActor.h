@@ -79,6 +79,10 @@ protected:
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 
+	//用来这是MakeOutgoingSpec中的Level
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	float ActorLevel = 1.f;
+
 private:
 	
 
