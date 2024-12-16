@@ -110,7 +110,7 @@
 
 √50. Creating Gameplay Tags in the Editor 8 分钟
 
-51. Creating Gameplay Tags from Data Tables 6 分钟
+√51. Creating Gameplay Tags from Data Tables 6 分钟
 
 52. Adding Gameplay Tags to Gameplay Effects 1 分钟
 
