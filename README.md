@@ -112,11 +112,11 @@
 
 √51. Creating Gameplay Tags from Data Tables 6 分钟
 
-52. Adding Gameplay Tags to Gameplay Effects 1 分钟
+√52. Adding Gameplay Tags to Gameplay Effects 1 分钟
 
-53. Apply Gameplay Tags with Effects 18 分钟
+√53. Apply Gameplay Tags with Effects 18 分钟
 
-54. Gameplay Effect Delegates 13 分钟
+√54. Gameplay Effect Delegates 13 分钟
 
 55. Get All Asset Tags 11 分钟
 
