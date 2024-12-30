@@ -1,127 +1,79 @@
 # UE5_GAS_RPG
  自学路径
+第一节
 √1. Introduction 12 分钟
 
+第二节 Project Creation
 √2. Jetbrains Rider - Now Free for Non-Commercial Use! 1 分钟
-
 √3. Project Creation 5 分钟
-
 √4. Setting up Version Control (Optional) 7 分钟
-
 √5. The Base Character Class 10 分钟
-
 √6. Player and Enemy Characters 6 分钟
-
 √7. Character Blueprint Setup 12 分钟
-
 √8. Animation Blueprints 15 分钟
-
 √9. Enhanced Input 10 分钟
-
 √10. Aura Player Controller 11 分钟
-
 √11. Movement Input 16 分钟
-
 √12. Game Mode 13 分钟
-
 √13. Enemy Interface 7 分钟
-
 √14. Highlight Enemies 19 分钟
-
 √15. Post Process Highlight 13 分钟
-
 测试 1： Section 2 Quiz
 
+第三节 Intro to the Gameplay Ability System
 √16. The Gameplay Ability System 12 分钟
-
 √17. The Main Parts of GAS 9 分钟
-
 √18. The Player State 4 分钟
-
 √19. Ability System Component and Attribute Set 5 分钟
-
 √20. GAS in Multiplayer 10 分钟
-
 √21. Constructing the ASC and AS 12 分钟
-
 √22. Replication Mode 8 分钟
-
 √23. Init Ability Actor Info 22 分钟
-
 测试 2： Section 3 Quiz
 
+第四节 Attributes
 √24. Attributes 7 分钟
-
 √25. Health and Mana 18 分钟
-
 √26. Attribute Accessors 12 分钟
-
 √27. Effect Actor 24 分钟
-
 测试 3： Section 4 Quiz
 
+第五节 RPG Game UI
 √28. Game UI Architecture 8 分钟
-
 √29. Aura User Widget and Widget Controller 11 分钟
-
 √30. Globe Progress Bar 29 分钟
-
 √31. Health Globe 11 分钟
-
 √32. Aura HUD 8 分钟
-
 √33. Overlay Widget Controller 32 分钟
-
 √34. Broadcasting Initial Values 26 分钟
-
 √35. Listening for Attribute Changes 12 分钟
-
 √36. Callbacks for Mana Changes 11 分钟
-
 测试 4： Section 5 Quiz
 
+第六节 Gameplay Effects
 √37. Gameplay Effects 8 分钟
-
 √38. Effect Actor Improved 30 分钟
-
 √39. Instant Gameplay Effects 20 分钟
-
 √40. Duration Gameplay Effects 18 分钟
-
 √41. Periodic Gameplay Effects 16 分钟
-
 √42. Effect Stacking 15 分钟
-
 √43. Infinite Gameplay Effects 13 分钟
-
 √44. Instant and Duration Application Policy 4 分钟
-
 √45. Infinite Effect Application and Removal 29 分钟
-
 √46. PreAttributeChange 12 分钟
-
 √47. PostGameplayEffectExecute 31 分钟
-
 √48. Curve Tables for Scalable Floats 15 分钟
-
 测试 5： Section 6 Quiz
 
+第七节 Gameplay Tags
 √49. Gameplay Tags 6 分钟
-
 √50. Creating Gameplay Tags in the Editor 8 分钟
-
 √51. Creating Gameplay Tags from Data Tables 6 分钟
-
 √52. Adding Gameplay Tags to Gameplay Effects 1 分钟
-
 √53. Apply Gameplay Tags with Effects 18 分钟
-
 √54. Gameplay Effect Delegates 13 分钟
-
-55. Get All Asset Tags 11 分钟
-
+√55. Get All Asset Tags 11 分钟
 56. Broadcasting Effect Asset Tags 10 分钟
-
 57. UI Widget Data Table 13 分钟
 
 58. Retrieving Rows from Data Tables 16 分钟
