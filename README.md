@@ -147,7 +147,7 @@
 
 √57. UI Widget Data Table 13 分钟
 
-58. Retrieving Rows from Data Tables 16 分钟
+√58. Retrieving Rows from Data Tables 16 分钟
 
 59. Broadcasting Data Table Rows 16 分钟
 
