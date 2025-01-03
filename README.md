@@ -145,7 +145,7 @@
 
 √56. Broadcasting Effect Asset Tags 10 分钟
 
-57. UI Widget Data Table 13 分钟
+√57. UI Widget Data Table 13 分钟
 
 58. Retrieving Rows from Data Tables 16 分钟
 
