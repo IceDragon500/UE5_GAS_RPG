@@ -36,10 +36,31 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 		{
 			for (auto Tag: AssetTags)
 			{
-				const FString Msg = FString::Printf(TEXT("GE Tag:%s"), *Tag.ToString());
-				GEngine->AddOnScreenDebugMessage(-1, 8.f, FColor::Red, Msg);
+				/*
+				 * 我们这里需要做一个检查，检查传入的Tag是否都是Message下面的消息
+				 */
+				
+				/*
+				 * 例如 我们让Tag = Message.HealthPotion
+				 * "Message.HealthPotion".MatchesTag("Message") 就会返回ture
+				 * "Message".MatchesTag("Message.HealthPotion") 就会返回false
+				 * 检查前者是否在后者的包含中
+				 * 如果两者都不在一个前后包含中，那肯定是false
+				 * 如果两者都在一个层级前后，后面级别比前面高，那就是true，低 就是false
+				 * 
+				 * 上面的例子中， Message包含了HealthPotioin，Message是HealthPotioin的上级
+				 * 所以检查Message.HealthPotion是否在Message中，是在的
+				 * 反之，检查Message是否在Message.HealthPotion中，是不在的
+				 */
 
-				GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable, Tag);
+				//RequestGameplayTag : 获取与 TagName 对应的 FGameplayTag 如果未找到，则返回空值
+				FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(FName("Message"));
+				if(Tag.MatchesTag(MessageTag))
+				{
+					FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable, Tag);
+					if(Row != nullptr) MessageWidgetRowDelegate.Broadcast(*Row);
+				}
+				
 			}
 		}
 		);

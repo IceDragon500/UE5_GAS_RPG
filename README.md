@@ -149,7 +149,7 @@
 
 √58. Retrieving Rows from Data Tables 16 分钟
 
-59. Broadcasting Data Table Rows 16 分钟
+√59. Broadcasting Data Table Rows 16 分钟
 
 60. Message Widget 15 分钟
 
