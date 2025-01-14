@@ -155,7 +155,7 @@
 
 √61. Animating the Message Widget 18 分钟
 
-62. Replacing Callbacks with Lambdas 10 分钟
+√62. Replacing Callbacks with Lambdas 10 分钟
 
 63. Ghost Globe 34 分钟
 
