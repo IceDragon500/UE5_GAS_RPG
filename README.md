@@ -153,7 +153,7 @@
 
 √60. Message Widget 15 分钟
 
-61. Animating the Message Widget 18 分钟
+√61. Animating the Message Widget 18 分钟
 
 62. Replacing Callbacks with Lambdas 10 分钟
 
