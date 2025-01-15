@@ -157,7 +157,7 @@
 
 √62. Replacing Callbacks with Lambdas 10 分钟
 
-63. Ghost Globe 34 分钟
+√63. Ghost Globe 34 分钟
 
 64. Properly Clamping Attributes 10 分钟
 
