@@ -165,7 +165,7 @@
 
 √65. Initialize Attributes from a Data Table 15 分钟
 
-66. Initialize Attributes with Gameplay Effects 16 分钟
+√66. Initialize Attributes with Gameplay Effects 16 分钟
 
 67. Attribute Based Modifiers 9 分钟
 
