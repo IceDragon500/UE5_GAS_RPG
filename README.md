@@ -159,7 +159,7 @@
 
 √63. Ghost Globe 34 分钟
 
-64. Properly Clamping Attributes 10 分钟
+√64. Properly Clamping Attributes 10 分钟
 
 测试 6： Section 7 Quiz
 
