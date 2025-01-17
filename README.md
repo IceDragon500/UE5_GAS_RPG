@@ -163,7 +163,7 @@
 
 测试 6： Section 7 Quiz
 
-65. Initialize Attributes from a Data Table 15 分钟
+√65. Initialize Attributes from a Data Table 15 分钟
 
 66. Initialize Attributes with Gameplay Effects 16 分钟
 
