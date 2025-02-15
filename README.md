@@ -169,11 +169,11 @@
 
 √67. Attribute Based Modifiers 9 分钟
 
-68. Modifier Order of Operations 11 分钟
+√68. Modifier Order of Operations 11 分钟
 
-69. Modifier Coefficients 7 分钟
+√69. Modifier Coefficients 7 分钟
 
-70. Secondary Attributes 14 分钟
+√70. Secondary Attributes 14 分钟
 
 71. Derived Attributes 32 分钟
 
