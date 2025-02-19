@@ -175,7 +175,7 @@
 
 √70. Secondary Attributes 14 分钟
 
-71. Derived Attributes 32 分钟
+√71. Derived Attributes 32 分钟
 
 72. Custom Calculations 6 分钟
 
