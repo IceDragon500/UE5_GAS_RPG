@@ -6,13 +6,14 @@
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Interaction/CombatInterface.h"
 #include "AuraCharacterBase.generated.h"
 
 class UAbilitySystemComponent;
 class UAttributeSet;
 
 UCLASS(Abstract) //Abstract表示这一个抽象类，不能直接实例化
-class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInterface
+class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInterface, public ICombatInterface
 {
 	GENERATED_BODY()
 
@@ -49,6 +50,7 @@ protected:
 
 	//对属性进行初始化
 	//增加了一个注释
+	//没有问题
 	void InitializeDefaultAttributes() const;
 
 private:
