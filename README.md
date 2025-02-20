@@ -181,9 +181,9 @@
 
 √73. Player Level and Combat Interface 13 分钟
 
-74. Modifier Magnitude Calculations 37 分钟
+√74. Modifier Magnitude Calculations 37 分钟
 
-75. Initializing Vital Attributes 8 分钟
+√75. Initializing Vital Attributes 8 分钟
 
 测试 7： Section 8 Quiz
 

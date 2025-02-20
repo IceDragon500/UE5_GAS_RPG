@@ -45,6 +45,10 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Attributes")
 	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
 
+	//用来初始化 Vital 至关重要！的属性值
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Attributes")
+	TSubclassOf<UGameplayEffect> DefaultVitalAttributes;
+
 	//创建GameplayEffect的方式
 	void ApplyEffetToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
 
