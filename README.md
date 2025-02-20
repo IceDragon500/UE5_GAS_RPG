@@ -179,7 +179,7 @@
 
 √72. Custom Calculations 6 分钟
 
-73. Player Level and Combat Interface 13 分钟
+√73. Player Level and Combat Interface 13 分钟
 
 74. Modifier Magnitude Calculations 37 分钟
 
