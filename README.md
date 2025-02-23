@@ -207,7 +207,7 @@
 
 √85. Plan for Displaying Attribute Data 10 分钟
 
-86. Gameplay Tags Singleton 10 分钟
+√86. Gameplay Tags Singleton 10 分钟
 
 87. Aura Asset Manager 15 分钟
 
