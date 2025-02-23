@@ -187,25 +187,25 @@
 
 测试 7： Section 8 Quiz
 
-76. Attribute Menu - Game Plan 5 分钟
+√76. Attribute Menu - Game Plan 5 分钟
 
-77. Attribute Menu - Framed Value 11 分钟
+√77. Attribute Menu - Framed Value 11 分钟
 
-78. Attribute Menu - Text Value Row 8 分钟
+√78. Attribute Menu - Text Value Row 8 分钟
 
-79. Attribute Menu - Text Value Button Row 7 分钟
+√79. Attribute Menu - Text Value Button Row 7 分钟
 
-80. Attribute Menu - Construction 19 分钟
+√80. Attribute Menu - Construction 19 分钟
 
-81. Button Widget 22 分钟
+√81. Button Widget 22 分钟
 
-82. Wide Button Widget 9 分钟
+√82. Wide Button Widget 9 分钟
 
-83. Opening the Attribute Menu 7 分钟
+√83. Opening the Attribute Menu 7 分钟
 
-84. Closing the Attribute Menu 6 分钟
+√84. Closing the Attribute Menu 6 分钟
 
-85. Plan for Displaying Attribute Data 10 分钟
+√85. Plan for Displaying Attribute Data 10 分钟
 
 86. Gameplay Tags Singleton 10 分钟
 
