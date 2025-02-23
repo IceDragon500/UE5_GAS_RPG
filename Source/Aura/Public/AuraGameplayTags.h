@@ -19,6 +19,21 @@ public:
  //初始化GameplayTags
  //创建原生的GameplayTags
  static void InitializeNativeGameplayTags();
+ FGameplayTag Attribute_Primary_Strenght;
+ FGameplayTag Attribute_Primary_Intellingence;
+ FGameplayTag Attribute_Primary_Resilience;
+ FGameplayTag Attribute_Primary_Vigor; 
+ 
+ FGameplayTag Attributes_Secondary_Armor;//护甲
+ FGameplayTag Attributes_Secondary_ArmorPenetration;//护甲穿透
+ FGameplayTag Attributes_Secondary_BlockChance;//格挡几率
+ FGameplayTag Attributes_Secondary_CriticalHitChance;//致命一击
+ FGameplayTag Attributes_Secondary_CriticalHitDamage;//重击伤害
+ FGameplayTag Attributes_Secondary_CriticalHitResistance;//暴击抗性
+ FGameplayTag Attributes_Secondary_HealthRegeneration;//生命恢复
+ FGameplayTag Attributes_Secondary_ManaRegeneration;//法力恢复
+ FGameplayTag Attributes_Secondary_MaxHealth;//最大生命值
+ FGameplayTag Attributes_Secondary_MaxMana;//最大法力值
  
 protected:
  
