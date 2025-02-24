@@ -1,4 +1,10 @@
+// 我自己用来学习的试作品 -- 来自icedragon500
+
+
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
+
+#include "AuraGameplayTags.h"
+#include "AbilitySystem/AuraAttributeSet.h"
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {
@@ -7,5 +13,12 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 
 void UAttributeMenuWidgetController::BroadcastInitialValues()
 {
-	Super::BroadcastInitialValues();
+	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
+
+	check(AttributeInfo)
+	
+	FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(FAuraGameplayTags::Get().Attribute_Primary_Strenght);
+	Info.AttributeValue = AS->GetStrength();
+	AttributeInfoDelegate.Broadcast(Info);
+	
 }

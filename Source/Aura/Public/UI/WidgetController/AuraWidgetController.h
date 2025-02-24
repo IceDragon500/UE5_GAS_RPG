@@ -49,6 +49,7 @@ public:
 	//将回调绑定到依赖项
 	virtual void BindCallbacksToDependencies();
 
+	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitialValues();
 	
 protected:
