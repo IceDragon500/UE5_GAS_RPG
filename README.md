@@ -217,9 +217,9 @@
 
 √90. Attribute Menu Widget Controller 5 分钟
 
-91. Aura Ability System Blueprint Library 15 分钟
+√91. Aura Ability System Blueprint Library 15 分钟
 
-92. Constructing the Attribute Menu Widget Controller 17 分钟
+√92. Constructing the Attribute Menu Widget Controller 17 分钟
 
 93. Attribute Info Delegate 21 分钟
 
