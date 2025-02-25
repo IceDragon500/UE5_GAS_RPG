@@ -221,9 +221,9 @@
 
 √92. Constructing the Attribute Menu Widget Controller 17 分钟
 
-93. Attribute Info Delegate 21 分钟
+√93. Attribute Info Delegate 21 分钟
 
-94. Widget Attribute Tags 16 分钟
+√94. Widget Attribute Tags 16 分钟
 
 95. Mapping Tags to Attributes 38 分钟
 

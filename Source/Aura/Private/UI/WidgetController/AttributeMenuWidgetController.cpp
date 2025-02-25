@@ -20,5 +20,8 @@ void UAttributeMenuWidgetController::BroadcastInitialValues()
 	FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(FAuraGameplayTags::Get().Attribute_Primary_Strenght);
 	Info.AttributeValue = AS->GetStrength();
 	AttributeInfoDelegate.Broadcast(Info);
+	//弹幕提示
+	//这里记得在Menu的UI界面中，销毁时候把所有事件移除
+	//不然每次打开界面都会订阅一次，越订越多
 	
 }
