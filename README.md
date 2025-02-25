@@ -225,7 +225,7 @@
 
 √94. Widget Attribute Tags 16 分钟
 
-95. Mapping Tags to Attributes 38 分钟
+√95. Mapping Tags to Attributes 38 分钟
 
 96. Responding to Attribute Changes 16 分钟
 

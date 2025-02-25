@@ -14,6 +14,10 @@
 	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+//弹幕提示
+//GS基类当中本来就有一个PostAttriobuteChange的函数，直接从写这个函数多播就行了啊
+//教程中使用函数指针来代替委托
+//DECLARE_DELEGATE_RetVal(FGameplayAttribute, FAttributeSignature);
 
 USTRUCT()
 struct FEffectProperties
@@ -50,6 +54,11 @@ struct FEffectProperties
 	
 };
 
+//typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
+
+template<class T>
+using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
 /**
  * 
  */
@@ -60,6 +69,8 @@ class AURA_API UAuraAttributeSet : public UAttributeSet
 
 public:
 	UAuraAttributeSet();
+
+	//返回在参与者通道生命周期内复制的属性
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 	//用来做Clamp功能的函数
@@ -76,9 +87,25 @@ public:
 	 *	Called just after a GameplayEffect is executed to modify the base value of an attribute. No more changes can be made.
 	 *	在GameplayEffect执行后调用，修改属性的基本值。不能再做任何更改。
 	 *	Note this is only called during an 'execute'. E.g., a modification to the 'base value' of an attribute. It is not called during an application of a GameplayEffect, such as a 5 ssecond +10 movement speed buff.
-	 *	注意，这只在‘execute’期间调用。例如，修改属性的“基本值”。它不会在GameplayEffect的应用过程中被调用，比如5秒+10的移动速度buff。
+	 *	注意，这只在‘执行’期间调用。例如，修改属性的“基本值”。它不会在GameplayEffect的应用过程中被调用，比如5秒+10的移动速度buff。
 	 */
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
+
+
+	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
+
+
+	//这是使用委托的方式
+	//TMap<FGameplayTag, FAttributeSignature> TagsToAttributes;
+
+
+	//这里使用了很高级的函数指针
+	//95课. Mapping Tags to Attributes
+	//16分钟开始
+	//这里涉及到了函数指针  泛型编程
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributes;
+
+	//TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FunctionPointer;
 
 	/**
 	 * Primary Attributes
