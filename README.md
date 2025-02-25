@@ -227,7 +227,7 @@
 
 √95. Mapping Tags to Attributes 38 分钟
 
-96. Responding to Attribute Changes 16 分钟
+√96. Responding to Attribute Changes 16 分钟
 
 测试 8： Section 9 Quiz
 
