@@ -235,11 +235,11 @@
 
 √98. Granting Abilities 15 分钟
 
-99. Settings on Gameplay Abilities 19 分钟
+√99. Settings on Gameplay Abilities 19 分钟
 
-100. Input Config Data Asset 22 分钟
+√100. Input Config Data Asset 22 分钟
 
-101. Aura Input Component 15 分钟
+√101. Aura Input Component 15 分钟
 
 102. Callbacks for Ability Input 13 分钟
 

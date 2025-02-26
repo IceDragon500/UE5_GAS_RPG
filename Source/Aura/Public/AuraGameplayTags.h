@@ -34,6 +34,13 @@ public:
  FGameplayTag Attributes_Secondary_ManaRegeneration;//法力恢复
  FGameplayTag Attributes_Secondary_MaxHealth;//最大生命值
  FGameplayTag Attributes_Secondary_MaxMana;//最大法力值
+
+ FGameplayTag InputTag_LMB;
+ FGameplayTag InputTag_RMB;
+ FGameplayTag InputTag_1;
+ FGameplayTag InputTag_2;
+ FGameplayTag InputTag_3;
+ FGameplayTag InputTag_4;
  
 protected:
  
