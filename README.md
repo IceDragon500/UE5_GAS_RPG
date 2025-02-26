@@ -241,7 +241,7 @@
 
 √101. Aura Input Component 15 分钟
 
-102. Callbacks for Ability Input 13 分钟
+√102. Callbacks for Ability Input 13 分钟
 
 103. Activating Abilities 27 分钟
 
