@@ -231,9 +231,9 @@
 
 测试 8： Section 9 Quiz
 
-97. Gameplay Abilities 5 分钟
+√97. Gameplay Abilities 5 分钟
 
-98. Granting Abilities 15 分钟
+√98. Granting Abilities 15 分钟
 
 99. Settings on Gameplay Abilities 19 分钟
 

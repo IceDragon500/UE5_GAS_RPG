@@ -38,15 +38,15 @@ protected:
 	TObjectPtr<UAttributeSet> AttributeSet;
 
 	//用来初始化主要属性
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Attributes")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
 	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
 
 	//用来初始化次要属性
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Attributes")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
 	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
 
 	//用来初始化 Vital 至关重要！的属性值
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="Attributes")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
 	TSubclassOf<UGameplayEffect> DefaultVitalAttributes;
 
 	//创建GameplayEffect的方式
@@ -57,9 +57,15 @@ protected:
 	//没有问题
 	void InitializeDefaultAttributes() const;
 
+	void AddCharacterAbilities();
+	
+
 private:
 
 	virtual void InitAbilityActorInfo();
+
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
 public:
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return Weapon; }

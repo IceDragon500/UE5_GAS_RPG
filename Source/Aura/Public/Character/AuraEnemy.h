@@ -33,7 +33,8 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void InitAbilityActorInfo() override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Character Class Defaults")
+	//角色等级
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	int32 Level = 1;
 	
 private:
