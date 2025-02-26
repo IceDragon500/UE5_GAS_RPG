@@ -100,6 +100,8 @@ void AAuraPlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAuraPlayerController::Move);
 
 	
+
+	
 }
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
