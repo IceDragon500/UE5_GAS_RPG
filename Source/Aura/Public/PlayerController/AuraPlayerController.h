@@ -12,6 +12,7 @@ class UInputAction;
 struct FInputActionValue;
 class IEnemyInterface;
 class UAuraAbilitySystemComponent;
+class USplineComponent;
 /**
  * 
  */
@@ -44,9 +45,12 @@ private:
 
 	void Move(const FInputActionValue& InputActionValue);
 
+	//鼠标指向追踪的逻辑
 	void CursorTrace();
 
+	//当前鼠标指向的目标
 	TScriptInterface<IEnemyInterface> LastActor;
+	//鼠标最后一次指向的目标
 	TScriptInterface<IEnemyInterface> ThisActor;
 
 	void AbilityInputTagPressed(FGameplayTag InputTag);
@@ -60,4 +64,27 @@ private:
 	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 
 	UAuraAbilitySystemComponent* GetASC();
+
+	//保存鼠标点击的位置
+	FVector CachedDestinaion = FVector::ZeroVector;
+
+	//
+	float FollowTime = 0.f;
+
+	//短按的时间范围
+	float ShortPressThreshold = 0.5f;
+
+	//是否在自动行走
+	bool bAutoRunning = false;
+
+	bool bTargeting = false;
+
+	//自动行走的半径
+	UPROPERTY(EditDefaultsOnly)
+	float AutoRunAcceptanceRadius = 50.f;
+
+	//标记行走的样条线
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USplineComponent> Spline;
+	
 };

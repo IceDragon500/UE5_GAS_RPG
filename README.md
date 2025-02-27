@@ -243,11 +243,11 @@
 
 √102. Callbacks for Ability Input 13 分钟
 
-103. Activating Abilities 27 分钟
+√103. Activating Abilities 27 分钟
 
-104. Click To Move 16 分钟
+√104. Click To Move 16 分钟
 
-105. Setting Up Click to Move 18 分钟
+√105. Setting Up Click to Move 18 分钟
 
 106. Setting Up Auto Running 12 分钟
 

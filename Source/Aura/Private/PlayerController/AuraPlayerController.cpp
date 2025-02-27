@@ -2,17 +2,19 @@
 
 
 #include "PlayerController/AuraPlayerController.h"
-
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AuraGameplayTags.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "Components/SplineComponent.h"
 #include "Input/AuraInputComponent.h"
 #include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+	Spline = CreateDefaultSubobject<USplineComponent>(TEXT("Spline"));
 }
 
 void AAuraPlayerController::PlayerTick(float DeltaTime)
@@ -25,10 +27,13 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 void AAuraPlayerController::CursorTrace()
 {
 	FHitResult CursorHit;
+	//UE原生方法：返回在屏幕上某一位置进行碰撞查询的命中结果
 	GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, CursorHit);
 	if(!CursorHit.bBlockingHit) return;
 
+	//将上一次结果的ThisActor赋值给LastActor
 	LastActor = ThisActor;
+	//这次从CursorHit里面获取Actor
 	ThisActor = CursorHit.GetActor();
 
 	/**
@@ -73,12 +78,12 @@ void AAuraPlayerController::CursorTrace()
 
 void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 {
-	/*
-	if(GEngine)
+	if(InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		GEngine->AddOnScreenDebugMessage(1, 3.f, FColor::Red, *InputTag.ToString());
+		bTargeting = ThisActor ? true : false;
+		bAutoRunning = false;
 	}
-	*/
+	
 }
 
 void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
@@ -89,8 +94,38 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 
 void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
-	if(GetASC() == nullptr ) return;
-	GetASC()->AbilityInputTagHeld(InputTag);
+	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
+	{
+		if(GetASC())
+		{
+			GetASC()->AbilityInputTagHeld(InputTag);
+		}
+		return;
+	}
+
+	if(bTargeting)
+	{
+		if(GetASC())
+		{
+			GetASC()->AbilityInputTagHeld(InputTag);
+		}
+	}
+	else
+	{
+		FollowTime += GetWorld()->GetDeltaSeconds();
+		FHitResult Hit;
+		if(GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, Hit))
+		{
+			CachedDestinaion = Hit.ImpactPoint;
+		}
+
+		if(APawn* ControlledPawn = GetPawn())
+		{
+			const FVector WorldDirection = (CachedDestinaion - ControlledPawn->GetActorLocation()).GetSafeNormal();
+			ControlledPawn->AddMovementInput(WorldDirection);
+		}
+	}
+	
 }
 
 UAuraAbilitySystemComponent* AAuraPlayerController::GetASC()
