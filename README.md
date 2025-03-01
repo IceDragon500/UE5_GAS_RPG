@@ -249,7 +249,7 @@
 
 √105. Setting Up Click to Move 18 分钟
 
-106. Setting Up Auto Running 12 分钟
+√106. Setting Up Auto Running 12 分钟
 
 107. Implementing Auto Running 12 分钟
 
