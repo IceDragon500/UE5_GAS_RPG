@@ -54,6 +54,8 @@ private:
 	//鼠标最后一次指向的目标
 	TScriptInterface<IEnemyInterface> ThisActor;
 
+	FHitResult CursorHit;
+
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagRelease(FGameplayTag InputTag);
 	void AbilityInputTagHeld(FGameplayTag InputTag);
@@ -87,5 +89,7 @@ private:
 	//标记行走的样条线
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USplineComponent> Spline;
+
+	void AutoRun();
 	
 };

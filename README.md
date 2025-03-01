@@ -251,11 +251,11 @@
 
 √106. Setting Up Auto Running 12 分钟
 
-107. Implementing Auto Running 12 分钟
+√107. Implementing Auto Running 12 分钟
 
-108. Code Clean Up 11 分钟
+√108. Code Clean Up 11 分钟
 
-109. Aura Projectile 14 分钟
+√109. Aura Projectile 14 分钟
 
 110. Aura Projectile Spell 14 分钟
 

@@ -23,12 +23,30 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 	CursorTrace();
-	
+	AutoRun();
+}
+
+void AAuraPlayerController::AutoRun()
+{
+	if(!bAutoRunning) return;
+	if(APawn* ControlledPawn = GetPawn())
+	{
+		const FVector LocationOnSpline = Spline->FindLocationClosestToWorldLocation(ControlledPawn->GetActorLocation(), ESplineCoordinateSpace::World);
+		const FVector Direction = Spline->FindDirectionClosestToWorldLocation(LocationOnSpline, ESplineCoordinateSpace::World);
+
+		ControlledPawn->AddMovementInput(Direction);
+
+		const float DistanceToDestination = (LocationOnSpline - CachedDestinaion).Length();
+		if(DistanceToDestination <= AutoRunAcceptanceRadius)
+		{
+			bAutoRunning = false;
+		}
+	}
 }
 
 void AAuraPlayerController::CursorTrace()
 {
-	FHitResult CursorHit;
+	
 	//UE原生方法：返回在屏幕上某一位置进行碰撞查询的命中结果
 	GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, CursorHit);
 	if(!CursorHit.bBlockingHit) return;
@@ -37,6 +55,12 @@ void AAuraPlayerController::CursorTrace()
 	LastActor = ThisActor;
 	//这次从CursorHit里面获取Actor
 	ThisActor = CursorHit.GetActor();
+
+	if(LastActor != ThisActor)
+	{
+		if(LastActor) LastActor->UnHighlightActor();
+		if(ThisActor) ThisActor->HighlightActor();
+	}
 
 	/**
 	 * Cursor光标的追踪接口有以下几种情况
@@ -47,6 +71,7 @@ void AAuraPlayerController::CursorTrace()
 	 * e 如果一致，说明在鼠标一直在一个Enemy身上，不需要有操作
 	 */
 
+	/*
 	if(LastActor == nullptr)//LastActor是无效的
 	{
 		if(ThisActor != nullptr)//ThisActor有效的
@@ -74,12 +99,13 @@ void AAuraPlayerController::CursorTrace()
 			//else E情况 就不写了
 		}
 	}
-	
+	*/	
 
 }
 
 void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 {
+	GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("按下"));
 	if(InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		bTargeting = ThisActor ? true : false;
@@ -90,28 +116,23 @@ void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 
 void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 {
+	GEngine->AddOnScreenDebugMessage(1, 2.f, FColor::Red, TEXT("抬起"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		if(GetASC())
-		{
-			GetASC()->AbilityInputTagReleased(InputTag);
-		}
+		if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 		return;
 	}
 
 	if(bTargeting)
 	{
-		if(GetASC())
-		{
-			GetASC()->AbilityInputTagReleased(InputTag);
-		}
+		if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 	}
 	else
 	{
-		APawn* ControllPawn = GetPawn();
-		if (FollowTime <= ShortPressThreshold && ControllPawn)
+		const APawn* ControlledPawn = GetPawn();
+		if (FollowTime <= ShortPressThreshold && ControlledPawn)
 		{
-			UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControllPawn->GetActorLocation(),CachedDestinaion);
+			UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(),CachedDestinaion);
 
 			if(NavPath)
 			{
@@ -120,8 +141,9 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 				{
 					Spline->AddSplinePoint(PointLoc, ESplineCoordinateSpace::World);
 					DrawDebugSphere(GetWorld(), PointLoc, 8.f, 8, FColor::Green, false, 5.f);
-					
 				}
+				CachedDestinaion = NavPath->PathPoints[NavPath->PathPoints.Num() - 1];
+				
 				bAutoRunning = true;
 			}
 
@@ -133,30 +155,22 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 
 void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
+	GEngine->AddOnScreenDebugMessage(2, 2.f, FColor::Red, TEXT("保持"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		if(GetASC())
-		{
-			GetASC()->AbilityInputTagHeld(InputTag);
-		}
+		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 		return;
 	}
 
 	if(bTargeting)
 	{
-		if(GetASC())
-		{
-			GetASC()->AbilityInputTagHeld(InputTag);
-		}
+		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 	}
 	else
 	{
 		FollowTime += GetWorld()->GetDeltaSeconds();
-		FHitResult Hit;
-		if(GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, Hit))
-		{
-			CachedDestinaion = Hit.ImpactPoint;
-		}
+
+		if(CursorHit.bBlockingHit) CachedDestinaion = CursorHit.ImpactPoint;
 
 		if(APawn* ControlledPawn = GetPawn())
 		{
