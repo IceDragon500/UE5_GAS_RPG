@@ -259,7 +259,7 @@
 
 √110. Aura Projectile Spell 14 分钟
 
-111. Spawning Projectiles 23 分钟
+√111. Spawning Projectiles 23 分钟
 
 测试 9： Section 10 Quiz
 
