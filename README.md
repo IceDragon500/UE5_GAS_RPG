@@ -257,7 +257,7 @@
 
 √109. Aura Projectile 14 分钟
 
-110. Aura Projectile Spell 14 分钟
+√110. Aura Projectile Spell 14 分钟
 
 111. Spawning Projectiles 23 分钟
 
