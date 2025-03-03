@@ -269,7 +269,7 @@
 
 √114. Spawn FireBolt from Event 6 分钟
 
-115. Custom Ability Tasks 20 分钟
+√115. Custom Ability Tasks 20 分钟
 
 116. Target Data 6 分钟
 
