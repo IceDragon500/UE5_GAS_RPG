@@ -263,9 +263,9 @@
 
 测试 9： Section 10 Quiz
 
-112. Ability Tasks 17 分钟
+√112. Ability Tasks 17 分钟
 
-113. Sending Gameplay Events 11 分钟
+√113. Sending Gameplay Events 11 分钟
 
 114. Spawn FireBolt from Event 6 分钟
 

@@ -105,7 +105,7 @@ void AAuraPlayerController::CursorTrace()
 
 void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 {
-	GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("按下"));
+	//GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("按下"));
 	if(InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		bTargeting = ThisActor ? true : false;
@@ -116,7 +116,7 @@ void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 
 void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 {
-	GEngine->AddOnScreenDebugMessage(1, 2.f, FColor::Red, TEXT("抬起"));
+	//GEngine->AddOnScreenDebugMessage(1, 2.f, FColor::Red, TEXT("抬起"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
@@ -155,7 +155,7 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 
 void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
-	GEngine->AddOnScreenDebugMessage(2, 2.f, FColor::Red, TEXT("保持"));
+	//GEngine->AddOnScreenDebugMessage(2, 2.f, FColor::Red, TEXT("保持"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
