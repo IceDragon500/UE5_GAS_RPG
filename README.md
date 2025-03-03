@@ -267,7 +267,7 @@
 
 √113. Sending Gameplay Events 11 分钟
 
-114. Spawn FireBolt from Event 6 分钟
+√114. Spawn FireBolt from Event 6 分钟
 
 115. Custom Ability Tasks 20 分钟
 
