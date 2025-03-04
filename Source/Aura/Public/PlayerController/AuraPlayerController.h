@@ -44,6 +44,14 @@ private:
 	UPROPERTY(EditAnywhere, Category="输入设置")
 	TObjectPtr<UInputAction> MoveAction;
 
+	UPROPERTY(EditAnywhere, Category="输入设置")
+	TObjectPtr<UInputAction> ShiftAction;
+
+	void ShiftPressed() { IsShiftPressed = true; };
+	void ShiftReleased() { IsShiftPressed = false; };
+	//Shift键是否按下
+	bool IsShiftPressed = false;
+
 	void Move(const FInputActionValue& InputActionValue);
 
 	//鼠标指向追踪的逻辑

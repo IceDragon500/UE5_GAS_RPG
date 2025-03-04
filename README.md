@@ -277,9 +277,9 @@
 
 √118. Receiving Target Data 16 分钟
 
-119. Prediction in GAS 11 分钟
+√119. Prediction in GAS 11 分钟
 
-120. Orienting the Projectile 17 分钟
+√120. Orienting the Projectile 17 分钟
 
 121. Motion Warping 15 分钟
 

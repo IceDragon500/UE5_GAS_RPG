@@ -123,18 +123,14 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 		return;
 	}
 
-	if(bTargeting)
-	{
-		if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
-	}
-	else
+	if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
+
+	if(!bTargeting && !IsShiftPressed)
 	{
 		const APawn* ControlledPawn = GetPawn();
 		if (FollowTime <= ShortPressThreshold && ControlledPawn)
 		{
-			UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(),CachedDestinaion);
-
-			if(NavPath)
+			if(UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(),CachedDestinaion))
 			{
 				Spline->ClearSplinePoints();
 				for (const FVector& PointLoc : NavPath->PathPoints)
@@ -146,10 +142,9 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 				
 				bAutoRunning = true;
 			}
-
-			FollowTime = 0.f;
-			bTargeting = false;
 		}
+		FollowTime = 0.f;
+		bTargeting = false;
 	}
 }
 
@@ -162,7 +157,7 @@ void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 		return;
 	}
 
-	if(bTargeting)
+	if(bTargeting || IsShiftPressed)
 	{
 		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 	}
@@ -227,6 +222,8 @@ void AAuraPlayerController::SetupInputComponent()
 	UAuraInputComponent* AuraInputComponent = CastChecked<UAuraInputComponent>(InputComponent);
 	
 	AuraInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAuraPlayerController::Move);
+	AuraInputComponent->BindAction(ShiftAction, ETriggerEvent::Started, this, &AAuraPlayerController::ShiftPressed);
+	AuraInputComponent->BindAction(ShiftAction, ETriggerEvent::Completed, this, &AAuraPlayerController::ShiftReleased);
 	AuraInputComponent->BindAbilityActions(InputConfig, this, &ThisClass::AbilityInputTagPressed, &ThisClass::AbilityInputTagRelease, &ThisClass::AbilityInputTagHeld);
 
 	

@@ -27,7 +27,7 @@ public:
 	//BlueprintInternalUseOnly：表明该函数仅打算在内部蓝图逻辑中使用，并不会暴露给最终用户或外部系统
 	//DisplayName  如果希望函数在蓝图中不使用函数名作为名称，可以使用这个来重新命名
 	
-	UFUNCTION(BlueprintCallable, Category = "Ability Task", meta = (DisplayName = "TargetDataUnderMouse", HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = true))
+	UFUNCTION(BlueprintCallable, Category = "Ability Task", meta = (DisplayName = "TargetDataUnderMouse", HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = "true"))
 	static UTargetDataUnderMouse* CreateTargetDataUnderMouse(UGameplayAbility* OwningAbility);
 
 	UPROPERTY(BlueprintAssignable)
