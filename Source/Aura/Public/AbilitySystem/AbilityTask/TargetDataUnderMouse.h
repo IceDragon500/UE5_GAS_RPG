@@ -6,7 +6,7 @@
 #include "Abilities/Tasks/AbilityTask.h"
 #include "TargetDataUnderMouse.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMouseTargetDataSignature, const FVector&, Data);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMouseTargetDataSignature, const FGameplayAbilityTargetDataHandle&, DataHandle);
 
 
 
@@ -37,5 +37,12 @@ protected:
 private:
 
 	virtual void Activate() override;
+
+	//预测窗口 (FScopedPredictionWindow)：用于客户端预测，减少延迟带来的卡顿。
+	//获取鼠标命中结果：通过 GetHitResultUnderCursor 获取光标下的碰撞信息。
+	//封装数据：将命中结果包装为 FGameplayAbilityTargetDataHandle。
+	//服务器同步：通过 ServerSetReplicatedTargetData 将数据发送到服务器。
+	//委托广播：本地客户端立即触发委托，处理视觉或逻辑反馈。
+	void SendMouseCursorData();
 	
 };
