@@ -19,10 +19,10 @@ public:
  //初始化GameplayTags
  //创建原生的GameplayTags
  static void InitializeNativeGameplayTags();
- FGameplayTag Attribute_Primary_Strenght;
- FGameplayTag Attribute_Primary_Intellingence;
- FGameplayTag Attribute_Primary_Resilience;
- FGameplayTag Attribute_Primary_Vigor; 
+ FGameplayTag Attributes_Primary_Strength;
+ FGameplayTag Attributes_Primary_Intelligence;
+ FGameplayTag Attributes_Primary_Resilience;
+ FGameplayTag Attributes_Primary_Vigor; 
  
  FGameplayTag Attributes_Secondary_Armor;//护甲
  FGameplayTag Attributes_Secondary_ArmorPenetration;//护甲穿透

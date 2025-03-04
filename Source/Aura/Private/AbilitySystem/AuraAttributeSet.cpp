@@ -15,10 +15,10 @@ UAuraAttributeSet::UAuraAttributeSet()
 
 	//这里直接将函数作为参数传入
 	//调用函数指针
-	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Strenght, GetStrengthAttribute);
-	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Intellingence, GetIntelligenceAttribute);
-	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Resilience, GetResilienceAttribute);
-	TagsToAttributes.Add(GameplayTags.Attribute_Primary_Vigor, GetVigorAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Resilience, GetResilienceAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Vigor, GetVigorAttribute);
 
 	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Armor, GetArmorAttribute);
 	TagsToAttributes.Add(GameplayTags.Attributes_Secondary_ArmorPenetration, GetArmorPentrationAttribute);

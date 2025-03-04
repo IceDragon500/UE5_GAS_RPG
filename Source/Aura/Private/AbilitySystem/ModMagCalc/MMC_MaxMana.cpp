@@ -1,7 +1,7 @@
 // 我自己用来学习的试作品 -- 来自icedragon500
 
 
-#include "AbilitySystem/MMC/MMC_MaxMana.h"
+#include "AbilitySystem/ModMagCalc/MMC_MaxMana.h"
 
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Interaction/CombatInterface.h"
