@@ -44,5 +44,7 @@ private:
 	//服务器同步：通过 ServerSetReplicatedTargetData 将数据发送到服务器。
 	//委托广播：本地客户端立即触发委托，处理视觉或逻辑反馈。
 	void SendMouseCursorData();
+
+	void OnTargetDataReplicatedCallback(const FGameplayAbilityTargetDataHandle& DataHandle, FGameplayTag ActivationTag);
 	
 };

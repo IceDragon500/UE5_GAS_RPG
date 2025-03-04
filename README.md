@@ -275,7 +275,7 @@
 
 √117. Send Mouse Cursor Data 14 分钟
 
-118. Receiving Target Data 16 分钟
+√118. Receiving Target Data 16 分钟
 
 119. Prediction in GAS 11 分钟
 
