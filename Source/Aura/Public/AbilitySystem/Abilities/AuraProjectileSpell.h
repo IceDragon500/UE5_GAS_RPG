@@ -8,7 +8,8 @@
 #include "AuraProjectileSpell.generated.h"
 
 /**
- * 
+ * 设计了一个射弹技能
+ * 类似火球术，发射一个火球
  */
 UCLASS()
 class AURA_API UAuraProjectileSpell : public UAuraGameplayAbility
@@ -21,11 +22,17 @@ protected:
 
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
-	UFUNCTION(BlueprintCallable, Category= "Projectile")
+	//将设置的发射物蓝图生成
+	UFUNCTION(BlueprintCallable, Category= "发射物属性设置")
 	void SpawnProjectile(const FVector& ProjectileTargetLocation);
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	//设置需要抛出的对象，是一个BP蓝图
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "发射物属性设置")
 	TSubclassOf<AAuraProjectile> ProjectileClass;
+
+	//设置对目标造成效果的GameEffect
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "发射物属性设置")
+	TSubclassOf<UGameplayEffect> DamageEffectClass;
 	
 private:
 

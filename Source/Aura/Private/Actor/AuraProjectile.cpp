@@ -2,6 +2,9 @@
 
 
 #include "Actor/AuraProjectile.h"
+
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "NiagaraFunctionLibrary.h"
 #include "Aura/Aura.h"
 #include "Components/AudioComponent.h"
@@ -24,10 +27,10 @@ AAuraProjectile::AAuraProjectile()
 	Sphere->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Overlap);
 	Sphere->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 
-	ProjectilemMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
-	ProjectilemMovement->InitialSpeed = 550.f;
-	ProjectilemMovement->MaxSpeed = 550.f;
-	ProjectilemMovement->ProjectileGravityScale = 0.f;
+	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
+	ProjectileMovement->InitialSpeed = 550.f;
+	ProjectileMovement->MaxSpeed = 550.f;
+	ProjectileMovement->ProjectileGravityScale = 0.f;
 	
 }
 
@@ -61,6 +64,10 @@ void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, 
 
 	if(HasAuthority())
 	{
+		if(UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(OtherActor))
+		{
+			TargetASC->ApplyGameplayEffectSpecToSelf(*DamageSpecHandle.Data.Get());
+		}
 	    Destroy();
 	}
 	else

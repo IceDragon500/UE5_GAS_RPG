@@ -11,6 +11,8 @@ AAuraCharacterBase::AAuraCharacterBase()
 	PrimaryActorTick.bCanEverTick = false;
 
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	GetCapsuleComponent()->SetGenerateOverlapEvents(false);//设置碰撞盒子不会触发碰撞事件 这样只有网格体才可以触发碰撞事件
+	
 	GetMesh()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	GetMesh()->SetCollisionResponseToChannel(ECC_Projectile, ECR_Overlap);
 	GetMesh()->SetGenerateOverlapEvents(true);

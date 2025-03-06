@@ -3,6 +3,8 @@
 
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "Interaction/CombatInterface.h"
 
 
@@ -12,10 +14,6 @@ void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Hand
                                            const FGameplayEventData* TriggerEventData)
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
-
-	
-
-	
 	
 }
 
@@ -53,6 +51,10 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 			);
 
 		//todo  这将视为投射物提供一个用于造成伤害的游戏效果规格
+
+		const UAbilitySystemComponent* SourceASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetAvatarActorFromActorInfo());
+		const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(DamageEffectClass, GetAbilityLevel(), SourceASC->MakeEffectContext());
+		Projectile->DamageSpecHandle = SpecHandle;
 
 		Projectile->FinishSpawning(SpawnTransform);
 	}

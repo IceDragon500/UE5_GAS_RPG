@@ -26,7 +26,7 @@ public:
 	 * DisplayName  如果希望函数在蓝图中不使用函数名作为名称，可以使用这个来重新命名
 	 */
 	
-	UFUNCTION(BlueprintCallable, Category = "Ability Task", meta = (DisplayName = "TargetDataUnderMouse", HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = "true"))
+	UFUNCTION(BlueprintCallable, Category="Ability|Tasks", meta = (DisplayName = "TargetDataUnderMouse", HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = "true"))
 	static UTargetDataUnderMouse* CreateTargetDataUnderMouse(UGameplayAbility* OwningAbility);
 
 	UPROPERTY(BlueprintAssignable)

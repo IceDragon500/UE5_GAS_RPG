@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayEffectTypes.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "NiagaraSystem.h"
@@ -20,7 +21,11 @@ public:
 	AAuraProjectile();
 
 	UPROPERTY(VisibleAnywhere)
-	TObjectPtr<UProjectileMovementComponent> ProjectilemMovement;
+	TObjectPtr<UProjectileMovementComponent> ProjectileMovement;
+
+	
+	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = "true"))//ExposeOnSpawn:指定属性是否应该暴露在类类型的Spawn Actor上
+	FGameplayEffectSpecHandle DamageSpecHandle;
 
 protected:
 	virtual void BeginPlay() override;
