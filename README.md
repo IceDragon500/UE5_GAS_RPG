@@ -289,7 +289,7 @@
 
 √124. Projectile Gameplay Effect 24 分钟
 
-125. Enemy Health Bar 30 分钟
+√125. Enemy Health Bar 30 分钟
 
 126. Ghost Bar 21 分钟
 

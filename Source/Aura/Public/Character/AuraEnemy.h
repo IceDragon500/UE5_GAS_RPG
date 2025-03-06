@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Character/AuraCharacterBase.h"
+#include "Components/WidgetComponent.h"
 #include "Interaction/EnemyInterface.h"
+#include "UI/WidgetController/OverlayWidgetController.h"
 #include "AuraEnemy.generated.h"
 
 #define CUSTOM_DEPTH_RED 250
@@ -27,6 +29,12 @@ public:
 	virtual void UnHighlightActor() override;
 
 	virtual int32 GetPlayerLevel() override;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnAttributeChangedSignature OnHealthChanged;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnAttributeChangedSignature OnMaxHealthChanged;
 	
 protected:
 
@@ -36,6 +44,10 @@ protected:
 	//角色等级
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	int32 Level = 1;
+
+	//血条Widget设置
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="角色|属性")
+	TObjectPtr<UWidgetComponent> HealthBar;
 	
 private:
 	
