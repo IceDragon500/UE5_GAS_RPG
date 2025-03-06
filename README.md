@@ -291,7 +291,7 @@
 
 √125. Enemy Health Bar 30 分钟
 
-126. Ghost Bar 21 分钟
+√126. Ghost Bar 21 分钟
 
 测试 10： Section 11 Quiz
 
