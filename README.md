@@ -285,7 +285,7 @@
 
 √122. Projectile Impact 16 分钟
 
-123. Projectile Collision Channel 10 分钟
+√123. Projectile Collision Channel 10 分钟
 
 124. Projectile Gameplay Effect 24 分钟
 
