@@ -295,11 +295,11 @@
 
 测试 10： Section 11 Quiz
 
-127. RPG Character Classes 6 分钟
+√127. RPG Character Classes 6 分钟
 
-128. Character Class Info 7 分钟
+√128. Character Class Info 7 分钟
 
-129. Default Attribute Effects 4 分钟
+√129. Default Attribute Effects 4 分钟
 
 130. Curve Tables - CSV and JSON 30 分钟
 
