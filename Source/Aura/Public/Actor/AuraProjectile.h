@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
+#include "NiagaraSystem.h"
 #include "AuraProjectile.generated.h"
 
 
@@ -23,14 +24,36 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void Destroyed() override;
 
 	UFUNCTION()
 	virtual void OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 private:
 
+	//生命周期
+	UPROPERTY(EditDefaultsOnly, Category= "命中设置")
+	float LifeSpan = 15.f;
+    
+    bool bHit = false;
+
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USphereComponent> Sphere;
+
+	//击中特效
+	UPROPERTY(EditAnywhere, Category= "命中设置")
+	TObjectPtr<UNiagaraSystem> ImpactEffect;
+	
+	//击中音效
+	UPROPERTY(EditAnywhere, Category= "命中设置")
+	TObjectPtr<USoundBase> ImpactSound;
+
+	//飞行音效
+	UPROPERTY(EditAnywhere, Category= "命中设置", meta = (DisplayName = "飞行音效"))
+	TObjectPtr<USoundBase> LoopingSound;
+
+	UPROPERTY()
+	TObjectPtr<UAudioComponent> LoopingSoundComponent;
 
 	
 	

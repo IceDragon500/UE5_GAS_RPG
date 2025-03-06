@@ -283,7 +283,7 @@
 
 √121. Motion Warping 15 分钟
 
-122. Projectile Impact 16 分钟
+√122. Projectile Impact 16 分钟
 
 123. Projectile Collision Channel 10 分钟
 
