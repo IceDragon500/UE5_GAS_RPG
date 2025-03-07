@@ -40,7 +40,11 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+
+	//初始化角色的AbilitySystemComponent
 	virtual void InitAbilityActorInfo() override;
+
+	//初始化角色的属性值
 	virtual void InitializeDefaultAttributes() const override;
 
 	//角色等级

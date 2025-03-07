@@ -65,6 +65,14 @@ int32 AAuraCharacter::GetPlayerLevel()
 
 void AAuraCharacter::InitAbilityActorInfo()
 {
+	/**
+	 * 获取玩家状态：通过AAuraPlayerState获取玩家的状态信息，确保其有效性。
+	 * 初始化能力系统组件：将角色和玩家状态绑定到能力系统组件，通常设置玩家状态为所有者（Owner），角色为化身（Avatar）。
+	 * 自定义能力组件初始化：通过UAuraAbilitySystemComponent执行额外初始化（如绑定属性或事件）。
+	 * 缓存组件引用：存储AbilitySystemComponent和AttributeSet的引用以便后续使用。
+	 * 初始化HUD界面：若存在玩家控制器和HUD，则设置覆盖界面以显示角色属性/能力信息。
+	 * 应用默认属性：调用InitializeDefaultAttributes()为角色应用初始属性效果。
+	 */
 	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
 	check(AuraPlayerState);
 	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);

@@ -48,6 +48,11 @@ void AAuraCharacterBase::InitAbilityActorInfo()
 
 void AAuraCharacterBase::ApplyEffetToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const
 {
+
+	/**
+	 * 应用游戏效果：创建并配置游戏效果上下文（Context），生成效果规格（Spec）
+	 * 然后将效果应用到自身的能力系统组件。这用于动态修改角色的属性（如生命值、攻击力等）
+	 */
 	check(IsValid(GetAbilitySystemComponent()));
 	check(GameplayEffectClass);
 	

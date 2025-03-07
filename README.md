@@ -307,7 +307,7 @@
 
 测试 11： Section 12 Quiz
 
-132. Meta Attributes 4 分钟
+√132. Meta Attributes 4 分钟
 
 133. Damage Meta Attribute 9 分钟
 
