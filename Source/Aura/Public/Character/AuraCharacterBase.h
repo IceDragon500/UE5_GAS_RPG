@@ -60,7 +60,7 @@ protected:
 	//对属性进行初始化
 	//增加了一个注释
 	//没有问题
-	void InitializeDefaultAttributes() const;
+	virtual void InitializeDefaultAttributes() const;
 
 	void AddCharacterAbilities();
 	

@@ -303,7 +303,7 @@
 
 √130. Curve Tables - CSV and JSON 30 分钟
 
-131. Initializing Enemy Attributes 23 分钟
+√131. Initializing Enemy Attributes 23 分钟
 
 测试 11： Section 12 Quiz
 
