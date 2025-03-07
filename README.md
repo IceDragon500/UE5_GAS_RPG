@@ -301,7 +301,7 @@
 
 √129. Default Attribute Effects 4 分钟
 
-130. Curve Tables - CSV and JSON 30 分钟
+√130. Curve Tables - CSV and JSON 30 分钟
 
 131. Initializing Enemy Attributes 23 分钟
 
