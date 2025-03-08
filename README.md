@@ -309,7 +309,7 @@
 
 √132. Meta Attributes 4 分钟
 
-133. Damage Meta Attribute 9 分钟
+√133. Damage Meta Attribute 9 分钟
 
 134. Set By Caller Magnitude 8 分钟
 

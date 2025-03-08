@@ -92,6 +92,8 @@ public:
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 
 
+	//Called just after any modification happens to an attribute
+	//在属性发生任何修改之后调用
 	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
 
 
@@ -256,6 +258,17 @@ public:
 	
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
+
+
+	/*
+	 * meta Attributes
+	 */
+
+
+	//计算即将到来的伤害
+	UPROPERTY(BlueprintReadOnly, Category="属性值|Meta Attributes")
+	FGameplayAttributeData IncomingDamage;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, IncomingDamage);
 
 protected:
 private:
