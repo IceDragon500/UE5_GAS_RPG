@@ -25,7 +25,7 @@ public:
 
 	
 	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = "true"))//ExposeOnSpawn:指定属性是否应该暴露在类类型的Spawn Actor上
-	FGameplayEffectSpecHandle DamageSpecHandle;
+	FGameplayEffectSpecHandle DamageEffectSpecHandle;
 
 protected:
 	virtual void BeginPlay() override;
