@@ -36,6 +36,15 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnAttributeChangedSignature OnMaxHealthChanged;
+
+	void HitReactTagChanged(const FGameplayTag CallbackTag, int32 NewCount);
+
+	UPROPERTY(BlueprintReadOnly, Category="角色|命中反应")
+	bool bHitReacting = false;
+
+	//基础移动速度
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	float BaseWalkSpeed = 250.f;
 	
 protected:
 
@@ -57,6 +66,8 @@ protected:
 	//血条Widget设置
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="角色|属性")
 	TObjectPtr<UWidgetComponent> HealthBar;
+
+	
 	
 private:
 	

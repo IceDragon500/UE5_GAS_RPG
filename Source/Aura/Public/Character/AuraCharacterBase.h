@@ -23,6 +23,8 @@ public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
+	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -71,6 +73,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
+
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	TObjectPtr<UAnimMontage> HitReactMontage;
 
 public:
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return Weapon; }
