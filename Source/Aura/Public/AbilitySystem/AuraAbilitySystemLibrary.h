@@ -28,6 +28,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
 	static void InitializeDefaultAttributes(const UObject* WorldContextObject, ECharacterClass CharacterClass, float Level, UAbilitySystemComponent* ASC);
 
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
+	static void GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC);
 	
 protected:
 private:

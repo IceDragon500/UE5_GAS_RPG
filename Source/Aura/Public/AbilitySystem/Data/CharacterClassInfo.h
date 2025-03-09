@@ -7,6 +7,7 @@
 #include "Engine/DataAsset.h"
 #include "CharacterClassInfo.generated.h"
 
+//确定Enemy的类型
 UENUM(BlueprintType)
 enum class ECharacterClass : uint8
 {
@@ -15,6 +16,7 @@ enum class ECharacterClass : uint8
 	Ranger
 };
 
+//将主要属性打包成一个结构体
 USTRUCT(BlueprintType)
 struct FCharacterClassDefaultInfo
 {
@@ -36,16 +38,23 @@ class AURA_API UCharacterClassInfo : public UDataAsset
 	GENERATED_BODY()
 public:
 
+	//将Enemy的类型 和 主要属性 打包成一个Map进行管理，这样可以一一对应
 	UPROPERTY(EditDefaultsOnly, Category = "Character Class Defaults")
 	TMap<ECharacterClass, FCharacterClassDefaultInfo> CharacterClassInfoMap;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Common Class Default")
+	//所有Enemy类型都共用一套公共属性
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TSubclassOf<UGameplayEffect> SecondaryAttributes;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Common Class Default")
+	//所有Enemy类型都共用一套公共属性
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TSubclassOf<UGameplayEffect> VitalAttributes;
 
 	FCharacterClassDefaultInfo GetCLassDefaultInfo(ECharacterClass CharacterClass);
+
+	//这里保存Enemy中的命中特效之类的东西，让每个角色都拥有相同的一套逻辑，使用GameplayEffect来触发
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
+	TArray<TSubclassOf<UGameplayAbility>> CommonAbilites;
 	
 protected:
 private:

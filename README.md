@@ -317,7 +317,7 @@
 
 √136. Enemy Hit React 27 分钟
 
-137. Activating the Enemy Hit React Ability 18 分钟
+√137. Activating the Enemy Hit React Ability 18 分钟
 
 138. Enemy Death 13 分钟
 
