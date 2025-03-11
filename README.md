@@ -325,7 +325,7 @@
 
 √140. Floating Text Widget 15 分钟
 
-141. Showing Damage Text 25 分钟
+√141. Showing Damage Text 25 分钟
 
 142. Execution Calculations 6 分钟
 

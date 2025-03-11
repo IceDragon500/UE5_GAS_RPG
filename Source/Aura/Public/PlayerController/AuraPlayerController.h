@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Input/AuraInputConfig.h"
+#include "UI/Widgets/DamageTextComponent.h"
 
 #include "AuraPlayerController.generated.h"
 
@@ -28,6 +29,9 @@ public:
 	//专门用于处理与玩家输入相关的逻辑
 	//只在玩家控制器活跃时才会被调用
 	virtual void PlayerTick(float DeltaTime) override;
+
+	UFUNCTION(Client, Reliable)
+	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter);
 	
 protected:
 	virtual void BeginPlay() override;
@@ -38,13 +42,13 @@ protected:
 	
 private:
 
-	UPROPERTY(EditAnywhere, Category="输入设置")
+	UPROPERTY(EditAnywhere, Category="属性设置|输入设置")
 	TObjectPtr<UInputMappingContext> AuraContext;
 
-	UPROPERTY(EditAnywhere, Category="输入设置")
+	UPROPERTY(EditAnywhere, Category="属性设置|输入设置")
 	TObjectPtr<UInputAction> MoveAction;
 
-	UPROPERTY(EditAnywhere, Category="输入设置")
+	UPROPERTY(EditAnywhere, Category="属性设置|输入设置")
 	TObjectPtr<UInputAction> ShiftAction;
 
 	void ShiftPressed() { IsShiftPressed = true; };
@@ -68,7 +72,7 @@ private:
 	void AbilityInputTagRelease(FGameplayTag InputTag);
 	void AbilityInputTagHeld(FGameplayTag InputTag);
 	
-	UPROPERTY(EditDefaultsOnly, Category="输入设置")
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|输入设置")
 	TObjectPtr<UAuraInputConfig> InputConfig;
 
 	UPROPERTY()
@@ -91,7 +95,7 @@ private:
 	bool bTargeting = false;
 
 	//自动行走的半径
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|自动行走")
 	float AutoRunAcceptanceRadius = 50.f;
 
 	//标记行走的样条线
@@ -99,5 +103,8 @@ private:
 	TObjectPtr<USplineComponent> Spline;
 
 	void AutoRun();
+
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|伤害文本")
+	TSubclassOf<UDamageTextComponent> DamageTextComponentClass;
 	
 };
