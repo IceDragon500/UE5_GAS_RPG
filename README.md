@@ -327,9 +327,9 @@
 
 √141. Showing Damage Text 25 分钟
 
-142. Execution Calculations 6 分钟
+√142. Execution Calculations 6 分钟
 
-143. Damage Execution Calculation 9 分钟
+√143. Damage Execution Calculation 9 分钟
 
 144. ExecCalcs - Capturing Attributes 28 分钟
 
