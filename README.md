@@ -323,7 +323,7 @@
 
 √139. Dissolve Effect 22 分钟
 
-140. Floating Text Widget 15 分钟
+√140. Floating Text Widget 15 分钟
 
 141. Showing Damage Text 25 分钟
 
