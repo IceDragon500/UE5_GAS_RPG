@@ -319,7 +319,7 @@
 
 √137. Activating the Enemy Hit React Ability 18 分钟
 
-138. Enemy Death 13 分钟
+√138. Enemy Death 13 分钟
 
 139. Dissolve Effect 22 分钟
 

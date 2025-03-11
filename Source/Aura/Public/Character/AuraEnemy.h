@@ -31,6 +31,8 @@ public:
 
 	virtual int32 GetPlayerLevel() override;
 
+	virtual void Die() override;
+
 	UPROPERTY(BlueprintAssignable)
 	FOnAttributeChangedSignature OnHealthChanged;
 
@@ -45,6 +47,10 @@ public:
 	//基础移动速度
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	float BaseWalkSpeed = 250.f;
+
+	//尸体存在时间
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	float LifeSpan = 5.f;
 	
 protected:
 
