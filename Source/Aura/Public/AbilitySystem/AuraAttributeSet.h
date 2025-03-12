@@ -187,8 +187,8 @@ public:
 
 	//Armor Pentration 护甲穿透 受韧性Res影响，会让伤害忽略一定比例的护甲，并增加了致命一击的几率
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_ArmorPentration, Category = "属性值|次要属性")
-	FGameplayAttributeData ArmorPentration;
-	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, ArmorPentration);
+	FGameplayAttributeData ArmorPenetration;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, ArmorPenetration);
 
 	UFUNCTION()
 	void OnRep_ArmorPentration(const FGameplayAttributeData& OldArmorPentration) const;

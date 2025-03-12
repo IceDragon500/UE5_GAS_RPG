@@ -335,7 +335,7 @@
 
 √145. Implementing Block Chance 19 分钟
 
-146. Implementing Armor and Armor Penetration 12 分钟
+√146. Implementing Armor and Armor Penetration 12 分钟
 
 147. Damage Calculation Coefficients 25 分钟
 
