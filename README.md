@@ -331,9 +331,9 @@
 
 √143. Damage Execution Calculation 9 分钟
 
-144. ExecCalcs - Capturing Attributes 28 分钟
+√144. ExecCalcs - Capturing Attributes 28 分钟
 
-145. Implementing Block Chance 19 分钟
+√145. Implementing Block Chance 19 分钟
 
 146. Implementing Armor and Armor Penetration 12 分钟
 
