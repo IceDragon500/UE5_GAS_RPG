@@ -339,7 +339,7 @@
 
 √147. Damage Calculation Coefficients 25 分钟
 
-148. Implementing Critical Hits 17 分钟
+√148. Implementing Critical Hits 17 分钟
 
 测试 12： Section 13 Quiz
 
