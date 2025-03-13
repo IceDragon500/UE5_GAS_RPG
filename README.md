@@ -337,7 +337,7 @@
 
 √146. Implementing Armor and Armor Penetration 12 分钟
 
-147. Damage Calculation Coefficients 25 分钟
+√147. Damage Calculation Coefficients 25 分钟
 
 148. Implementing Critical Hits 17 分钟
 

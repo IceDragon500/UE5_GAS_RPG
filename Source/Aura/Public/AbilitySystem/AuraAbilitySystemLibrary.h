@@ -30,6 +30,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
 	static void GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
+	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
 	
 protected:
 private:

@@ -55,6 +55,10 @@ public:
 	//这里保存Enemy中的命中特效之类的东西，让每个角色都拥有相同的一套逻辑，使用GameplayEffect来触发
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TArray<TSubclassOf<UGameplayAbility>> CommonAbilites;
+
+	//设置计算公式里面的一些系数，让其与等级挂钩
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
+	TObjectPtr<UCurveTable> DamageCalculationCoefficients;
 	
 protected:
 private:
