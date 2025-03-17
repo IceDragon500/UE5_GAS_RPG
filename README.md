@@ -347,9 +347,9 @@
 
 √150. Custom Gameplay Effect Context 14 分钟
 
-151. NetSerialize 28 分钟
+√151. NetSerialize 28 分钟
 
-152. Implementing Net Serialize 7 分钟
+√152. Implementing Net Serialize 7 分钟
 
 153. Struct Ops Type Traits 8 分钟
 
