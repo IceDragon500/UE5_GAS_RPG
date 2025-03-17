@@ -353,7 +353,7 @@
 
 √153. Struct Ops Type Traits 8 分钟
 
-154. Aura Ability System Globals 11 分钟
+√154. Aura Ability System Globals 11 分钟
 
 155. Using a Custom Effect Context 23 分钟
 
