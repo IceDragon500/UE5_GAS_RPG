@@ -33,6 +33,18 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
 	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  bool IsBlockHit(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  bool IsCriticalHit(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetIsBlockHit(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, bool IsInBlockHit);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetIsCriticalHit(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, bool IsInCriticalHit);
 	
 protected:
 private:
