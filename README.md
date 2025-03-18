@@ -363,7 +363,7 @@
 
 √158. Damage Types 20 分钟
 
-159. Mapping Damage Types to Resistances 10 分钟
+√159. Mapping Damage Types to Resistances 10 分钟
 
 160. Resistance Attributes 22 分钟
 
