@@ -357,7 +357,7 @@
 
 √155. Using a Custom Effect Context 23 分钟
 
-156. Floating Text Color 19 分钟
+√156. Floating Text Color 19 分钟
 
 157. Hit Message 16 分钟
 
