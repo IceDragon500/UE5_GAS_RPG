@@ -49,9 +49,9 @@ public:
 
  FGameplayTag Damage;
  FGameplayTag Damage_Fire; //火焰伤害
- FGameplayTag Damage_Lightning; //
- FGameplayTag Damage_Arcane; //
- FGameplayTag Damage_Physical; //
+ FGameplayTag Damage_Lightning; //闪电伤害
+ FGameplayTag Damage_Arcane; //奥术伤害
+ FGameplayTag Damage_Physical; //物理伤害
 
  TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
  

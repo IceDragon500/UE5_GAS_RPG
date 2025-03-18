@@ -365,7 +365,7 @@
 
 √159. Mapping Damage Types to Resistances 10 分钟
 
-160. Resistance Attributes 22 分钟
+√160. Resistance Attributes 22 分钟
 
 161. Resistance Damage Reduction 18 分钟
 
