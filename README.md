@@ -367,7 +367,7 @@
 
 √160. Resistance Attributes 22 分钟
 
-161. Resistance Damage Reduction 18 分钟
+√161. Resistance Damage Reduction 18 分钟
 
 162. Multiplayer Test 24 分钟
 
