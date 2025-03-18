@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AuraGameplayAbility.h"
+#include "AuraDamageGameplayAbility.h"
 #include "Actor/AuraProjectile.h"
 #include "AuraProjectileSpell.generated.h"
 
@@ -12,7 +12,7 @@
  * 类似火球术，发射一个火球
  */
 UCLASS()
-class AURA_API UAuraProjectileSpell : public UAuraGameplayAbility
+class AURA_API UAuraProjectileSpell : public UAuraDamageGameplayAbility
 {
 	GENERATED_BODY()
 	
@@ -29,10 +29,6 @@ protected:
 	//设置需要抛出的对象，是一个BP蓝图
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "发射物属性设置")
 	TSubclassOf<AAuraProjectile> ProjectileClass;
-
-	//设置对目标造成效果的GameEffect
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "发射物属性设置")
-	TSubclassOf<UGameplayEffect> DamageEffectClass;
 	
 private:
 

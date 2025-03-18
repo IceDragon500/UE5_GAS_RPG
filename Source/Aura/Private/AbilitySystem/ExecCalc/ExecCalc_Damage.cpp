@@ -84,7 +84,12 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	*/
 
 	//通过FGameplayEffectSpec 获取到Tag中的Damage标签
-	float Damage = Spec.GetSetByCallerMagnitude(FAuraGameplayTags::Get().Damage);
+	float Damage = 0.f;
+	for (FGameplayTag DamageTypeTag : FAuraGameplayTags::Get().DamageTypes)
+	{
+		const float DamageTypeValue = Spec.GetSetByCallerMagnitude(DamageTypeTag);
+		Damage += DamageTypeValue;
+	}
 
 	//Capture BlockChance on Target, and determine if there was a successful block
 	//捕获目标上的block chance，并确定是否有一个成功的block

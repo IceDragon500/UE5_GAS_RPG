@@ -359,9 +359,9 @@
 
 √156. Floating Text Color 19 分钟
 
-157. Hit Message 16 分钟
+√157. Hit Message 16 分钟
 
-158. Damage Types 20 分钟
+√158. Damage Types 20 分钟
 
 159. Mapping Damage Types to Resistances 10 分钟
 
