@@ -381,7 +381,7 @@
 
 √166. Blackboard Keys 14 分钟
 
-167. Finding the Nearest Player 9 分钟
+√167. Finding the Nearest Player 9 分钟
 
 168. AI and Effect Actors 15 分钟
 
