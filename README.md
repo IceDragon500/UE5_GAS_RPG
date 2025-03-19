@@ -377,7 +377,7 @@
 
 √164. AI Controller Blackboard and Behavior Tree 16 分钟
 
-165. Behavior Tree Service 10 分钟
+√165. Behavior Tree Service 10 分钟
 
 166. Blackboard Keys 14 分钟
 
