@@ -369,7 +369,7 @@
 
 √161. Resistance Damage Reduction 18 分钟
 
-162. Multiplayer Test 24 分钟
+√162. Multiplayer Test 24 分钟
 
 测试 13： Section 14 Quiz
 
