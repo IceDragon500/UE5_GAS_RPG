@@ -57,38 +57,42 @@ protected:
 	void OnEndOverlap(AActor* TargetActor);
 	
 	//是否在效果结束后摧毁
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects")
-	bool bDestroyOnEffectRemoval = false;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置", meta = (DisplayName = "是否在效果结束后摧毁"))
+	bool bDestroyOnEffectApplication = false;
+
+	//是否对敌人应用这个效果
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置", meta = (DisplayName = "是否对敌人应用这个效果"))
+	bool bApplyEffectsToEnemies = false;
 
 	//直接作用的GameplayEffect
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置")
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
 
 	//设置直接作用的
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置" )
 	EEffectApplicationPolicy InstantEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
 	//周期作用的GameplayEffect
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置")
 	TSubclassOf<UGameplayEffect> DurationGameplayEffectClass;
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置" )
 	EEffectApplicationPolicy DurationEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
 	//无限持续作用的GameplayEffect
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置")
 	TSubclassOf<UGameplayEffect> InfiniteGameplayEffectClass;
 	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置" )
 	EEffectApplicationPolicy InfiniteEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置" )
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemovalOnEndOverlap;
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 
 	//用来这是MakeOutgoingSpec中的Level
-	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Effects" )
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="属性设置" )
 	float ActorLevel = 1.f;
 
 private:

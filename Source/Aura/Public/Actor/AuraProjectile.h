@@ -37,7 +37,7 @@ protected:
 private:
 
 	//生命周期
-	UPROPERTY(EditDefaultsOnly, Category= "命中设置")
+	UPROPERTY(EditDefaultsOnly, Category= "命中设置", meta = (DisplayName = "生命周期"))
 	float LifeSpan = 15.f;
     
     bool bHit = false;
@@ -46,11 +46,11 @@ private:
 	TObjectPtr<USphereComponent> Sphere;
 
 	//击中特效
-	UPROPERTY(EditAnywhere, Category= "命中设置")
+	UPROPERTY(EditAnywhere, Category= "命中设置", meta = (DisplayName = "击中特效"))
 	TObjectPtr<UNiagaraSystem> ImpactEffect;
 	
-	//击中音效
-	UPROPERTY(EditAnywhere, Category= "命中设置")
+	//击中特效
+	UPROPERTY(EditAnywhere, Category= "命中设置", meta = (DisplayName = "击中特效"))
 	TObjectPtr<USoundBase> ImpactSound;
 
 	//飞行音效

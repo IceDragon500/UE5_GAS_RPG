@@ -25,6 +25,9 @@ void AAuraEffectActor::BeginPlay()
 
 void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
+	//忽略标记为Enemy的敌人
+	if(TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
+	
 	/* 使用接口获得AbilitySystemComponent的方法
 	IAbilitySystemInterface* ASCInterface = Cast<IAbilitySystemInterface>(Target);
 
@@ -66,10 +69,18 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	{
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);
 	}
+
+	if(!bIsInfinite)
+	{
+		Destroy();
+	}
 }
 
 void AAuraEffectActor::OnOverlap(AActor* TargetActor)
 {
+	//忽略标记为Enemy的敌人
+	if(TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
+	
 	if(InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
 		ApplyEffectToTarget(TargetActor, InfiniteGameplayEffectClass);
@@ -86,6 +97,9 @@ void AAuraEffectActor::OnOverlap(AActor* TargetActor)
 
 void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 {
+	//忽略标记为Enemy的敌人
+	if(TargetActor->ActorHasTag(FName("Enemy")) && !bApplyEffectsToEnemies) return;
+	
 	if(InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
 	{
 		ApplyEffectToTarget(TargetActor, InfiniteGameplayEffectClass);
