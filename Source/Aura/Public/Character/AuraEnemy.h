@@ -10,6 +10,9 @@
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AuraEnemy.generated.h"
 
+class UBehaviorTree;
+class AAuraAIController;
+
 #define CUSTOM_DEPTH_RED 250
 #define CUSTOM_DEPTH_BLUE 251
 #define CUSTOM_DEPTH_TAN 252
@@ -23,6 +26,9 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase , public IEnemyInterface
 	GENERATED_BODY()
 public:
 	AAuraEnemy();
+	
+	//重新设置Controller
+	virtual void PossessedBy(AController* NewController) override;
 	
 	//高亮选中的目标
 	virtual void HighlightActor() override;
@@ -73,7 +79,11 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="角色|属性")
 	TObjectPtr<UWidgetComponent> HealthBar;
 
-	
+	UPROPERTY(EditAnywhere, Category="角色|AI行为")
+	TObjectPtr<UBehaviorTree> BehaviorTree;
+
+	UPROPERTY()
+	TObjectPtr<AAuraAIController> AuraAIController;
 	
 private:
 	

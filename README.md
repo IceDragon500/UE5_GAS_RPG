@@ -373,9 +373,9 @@
 
 测试 13： Section 14 Quiz
 
-163. Enemy AI Setup 5 分钟
+√163. Enemy AI Setup 5 分钟
 
-164. AI Controller Blackboard and Behavior Tree 16 分钟
+√164. AI Controller Blackboard and Behavior Tree 16 分钟
 
 165. Behavior Tree Service 10 分钟
 
