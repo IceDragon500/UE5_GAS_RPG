@@ -389,7 +389,7 @@
 
 √170. Attack Behavior Tree Task 11 分钟
 
-171. Find New Location Around Target 15 分钟
+√171. Find New Location Around Target 15 分钟
 
 172. Environment Query System 3 分钟
 
