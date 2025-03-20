@@ -397,9 +397,9 @@
 
 √174. EQS Tests 10 分钟
 
-175. Distance Test 5 分钟
+√175. Distance Test 5 分钟
 
-176. Using EQS Queries in Behavior Trees 12 分钟
+√176. Using EQS Queries in Behavior Trees 12 分钟
 
 测试 14： Section 15 Quiz
 
