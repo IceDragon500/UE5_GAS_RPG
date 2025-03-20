@@ -22,9 +22,13 @@ struct FCharacterClassDefaultInfo
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditDefaultsOnly, Category = "Class Default")
+	//设置角色的主要属性 力量 智力 活力 体力
+	UPROPERTY(EditDefaultsOnly, Category = "角色主要属性")
 	TSubclassOf<UGameplayEffect> PrimaryAttributes;
-	
+
+	//设置角色一进入游戏，默认的攻击能力
+	UPROPERTY(EditDefaultsOnly, Category = "角色主要属性")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };
 
 
@@ -39,7 +43,7 @@ class AURA_API UCharacterClassInfo : public UDataAsset
 public:
 
 	//将Enemy的类型 和 主要属性 打包成一个Map进行管理，这样可以一一对应
-	UPROPERTY(EditDefaultsOnly, Category = "Character Class Defaults")
+	UPROPERTY(EditDefaultsOnly, Category = "角色属性打包")
 	TMap<ECharacterClass, FCharacterClassDefaultInfo> CharacterClassInfoMap;
 
 	//所有Enemy类型都共用一套公共属性
@@ -54,7 +58,7 @@ public:
 
 	//这里保存Enemy中的命中特效之类的东西，让每个角色都拥有相同的一套逻辑，使用GameplayEffect来触发
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
-	TArray<TSubclassOf<UGameplayAbility>> CommonAbilites;
+	TArray<TSubclassOf<UGameplayAbility>> CommonAbilities;
 
 	//设置计算公式里面的一些系数，让其与等级挂钩
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
