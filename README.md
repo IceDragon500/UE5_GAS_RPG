@@ -385,7 +385,7 @@
 
 √168. AI and Effect Actors 15 分钟
 
-169. Behavior Tree Decorators 19 分钟
+√169. Behavior Tree Decorators 19 分钟
 
 170. Attack Behavior Tree Task 11 分钟
 
