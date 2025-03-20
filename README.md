@@ -391,9 +391,9 @@
 
 √171. Find New Location Around Target 15 分钟
 
-172. Environment Query System 3 分钟
+√172. Environment Query System 3 分钟
 
-173. Environment Queries 9 分钟
+√173. Environment Queries 9 分钟
 
 174. EQS Tests 10 分钟
 
