@@ -387,7 +387,7 @@
 
 √169. Behavior Tree Decorators 19 分钟
 
-170. Attack Behavior Tree Task 11 分钟
+√170. Attack Behavior Tree Task 11 分钟
 
 171. Find New Location Around Target 15 分钟
 

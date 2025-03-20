@@ -96,15 +96,15 @@ void AAuraEnemy::BeginPlay()
 	if(const UAuraAttributeSet* AuraAS = CastChecked<UAuraAttributeSet>(AttributeSet))
 	{
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAS->GetHealthAttribute()).AddLambda(
-			[this](const FOnAttributeChangeData& data)
+			[this,AuraAS](const FOnAttributeChangeData& data)
 			{
-				OnHealthChanged.Broadcast(data.NewValue);
+				OnHealthChanged.Broadcast(AuraAS->GetHealth());
 			}
 			);
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAS->GetMaxHealthAttribute()).AddLambda(
-			[this](const FOnAttributeChangeData& data)
+			[this,AuraAS](const FOnAttributeChangeData& data)
 			{
-				OnMaxHealthChanged.Broadcast(data.NewValue);
+				OnMaxHealthChanged.Broadcast(AuraAS->GetMaxHealth());
 			}
 			);
 
@@ -121,7 +121,7 @@ void AAuraEnemy::HitReactTagChanged(const FGameplayTag CallbackTag, int32 NewCou
 {
 	bHitReacting = NewCount > 0;
 	GetCharacterMovement()->MaxWalkSpeed = bHitReacting ? 0.f : BaseWalkSpeed;
-	AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("HitReacting"), bHitReacting);
+	//AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("HitReacting"), bHitReacting);
 }
 
 void AAuraEnemy::InitAbilityActorInfo()
