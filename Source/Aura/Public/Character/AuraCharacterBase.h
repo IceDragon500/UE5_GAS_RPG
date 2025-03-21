@@ -22,9 +22,6 @@ public:
 	AAuraCharacterBase();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
-	
-	UFUNCTION(NetMulticast, Reliable)
-	virtual void MulticastHandleDeath();
 
 	/* combat interface */
 	//处理死亡是应该做的事情，这里
@@ -33,8 +30,14 @@ public:
 	virtual FVector GetCombatSocketLocation_Implementation() override;
 	virtual bool IsDead_Implementation() const override;
 	virtual AActor* GetActor_Implementation() override;
-
+	virtual TArray<FtaggedMontage> GetAttackMontages_Implementation() override;
 	/* combat interface end */
+		
+	UFUNCTION(NetMulticast, Reliable)
+	virtual void MulticastHandleDeath();
+
+	UPROPERTY(EditAnywhere, Category="角色|Combat", meta =(DisplayName = "设置Montage和对应的Tags"))
+	TArray<FtaggedMontage> AttackMontages;
 
 protected:
 
