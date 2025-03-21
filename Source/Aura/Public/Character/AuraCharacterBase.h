@@ -35,14 +35,15 @@ protected:
 
 	virtual void BeginPlay() override;
 
-
-	UPROPERTY(EditAnywhere, Category= "角色|Combat")
+	//设置角色使用的武器
+	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "设置角色使用的武器"))
 	TObjectPtr<USkeletalMeshComponent> Weapon;
 
-	UPROPERTY(EditAnywhere, Category= "角色|Combat")
+	//武器的SocketName
+	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "武器的SocketName"))
 	FName WeaponTipSocketName;
 
-	virtual FVector GetCombatSocketLocation() override;
+	virtual FVector GetCombatSocketLocation_Implementation() override;
 
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
@@ -51,11 +52,11 @@ protected:
 	TObjectPtr<UAttributeSet> AttributeSet;
 
 	//用来初始化主要属性
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性", meta =(DisplayName = "主要属性表"))
 	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
 
 	//用来初始化次要属性
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性", meta =(DisplayName = "次要属性表"))
 	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
 
 	//用来初始化 Vital 至关重要！的属性值

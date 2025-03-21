@@ -39,6 +39,9 @@ public:
 
 	virtual void Die() override;
 
+	virtual void SetCombatTarget_Implementation(AActor* InCombatTarget) override;
+	virtual AActor* GetCombatTarget_Implementation() const override;
+
 	UPROPERTY(BlueprintAssignable)
 	FOnAttributeChangedSignature OnHealthChanged;
 
@@ -51,12 +54,16 @@ public:
 	bool bHitReacting = false;
 
 	//基础移动速度
-	UPROPERTY(EditAnywhere, Category="角色|属性")
+	UPROPERTY(EditAnywhere, Category="角色|属性", meta = (DisplayName = "基础移动速度"))
 	float BaseWalkSpeed = 250.f;
 
 	//尸体存在时间
-	UPROPERTY(EditAnywhere, Category="角色|属性")
+	UPROPERTY(EditAnywhere, Category="角色|属性", meta = (DisplayName = "尸体存在时间"))
 	float LifeSpan = 5.f;
+
+	//保存当前攻击的目标
+	UPROPERTY(BlueprintReadWrite, Category="角色|属性", meta = (DisplayName = "攻击目标"))
+	TObjectPtr<AActor> CombatTarget;
 	
 protected:
 
