@@ -423,7 +423,7 @@
 
 √186. Multiple Attack Sockets 9 分钟
 
-187. Ghoul Enemy 12 分钟
+√187. Ghoul Enemy 12 分钟
 
 188. Ghoul Attack Montages 13 分钟
 
