@@ -405,7 +405,7 @@
 
 √177. Melee Attack Ability 25 分钟
 
-178. Attack Montage 8 分钟
+√178. Attack Montage 8 分钟
 
 179. Combat Target 15 分钟
 
