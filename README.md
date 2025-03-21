@@ -411,7 +411,7 @@
 
 √180. Melee Attack Gameplay Event 16 分钟
 
-181. Get Live Players Within Radius 32 分钟
+√181. Get Live Players Within Radius 32 分钟
 
 182. Causing Melee Damage 16 分钟
 

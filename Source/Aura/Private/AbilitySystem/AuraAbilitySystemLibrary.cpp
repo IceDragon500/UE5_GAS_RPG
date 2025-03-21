@@ -144,3 +144,32 @@ void UAuraAbilitySystemLibrary::SetIsCriticalHit(FGameplayEffectContextHandle& E
 		AuraEffectContext->SetCriticalHit(IsInCriticalHit);
 	}
 }
+
+void UAuraAbilitySystemLibrary::GetLivePlayersWithRadius(const UObject* WorldContextObject,
+	TArray<AActor*>& OutOverlappingActors, const TArray<AActor*>& ActorToIgnore, float Radius,
+	const FVector& SphereOrigin)
+{
+	FCollisionQueryParams SphereParams;
+	SphereParams.AddIgnoredActors(ActorToIgnore);
+	
+	TArray<FOverlapResult> Overlaps;
+	
+	//GetWorldFromContextObject
+	//从具有世界上下文的对象中获取世界对象指针。如果报错则返回一个空指针
+	if(UWorld* World =GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+	{
+		World->OverlapMultiByObjectType(Overlaps, SphereOrigin, FQuat::Identity, FCollisionObjectQueryParams(FCollisionObjectQueryParams::InitType::AllDynamicObjects), FCollisionShape::MakeSphere(Radius), SphereParams);
+		for(FOverlapResult& Overlap : Overlaps)
+		{
+			//const bool ImplementsCombatInterface = Overlap.GetActor()->Implements<UCombatInterface>();
+			//const bool IsAlive = !ICombatInterface::Execute_IsDead(Overlap.GetActor());
+			if(Overlap.GetActor()->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsDead(Overlap.GetActor()))
+			{
+				OutOverlappingActors.AddUnique(Overlap.GetActor());
+			}
+		}
+	}
+
+	
+
+}

@@ -22,14 +22,19 @@ public:
 	AAuraCharacterBase();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
-
-	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
-
-	//处理死亡是应该做的事情，这里
-	virtual void Die() override;
-
+	
 	UFUNCTION(NetMulticast, Reliable)
 	virtual void MulticastHandleDeath();
+
+	/* combat interface */
+	//处理死亡是应该做的事情，这里
+	virtual void Die() override;
+	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
+	virtual FVector GetCombatSocketLocation_Implementation() override;
+	virtual bool IsDead_Implementation() const override;
+	virtual AActor* GetActor_Implementation() override;
+
+	/* combat interface end */
 
 protected:
 
@@ -43,7 +48,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "武器的SocketName"))
 	FName WeaponTipSocketName;
 
-	virtual FVector GetCombatSocketLocation_Implementation() override;
+	bool bDead = false;
 
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
