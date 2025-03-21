@@ -421,7 +421,7 @@
 
 √185. Tagged Montage 10 分钟
 
-186. Multiple Attack Sockets 9 分钟
+√186. Multiple Attack Sockets 9 分钟
 
 187. Ghoul Enemy 12 分钟
 

@@ -27,7 +27,7 @@ public:
 	//处理死亡是应该做的事情，这里
 	virtual void Die() override;
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
-	virtual FVector GetCombatSocketLocation_Implementation() override;
+	virtual FVector GetCombatSocketLocation_Implementation(const FGameplayTag& MontageTag) override;
 	virtual bool IsDead_Implementation() const override;
 	virtual AActor* GetActor_Implementation() override;
 	virtual TArray<FtaggedMontage> GetAttackMontages_Implementation() override;
@@ -50,6 +50,14 @@ protected:
 	//武器的SocketName
 	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "武器的SocketName"))
 	FName WeaponTipSocketName;
+	
+	//左手的SocketName
+	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "左手的SocketName"))
+	FName LeftHandSocketName;
+
+	//右手的SocketName
+	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "右手的SocketName"))
+	FName RightHandSocketName;
 
 	bool bDead = false;
 
