@@ -105,6 +105,15 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void GetLivePlayersWithRadius(const UObject* WorldContextObject, TArray<AActor*>& OutOverlappingActors, const TArray<AActor*>& ActorToIgnore, float Radius, const FVector& SphereOrigin);
+
+	/**
+	 * 比较两个Actor是否为同一组 或者叫同一阵营
+	 * @param FirstActor 
+	 * @param SecondActor 
+	 * @return 
+	 */
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static bool IsNotFriend(AActor* FirstActor, AActor* SecondActor);
 	
 protected:
 private:

@@ -427,7 +427,7 @@
 
 √188. Ghoul Attack Montages 13 分钟
 
-189. Melee Polish 22 分钟
+√189. Melee Polish 22 分钟
 
 测试 15： Section 16 Quiz
 
