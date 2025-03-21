@@ -8,6 +8,10 @@ class AURA_API UAuraDamageGameplayAbility: public UAuraGameplayAbility
 {
 	GENERATED_BODY()
 public:
+	
+	UFUNCTION(BlueprintCallable)
+	void CauseDamage(AActor* TargetActor);
+	
 protected:
 	
 	//设置对目标造成效果的GameEffect
