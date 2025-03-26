@@ -431,7 +431,7 @@
 
 测试 15： Section 16 Quiz
 
-190. Ranged Attack 7 分钟
+√190. Ranged Attack 7 分钟
 
 191. Rock Projectile 3 分钟
 
