@@ -439,7 +439,7 @@
 
 √193. Granting Ranged Attacks 3 分钟
 
-194. Slingshot Attack Montage 5 分钟
+√194. Slingshot Attack Montage 5 分钟
 
 195. Playing the Ranged Attack Montage 14 分钟
 
