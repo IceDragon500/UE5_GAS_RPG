@@ -445,7 +445,7 @@
 
 √196. Spawning the Rock Projectile 14 分钟
 
-197. Slingshot Animation Blueprint 12 分钟
+√197. Slingshot Animation Blueprint 12 分钟
 
 198. Slingshot Attack Montage 13 分钟
 
