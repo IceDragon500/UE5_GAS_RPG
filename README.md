@@ -437,7 +437,7 @@
 
 √192. Ranged Damage Curve 4 分钟
 
-193. Granting Ranged Attacks 3 分钟
+√193. Granting Ranged Attacks 3 分钟
 
 194. Slingshot Attack Montage 5 分钟
 
