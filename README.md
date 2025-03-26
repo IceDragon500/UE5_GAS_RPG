@@ -443,7 +443,7 @@
 
 √195. Playing the Ranged Attack Montage 14 分钟
 
-196. Spawning the Rock Projectile 14 分钟
+√196. Spawning the Rock Projectile 14 分钟
 
 197. Slingshot Animation Blueprint 12 分钟
 
