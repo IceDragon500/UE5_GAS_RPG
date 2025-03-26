@@ -433,7 +433,7 @@
 
 √190. Ranged Attack 7 分钟
 
-191. Rock Projectile 3 分钟
+√191. Rock Projectile 3 分钟
 
 192. Ranged Damage Curve 4 分钟
 
