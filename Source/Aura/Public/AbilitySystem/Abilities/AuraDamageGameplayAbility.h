@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AuraGameplayAbility.h"
+#include "Interaction/CombatInterface.h"
 #include "AuraDamageGameplayAbility.generated.h"
 
 UCLASS()
@@ -21,6 +22,9 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, Category="DamageType")
 	TMap<FGameplayTag, FScalableFloat> DamageTypes;
+
+	UFUNCTION(BlueprintPure)
+	FtaggedMontage GetRandomTaggedMontageFromArray(const TArray<FtaggedMontage>& TaggedMontages) const;
 	
 private:
 	
