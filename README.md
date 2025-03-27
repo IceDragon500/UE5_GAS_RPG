@@ -447,7 +447,7 @@
 
 √197. Slingshot Animation Blueprint 12 分钟
 
-198. Slingshot Attack Montage 13 分钟
+√198. Slingshot Attack Montage 13 分钟
 
 测试 16： Section 17 Quiz
 

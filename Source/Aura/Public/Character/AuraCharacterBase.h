@@ -44,7 +44,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	//设置角色使用的武器
-	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "设置角色使用的武器"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "角色|Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
 
 	//武器的SocketName
