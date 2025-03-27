@@ -451,7 +451,7 @@
 
 测试 16： Section 17 Quiz
 
-199. Goblin Shaman 8 分钟
+√199. Goblin Shaman 8 分钟
 
 200. Shaman Attack Montage 4 分钟
 
