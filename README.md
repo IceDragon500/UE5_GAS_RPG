@@ -457,7 +457,7 @@
 
 √201. Shaman Attack Ability 11 分钟
 
-202. Dead Blackboard Key 7 分钟
+√202. Dead Blackboard Key 7 分钟
 
 203. Enemies Multiplayer Testing 9 分钟
 
