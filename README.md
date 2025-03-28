@@ -453,7 +453,7 @@
 
 √199. Goblin Shaman 8 分钟
 
-200. Shaman Attack Montage 4 分钟
+√200. Shaman Attack Montage 4 分钟
 
 201. Shaman Attack Ability 11 分钟
 
