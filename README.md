@@ -459,13 +459,13 @@
 
 √202. Dead Blackboard Key 7 分钟
 
-203. Enemies Multiplayer Testing 9 分钟
+√203. Enemies Multiplayer Testing 9 分钟
 
 测试 17： Section 18 Quiz
 
-204. Goblin Spear - Sound Notifies 6 分钟
+√204. Goblin Spear - Sound Notifies 6 分钟
 
-205. Impact Effects 17 分钟
+√205. Impact Effects 17 分钟
 
 206. Melee Impact Gameplay Cue 19 分钟
 

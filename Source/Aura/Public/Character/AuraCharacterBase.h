@@ -31,6 +31,7 @@ public:
 	virtual bool IsDead_Implementation() const override;
 	virtual AActor* GetActor_Implementation() override;
 	virtual TArray<FtaggedMontage> GetAttackMontages_Implementation() override;
+	virtual UNiagaraSystem* GetBloodEffect_Implementation() override;
 	/* combat interface end */
 		
 	UFUNCTION(NetMulticast, Reliable)
@@ -106,6 +107,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	TObjectPtr<UMaterialInstance> WeaponDissolveMaterialInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
+	UNiagaraSystem* BloodEffect;
 private:
 
 	virtual void InitAbilityActorInfo();
