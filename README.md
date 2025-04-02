@@ -471,9 +471,9 @@
 
 √207. Montage and Socket Tags 22 分钟
 
-208. Goblin Spear - Hurt and Death Sounds 7 分钟
+√208. Goblin Spear - Hurt and Death Sounds 7 分钟
 
-209. Goblin Slingshot - Sound Notifies 5 分钟
+√209. Goblin Slingshot - Sound Notifies 5 分钟
 
 210. Rock Impact Effects 7 分钟
 

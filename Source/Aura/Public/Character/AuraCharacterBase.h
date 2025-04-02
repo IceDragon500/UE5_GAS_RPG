@@ -74,7 +74,7 @@ protected:
 	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
 
 	//用来初始化次要属性
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性", meta =(DisplayName = "次要属性表"))
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category="角色|属性")
 	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
 
 	//用来初始化 Vital 至关重要！的属性值
@@ -102,22 +102,31 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartWeaponDissolveTimeline(UMaterialInstanceDynamic* WeaponDynamicMaterialInstance);
-	
+
+	//角色被击败后，溶解的特效纹理
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	TObjectPtr<UMaterialInstance> DissolveMaterialInstance;
 
+	//角色使用的武器，被击败后，溶解的特效纹理
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	TObjectPtr<UMaterialInstance> WeaponDissolveMaterialInstance;
 
+	//角色被击中的出血效果
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	UNiagaraSystem* BloodEffect;
+
+	//死亡音效
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
+	USoundBase* DeathSound;
 private:
 
 	virtual void InitAbilityActorInfo();
 
+	//起始属性集
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
+	//收集动画
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TObjectPtr<UAnimMontage> HitReactMontage;
 
