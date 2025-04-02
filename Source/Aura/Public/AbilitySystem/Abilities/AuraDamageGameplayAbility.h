@@ -24,7 +24,7 @@ protected:
 	TMap<FGameplayTag, FScalableFloat> DamageTypes;
 
 	UFUNCTION(BlueprintPure)
-	FtaggedMontage GetRandomTaggedMontageFromArray(const TArray<FtaggedMontage>& TaggedMontages) const;
+	FTaggedMontage GetRandomTaggedMontageFromArray(const TArray<FTaggedMontage>& TaggedMontages) const;
 	
 private:
 	

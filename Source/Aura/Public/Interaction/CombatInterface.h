@@ -10,7 +10,7 @@
 class UNiagaraSystem;
 
 USTRUCT(blueprintType)
-struct FtaggedMontage
+struct FTaggedMontage
 {
 	GENERATED_BODY()
 
@@ -19,6 +19,9 @@ struct FtaggedMontage
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FGameplayTag MontageTag;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FGameplayTag SocketTag;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	USoundBase* ImpactSound = nullptr;
@@ -61,8 +64,11 @@ public:
 	AActor* GetActor();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	TArray<FtaggedMontage> GetAttackMontages();
+	TArray<FTaggedMontage> GetAttackMontages();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	UNiagaraSystem* GetBloodEffect();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	FTaggedMontage GetTaggedMontageByTag(const FGameplayTag& MontageTag);
 };
