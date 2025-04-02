@@ -475,7 +475,7 @@
 
 √209. Goblin Slingshot - Sound Notifies 5 分钟
 
-210. Rock Impact Effects 7 分钟
+√210. Rock Impact Effects 7 分钟
 
 211. Goblin Shaman - Sound Notifies 4 分钟
 
