@@ -477,9 +477,9 @@
 
 √210. Rock Impact Effects 7 分钟
 
-211. Goblin Shaman - Sound Notifies 4 分钟
+√211. Goblin Shaman - Sound Notifies 4 分钟
 
-212. Ghoul - Sound Notifies 10 分钟
+√212. Ghoul - Sound Notifies 10 分钟
 
 213. Ghoul - Swipe Trail 5 分钟
 
