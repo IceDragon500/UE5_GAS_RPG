@@ -23,11 +23,11 @@ protected:
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
 	//将设置的发射物蓝图生成
-	UFUNCTION(BlueprintCallable, Category= "发射物属性设置")
-	void SpawnProjectile(const FVector& ProjectileTargetLocation);
+	UFUNCTION(BlueprintCallable, Category= "属性设置|发射物属性设置")
+	void SpawnProjectile(const FVector& ProjectileTargetLocation, const FGameplayTag& SocketTag);
 
 	//设置需要抛出的对象，是一个BP蓝图
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "发射物属性设置")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "属性设置|发射物属性设置")
 	TSubclassOf<AAuraProjectile> ProjectileClass;
 	
 private:

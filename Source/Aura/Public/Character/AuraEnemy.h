@@ -18,6 +18,44 @@ class AAuraAIController;
 #define CUSTOM_DEPTH_TAN 252
 
 /**
+ * 这里定义一个Enemy的数据结构类型，这样可以在UE中使用表格管理所有怪物类型的设置
+ */
+USTRUCT(BlueprintType)
+struct FEnemyDataRow : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	//基础速度
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float WalkSpeed = 250;
+	
+	//尸体保留时间
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float BodyRunTime = 5;
+	
+	//等级
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float Level = 1;
+	
+	//角色职业类型
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	ECharacterClass CharacterClass = ECharacterClass::Warrior;
+	
+	//主要属性表
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
+	
+	//次要属性表
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
+	
+	//衍生属性表
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<UGameplayEffect> DefaultVitalAttributes;
+	
+};
+
+/**
  * 
  */
 UCLASS()
@@ -64,6 +102,10 @@ public:
 	//保存当前攻击的目标
 	UPROPERTY(BlueprintReadWrite, Category="角色|属性", meta = (DisplayName = "攻击目标"))
 	TObjectPtr<AActor> CombatTarget;
+
+	//集中设置怪物属性
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	FEnemyDataRow EnemyData;
 	
 protected:
 

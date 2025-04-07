@@ -104,6 +104,7 @@ private:
 
 	void AutoRun();
 
+	//设置伤害文本显示的类
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|伤害文本")
 	TSubclassOf<UDamageTextComponent> DamageTextComponentClass;
 	

@@ -16,11 +16,11 @@ public:
 protected:
 	
 	//设置对目标造成效果的GameEffect
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "发射物属性设置")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "属性设置|发射物属性设置")
 	TSubclassOf<UGameplayEffect> DamageEffectClass;
 	
 	
-	UPROPERTY(EditDefaultsOnly, Category="DamageType")
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
 	TMap<FGameplayTag, FScalableFloat> DamageTypes;
 
 	UFUNCTION(BlueprintPure)

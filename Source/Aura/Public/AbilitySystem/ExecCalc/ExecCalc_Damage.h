@@ -7,7 +7,7 @@
 #include "ExecCalc_Damage.generated.h"
 
 /**
- * 
+ * 计算类
  */
 UCLASS()
 class AURA_API UExecCalc_Damage : public UGameplayEffectExecutionCalculation

@@ -61,6 +61,10 @@ protected:
 	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "右手的SocketName"))
 	FName RightHandSocketName;
 
+	//尾部的SocketName
+	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "尾部的SocketName"))
+	FName TrailSocketName;
+
 	bool bDead = false;
 
 	UPROPERTY()

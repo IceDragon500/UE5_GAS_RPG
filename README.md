@@ -481,15 +481,15 @@
 
 √212. Ghoul - Sound Notifies 10 分钟
 
-213. Ghoul - Swipe Trail 5 分钟
+√213. Ghoul - Swipe Trail 5 分钟
 
-214. Demon Blueprint 6 分钟
+√214. Demon Blueprint 6 分钟
 
-215. Demon Melee Attack 15 分钟
+√215. Demon Melee Attack 15 分钟
 
-216. Demon Ranged Attack 11 分钟
+√216. Demon Ranged Attack 11 分钟
 
-217. Demon - Sound Notifies 10 分钟
+√217. Demon - Sound Notifies 10 分钟
 
 218. Demon - Dissolve Effect 2 分钟
 

@@ -1,8 +1,6 @@
 
 #include "AuraAbilityTypes.h"
 
-#include "LevelInstance/LevelInstanceTypes.h"
-
 bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess)
 {
 	uint32 RepBits = 0;

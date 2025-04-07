@@ -26,9 +26,11 @@ public:
 	FORCEINLINE int32 GetPlayerLevel() const { return Level; }
 protected:
 
+	//玩家的ASC创建
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 	
+	//玩家的属性集
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
 

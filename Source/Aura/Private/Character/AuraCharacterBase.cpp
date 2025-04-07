@@ -80,13 +80,17 @@ FVector AAuraCharacterBase::GetCombatSocketLocation_Implementation(const FGamepl
 	{
 		return Weapon->GetSocketLocation(WeaponTipSocketName);
 	}
-	if(MontageTag.MatchesTagExact(FAuraGameplayTags::Get().CombatSocket_RightHand) && IsValid(GetMesh()))
+	if(MontageTag.MatchesTagExact(FAuraGameplayTags::Get().CombatSocket_RightHand))
 	{
 		return GetMesh()->GetSocketLocation(RightHandSocketName);
 	}
-	if(MontageTag.MatchesTagExact(FAuraGameplayTags::Get().CombatSocket_LeftHand) && IsValid(GetMesh()))
+	if(MontageTag.MatchesTagExact(FAuraGameplayTags::Get().CombatSocket_LeftHand))
 	{
 		return GetMesh()->GetSocketLocation(LeftHandSocketName);
+	}
+	if(MontageTag.MatchesTagExact(FAuraGameplayTags::Get().CombatSocket_Trail))
+	{
+		return GetMesh()->GetSocketLocation(TrailSocketName);
 	}
 	return FVector();
 }
