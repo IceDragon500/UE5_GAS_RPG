@@ -495,7 +495,7 @@
 
 √219. Shaman Summon Locations 28 分钟
 
-220. Async Spawn Times 11 分钟
+√220. Async Spawn Times 11 分钟
 
 221. Summoning Particle Effect 5 分钟
 

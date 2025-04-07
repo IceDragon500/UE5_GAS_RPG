@@ -3,9 +3,6 @@
 
 #include "AbilitySystem/Abilities/AuraSummonAbility.h"
 
-#include "Kismet/KismetSystemLibrary.h"
-#include "Misc/TextFilterExpressionEvaluator.h"
-
 TArray<FVector> UAuraSummonAbility::GetSpawnLocations()
 {
 	//获得向前的向量
@@ -24,10 +21,21 @@ TArray<FVector> UAuraSummonAbility::GetSpawnLocations()
 	for (int32 i = 0; i < NumMinions; i++)
 	{
 		const FVector Direction = LeftOfSpread.RotateAngleAxis(DeltaSpread * i, FVector::UpVector);
-		const FVector ChosenSpawnLocation = Location + Direction * FMath::FRandRange(MinSpawnDistance, MaxSpawnDistance);
+		FVector ChosenSpawnLocation = Location + Direction * FMath::FRandRange(MinSpawnDistance, MaxSpawnDistance);
+
+		FHitResult HitResult;
+		GetWorld()->LineTraceSingleByChannel(HitResult,
+			ChosenSpawnLocation + FVector(0.f, 0.f, 500.f),
+			ChosenSpawnLocation - FVector(0.f, 0.f, 500.f),
+			ECC_Visibility
+			);
+
+		if(HitResult.bBlockingHit)
+		{
+			ChosenSpawnLocation = HitResult.ImpactPoint;
+		}
+		
 		SpawnLocations.Add(ChosenSpawnLocation);
-		//UKismetSystemLibrary::DrawDebugArrow(GetAvatarActorFromActorInfo(),Location,Location+Direction*MaxSpawnDistance,4.f,FLinearColor::Red,3.f);
-		DrawDebugSphere(GetWorld(), ChosenSpawnLocation, 10.0f, 20, FColor::Yellow, false, 3.f);
 	}
 	
 	return SpawnLocations;
