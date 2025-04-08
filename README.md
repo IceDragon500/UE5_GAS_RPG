@@ -276,8 +276,7 @@
 √220. Async Spawn Times 11 分钟
 √221. Summoning Particle Effect 5 分钟
 √222. Select Minion Class at Random 6 分钟
-
-223. Minion Summon Montage 6 分钟
+√223. Minion Summon Montage 6 分钟
 
 224. Minion Count 8 分钟
 
