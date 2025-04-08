@@ -18,6 +18,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	TArray<FVector> GetSpawnLocations();
 
+	UFUNCTION(BlueprintPure, Category="Summoning")
+	TSubclassOf<APawn> GetRandomMinionClass();
+	
 	//会生成的小怪数量
 	UPROPERTY(EditAnywhere, Category="Summoning")
 	int32 NumMinions = 5;
@@ -38,6 +41,8 @@ public:
 	//计算的时候，取得角色向前的向量，然后/2 得到正前方的开始的方向向量
 	UPROPERTY(EditDefaultsOnly, Category="Summoning")
 	float SpawnSpread = 90;
+
+
 protected:
 	
 private:
