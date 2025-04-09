@@ -24,7 +24,7 @@ protected:
 
 	//将设置的发射物蓝图生成
 	UFUNCTION(BlueprintCallable, Category= "属性设置|发射物属性设置")
-	void SpawnProjectile(const FVector& ProjectileTargetLocation, const FGameplayTag& SocketTag);
+	void SpawnProjectile(const FVector& ProjectileTargetLocation, const FGameplayTag& SocketTag, bool bOverridePitch = false, float PitchOverride = 0.f);
 
 	//设置需要抛出的对象，是一个BP蓝图
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "属性设置|发射物属性设置")

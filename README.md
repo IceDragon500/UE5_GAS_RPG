@@ -280,8 +280,7 @@
 √224. Minion Count 8 分钟
 √225. Elementalist Behavior Tree 10 分钟
 √226. Elementalist Attack Task 14 分钟
-
-227. Decrementing Minion Count 12 分钟
+√227. Decrementing Minion Count 12 分钟
 
 228. Adding Juice with Tweening 8 分钟
 

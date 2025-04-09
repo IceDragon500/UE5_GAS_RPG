@@ -17,7 +17,7 @@ void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Hand
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 }
 
-void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocation, const FGameplayTag& SocketTag)
+void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocation, const FGameplayTag& SocketTag, bool bOverridePitch, float PitchOverride)
 {
 	const bool bIsServer = GetAvatarActorFromActorInfo()->HasAuthority();
 
@@ -30,11 +30,17 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		GetAvatarActorFromActorInfo(),SocketTag);
 	
 	FRotator Rotation = (ProjectileTargetLocation - SocketLocation).Rotation();
-	Rotation.Pitch = 0.f;//让弹道与地面平行
+	//Rotation.Pitch = 0.f;//让弹道与地面平行
 
+	if(bOverridePitch)
+	{
+		Rotation.Pitch = PitchOverride;
+	}
+	
 	FTransform SpawnTransform;
 	SpawnTransform.SetLocation(SocketLocation);
 	SpawnTransform.SetRotation(Rotation.Quaternion());
+	
 
 
 	//SpawnActorDeferred
