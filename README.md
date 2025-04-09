@@ -277,12 +277,9 @@
 √221. Summoning Particle Effect 5 分钟
 √222. Select Minion Class at Random 6 分钟
 √223. Minion Summon Montage 6 分钟
-
-224. Minion Count 8 分钟
-
-225. Elementalist Behavior Tree 10 分钟
-
-226. Elementalist Attack Task 14 分钟
+√224. Minion Count 8 分钟
+√225. Elementalist Behavior Tree 10 分钟
+√226. Elementalist Attack Task 14 分钟
 
 227. Decrementing Minion Count 12 分钟
 
