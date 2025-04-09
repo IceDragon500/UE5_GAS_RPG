@@ -84,7 +84,7 @@
 √64. Properly Clamping Attributes 10 分钟
 测试 6： Section 7 Quiz
 
-第8节
+第8节 RPG Attributes
 √65. Initialize Attributes from a Data Table 15 分钟
 √66. Initialize Attributes with Gameplay Effects 16 分钟
 √67. Attribute Based Modifiers 9 分钟
@@ -98,7 +98,7 @@
 √75. Initializing Vital Attributes 8 分钟
 测试 7： Section 8 Quiz
 
-第9节
+第9节 Attribute Menu
 √76. Attribute Menu - Game Plan 5 分钟
 √77. Attribute Menu - Framed Value 11 分钟
 √78. Attribute Menu - Text Value Row 8 分钟
@@ -122,7 +122,7 @@
 √96. Responding to Attribute Changes 16 分钟
 测试 8： Section 9 Quiz
 
-第10节
+第10节 Gameplay Abilities
 √97. Gameplay Abilities 5 分钟
 √98. Granting Abilities 15 分钟
 √99. Settings on Gameplay Abilities 19 分钟
@@ -140,7 +140,7 @@
 √111. Spawning Projectiles 23 分钟
 测试 9： Section 10 Quiz
 
-第11节
+第11节 Ability Tasks
 √112. Ability Tasks 17 分钟
 √113. Sending Gameplay Events 11 分钟
 √114. Spawn FireBolt from Event 6 分钟
@@ -158,7 +158,7 @@
 √126. Ghost Bar 21 分钟
 测试 10： Section 11 Quiz
 
-第12节
+第12节 RPG Character Classes
 √127. RPG Character Classes 6 分钟
 √128. Character Class Info 7 分钟
 √129. Default Attribute Effects 4 分钟
@@ -166,7 +166,7 @@
 √131. Initializing Enemy Attributes 23 分钟
 测试 11： Section 12 Quiz
 
-第13节
+第13节 Damage
 √132. Meta Attributes 4 分钟
 √133. Damage Meta Attribute 9 分钟
 √134. Set By Caller Magnitude 8 分钟
@@ -186,7 +186,7 @@
 √148. Implementing Critical Hits 17 分钟
 测试 12： Section 13 Quiz
 
-第14节
+第14节 Advanced Damage Techniques
 √149. The Gameplay Effect Context 35 分钟
 √150. Custom Gameplay Effect Context 14 分钟
 √151. NetSerialize 28 分钟
@@ -203,7 +203,7 @@
 √162. Multiplayer Test 24 分钟
 测试 13： Section 14 Quiz
 
-第15节
+第15节 Enemy AI
 √163. Enemy AI Setup 5 分钟
 √164. AI Controller Blackboard and Behavior Tree 16 分钟
 √165. Behavior Tree Service 10 分钟
@@ -220,7 +220,7 @@
 √176. Using EQS Queries in Behavior Trees 12 分钟
 测试 14： Section 15 Quiz
 
-第16节
+第16节 Enemy Melee Attacks
 √177. Melee Attack Ability 25 分钟
 √178. Attack Montage 8 分钟
 √179. Combat Target 15 分钟
@@ -236,7 +236,7 @@
 √189. Melee Polish 22 分钟
 测试 15： Section 16 Quiz
 
-第17节
+第17节 Enemy Ranged Attacks
 √190. Ranged Attack 7 分钟
 √191. Rock Projectile 3 分钟
 √192. Ranged Damage Curve 4 分钟
@@ -248,7 +248,7 @@
 √198. Slingshot Attack Montage 13 分钟
 测试 16： Section 17 Quiz
 
-第18节
+第18节 Enemy Spell Attacks
 √199. Goblin Shaman 8 分钟
 √200. Shaman Attack Montage 4 分钟
 √201. Shaman Attack Ability 11 分钟
@@ -256,7 +256,7 @@
 √203. Enemies Multiplayer Testing 9 分钟
 测试 17： Section 18 Quiz
 
-第19节
+第19节 Enemy Finishing Touches
 √204. Goblin Spear - Sound Notifies 6 分钟
 √205. Impact Effects 17 分钟
 √206. Melee Impact Gameplay Cue 19 分钟
@@ -281,13 +281,11 @@
 √225. Elementalist Behavior Tree 10 分钟
 √226. Elementalist Attack Task 14 分钟
 √227. Decrementing Minion Count 12 分钟
-
-228. Adding Juice with Tweening 8 分钟
-
-229. Enemies Final Polish 20 分钟
-
+√228. Adding Juice with Tweening 8 分钟
+√229. Enemies Final Polish 20 分钟
 测试 18： Section 19 Quiz
 
+第20节 Level Tweaks
 230. Level Lighting and Post Process 29 分钟
 
 231. Texture Streaming Pool Over Budget 21 分钟
