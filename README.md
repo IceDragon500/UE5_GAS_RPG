@@ -286,7 +286,7 @@
 测试 18： Section 19 Quiz
 
 第20节 Level Tweaks
-230. Level Lighting and Post Process 29 分钟
+√230. Level Lighting and Post Process 29 分钟
 
 231. Texture Streaming Pool Over Budget 21 分钟
 
