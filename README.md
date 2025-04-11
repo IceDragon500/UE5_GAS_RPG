@@ -288,8 +288,7 @@
 第20节 Level Tweaks
 √230. Level Lighting and Post Process 29 分钟
 √231. Texture Streaming Pool Over Budget 21 分钟
-
-232. Flame Pillar Actor 13 分钟
+√232. Flame Pillar Actor 13 分钟
 
 233. Fade Actor 25 分钟
 
