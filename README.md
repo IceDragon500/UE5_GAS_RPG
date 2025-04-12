@@ -186,7 +186,7 @@
 √148. Implementing Critical Hits 17 分钟
 测试 12： Section 13 Quiz
 
-第14节 Advanced Damage Techniques
+第14节 Advanced Damage Techniques高级损伤技术
 √149. The Gameplay Effect Context 35 分钟
 √150. Custom Gameplay Effect Context 14 分钟
 √151. NetSerialize 28 分钟
@@ -203,7 +203,7 @@
 √162. Multiplayer Test 24 分钟
 测试 13： Section 14 Quiz
 
-第15节 Enemy AI
+第15节 Enemy AI敌人的AI
 √163. Enemy AI Setup 5 分钟
 √164. AI Controller Blackboard and Behavior Tree 16 分钟
 √165. Behavior Tree Service 10 分钟
@@ -220,7 +220,7 @@
 √176. Using EQS Queries in Behavior Trees 12 分钟
 测试 14： Section 15 Quiz
 
-第16节 Enemy Melee Attacks
+第16节 Enemy Melee Attacks敌人的近战攻击
 √177. Melee Attack Ability 25 分钟
 √178. Attack Montage 8 分钟
 √179. Combat Target 15 分钟
@@ -236,7 +236,7 @@
 √189. Melee Polish 22 分钟
 测试 15： Section 16 Quiz
 
-第17节 Enemy Ranged Attacks
+第17节 Enemy Ranged Attacks敌人的远程攻击
 √190. Ranged Attack 7 分钟
 √191. Rock Projectile 3 分钟
 √192. Ranged Damage Curve 4 分钟
@@ -248,7 +248,7 @@
 √198. Slingshot Attack Montage 13 分钟
 测试 16： Section 17 Quiz
 
-第18节 Enemy Spell Attacks
+第18节 Enemy Spell Attacks敌人的法术攻击
 √199. Goblin Shaman 8 分钟
 √200. Shaman Attack Montage 4 分钟
 √201. Shaman Attack Ability 11 分钟
@@ -256,7 +256,7 @@
 √203. Enemies Multiplayer Testing 9 分钟
 测试 17： Section 18 Quiz
 
-第19节 Enemy Finishing Touches
+第19节 Enemy Finishing Touches敌人的收尾工作
 √204. Goblin Spear - Sound Notifies 6 分钟
 √205. Impact Effects 17 分钟
 √206. Melee Impact Gameplay Cue 19 分钟
@@ -285,15 +285,14 @@
 √229. Enemies Final Polish 20 分钟
 测试 18： Section 19 Quiz
 
-第20节 Level Tweaks
+第20节 Level Tweaks关卡调整
 √230. Level Lighting and Post Process 29 分钟
 √231. Texture Streaming Pool Over Budget 21 分钟
 √232. Flame Pillar Actor 13 分钟
+√233. Fade Actor 25 分钟
+√234. Fading Out Obstructing Geometry 26 分钟
 
-233. Fade Actor 25 分钟
-
-234. Fading Out Obstructing Geometry 26 分钟
-
+第21节 Cost and Cooldown消耗和冷却时间
 235. Health Mana Spells Widget 16 分钟
 
 236. Spell Globe 20 分钟
@@ -324,6 +323,7 @@
 
 测试 19： Section 21 Quiz
 
+第22节 Experience and Leveling Up经验和升级
 249. Experience and Leveling Up 14 分钟
 
 250. Level Up Info Data Asset 16 分钟
