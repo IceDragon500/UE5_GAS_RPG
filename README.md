@@ -294,7 +294,7 @@
 
 第21节 Cost and Cooldown消耗和冷却时间
 √235. Health Mana Spells Widget 16 分钟
-236. Spell Globe 20 分钟
+√236. Spell Globe 20 分钟
 
 237. Adding Spell Globes 15 分钟
 
