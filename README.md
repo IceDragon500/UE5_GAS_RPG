@@ -296,7 +296,7 @@
 √235. Health Mana Spells Widget 16 分钟
 √236. Spell Globe 20 分钟
 √237. Adding Spell Globes 15 分钟
-238. XP Bar 10 分钟
+√238. XP Bar 10 分钟
 
 239. Ability Info Data Asset 20 分钟
 
