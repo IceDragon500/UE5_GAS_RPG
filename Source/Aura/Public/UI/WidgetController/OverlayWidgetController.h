@@ -7,6 +7,8 @@
 #include "UI/Widgets/AuraUserWidget.h"
 #include "OverlayWidgetController.generated.h"
 
+class UAbilityInfo;
+
 USTRUCT(BlueprintType)
 struct FUIWidgetRow : public FTableRowBase
 {
@@ -63,6 +65,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
 	TObjectPtr<UDataTable> MessageWidgetDataTable;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
+	TObjectPtr<UAbilityInfo> AbilityInfo;
 	
 
 	//通过Tag来获取DataTableRow中，对应Row的数据

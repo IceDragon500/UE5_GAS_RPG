@@ -297,8 +297,7 @@
 √236. Spell Globe 20 分钟
 √237. Adding Spell Globes 15 分钟
 √238. XP Bar 10 分钟
-
-239. Ability Info Data Asset 20 分钟
+√239. Ability Info Data Asset 20 分钟
 
 240. Initialize Overlay Startup Abilities 13 分钟
 
