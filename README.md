@@ -300,8 +300,7 @@
 √239. Ability Info Data Asset 20 分钟
 √240. Initialize Overlay Startup Abilities 13 分钟
 √241. For Each Ability Delegate 20 分钟
-
-242. Binding Widget Events to the Ability Info Delegate 19 分钟
+√242. Binding Widget Events to the Ability Info Delegate 19 分钟
 
 243. Gameplay Ability Cost 12 分钟
 

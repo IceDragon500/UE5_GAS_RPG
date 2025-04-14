@@ -26,15 +26,18 @@ public:
 	 * DisplayName  如果希望函数在蓝图中不使用函数名作为名称，可以使用这个来重新命名
 	 */
 	
+	// 创建一个 TargetDataUnderMouse 任务
 	UFUNCTION(BlueprintCallable, Category="Ability|Tasks", meta = (DisplayName = "TargetDataUnderMouse", HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = "true"))
 	static UTargetDataUnderMouse* CreateTargetDataUnderMouse(UGameplayAbility* OwningAbility);
 
+	// 有效数据的委托
 	UPROPERTY(BlueprintAssignable)
 	FMouseTargetDataSignature ValidData;
 	
 protected:
 private:
 
+	//激活任务
 	virtual void Activate() override;
 	
 /*
@@ -44,9 +47,10 @@ private:
  * 服务器同步：通过 ServerSetReplicatedTargetData 将数据发送到服务器。
  * 委托广播：本地客户端立即触发委托，处理视觉或逻辑反馈。
  */
-
+ // 发送鼠标光标数据
 	void SendMouseCursorData();
 
+	// 目标数据复制回调
 	void OnTargetDataReplicatedCallback(const FGameplayAbilityTargetDataHandle& DataHandle, FGameplayTag ActivationTag);
 	
 };
