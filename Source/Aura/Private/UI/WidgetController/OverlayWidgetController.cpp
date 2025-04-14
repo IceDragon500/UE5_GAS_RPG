@@ -4,6 +4,7 @@
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "AbilitySystem/Data/AbilityInfo.h"
 
 void UOverlayWidgetController::BroadcastInitialValues()
 {
@@ -93,16 +94,32 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 				}
 				
 			}
-		}
-		);
+		});
 	}
 }
 
 void UOverlayWidgetController::OnInitializeStartupAbilities(UAuraAbilitySystemComponent* AuraAbilitySystemComponent)
 {
 	//TODO Get information about all given abilities, look up their ability info and boradcast it ot widgets
+	//获取有关所有给定能力的信息，查找他们的能力信息并将其广播到小部件
 
 	if (!AuraAbilitySystemComponent->bStartupAbilitiesGiven) return;
 
-	
+	FForEachAbility BroadcastDelegate;
+	BroadcastDelegate.BindLambda([this](const FGameplayAbilitySpec& AbilitySpec)
+	{
+
+		//TODO need a way to figure out hte ability tag for a given ability spec.
+		//TODO需要一种方法来找出给定能力规范的能力标签。
+		
+		FAuraAbilityInfo Info = AbilityInfo->FindAbilityInfoForTag(UAuraAbilitySystemComponent::GetAbilityTagFromSpec(AbilitySpec));
+
+		Info.InputTag = UAuraAbilitySystemComponent::GetInputTagFromSpec(AbilitySpec);
+
+		AbilityInfoDelegate.Broadcast(Info);
+
+		
+	});
+
+	AuraAbilitySystemComponent->ForEachAbility(BroadcastDelegate);
 }
