@@ -304,10 +304,8 @@
 √243. Gameplay Ability Cost 12 分钟
 √244. Gameplay Ability Cooldown 9 分钟
 √245. Cooldown Async Task 38 分钟
-
-246. Cooldown Tags in Ability Info 7 分钟
-
-247. Showing Cooldown Time in the HUD 14 分钟
+√246. Cooldown Tags in Ability Info 7 分钟
+√247. Showing Cooldown Time in the HUD 14 分钟
 
 248. Modeling Mode 13 分钟
 
