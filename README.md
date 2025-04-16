@@ -316,8 +316,7 @@
 √252. Listening for XP Changes 18 分钟
 √253. Awarding XP Game Plan 7 分钟
 √254. XP Reward for Enemies 17 分钟
-
-255. Incoming XP Meta Attribute 4 分钟
+√255. Incoming XP Meta Attribute 4 分钟
 
 256. Passively Listening for Events 19 分钟
 

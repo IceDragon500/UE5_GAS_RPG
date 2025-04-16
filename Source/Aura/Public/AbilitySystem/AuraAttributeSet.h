@@ -292,15 +292,19 @@ public:
 	UFUNCTION()
 	void OnRep_PhysicalResistance(const FGameplayAttributeData& OldPhysicalResistance) const;
 
-	/*
-	 * meta Attributes
-	 */
-
-
+/*
+ * meta Attributes
+ */
+	
 	//计算即将到来的伤害
 	UPROPERTY(BlueprintReadOnly, Category="属性值|Meta Attributes")
 	FGameplayAttributeData IncomingDamage;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, IncomingDamage);
+
+	//计算即将到来的伤害
+	UPROPERTY(BlueprintReadOnly, Category="属性值|Meta Attributes")
+	FGameplayAttributeData IncomingXP;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, IncomingXP);
 
 protected:
 private:
