@@ -114,6 +114,15 @@ public:
 	 */
 	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
 	static bool IsNotFriend(AActor* FirstActor, AActor* SecondActor);
+
+	/**
+	 * ECharacterClass中获取对应等级的经验（针对怪物）
+	 * @param WorldContextObject 
+	 * @param CharacterClass 传入怪物对应的ECharacterClass ，获取里面的FScalableFloat 曲线上的经验值
+	 * @param CharacterLevel 传入怪物的等级
+	 * @return 
+	 */
+	static int32 GetXPRewardForClassAndLevel(const UObject* WorldContextObject, ECharacterClass CharacterClass, int32 CharacterLevel);
 	
 protected:
 private:

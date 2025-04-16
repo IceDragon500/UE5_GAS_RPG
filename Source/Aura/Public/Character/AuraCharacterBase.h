@@ -35,6 +35,7 @@ public:
 	virtual FTaggedMontage GetTaggedMontageByTag_Implementation(const FGameplayTag& MontageTag) override;
 	virtual int32 GetMinionCount_Implementation() override;
 	virtual void IncrementMinionCount_Implementation(int32 Amount) override;
+	virtual ECharacterClass GetCharacterClass_Implementation() override;
 	/* combat interface end */
 		
 	UFUNCTION(NetMulticast, Reliable)
@@ -127,6 +128,11 @@ protected:
 
 	//召唤仆从的数量
 	int32 MinionCount = 0;
+
+	//敌人默认的职业类型
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
+	ECharacterClass CharacterClass = ECharacterClass::Warrior;
+	
 private:
 
 	virtual void InitAbilityActorInfo();

@@ -29,6 +29,9 @@ struct FCharacterClassDefaultInfo
 	//设置角色一进入游戏，默认的攻击能力
 	UPROPERTY(EditDefaultsOnly, Category = "角色主要属性")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
+
+	UPROPERTY(EditDefaultsOnly, Category = "角色主要属性")
+	FScalableFloat XPReward = FScalableFloat();
 };
 
 

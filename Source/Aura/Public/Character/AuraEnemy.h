@@ -120,9 +120,7 @@ protected:
 	//角色等级
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
 	int32 Level = 1;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")
-	ECharacterClass CharacterClass = ECharacterClass::Warrior;
+	
 
 	//血条Widget设置
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="角色|属性")
