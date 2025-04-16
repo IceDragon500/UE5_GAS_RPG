@@ -313,8 +313,7 @@
 √249. Experience and Leveling Up 14 分钟
 √250. Level Up Info Data Asset 16 分钟
 √251. Adding XP to the Player State 11 分钟
-
-252. Listening for XP Changes 18 分钟
+√252. Listening for XP Changes 18 分钟
 
 253. Awarding XP Game Plan 7 分钟
 

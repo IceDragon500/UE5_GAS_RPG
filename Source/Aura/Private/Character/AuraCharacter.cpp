@@ -2,7 +2,7 @@
 
 
 #include "Character/AuraCharacter.h"
-
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "PlayerController/AuraPlayerController.h"
