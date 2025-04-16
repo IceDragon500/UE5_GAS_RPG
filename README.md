@@ -306,15 +306,12 @@
 √245. Cooldown Async Task 38 分钟
 √246. Cooldown Tags in Ability Info 7 分钟
 √247. Showing Cooldown Time in the HUD 14 分钟
-
-248. Modeling Mode 13 分钟
-
+√248. Modeling Mode 13 分钟
 测试 19： Section 21 Quiz
 
 第22节 Experience and Leveling Up经验和升级
-249. Experience and Leveling Up 14 分钟
-
-250. Level Up Info Data Asset 16 分钟
+√249. Experience and Leveling Up 14 分钟
+√250. Level Up Info Data Asset 16 分钟
 
 251. Adding XP to the Player State 11 分钟
 
