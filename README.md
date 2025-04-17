@@ -318,8 +318,7 @@
 √254. XP Reward for Enemies 17 分钟
 √255. Incoming XP Meta Attribute 4 分钟
 √256. Passively Listening for Events 19 分钟
-
-257. Sending XP Events 15 分钟
+√257. Sending XP Events 15 分钟
 
 258. Showing XP in the HUD 15 分钟
 

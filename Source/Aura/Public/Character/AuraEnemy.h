@@ -103,9 +103,11 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="角色|属性", meta = (DisplayName = "攻击目标"))
 	TObjectPtr<AActor> CombatTarget;
 
+	/*
 	//集中设置怪物属性
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	FEnemyDataRow EnemyData;
+	*/
 	
 protected:
 
