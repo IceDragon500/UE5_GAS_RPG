@@ -152,7 +152,14 @@ void UOverlayWidgetController::OnXPChanged(int32 NewXP) const
 
 		const int32 XPForThisLevel = NewXP - PreviousLevelUpRequirement;
 
-		const float XPBarPercent = static_cast<float>(XPForThisLevel / DeletaLevelRequirement);
+		/**
+		 * 注意 这里涉及到一个类型转换
+		 * 因为如果先计算整数除以整数，如果结果小于1，比如0.xxx，会得到结果直接为0
+		 * 所以我们需要先将两个整数转成浮点，再进行除法计算
+		 * 错误的写法：
+		 * static_cast<float>(XPForThisLevel / DeletaLevelRequirement);
+		 */
+		const float XPBarPercent = static_cast<float>(XPForThisLevel) / static_cast<float>(DeletaLevelRequirement);
 
 		OnXPPercentChangedDelegate.Broadcast(XPBarPercent);
 	}
