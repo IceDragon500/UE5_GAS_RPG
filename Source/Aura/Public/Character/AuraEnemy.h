@@ -73,7 +73,7 @@ public:
 	//取消高亮选中的目标
 	virtual void UnHighlightActor() override;
 
-	virtual int32 GetPlayerLevel() override;
+	virtual int32 GetPlayerLevel_Implementation() override;
 
 	virtual void Die() override;
 

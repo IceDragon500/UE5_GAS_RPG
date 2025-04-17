@@ -320,8 +320,7 @@
 √256. Passively Listening for Events 19 分钟
 √257. Sending XP Events 15 分钟
 √258. Showing XP in the HUD 15 分钟
-
-259. Level Up Interface Function 17 分钟
+√259. Level Up Interface Function 17 分钟
 
 260. Leveling Up 22 分钟
 

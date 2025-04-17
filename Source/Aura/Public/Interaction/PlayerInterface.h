@@ -23,6 +23,11 @@ class AURA_API IPlayerInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
+	//将获得的经验添加给PlayerState中的Level值
 	UFUNCTION(BlueprintNativeEvent)
 	void AddToXP(int32 InXP);
+
+	//处理角色升级时的一些逻辑，比如播放特效，增加属性点之类的逻辑
+	UFUNCTION(BlueprintNativeEvent)
+	void LevelUp();
 };
