@@ -28,7 +28,11 @@ public:
 	FAbilitiesGiven AbilitiesGivenDelegate;
 
 	// 添加角色能力
-	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
+	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InAbilities);
+
+	// 添加角色被动效果
+	void AddCharacterPassiveAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InPassiveAbilities);
+	
 	// 标记是否已经赋予了初始能力
 	bool bStartupAbilitiesGiven = false;
 

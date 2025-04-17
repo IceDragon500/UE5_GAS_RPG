@@ -141,6 +141,10 @@ private:
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
+	//初始的被动属性集 用来作为全局的一些效果，比如经验值的获得等等
+	UPROPERTY(EditAnywhere, Category="角色|属性")
+	TArray<TSubclassOf<UGameplayAbility>> StartupPassiveAbilities;
+
 	//收集动画
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TObjectPtr<UAnimMontage> HitReactMontage;
