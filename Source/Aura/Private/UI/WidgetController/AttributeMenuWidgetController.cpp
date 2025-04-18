@@ -3,6 +3,8 @@
 
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "PlayerState/AuraPlayerState.h"
+#include "UI/WidgetController/OverlayWidgetController.h"
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {
@@ -18,6 +20,13 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 		}
 		);
 	}
+
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AuraPlayerState->OnAttributePointsChangedDelegate.AddLambda([this](int32 Points)
+	{
+		AttributePointsChangedDelegate.Broadcast(Points);
+	});
+	
 	
 }
 

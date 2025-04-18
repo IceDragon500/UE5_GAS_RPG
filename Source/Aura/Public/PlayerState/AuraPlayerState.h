@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/PlayerState.h"
-#include "AbilitySystem/AuraAttributeSet.h"
 #include "AuraPlayerState.generated.h"
 
 class ULevelUpInfo;
@@ -30,14 +29,25 @@ public:
 
 	FOnPlayerStatChanged OnXPChangedDelegate;
 	FOnPlayerStatChanged OnLevelChangedDelegate;
+	FOnPlayerStatChanged OnAttributePointsChangedDelegate;
+	FOnPlayerStatChanged OnSpellPointsChangedDelegate;
 
-	FORCEINLINE int32 GetPlayerLevel() const { return Level; }
 	FORCEINLINE int32 GetXP() const { return XP; }
-
-	void AddToXP(int32 InXP);
-	void AddToLevel(int32 InLevel);
 	void SetXP(int32 InXP);
+	void AddToXP(int32 InXP);
+	
+	FORCEINLINE int32 GetPlayerLevel() const { return Level; }
 	void SetLevel(int32 InLevel);
+	void AddToLevel(int32 InLevel);
+
+	FORCEINLINE int32 GetPlayerAttributePoints() const { return AttributePoints; }
+	void SetAttributePoints(int32 InAttributePoints);
+	void AddToAttributePoints(int32 InAttributePoints);
+	
+	FORCEINLINE int32 GetPlayerSpellPoints() const { return SpellPoints; }
+	void SetSpellPoints(int32 InSpellPoints);
+	void AddToSpellPoints(int32 InSpellPoints);
+	
 	
 protected:
 
@@ -55,15 +65,29 @@ private:
 	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_Level)
 	int32 Level = 1;
 
-	//玩家经验
-	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_XP)
-	int32 XP = 0;
-
 	UFUNCTION()
 	void OnRep_Level(int32 OldLevel);
 
+	//玩家经验
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_XP)
+	int32 XP = 0;
+	
 	UFUNCTION()
 	void OnRep_XP(int32 OldXP);
+
+	//玩家属性点
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_AttributePoints)
+	int32 AttributePoints = 0;
+
+	UFUNCTION()
+	void OnRep_AttributePoints(int32 OldAttributePoints);
+
+	//玩家属性点
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_SpellPoints)
+	int32 SpellPoints = 0;
+
+	UFUNCTION()
+	void OnRep_SpellPoints(int32 OldSpellPoints);
 
 	
 };

@@ -325,10 +325,10 @@
 √261. Showing Level in the HUD 25 分钟
 √262. Level Up Niagara System 17 分钟
 √263. Level Up HUD Message 18 分钟
-
 测试 20： Section 22 Quiz
 
-264. Attribute Points Member Variable 9 分钟
+第23节 Attribute Points 属性点
+√264. Attribute Points Member Variable 9 分钟
 
 265. Showing Attribute Points in the HUD 8 分钟
 
