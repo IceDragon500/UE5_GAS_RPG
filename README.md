@@ -323,8 +323,7 @@
 √259. Level Up Interface Function 17 分钟
 √260. Leveling Up 22 分钟
 √261. Showing Level in the HUD 25 分钟
-
-262. Level Up Niagara System 17 分钟
+√262. Level Up Niagara System 17 分钟
 
 263. Level Up HUD Message 18 分钟
 
