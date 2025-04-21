@@ -333,10 +333,8 @@
 √266. Attribute Upgrade Buttons 9 分钟
 √267. Upgrading Attributes 19 分钟
 √267. Upgrading Attributes 19 分钟
-
-268. Top Off Our Fluids 14 分钟
-
-269. Attribute Menu Polish 16 分钟
+√268. Top Off Our Fluids 14 分钟
+√269. Attribute Menu Polish 16 分钟
 
 测试 21： Section 23 Quiz
 
