@@ -177,7 +177,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 	}
 
-	//对meta属性进行操作
+	//得到了伤害
 	if(Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
 		const float LocalIncomingDamage = GetIncomingDamage();
@@ -210,6 +210,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 		}
 	}
 
+	//得到了经验
 	if(Data.EvaluatedData.Attribute == GetIncomingXPAttribute())
 	{
 		const float LocalIncomingXP = GetIncomingXP();
@@ -256,8 +257,8 @@ void UAuraAttributeSet::SendXPEvent(const FEffectProperties& Props)
 		 * 注意，看下面
 		 * 我们在通过接口获取角色类的时候 如果按照下面的方式获取，会报错
 		 * const ECharacterClass TargetClass = CombatInterface->GetCharacterClass();
-		 * 因为GetCharacterClass()方法是通过蓝图实现的，我们不能直接在C++中调用
-		 * 如果我们需要在C++中使用，则需要使用Execute_的版本
+		 * 因为GetCharacterClass()方法是通过继承接口的类实现的，我们不能直接在接口类中调用
+		 * 如果我们需要在接口类中使用，则需要使用Execute_的版本
 		 * 如下：
 		 */
 		const ECharacterClass TargetClass = ICombatInterface::Execute_GetCharacterClass(Props.TargetCharacter);
