@@ -78,11 +78,6 @@ public:
 	//这个函数是用来执行“生命值= Clamp（生命值，0,MaxHealth）”之类的内容，而不是“如果施加伤害就触发这个额外的东西，等等”之类的内容。
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 
-	//Called just after any modification happens to an attribute
-	//在属性发生任何修改之后调用
-	//PostAttributeChange的触发更加的敏感，也就是更耗性能
-	//virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
-
 	/**
 	 *	Called just after a GameplayEffect is executed to modify the base value of an attribute. No more changes can be made.
 	 *	在GameplayEffect执行后调用，修改属性的基本值。不能再做任何更改。
@@ -94,6 +89,7 @@ public:
 
 	//Called just after any modification happens to an attribute
 	//在属性发生任何修改之后调用
+	//PostAttributeChange的触发更加的敏感，也就是更耗性能
 	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
 
 
@@ -308,9 +304,28 @@ public:
 
 protected:
 private:
-	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
-
+	/**
+	 * 使用传入的Data 来填充Props
+	 * @param Data 
+	 * @param Props 
+	 */
+	void SetEffectProperties(const FGameplayEffectModCallbackData& InData, FEffectProperties& OutProps) const;
+	
+	/**
+	 * 显示伤害文字
+	 * @param Props 里面包含Target 和 Sources的gameplay effect信息 
+	 * @param Damage 伤害数值
+	 * @param bBlockHit 是否阻挡伤害
+	 * @param bCriticalHit 是否暴击
+	 */
 	void ShowFloatingText(const FEffectProperties& Props, float Damage, bool bBlockHit, bool bCriticalHit);
 
+	/**
+	 * 发送获得经验的事件
+	 * @param Props
+	 */
 	void SendXPEvent(const FEffectProperties& Props);
+
+	bool bTopOffHealth = false;
+	bool bTopOffMana = false;
 };
