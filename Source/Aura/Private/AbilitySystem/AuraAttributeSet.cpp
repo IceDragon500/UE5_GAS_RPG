@@ -233,7 +233,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 
 				IPlayerInterface::Execute_AddToPlayerLevel(Props.SourceCharacter, NumOfLevelUps);
 				IPlayerInterface::Execute_AddToAttributePoints(Props.SourceCharacter, AttributePointReward);
-				IPlayerInterface::Execute_AddSpellPoints(Props.SourceCharacter, SpellPointsReward);
+				IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
 
 				SetHealth(GetMaxHealth());
 				SetMana(GetMaxMana());

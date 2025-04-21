@@ -331,8 +331,7 @@
 √264. Attribute Points Member Variable 9 分钟
 √265. Showing Attribute Points in the HUD 8 分钟
 √266. Attribute Upgrade Buttons 9 分钟
-
-267. Upgrading Attributes 19 分钟
+√267. Upgrading Attributes 19 分钟
 
 267. Upgrading Attributes 19 分钟
 

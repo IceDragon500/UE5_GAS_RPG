@@ -35,25 +35,36 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	int32 FindLevelForXP(int32 InXP) const ;
 
-	//处理角色升级时的一些逻辑，比如播放特效，增加属性点之类的逻辑
-	UFUNCTION(BlueprintNativeEvent)
-	void LevelUp();
-
+	//通过等级查询对应的属性点数量
 	UFUNCTION(BlueprintNativeEvent)
 	int32 GetAttributePointsReward(int32 Level) const;
 
+	//通过等级查询对应的技能点数量
 	UFUNCTION(BlueprintNativeEvent)
 	int32 GetSpellPointsReward(int32 Level) const;
 
+	//给角色添加等级
 	UFUNCTION(BlueprintNativeEvent)
 	void AddToPlayerLevel(int32 InPlayerLevel);
 
+	//得到当前角色的剩余属性点数
+	UFUNCTION(BlueprintNativeEvent)
+	int32 GetAttributePoints() const;
+
+	//给角色添加属性点数
 	UFUNCTION(BlueprintNativeEvent)
 	void AddToAttributePoints(int32 InAttributePoints);
 
+	//给角色添加技能点数
 	UFUNCTION(BlueprintNativeEvent)
-	void AddSpellPoints(int32 InSpellPoints);
+	void AddToSpellPoints(int32 InSpellPoints);
 
+	//得到当前角色的剩余的技能点数
+	UFUNCTION(BlueprintNativeEvent)
+	int32 GetSpellPoints() const;
 
+	//处理角色升级时的一些逻辑，比如播放特效，增加属性点之类的逻辑
+	UFUNCTION(BlueprintNativeEvent)
+	void LevelUp();
 
 };
