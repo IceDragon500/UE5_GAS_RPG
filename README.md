@@ -339,8 +339,7 @@
 测试 21： Section 23 Quiz
 √270. Spell Menu Design 6 分钟
 √271. Spell Globe Button 13 分钟
-
-272. Offensive Spell Tree 12 分钟
+√272. Offensive Spell Tree 12 分钟
 
 273. Passive Spell Tree 9 分钟
 
