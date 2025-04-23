@@ -342,8 +342,7 @@
 √272. Offensive Spell Tree 12 分钟
 √273. Passive Spell Tree 9 分钟
 √274. Equipped Spell Row 17 分钟
-
-275. Spell Menu Widget 20 分钟
+√275. Spell Menu Widget 20 分钟
 
 276. Spell Description Box 12 分钟
 
