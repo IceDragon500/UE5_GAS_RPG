@@ -344,8 +344,7 @@
 √274. Equipped Spell Row 17 分钟
 √275. Spell Menu Widget 20 分钟
 √276. Spell Description Box 12 分钟
-
-277. Spell Menu Button 24 分钟
+√277. Spell Menu Button 24 分钟
 
 278. Spell Menu Widget Controller 29 分钟
 
