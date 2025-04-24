@@ -10,10 +10,9 @@
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {
-	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
 	check(AttributeInfo)
 	
-	for(auto& Pair : AS->TagsToAttributes)
+	for(auto& Pair : GetAuraAttributeSet()->TagsToAttributes)
 	{
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(Pair.Value()).AddLambda(
 		[this, Pair](const FOnAttributeChangeData& Data)
@@ -22,9 +21,8 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 		}
 		);
 	}
-
-	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
-	AuraPlayerState->OnAttributePointsChangedDelegate.AddLambda([this](int32 Points)
+	
+	GetAuraPS()->OnAttributePointsChangedDelegate.AddLambda([this](int32 Points)
 	{
 		AttributePointsChangedDelegate.Broadcast(Points);
 	});
@@ -34,27 +32,24 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 
 void UAttributeMenuWidgetController::BroadcastInitialValues()
 {
-	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
 	check(AttributeInfo)
 	
 	//弹幕提示
 	//这里记得在Menu的UI界面中，销毁时候把所有事件移除
 	//不然每次打开界面都会订阅一次，越订越多
 
-	for (auto& Pair : AS->TagsToAttributes)
+	for (auto& Pair : GetAuraAttributeSet()->TagsToAttributes)
 	{
 		BroadcastAttributeInfo(Pair.Key, Pair.Value());
 	}
-
-	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
-	AttributePointsChangedDelegate.Broadcast(AuraPlayerState->GetPlayerAttributePoints());
+	
+	AttributePointsChangedDelegate.Broadcast(GetAuraPS()->GetPlayerAttributePoints());
 	
 }
 
 void UAttributeMenuWidgetController::UpgradeAttribute(const FGameplayTag& AttributeTag)
 {
-	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
-	AuraASC->UpgradeAttribute(AttributeTag);
+	GetAuraASC()->UpgradeAttribute(AttributeTag);
 }
 
 void UAttributeMenuWidgetController::BroadcastAttributeInfo(const FGameplayTag& AttributeTag,
