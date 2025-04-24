@@ -12,7 +12,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 	if(OverlayWidgetController == nullptr)
 	{
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
-		OverlayWidgetController->SetWidgetControllerparams(WCParams);
+		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 		OverlayWidgetController->BindCallbacksToDependencies();
 	}
 	return OverlayWidgetController;
@@ -23,16 +23,28 @@ UAttributeMenuWidgetController* AAuraHUD::GetAttributeMenuWidgetController(const
 	if(AttributeMenuWidgetController == nullptr)
 	{
 		AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
-		AttributeMenuWidgetController->SetWidgetControllerparams(WCParams);
+		AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
 		AttributeMenuWidgetController->BindCallbacksToDependencies();
 	}
 	return AttributeMenuWidgetController;
+}
+
+USpellMenuWidgetController* AAuraHUD::GetSpellMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (SpellMenuWidgetController == nullptr)
+	{
+		SpellMenuWidgetController = NewObject<USpellMenuWidgetController>(this, SpellMenuWidgetControllerClass);
+		SpellMenuWidgetController->SetWidgetControllerParams(WCParams);
+		SpellMenuWidgetController->BindCallbacksToDependencies();
+	}
+	return SpellMenuWidgetController;
 }
 
 void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ABS, UAttributeSet* AS)
 {
 	checkf(OverlayWidgetClass, TEXT("Overlay Widget Class 初始化失败"));
 	checkf(OverlayWidgetControllerClass, TEXT("Overlay Widget Controller Class 初始化失败"));
+	
 	
 	//教程里面是这样的
 	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetClass);

@@ -31,7 +31,7 @@ public:
 	
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
 	
 private:

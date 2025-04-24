@@ -7,8 +7,7 @@
 #include "UI/Widgets/AuraUserWidget.h"
 #include "OverlayWidgetController.generated.h"
 
-class UAbilityInfo;
-class UAuraAbilitySystemComponent;
+struct FAuraAbilityInfo;
 
 USTRUCT(BlueprintType)
 struct FUIWidgetRow : public FTableRowBase
@@ -28,13 +27,11 @@ struct FUIWidgetRow : public FTableRowBase
 	UTexture2D* Image = nullptr;
 };
 
-
+class UAbilityInfo;
+class UAuraAbilitySystemComponent;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAttributeChangedSignature, float, NewValue);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageWidgetRowSignature, FUIWidgetRow, Row);
-
-
-
 
 /**
  * 
@@ -92,5 +89,5 @@ template <typename T>
 T* UOverlayWidgetController::GetDataTableRowByTag(UDataTable* DataTable, const FGameplayTag& Tag)
 {
 	//这里是获取每一行第一列Tag.GetTagName()的名称，如果对的上，则返回这一行的数据
-	return DataTable->FindRow<T>(Tag.GetTagName(), TEXT(""));;
+	return DataTable->FindRow<T>(Tag.GetTagName(), TEXT(""));
 }

@@ -4,16 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
-#include "AbilitySystem/Data/AbilityInfo.h"
-#include "UObject/Object.h"
 #include "AuraWidgetController.generated.h"
 
-class UAuraAttributeSet;
-class UAuraAbilitySystemComponent;
-class AAuraPlayerState;
-class AAuraPlayerController;
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayerStatChangedSignature, int32, NewValue);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAbilityInfoSignature, const FAuraAbilityInfo&, Info);
+
 class UAttributeSet;
 class UAbilitySystemComponent;
+class AAuraPlayerController;
+class AAuraPlayerState;
+class UAuraAbilitySystemComponent;
+class UAuraAttributeSet;
+class UAbilityInfo;
+
+
+
 
 USTRUCT(BlueprintType)
 struct FWidgetControllerParams
@@ -38,8 +43,7 @@ struct FWidgetControllerParams
 	
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayerStatChangedSignature, int32, NewValue);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAbilityInfoSignature, const FAuraAbilityInfo&, Info);
+
 
 /**
  * 
@@ -50,13 +54,13 @@ class AURA_API UAuraWidgetController : public UObject
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintCallable)
-	void SetWidgetControllerparams(const FWidgetControllerParams& WidgetControllerParams);
-	
-	//将回调绑定到依赖项
-	virtual void BindCallbacksToDependencies();
+	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
 
 	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitialValues();
+
+	//将回调绑定到依赖项
+	virtual void BindCallbacksToDependencies();
 
 	UPROPERTY(BlueprintAssignable, Category="GAS|信息")
 	FAbilityInfoSignature AbilityInfoDelegate;
@@ -64,6 +68,9 @@ public:
 	void BroadcastAbilityInfo();
 	
 protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
+	TObjectPtr<UAbilityInfo> AbilityInfo;
+	
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<APlayerController> PlayerController;
 	
@@ -87,16 +94,12 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<UAuraAttributeSet> AuraAttributeSet;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
-	TObjectPtr<UAbilityInfo> AbilityInfo;
-
+	
 	AAuraPlayerController* GetAuraPC();
 	AAuraPlayerState* GetAuraPS();
 	UAuraAbilitySystemComponent* GetAuraASC();
-	UAuraAttributeSet* GetAuraAttributeSet();
+	UAuraAttributeSet* GetAuraAS();
 	
-	
-	
+
 private:
 };

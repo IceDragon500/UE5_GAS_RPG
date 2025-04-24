@@ -2,18 +2,24 @@
 
 
 #include "UI/WidgetController/AuraWidgetController.h"
-
-#include "AbilitySystem/AuraAbilitySystemComponent.h"
-#include "AbilitySystem/AuraAttributeSet.h"
 #include "PlayerController/AuraPlayerController.h"
 #include "PlayerState/AuraPlayerState.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/AuraAttributeSet.h"
+#include "AbilitySystem/Data/AbilityInfo.h"
 
-void UAuraWidgetController::SetWidgetControllerparams(const FWidgetControllerParams& WidgetControllerParams)
+
+void UAuraWidgetController::SetWidgetControllerParams(const FWidgetControllerParams& WCParams)
 {
-	PlayerController = WidgetControllerParams.PlayerController;
-	PlayerState = WidgetControllerParams.PlayerState;
-	AbilitySystemComponent = WidgetControllerParams.AbilitySystemComponent;
-	AttributeSet = WidgetControllerParams.AttributeSet;
+	PlayerController = WCParams.PlayerController;
+	PlayerState = WCParams.PlayerState;
+	AbilitySystemComponent = WCParams.AbilitySystemComponent;
+	AttributeSet = WCParams.AttributeSet;
+}
+
+void UAuraWidgetController::BroadcastInitialValues()
+{
+	
 }
 
 void UAuraWidgetController::BindCallbacksToDependencies()
@@ -21,10 +27,7 @@ void UAuraWidgetController::BindCallbacksToDependencies()
 	
 }
 
-void UAuraWidgetController::BroadcastInitialValues()
-{
-	
-}
+
 
 void UAuraWidgetController::BroadcastAbilityInfo()
 {
@@ -54,7 +57,7 @@ AAuraPlayerState* UAuraWidgetController::GetAuraPS()
 {
 	if (AuraPlayerState == nullptr)
 	{
-		AuraPlayerState == Cast<AAuraPlayerState>(PlayerState);
+		AuraPlayerState = Cast<AAuraPlayerState>(PlayerState);
 	}
 	return AuraPlayerState;
 }
@@ -63,17 +66,17 @@ UAuraAbilitySystemComponent* UAuraWidgetController::GetAuraASC()
 {
 	if (AuraAbilitySystemComponent == nullptr)
 	{
-		AuraAbilitySystemComponent == Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+		AuraAbilitySystemComponent = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
 	}
 	return AuraAbilitySystemComponent;
 	
 }
 
-UAuraAttributeSet* UAuraWidgetController::GetAuraAttributeSet()
+UAuraAttributeSet* UAuraWidgetController::GetAuraAS()
 {
 	if (AuraAttributeSet == nullptr)
 	{
-		AuraAttributeSet == Cast<UAuraAttributeSet>(AttributeSet);
+		AuraAttributeSet = Cast<UAuraAttributeSet>(AttributeSet);
 	}
 	return AuraAttributeSet;
 }

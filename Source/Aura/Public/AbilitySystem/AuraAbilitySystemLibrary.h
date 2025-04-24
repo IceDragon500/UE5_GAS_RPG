@@ -9,6 +9,8 @@
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AuraAbilitySystemLibrary.generated.h"
 
+class AAuraHUD;
+class USpellMenuWidgetController;
 /**
  * 
  */
@@ -18,12 +20,16 @@ class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController", meta = (DefaultToSelf = "WorldContextObject"))
+	static bool MakeWidgetControllerParams(const UObject* WorldContextObject, FWidgetControllerParams& OutWCParams, AAuraHUD*& OutAuraHUD);
+	
 	/**
 	 * 通过传入的Actor，来获得OverlayWidgetController
 	 * @param WorldContextObject 
 	 * @return 
 	 */
-	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController")
+	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController", meta = (DefaultToSelf = "WorldContextObject"))
 	static UOverlayWidgetController* GetOverlayWidgetController(const UObject* WorldContextObject);
 
 	/**
@@ -31,8 +37,16 @@ public:
 	 * @param WorldContextObject 传入对应的角色Actor
 	 * @return 
 	 */
-	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController")
+	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController", meta = (DefaultToSelf = "WorldContextObject"))
 	static UAttributeMenuWidgetController* GetAttributeMenuWidgetController(const UObject* WorldContextObject);
+
+	/**
+	 * 传入对应的角色Actor 获得SpellMenuWidgetController，就是获得技能面板的控制
+	 * @param WorldContextObject 
+	 * @return 
+	 */
+	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController", meta = (DefaultToSelf = "WorldContextObject"))
+	static USpellMenuWidgetController* GetSpellMenuWidgetController(const UObject* WorldContextObject);
 
 	/**
 	 * 通过传入角色的Actor、角色职业信息、等级、ASC
