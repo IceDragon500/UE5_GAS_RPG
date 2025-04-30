@@ -20,7 +20,13 @@ class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-
+	/**
+	 * 通过传入目标Object，来获得Widget相关参数 和 HUD控制
+	 * @param WorldContextObject 
+	 * @param OutWCParams 
+	 * @param OutAuraHUD 
+	 * @return 
+	 */
 	UFUNCTION(BlueprintPure, Category = "角色控制|WidgetController", meta = (DefaultToSelf = "WorldContextObject"))
 	static bool MakeWidgetControllerParams(const UObject* WorldContextObject, FWidgetControllerParams& OutWCParams, AAuraHUD*& OutAuraHUD);
 	

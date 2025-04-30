@@ -18,8 +18,13 @@ class UAuraAttributeSet;
 class UAbilityInfo;
 
 
-
-
+/**
+ * 创建游戏的基本参数
+ * PlayerController
+ * PlayerState
+ * AbilitySystemComponent
+ * AttributeSet
+ */
 USTRUCT(BlueprintType)
 struct FWidgetControllerParams
 {
