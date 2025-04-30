@@ -19,6 +19,7 @@ public:
  //初始化GameplayTags
  //创建原生的GameplayTags
  static void InitializeNativeGameplayTags();
+ 
  FGameplayTag Attributes_Primary_Strength;
  FGameplayTag Attributes_Primary_Intelligence;
  FGameplayTag Attributes_Primary_Resilience;
@@ -59,7 +60,20 @@ public:
 
  FGameplayTag Abilities_Attack;
  FGameplayTag Abilities_Summon;
+ 
+ FGameplayTag Abilities_HitReact;
 
+ //技能的几种状态
+ FGameplayTag Abilities_Status_Locked;//被锁定
+ FGameplayTag Abilities_Status_Eligible;//具备条件的
+ FGameplayTag Abilities_Status_Unlocked;//解锁的
+ FGameplayTag Abilities_Status_Equipped;//已被装备的
+
+ //技能的类型
+ FGameplayTag Abilities_Type_Offensive;//攻击技能
+ FGameplayTag Abilities_Type_Passive;//被动技能
+ FGameplayTag Abilities_Type_None;//未分类的技能
+ 
  FGameplayTag Abilities_Fire_FireBolt;
 
  FGameplayTag Cooldown_Fire_FireBolt;
