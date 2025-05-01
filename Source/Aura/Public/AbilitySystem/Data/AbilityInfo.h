@@ -44,7 +44,7 @@ struct FAuraAbilityInfo
 
 	//技能类
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<UGameplayAbility> AbilityClass;
+	TSubclassOf<UGameplayAbility> Ability;
 	
 };
 

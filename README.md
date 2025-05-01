@@ -351,8 +351,7 @@
 √281. Ability Status and Type 14 分钟
 √282. Showing Abilities in the Spell Tree 24 分钟
 √283. Ability Level Requirement 12 分钟
-
-284. Update Ability Statuses 13 分钟
+√284. Update Ability Statuses 13 分钟
 
 285. Updating Status in the Spell Menu 14 分钟
 

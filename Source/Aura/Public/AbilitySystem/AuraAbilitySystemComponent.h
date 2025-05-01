@@ -54,10 +54,15 @@ public:
 	//从能力规格中获取当前状态信息Status
 	static FGameplayTag GetStatusFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 
+	//检查是否可以从指定的AbilityTag来查询是否有Spec
+	FGameplayAbilitySpec* GetSpecFromAbilityTag(const FGameplayTag& AbilityTag);
+
 	void UpgradeAttribute(const FGameplayTag& AttributeTag);
 
 	UFUNCTION(Server, Reliable)
 	void ServerUpgradeAttribute(const FGameplayTag& AttributeTag);
+
+	void UpdateAbilityStatuses(int32 Level);
 	
 protected:
 

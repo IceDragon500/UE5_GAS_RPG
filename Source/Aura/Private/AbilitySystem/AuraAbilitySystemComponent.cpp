@@ -4,7 +4,9 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AuraGameplayTags.h"
+#include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/Abilities/AuraGameplayAbility.h"
+#include "AbilitySystem/Data/AbilityInfo.h"
 #include "Aura/AuraLogChannels.h"
 #include "Interaction/PlayerInterface.h"
 
@@ -79,8 +81,18 @@ void UAuraAbilitySystemComponent::AbilityInputTagReleased(const FGameplayTag& In
 
 void UAuraAbilitySystemComponent::ForEachAbility(const FForEachAbility& Delegate)
 {
-	//FScopedAbilityListLock
-	//用来阻止我们在迭代能力时从能力系统组件中移除能力
+	/**
+	 * FScopedAbilityListLock
+	 * 用来阻止我们在迭代能力时从能力系统组件中移除能力
+	 * 
+	 * 作用域限定：锁的生命周期与ActivesScopeLock对象绑定，仅在函数执行期间生效。函数返回时，锁自动释放，避免死锁风险。
+	 * 性能代价：加锁会带来微小性能开销，但确保了安全性。在频繁调用的场景需权衡，但此处是合理的权衡。
+	 *
+	 * 若未使用此锁
+	 * 迭代器失效：如在遍历时删除元素，可能导致崩溃
+	 * 数据竞争：部分线程可能读到不完整的中间状态
+	 * Heisenbugs：难以复现的随机崩溃，尤其在多玩家或异步加载时
+	 */
 	FScopedAbilityListLock ActiveScopeLock(*this);
 	
 	for (const FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
@@ -142,6 +154,22 @@ FGameplayTag UAuraAbilitySystemComponent::GetStatusFromSpec(const FGameplayAbili
 	return FGameplayTag();
 }
 
+FGameplayAbilitySpec* UAuraAbilitySystemComponent::GetSpecFromAbilityTag(const FGameplayTag& AbilityTag)
+{
+	FScopedAbilityListLock ActivesScopeLock(*this);
+	for (FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
+	{
+		for (FGameplayTag Tag : AbilitySpec.Ability.Get()->AbilityTags)
+		{
+			if (Tag.MatchesTag(AbilityTag))
+			{
+				return &AbilitySpec;
+			}
+		}
+	}
+	return nullptr;
+}
+
 void UAuraAbilitySystemComponent::UpgradeAttribute(const FGameplayTag& AttributeTag)
 {
 	if (GetAvatarActor()->Implements<UPlayerInterface>())
@@ -164,6 +192,24 @@ void UAuraAbilitySystemComponent::ServerUpgradeAttribute_Implementation(const FG
 	if (GetAvatarActor()->Implements<UPlayerInterface>())
 	{
 		IPlayerInterface::Execute_AddToAttributePoints(GetAvatarActor(), -1);
+	}
+}
+
+void UAuraAbilitySystemComponent::UpdateAbilityStatuses(int32 Level)
+{
+	UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(GetAvatarActor());
+	for (const FAuraAbilityInfo& Info : AbilityInfo->AbilityInformation)
+	{
+		if (!Info.AbilityTag.IsValid()) continue;
+		if (Level < Info.LevelRequirement) continue;
+		if (GetSpecFromAbilityTag(Info.AbilityTag) == nullptr)
+		{
+			FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(Info.Ability, 1);
+			AbilitySpec.DynamicAbilityTags.AddTag(FAuraGameplayTags::Get().Abilities_Status_Eligible);
+			GiveAbility(AbilitySpec);
+			MarkAbilitySpecDirty(AbilitySpec);//调用来标记一个能力规格已经被修改  立刻进行修改
+		}
+		
 	}
 }
 
