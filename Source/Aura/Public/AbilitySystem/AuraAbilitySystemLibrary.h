@@ -83,6 +83,14 @@ public:
 	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
 
 	/**
+	 * 
+	 * @param WorldContextObject 
+	 * @return 
+	 */
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
+	static UAbilityInfo* GetAbilityInfo(const UObject* WorldContextObject);
+
+	/**
 	 * 传入一个GameplayEffectContextHandle  来检查伤害是否需要计算BlockHit
 	 * @param EffectContextHandle 
 	 * @return 

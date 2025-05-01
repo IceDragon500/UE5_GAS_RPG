@@ -69,17 +69,17 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	GameplayTags.Abilities_Summon = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Summon"), FString("攻击方式Tag: 召唤小怪"));
 
 	/**
-	 * 可以使用的攻击技能
-	 * FireBolt ： 使用火球进行攻击
+	 * FireBolt技能
 	 */
 	GameplayTags.Abilities_Fire_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Fire.FireBolt"), FString("FireBolt ： 使用火球进行攻击"));
-
-	/**
-	 * 冷却时间 Tag
-	 * 对应上面的攻击技能
-	 */
 	GameplayTags.Cooldown_Fire_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Cooldown.Fire.FireBolt"), FString("FireBolt Cooldown Abilities Tag"));
 
+	/**
+	 * Lighting技能
+	 */
+	GameplayTags.Abilities_Lighting_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Lighting.Electrocute"), FString("Electrocute ： 使用电击"));
+	GameplayTags.Cooldown_Lighting_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Cooldown.Lighting.Electrocute"), FString("Electrocute Cooldown Abilities Tag"));
+	
 	/**
 	 * 在角色网格体对应的骨骼上，参与攻击判断的Socket名称Tag
 	 */

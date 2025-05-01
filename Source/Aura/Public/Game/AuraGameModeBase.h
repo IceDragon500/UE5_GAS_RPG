@@ -18,6 +18,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "属性设置|Character Class Defaults")
 	TObjectPtr<UCharacterClassInfo> CharacterClassInfo;
+
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置|Character Class Defaults")
+	TObjectPtr<UAbilityInfo> AbilityInfo;
 	
 protected:
 private:

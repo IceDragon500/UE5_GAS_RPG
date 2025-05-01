@@ -73,10 +73,14 @@ public:
  FGameplayTag Abilities_Type_Offensive;//攻击技能
  FGameplayTag Abilities_Type_Passive;//被动技能
  FGameplayTag Abilities_Type_None;//未分类的技能
- 
- FGameplayTag Abilities_Fire_FireBolt;
 
+ //FireBolt技能
+ FGameplayTag Abilities_Fire_FireBolt;
  FGameplayTag Cooldown_Fire_FireBolt;
+
+ //Lighting技能
+ FGameplayTag Abilities_Lighting_Electrocute;
+ FGameplayTag Cooldown_Lighting_Electrocute;
 
 
  FGameplayTag CombatSocket_Weapon;
