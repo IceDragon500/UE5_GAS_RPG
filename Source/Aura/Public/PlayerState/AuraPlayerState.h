@@ -82,7 +82,7 @@ private:
 	UFUNCTION()
 	void OnRep_AttributePoints(int32 OldAttributePoints);
 
-	//玩家属性点
+	//玩家技能点
 	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_SpellPoints)
 	int32 SpellPoints = 0;
 

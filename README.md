@@ -353,8 +353,7 @@
 √283. Ability Level Requirement 12 分钟
 √284. Update Ability Statuses 13 分钟
 √285. Updating Status in the Spell Menu 14 分钟
-
-286. Show Spell Points 10 分钟
+√286. Show Spell Points 10 分钟
 
 287. Selecting Icons 12 分钟
 
