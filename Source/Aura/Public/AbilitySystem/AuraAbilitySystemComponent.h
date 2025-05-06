@@ -9,6 +9,7 @@
 DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContainer& /* AssetTags*/);
 DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
 DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
+DECLARE_MULTICAST_DELEGATE_TwoParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/);
 
 /**
  * 
@@ -26,6 +27,8 @@ public:
 
 	// 能力赋予的多播委托
 	FAbilitiesGiven AbilitiesGivenDelegate;
+
+	FAbilityStatusChanged AbilityStatusChanged;
 
 	// 添加角色能力
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InAbilities);
@@ -71,6 +74,9 @@ protected:
 	// 客户端效果应用函数
 	UFUNCTION(Client, Reliable)
 	void ClientEffectApplied(UAbilitySystemComponent* AbilitySystemComponent, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle);
+
+	UFUNCTION(Client, Reliable)
+	void ClientupdateAbilityStatus(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag);
 private:
 	
 };
