@@ -355,8 +355,7 @@
 √285. Updating Status in the Spell Menu 14 分钟
 √286. Show Spell Points 10 分钟
 √287. Selecting Icons 12 分钟
-
-288. Deselecting Icons 7 分钟
+√288. Deselecting Icons 7 分钟
 
 289. Spell Menu Buttons 39 分钟
 
