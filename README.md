@@ -357,8 +357,7 @@
 √287. Selecting Icons 12 分钟
 √288. Deselecting Icons 7 分钟
 √289. Spell Menu Buttons 39 分钟
-
-290. Selected Ability 12 分钟
+√290. Selected Ability 12 分钟
 
 291. Spending Spell Points 30 分钟
 
