@@ -43,6 +43,9 @@ public:
 
  FGameplayTag Attributes_Meta_IncomingXP;
 
+ /**
+  * 输入Tag
+  */
  FGameplayTag InputTag_LMB;
  FGameplayTag InputTag_RMB;
  FGameplayTag InputTag_1;
@@ -52,18 +55,25 @@ public:
  FGameplayTag InputTag_Passive_1;
  FGameplayTag InputTag_Passive_2;
 
+ /**
+  * 伤害类型Tag
+  */
  FGameplayTag Damage;
  FGameplayTag Damage_Fire; //火焰伤害
  FGameplayTag Damage_Lightning; //闪电伤害
  FGameplayTag Damage_Arcane; //奥术伤害
  FGameplayTag Damage_Physical; //物理伤害
 
- FGameplayTag Abilities_Attack;
- FGameplayTag Abilities_Summon;
+ //怪物的攻击方式
+ FGameplayTag Abilities_Attack; //怪物正常攻击
+ FGameplayTag Abilities_Summon; //怪物使用召唤技能
  
  FGameplayTag Abilities_None;
- 
+
+ //怪物受到攻击产生的受击动作Tag
  FGameplayTag Abilities_HitReact;
+ //受到攻击产生的攻击特效粒子
+ FGameplayTag Effect_HitReact;
 
  //技能的几种状态
  FGameplayTag Abilities_Status_Locked;//被锁定
@@ -84,21 +94,23 @@ public:
  FGameplayTag Abilities_Lighting_Electrocute;
  FGameplayTag Cooldown_Lighting_Electrocute;
 
-
- FGameplayTag CombatSocket_Weapon;
- FGameplayTag CombatSocket_RightHand;
- FGameplayTag CombatSocket_LeftHand;
+ //武器Socket的几种Tag
+ FGameplayTag CombatSocket_Weapon;//表示有武器Mesh，Socket在武器上
+ FGameplayTag CombatSocket_RightHand;//表示Socket在右手上 右手攻击
+ FGameplayTag CombatSocket_LeftHand;//表示Socket在左手上 左手攻击
  FGameplayTag CombatSocket_Trail;
 
+ //表示几种攻击动画的Tag
  FGameplayTag Montage_Attack_1;
  FGameplayTag Montage_Attack_2;
  FGameplayTag Montage_Attack_3;
  FGameplayTag Montage_Attack_4;
 
+ //发射火球的Tag
+ FGameplayTag Event_Montage_FireBolt;
+
  TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
- 
- FGameplayTag Effect_HitReact;
- 
+
 protected:
  
 private:
