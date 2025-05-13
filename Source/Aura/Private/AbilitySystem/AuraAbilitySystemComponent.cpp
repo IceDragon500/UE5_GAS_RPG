@@ -243,7 +243,6 @@ void UAuraAbilitySystemComponent::ServerSpendSpellPoint_Implementation(const FGa
 
 		ClientupdateAbilityStatus(AbilityTag, Status, AbilitySpec->Level);
 		MarkAbilitySpecDirty(*AbilitySpec);
-
 		
 	}
 }
@@ -252,10 +251,18 @@ bool UAuraAbilitySystemComponent::GetDescriptionsByAbilityTag(const FGameplayTag
 {
 	if (const FGameplayAbilitySpec* AbilitySpec = GetSpecFromAbilityTag(AbilityTag))
 	{
-		
+		if (UAuraGameplayAbility* AuraAbility = Cast<UAuraGameplayAbility>(AbilitySpec->Ability))
+		{
+			OutDescription = AuraAbility->GetDescription(AbilitySpec->Level);
+			OutNextLevelDescription = AuraAbility->GetDescription(AbilitySpec->Level + 1);
+			return true;
+		}
 	}
 
-	UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(GetAvatarActor());
+	const UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(GetAvatarActor());
+	OutDescription = UAuraGameplayAbility::GetLockedDescription(AbilityInfo->FindAbilityInfoForTag(AbilityTag).LevelRequirement);
+	OutNextLevelDescription = FString();
+	
 	return false;
 }
 
