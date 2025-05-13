@@ -17,6 +17,8 @@ class AURA_API UAuraProjectileSpell : public UAuraDamageGameplayAbility
 	GENERATED_BODY()
 	
 public:
+	virtual FString GetDescription(int32 Level) override;
+	virtual FString GetNextLevelDescription(int32 Level) override;
 	
 protected:
 
@@ -29,6 +31,9 @@ protected:
 	//设置需要抛出的对象，是一个BP蓝图
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "属性设置|发射物属性设置")
 	TSubclassOf<AAuraProjectile> ProjectileClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	int32 MaxNumProjectiles = 5;
 	
 private:
 
