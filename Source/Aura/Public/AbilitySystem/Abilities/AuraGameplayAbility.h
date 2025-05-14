@@ -12,21 +12,23 @@
 UCLASS()
 class AURA_API UAuraGameplayAbility : public UGameplayAbility
 {
- GENERATED_BODY()
-public:
+	GENERATED_BODY()
 
-	UPROPERTY(EditDefaultsOnly,Category="属性设置|Input")
+public:
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|Input")
 	FGameplayTag StartupInputTag;
 
- virtual FString GetDescription(int32 Level);
- virtual FString GetNextLevelDescription(int32 Level);
- static FString GetLockedDescription(int32 Level);
- 
-protected:
-private:
- 
-};
+	virtual FString GetDescription(int32 Level);
+	virtual FString GetNextLevelDescription(int32 Level);
+	static FString GetLockedDescription(int32 Level);
 
+protected:
+	float GetManaCost(int32 InLevel = 1) const;
+	float GetCooldown(int32 InLevel = 1) const;
+
+private:
+	
+};
 
 
 /* 99课

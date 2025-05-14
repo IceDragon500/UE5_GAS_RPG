@@ -362,8 +362,7 @@
 √292. Rich Text Blocks 13 分钟
 √293. Spell Descriptions 19 分钟
 √294. FireBolt Description 13 分钟
-
-295. Cost and Cooldown in Spell Description 34 分钟
+√295. Cost and Cooldown in Spell Description 34 分钟
 
 296. Self Deselect 11 分钟
 
