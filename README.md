@@ -364,8 +364,7 @@
 √294. FireBolt Description 13 分钟
 √295. Cost and Cooldown in Spell Description 34 分钟
 √296. Self Deselect 11 分钟
-
-297. Equipped Spell Row Animations 18 分钟
+√297. Equipped Spell Row Animations 18 分钟
 
 298. Ability Types 23 分钟
 
