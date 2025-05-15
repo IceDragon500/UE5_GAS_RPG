@@ -10,10 +10,15 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FSpellGlobeSelectedSignature, bool, bSpendPointsButtonEnabled, bool, bEqupiButtonEnabled, FString, DescriptionString, FString, NextLevelDescriptionString);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FWaitForEquipSelectionSignature, const FGameplayTag&, AbilityType);
 
+/**
+ * 被选中的技能
+ * Ability : 表示能力Tag本身
+ * Status : 表示当前能力的状态Tag
+ */
 struct FSelectedAbility
 {
-	FGameplayTag Ability = FGameplayTag();
-	FGameplayTag Status = FGameplayTag();
+	FGameplayTag Ability = FGameplayTag();//表示能力Tag本身
+	FGameplayTag Status = FGameplayTag();//表示当前能力的状态Tag
 	
 };
 /**
@@ -55,6 +60,11 @@ public:
 	//按下装备技能按钮
 	UFUNCTION(BlueprintCallable)
 	void EquipButtonPressed();
+
+	UFUNCTION(BlueprintCallable)
+	void SpellRowGlobePressed(const FGameplayTag& SlotTag, const FGameplayTag& AbilityType);
+
+	void OnAbilityEquipped(const FGameplayTag& AbilityTag, const FGameplayTag& Status, const FGameplayTag& InputTagSlot, const FGameplayTag& PreviousSlot);
 	
 protected:
 	
@@ -68,4 +78,5 @@ private:
 
 	bool bWaitingForEquipSelection = false;
 	
+	FGameplayTag SelectedSlot;
 };

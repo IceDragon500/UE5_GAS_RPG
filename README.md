@@ -366,8 +366,7 @@
 √296. Self Deselect 11 分钟
 √297. Equipped Spell Row Animations 18 分钟
 √298. Ability Types 23 分钟
-
-299. Equipping Abilities 42 分钟
+√299. Equipping Abilities 42 分钟
 
 300. Updating the Overlay When Equipping Abilities 10 分钟
 

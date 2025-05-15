@@ -10,6 +10,7 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContaine
 DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
 DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
 DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/,  int32 /* Level*/);
+DECLARE_MULTICAST_DELEGATE_FourParams(FAbilityEquipped, const FGameplayTag& /*AbilityTag*/, const FGameplayTag&/* Status*/, const FGameplayTag& /* InputTagSlot*/, const FGameplayTag& /*PreviousSlot*/);
 
 /**
  * 
@@ -28,7 +29,10 @@ public:
 	// 能力赋予的多播委托
 	FAbilitiesGiven AbilitiesGivenDelegate;
 
+	//能力状态的多播
 	FAbilityStatusChanged AbilityStatusChanged;
+
+	FAbilityEquipped AbilityEquipped;
 
 	// 添加角色能力
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InAbilities);
@@ -57,6 +61,12 @@ public:
 	//从能力规格中获取当前状态信息Status
 	static FGameplayTag GetStatusFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 
+	//从AbilityTag中获取AbilityStatus
+	FGameplayTag GetStatusFromAbilityTag(const FGameplayTag& AbilityTag);
+
+	//从AbilityTag中获取InputTag
+	FGameplayTag GetInputTagFromAbilityTag(const FGameplayTag& AbilityTag);
+
 	//检查是否可以从指定的AbilityTag来查询是否有Spec
 	FGameplayAbilitySpec* GetSpecFromAbilityTag(const FGameplayTag& AbilityTag);
 
@@ -70,8 +80,21 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerSpendSpellPoint(const FGameplayTag& AbilityTag);
 
+	UFUNCTION(Server, Reliable)
+	void ServerEquipAbility(const FGameplayTag& AbilityTag, const FGameplayTag& InputTagSlot);
 
+	void ClientEquipAbility(const FGameplayTag& AbilityTag, const FGameplayTag& Status, const FGameplayTag& InputTagSlot, const FGameplayTag& PreviousSlot);
+	
 	bool GetDescriptionsByAbilityTag(const FGameplayTag& AbilityTag, FString& OutDescription, FString& OutNextLevelDescription);
+
+	//移除一个指定的FGameplayAbilitySpec上面的InputTag
+	void ClearSlot(FGameplayAbilitySpec* Spec);
+
+	//具有指定InputTag的Slot（技能槽）如果有，就把他清除
+	//当前指定按键上对应如果有技能，则把这个技能清除掉
+	void ClearAbilitiesOfSlot(const FGameplayTag& Slot);
+
+	static bool AbilityHasSlot(FGameplayAbilitySpec* Spec, const FGameplayTag& Slot);
 	
 protected:
 
