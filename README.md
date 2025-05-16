@@ -369,8 +369,7 @@
 √299. Equipping Abilities 42 分钟
 √300. Updating the Overlay When Equipping Abilities 10 分钟
 √301. Globe Reassigned 7 分钟
-
-302. Unbinding Delegates 6 分钟
+√302. Unbinding Delegates 6 分钟
 
 测试 22： Section 24 Quiz
 
