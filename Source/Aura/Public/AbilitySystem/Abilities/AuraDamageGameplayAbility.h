@@ -19,14 +19,21 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category= "属性设置|发射物属性设置")
 	TSubclassOf<UGameplayEffect> DamageEffectClass;
 	
-	
+	//303讲中被移除
+	//UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	//TMap<FGameplayTag, FScalableFloat> DamageTypes;
+
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
-	TMap<FGameplayTag, FScalableFloat> DamageTypes;
+	FGameplayTag DamageType;
+
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	FScalableFloat Damage;
 
 	UFUNCTION(BlueprintPure)
 	FTaggedMontage GetRandomTaggedMontageFromArray(const TArray<FTaggedMontage>& TaggedMontages) const;
 
-	float GetDamageByDamageType(float InLevel, const FGameplayTag& DamageType);
+	//303讲中被移除
+	//float GetDamageByDamageType(float InLevel, const FGameplayTag& DamageType);
 	
 private:
 	

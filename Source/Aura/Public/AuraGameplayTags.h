@@ -36,13 +36,25 @@ public:
  FGameplayTag Attributes_Secondary_MaxHealth;//最大生命值
  FGameplayTag Attributes_Secondary_MaxMana;//最大法力值
 
+ /**
+  * 抗性Tag
+  */
  FGameplayTag Attributes_Resistance_Fire;//火焰抗性
  FGameplayTag Attributes_Resistance_Lightning;
  FGameplayTag Attributes_Resistance_Arcane;
  FGameplayTag Attributes_Resistance_Physical;
 
+ //经验
  FGameplayTag Attributes_Meta_IncomingXP;
 
+ /**
+  * Debuff Tag
+  */
+ FGameplayTag Debuff_Fire_Burn;
+ FGameplayTag Debuff_Lighting_Stun;
+ FGameplayTag Debuff_Arcane;
+ FGameplayTag Debuff_Physical;
+ 
  /**
   * 输入Tag
   */
@@ -110,6 +122,7 @@ public:
  FGameplayTag Event_Montage_FireBolt;
 
  TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
+ TMap<FGameplayTag, FGameplayTag> DamageTypesToDebuffs;
 
 protected:
  

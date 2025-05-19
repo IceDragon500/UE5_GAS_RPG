@@ -70,21 +70,16 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 	EffectContextHandle.AddHitResult(HitResult);
 
 
-	const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(
-		DamageEffectClass, GetAbilityLevel(), EffectContextHandle);
+	const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(DamageEffectClass, GetAbilityLevel(), EffectContextHandle);
 
 	FAuraGameplayTags GameplayTags = FAuraGameplayTags::Get();
+	
 
-	for (auto& Pair : DamageTypes)
-	{
-		const float ScaledDamage = Pair.Value.GetValueAtLevel(GetAbilityLevel());
+	const float ScaledDamage = Damage.GetValueAtLevel(GetAbilityLevel());
 
-		//Sets a gameplay tag Set By Caller magnitude value
-		//设置一个由调用者大小值设置的游戏标签
-		//最后那个50就是硬编码的应用的伤害数值
-		//我们后面会将其替换成一个可以计算 有浮动的参数
-		UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, Pair.Key, ScaledDamage);
-	}
+	//Sets a gameplay tag Set By Caller magnitude value
+	//设置一个由调用者大小值设置的游戏标签
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, DamageType, ScaledDamage);
 
 	Projectile->DamageEffectSpecHandle = SpecHandle;
 

@@ -335,8 +335,9 @@
 √267. Upgrading Attributes 19 分钟
 √268. Top Off Our Fluids 14 分钟
 √269. Attribute Menu Polish 16 分钟
-
 测试 21： Section 23 Quiz
+
+第24节 Spell Menu技能菜单
 √270. Spell Menu Design 6 分钟
 √271. Spell Globe Button 13 分钟
 √272. Offensive Spell Tree 12 分钟
@@ -370,10 +371,10 @@
 √300. Updating the Overlay When Equipping Abilities 10 分钟
 √301. Globe Reassigned 7 分钟
 √302. Unbinding Delegates 6 分钟
-
 测试 22： Section 24 Quiz
 
-303. Debuff Tags 18 分钟
+第25节 Combat Tricks战斗技能
+√303. Debuff Tags 18 分钟
 
 304. Debuff Parameters 6 分钟
 
