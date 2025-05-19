@@ -375,8 +375,7 @@
 
 第25节 Combat Tricks战斗技能
 √303. Debuff Tags 18 分钟
-
-304. Debuff Parameters 6 分钟
+√304. Debuff Parameters 6 分钟
 
 305. Damage Effect Params Struct 25 分钟
 
