@@ -55,8 +55,17 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		ESpawnActorCollisionHandlingMethod::AlwaysSpawn //定义了用于处理以下情况的可用策略：当角色生成时，它穿透了阻挡碰撞。
 	);
 
+	
+	Projectile->DamageEffectParams = MakeDamageEffectParamsFromClassDefault(nullptr);
+
+
+	Projectile->FinishSpawning(SpawnTransform);
+
+/*
+
 	//todo  这将视为投射物提供一个用于造成伤害的游戏效果规格
 
+	
 	const UAbilitySystemComponent* SourceASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(
 		GetAvatarActorFromActorInfo());
 	FGameplayEffectContextHandle EffectContextHandle = SourceASC->MakeEffectContext();
@@ -84,4 +93,6 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 	Projectile->DamageEffectSpecHandle = SpecHandle;
 
 	Projectile->FinishSpawning(SpawnTransform);
+*/
+	
 }

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameplayEffectTypes.h"
+#include "AuraAbilityTypes.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "NiagaraSystem.h"
@@ -25,10 +25,12 @@ public:
 
 	
 	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = "true"))//ExposeOnSpawn:指定属性是否应该暴露在类类型的Spawn Actor上
-	FGameplayEffectSpecHandle DamageEffectSpecHandle;
+	FDamageEffectParams DamageEffectParams;
+	//FGameplayEffectSpecHandle DamageEffectSpecHandle;
 
 protected:
 	virtual void BeginPlay() override;
+	void OnHit();
 	virtual void Destroyed() override;
 
 	UFUNCTION()

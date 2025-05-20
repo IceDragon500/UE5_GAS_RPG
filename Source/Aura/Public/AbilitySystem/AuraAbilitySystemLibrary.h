@@ -145,6 +145,14 @@ public:
 	static bool IsNotFriend(AActor* FirstActor, AActor* SecondActor);
 
 	/**
+	 * 
+	 * @param DamageEffectParams 
+	 * @return 
+	 */
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static FGameplayEffectContextHandle ApplyDamageEffect(const FDamageEffectParams& DamageEffectParams);
+	
+	/**
 	 * ECharacterClass中获取对应等级的经验（针对怪物）
 	 * @param WorldContextObject 
 	 * @param CharacterClass 传入怪物对应的ECharacterClass ，获取里面的FScalableFloat 曲线上的经验值
@@ -153,12 +161,6 @@ public:
 	 */
 	static int32 GetXPRewardForClassAndLevel(const UObject* WorldContextObject, ECharacterClass CharacterClass, int32 CharacterLevel);
 
-	/**
-	 * 
-	 * @param DamageEffectParams 
-	 * @return 
-	 */
-	static FGameplayEffectContextHandle ApplyDamageEffect(const FDamageEffectParams& DamageEffectParams);
 	
 protected:
 private:
