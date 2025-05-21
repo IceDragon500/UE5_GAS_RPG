@@ -99,6 +99,21 @@ public:
 	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
 	static  bool IsBlockHit(const FGameplayEffectContextHandle& EffectContextHandle);
 
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  bool IsSuccessfulDebuff(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  float GetDebuffDamage(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  float GetDebuffDuration(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  float GetDebuffFrequency(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  FGameplayTag GetDamageType(const FGameplayEffectContextHandle& EffectContextHandle);
+
 	/**
 	 * 传入一个GameplayEffectContextHandle  来检查伤害是否需要计算CriticalHit
 	 * @param EffectContextHandle 
