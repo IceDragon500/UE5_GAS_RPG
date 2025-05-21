@@ -378,8 +378,7 @@
 √304. Debuff Parameters 6 分钟
 √305. Damage Effect Params Struct 25 分钟
 √306. Using Damage Effect Params 14 分钟
-
-307. Determining Debuff 24 分钟
+√307. Determining Debuff 24 分钟
 
 308. Debuff Info in the Effect Context 19 分钟
 
