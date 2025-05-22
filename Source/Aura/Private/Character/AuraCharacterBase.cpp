@@ -13,6 +13,10 @@ AAuraCharacterBase::AAuraCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
+	FireDebuffComponent = CreateDefaultSubobject<UDebuffNiagaraComponent>("FireDebuff");
+	FireDebuffComponent->SetupAttachment(GetRootComponent());
+	FireDebuffComponent->DebuffTag = FAuraGameplayTags::Get().Debuff_Fire_Burn;
+
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	GetCapsuleComponent()->SetGenerateOverlapEvents(false);//设置碰撞盒子不会触发碰撞事件 这样只有网格体才可以触发碰撞事件
 	
@@ -61,6 +65,8 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 
 	Dissolve();
 	bDead = true;
+
+	OnDeath.Broadcast(this);
 }
 
 void AAuraCharacterBase::BeginPlay()
@@ -140,6 +146,16 @@ void AAuraCharacterBase::IncrementMinionCount_Implementation(int32 Amount)
 ECharacterClass AAuraCharacterBase::GetCharacterClass_Implementation()
 {
 	return CharacterClass;
+}
+
+FOnASCRegistered AAuraCharacterBase::GetOnASCRegisteredDelegate()
+{
+	return OnASCRegistered;
+}
+
+FOnDeath AAuraCharacterBase::GetOnDeathDelegate()
+{
+	return OnDeath;
 }
 
 void AAuraCharacterBase::InitAbilityActorInfo()

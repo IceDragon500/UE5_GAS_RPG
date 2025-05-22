@@ -382,8 +382,7 @@
 √308. Debuff Info in the Effect Context 19 分钟
 √309. Debuff in the Attribute Set 15 分钟
 √310. Dynamic Gameplay Effects 25 分钟
-
-311. Debuff Niagara Component 26 分钟
+√311. Debuff Niagara Component 26 分钟
 
 312. Death Impulse Magnitude 5 分钟
 
