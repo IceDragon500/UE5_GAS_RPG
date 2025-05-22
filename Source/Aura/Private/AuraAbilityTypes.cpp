@@ -34,7 +34,7 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* M
 		if (DamageType.IsValid()) RepBits |= 1 << 13;
 	}
 
-	Ar.SerializeBits(&RepBits, 9);
+	Ar.SerializeBits(&RepBits, 14);
 
 	if (RepBits & (1 << 0)) Ar << Instigator;
 	if (RepBits & (1 << 1)) Ar << EffectCauser;

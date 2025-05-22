@@ -311,6 +311,12 @@ private:
 	 */
 	void SetEffectProperties(const FGameplayEffectModCallbackData& InData, FEffectProperties& OutProps) const;
 	
+	void HandleInComingDamage(const FEffectProperties Props);
+	
+	void HandleIncomingXP(const FEffectProperties Props);
+
+	void Debuff(const FEffectProperties Props);
+
 	/**
 	 * 显示伤害文字
 	 * @param Props 里面包含Target 和 Sources的gameplay effect信息 

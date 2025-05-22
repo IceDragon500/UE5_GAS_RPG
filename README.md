@@ -380,8 +380,7 @@
 √306. Using Damage Effect Params 14 分钟
 √307. Determining Debuff 24 分钟
 √308. Debuff Info in the Effect Context 19 分钟
-
-309. Debuff in the Attribute Set 15 分钟
+√309. Debuff in the Attribute Set 15 分钟
 
 310. Dynamic Gameplay Effects 25 分钟
 

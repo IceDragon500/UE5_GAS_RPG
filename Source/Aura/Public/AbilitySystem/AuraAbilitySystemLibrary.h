@@ -138,6 +138,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void SetIsCriticalHit(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, bool IsInCriticalHit);
 
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetIsSuccessfulDebuff(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, bool IsSuccessfulDebuff);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetDebuffDamage(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InDamageDebuff);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetDebuffDuration(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InDebuffDuration);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetDebuffFrequency(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InDebuffFrequency);
+
+	static void SetDebuffDamageType(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, const FGameplayTag& InDamageType);
+
 	/**
 	 * 尝试在一个指定点的球形范围内，获取到指定的Actor
 	 * 用来作为武器上的攻击检测，从武器端点，设置一个球形，获取在这个球体中是否存在指定的Actor
