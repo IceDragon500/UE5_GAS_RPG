@@ -21,7 +21,7 @@ public:
 	//确定减益
 	void DetermineDebuff(const FGameplayEffectCustomExecutionParameters& ExecutionParams,
 	                     const FGameplayEffectSpec& Spec,
-	                     FAggregatorEvaluateParameters EvaluateParameters,
+	                     FAggregatorEvaluateParameters EvaluationParameters,
 	                     const TMap<FGameplayTag, FGameplayEffectAttributeCaptureDefinition>& InTagsToDefs) const;
 
 	virtual void Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override;
