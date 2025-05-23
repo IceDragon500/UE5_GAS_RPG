@@ -51,6 +51,10 @@ struct FDamageEffectParams
 	//死亡冲量
 	UPROPERTY()
 	float DeathImpulseMagnitude = 0.f;
+
+	//死亡冲量
+	UPROPERTY()
+	FVector DeathImpulse = FVector::ZeroVector;
 };
 
 
@@ -68,6 +72,7 @@ public:
 	float GetDebuffDuration() const { return DebuffDuration; }
 	float GetDebuffFrequency() const { return DebuffFrequency; }
 	TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }
+	FVector GetDeathImpulse() const { return DeathImpulse; }
 
 	void SetCriticalHit(bool bInIsCriticalHit)  { bIsCriticalHit = bInIsCriticalHit; }
 	void SetBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
@@ -76,6 +81,7 @@ public:
 	void SetDebuffDuration(float InDuration) { DebuffDuration = InDuration; }
 	void SetDebuffFrequency(float InFreq) { DebuffFrequency = InFreq; }
 	void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
+	void SetDeathImpulse(const FVector& Impulse) { DeathImpulse = Impulse; }
 
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	/* 返回序列化所用的实际结构体，子类必须重载该结构体 */
@@ -103,25 +109,36 @@ public:
 
 protected:
 
+	//是否有暴击
 	UPROPERTY()
 	bool bIsCriticalHit = false;
 
+	//是否被阻挡了伤害
 	UPROPERTY()
 	bool bIsBlockedHit = false;
 
+	//是否成功附加了Debuff
 	UPROPERTY()
 	bool bIsSuccessfulDebuff = false;
 
+	//Debuff的伤害
 	UPROPERTY()
 	float DebuffDamage = 0.f;
 
+	//Debuff的持续时间
 	UPROPERTY()
 	float DebuffDuration = 0.f;
 
+	//Debuff的间隔时间
 	UPROPERTY()
 	float DebuffFrequency = 0.f;
 
+	//伤害类型
 	TSharedPtr<FGameplayTag> DamageType;
+
+	//死亡冲击向量
+	UPROPERTY()
+	FVector DeathImpulse = FVector::ZeroVector;
 
 private:
 	

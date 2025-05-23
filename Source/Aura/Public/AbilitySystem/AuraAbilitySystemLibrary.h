@@ -114,6 +114,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
 	static  FGameplayTag GetDamageType(const FGameplayEffectContextHandle& EffectContextHandle);
 
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static  FVector GetDamageImpulse(const FGameplayEffectContextHandle& EffectContextHandle);
+
 	/**
 	 * 传入一个GameplayEffectContextHandle  来检查伤害是否需要计算CriticalHit
 	 * @param EffectContextHandle 
@@ -150,7 +153,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void SetDebuffFrequency(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InDebuffFrequency);
 
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void SetDebuffDamageType(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, const FGameplayTag& InDamageType);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetDeathImpulse(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, const FVector& InImpulse);
 
 	/**
 	 * 尝试在一个指定点的球形范围内，获取到指定的Actor

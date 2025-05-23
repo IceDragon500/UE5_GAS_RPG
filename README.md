@@ -384,8 +384,7 @@
 √310. Dynamic Gameplay Effects 25 分钟
 √311. Debuff Niagara Component 26 分钟
 √312. Death Impulse Magnitude 5 分钟
-
-313. Death Impulse in the Effect Context 13 分钟
+√313. Death Impulse in the Effect Context 13 分钟
 
 314. Handling Death Impulse 19 分钟
 
