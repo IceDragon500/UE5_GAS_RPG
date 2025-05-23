@@ -385,8 +385,7 @@
 √311. Debuff Niagara Component 26 分钟
 √312. Death Impulse Magnitude 5 分钟
 √313. Death Impulse in the Effect Context 13 分钟
-
-314. Handling Death Impulse 19 分钟
+√314. Handling Death Impulse 19 分钟
 
 315. Knockback 35 分钟
 

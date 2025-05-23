@@ -207,7 +207,7 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 			
 			if (ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor))
 			{
-				CombatInterface->Die();
+				CombatInterface->Die(UAuraAbilitySystemLibrary::GetDamageImpulse(Props.EffectContextHandle));
 			}
 			SendXPEvent(Props);
 		}
