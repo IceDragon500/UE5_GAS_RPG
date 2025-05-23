@@ -47,6 +47,10 @@ struct FDamageEffectParams
 	//Debuff持续时间
 	UPROPERTY()
 	float DebuffFrequency = 0.f;
+
+	//死亡冲量
+	UPROPERTY()
+	float DeathImpulseMagnitude = 0.f;
 };
 
 

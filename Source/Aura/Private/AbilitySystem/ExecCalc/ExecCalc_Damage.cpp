@@ -2,7 +2,6 @@
 
 
 #include "AbilitySystem/ExecCalc/ExecCalc_Damage.h"
-
 #include "AbilitySystemComponent.h"
 #include "AuraAbilityTypes.h"
 #include "AuraGameplayTags.h"

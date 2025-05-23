@@ -2,7 +2,6 @@
 
 
 #include "UI/WidgetController/SpellMenuWidgetController.h"
-
 #include "AuraGameplayTags.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/Data/AbilityInfo.h"

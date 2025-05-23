@@ -1,8 +1,10 @@
-#include "AbilitySystem/Abilities/AuraDamageGameplayAbility.h"
+// 我自己用来学习的试作品 -- 来自icedragon500
 
+
+#include "AbilitySystem/Abilities/AuraDamageGameplayAbility.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
-#include "AuraGameplayTags.h"
+
 
 void UAuraDamageGameplayAbility::CauseDamage(AActor* TargetActor)
 {
@@ -30,6 +32,7 @@ FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassD
 	Params.DebuffDamage = DebuffDamage;
 	Params.DebuffDuration = DebuffDuration;
 	Params.DebuffFrequency = DebuffFrequency;
+	Params.DeathImpulseMagnitude = DeathImpulseMagnitude;
 	
 	return Params;
 }

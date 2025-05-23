@@ -1,3 +1,5 @@
+// 我自己用来学习的试作品 -- 来自icedragon500
+
 #pragma once
 
 #include "AuraAbilityTypes.h"
@@ -47,6 +49,10 @@ protected:
 	//Debuff持续时间
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
 	float DebuffDuration = 5.f;
+
+	//死亡冲量
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	float DeathImpulseMagnitude = 60.f;
 
 	UFUNCTION(BlueprintPure)
 	FTaggedMontage GetRandomTaggedMontageFromArray(const TArray<FTaggedMontage>& TaggedMontages) const;

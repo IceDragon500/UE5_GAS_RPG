@@ -2,7 +2,6 @@
 
 
 #include "AbilitySystem/Abilities/AuraGameplayAbility.h"
-
 #include "AbilitySystem/AuraAttributeSet.h"
 
 FString UAuraGameplayAbility::GetDescription(int32 Level)
