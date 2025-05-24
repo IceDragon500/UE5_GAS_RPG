@@ -15,7 +15,8 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void CauseDamage(AActor* TargetActor);
-	
+
+	UFUNCTION(BlueprintPure)
 	FDamageEffectParams MakeDamageEffectParamsFromClassDefault(AActor* TargetActor = nullptr) const;
 	
 protected:
@@ -50,9 +51,17 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
 	float DebuffDuration = 5.f;
 
-	//死亡冲量
+	//死亡后击飞尸体的冲击量
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
-	float DeathImpulseMagnitude = 60.f;
+	float DeathImpulseMagnitude = 9000.f;
+	
+	//命中目标后对目标的冲击量
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	float KnockbackForceMagnitude = 9000.f;
+
+	//命中目标后击飞目标的概率
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	float KnockbackChance = 0.f;
 
 	UFUNCTION(BlueprintPure)
 	FTaggedMontage GetRandomTaggedMontageFromArray(const TArray<FTaggedMontage>& TaggedMontages) const;

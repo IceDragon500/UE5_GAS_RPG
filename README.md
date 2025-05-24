@@ -386,11 +386,10 @@
 √312. Death Impulse Magnitude 5 分钟
 √313. Death Impulse in the Effect Context 13 分钟
 √314. Handling Death Impulse 19 分钟
-
-315. Knockback 35 分钟
-
+√315. Knockback 35 分钟
 测试 23： Section 25 Quiz
 
+第26节 What a Shock
 316. FireBolt Projectile Spread 29 分钟
 
 317. Spawning Multiple Projectiles 15 分钟

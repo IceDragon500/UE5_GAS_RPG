@@ -11,50 +11,64 @@ struct FDamageEffectParams
 
 	FDamageEffectParams(){}
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TObjectPtr<UObject> WorldContextObject = nullptr;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TSubclassOf<UGameplayEffect> DamageGameplayEffectClass = nullptr;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TObjectPtr<UAbilitySystemComponent> SourceAbilitySystemComponent;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TObjectPtr<UAbilitySystemComponent> TargetAbilitySystemComponent;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float BaseDamage = 0.f;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float AbilityLevel = 1.f;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	FGameplayTag DamageType = FGameplayTag();
 
 	//Debuff概率
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float DebuffChance = 0.f;
 
 	//Debuff伤害
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float DebuffDamage = 0.f;
 
 	//Debuff伤害间隔时间
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float DebuffDuration = 0.f;
 
 	//Debuff持续时间
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	float DebuffFrequency = 0.f;
 
-	//死亡冲量
-	UPROPERTY()
+	//死亡后击飞尸体的冲击量
+	UPROPERTY(BlueprintReadWrite)
 	float DeathImpulseMagnitude = 0.f;
 
-	//死亡冲量
-	UPROPERTY()
+	//死亡后击飞尸体的方向
+	UPROPERTY(BlueprintReadWrite)
 	FVector DeathImpulse = FVector::ZeroVector;
+
+	//技能击飞目标的动量
+	UPROPERTY(BlueprintReadWrite)
+	float KnockbackForceMagnitude = 0.f;
+
+	//技能击飞目标的概率
+	UPROPERTY(BlueprintReadWrite)
+	float KnockbackChance = 0.f;
+
+	//技能击飞目标的方向
+	UPROPERTY(BlueprintReadWrite)
+	FVector KnockbackForce = FVector::ZeroVector;
+
+	
 };
 
 
@@ -73,6 +87,7 @@ public:
 	float GetDebuffFrequency() const { return DebuffFrequency; }
 	TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }
 	FVector GetDeathImpulse() const { return DeathImpulse; }
+	FVector GetKnockbackForce() const { return KnockbackForce; }
 
 	void SetCriticalHit(bool bInIsCriticalHit)  { bIsCriticalHit = bInIsCriticalHit; }
 	void SetBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
@@ -82,6 +97,7 @@ public:
 	void SetDebuffFrequency(float InFreq) { DebuffFrequency = InFreq; }
 	void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
 	void SetDeathImpulse(const FVector& Impulse) { DeathImpulse = Impulse; }
+	void SetKnockbackForce(const FVector& InForce) { KnockbackForce = InForce; }
 
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	/* 返回序列化所用的实际结构体，子类必须重载该结构体 */
@@ -136,9 +152,13 @@ protected:
 	//伤害类型
 	TSharedPtr<FGameplayTag> DamageType;
 
-	//死亡冲击向量
+	//死亡后击飞尸体的方向
 	UPROPERTY()
 	FVector DeathImpulse = FVector::ZeroVector;
+
+	//技能击飞目标的方向
+	UPROPERTY()
+	FVector KnockbackForce = FVector::ZeroVector;
 
 private:
 	

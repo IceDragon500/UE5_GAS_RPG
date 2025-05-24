@@ -33,9 +33,10 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* M
 		if (DebuffFrequency > 0.f) RepBits |= 1 << 12;
 		if (DamageType.IsValid()) RepBits |= 1 << 13;
 		if (!DeathImpulse.IsZero()) RepBits |= 1 << 14;
+		if (!KnockbackForce.IsZero()) RepBits |= 1 << 15;
 	}
 
-	Ar.SerializeBits(&RepBits, 15);
+	Ar.SerializeBits(&RepBits, 16);
 
 	if (RepBits & (1 << 0)) Ar << Instigator;
 	if (RepBits & (1 << 1)) Ar << EffectCauser;
@@ -82,6 +83,10 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* M
 	if (RepBits & (1 << 14))
 	{
 		DeathImpulse.NetSerialize(Ar, Map, bOutSuccess);
+	}
+	if (RepBits & (1 << 15))
+	{
+		KnockbackForce.NetSerialize(Ar, Map, bOutSuccess);
 	}
 
 	if (Ar.IsLoading())

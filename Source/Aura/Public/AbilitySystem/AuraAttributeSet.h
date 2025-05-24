@@ -310,7 +310,11 @@ private:
 	 * @param Props 
 	 */
 	void SetEffectProperties(const FGameplayEffectModCallbackData& InData, FEffectProperties& OutProps) const;
-	
+
+	/**
+	 * 处理即将到来的伤害
+	 * @param Props 
+	 */
 	void HandleInComingDamage(const FEffectProperties Props);
 	
 	void HandleIncomingXP(const FEffectProperties Props);

@@ -200,22 +200,36 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 		const float NewHealth = GetHealth() - LocalIncomingDamage;
 		SetHealth(FMath::Clamp(NewHealth, 0.f, GetMaxHealth()));
 
-		const bool bFatal = NewHealth <= 0.f;
+		const bool bFatal = NewHealth <= 0.f;//如果收到这次伤害死了
 		if (bFatal)
-		{
-			//TODO: Use Death Impulse
-			
+		{//如果死了
+			//死亡的时候 添加一个冲击力 让尸体看上去是被技能击飞的			
 			if (ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor))
 			{
 				CombatInterface->Die(UAuraAbilitySystemLibrary::GetDamageImpulse(Props.EffectContextHandle));
 			}
+			//添加经验
 			SendXPEvent(Props);
 		}
-		else
+		else//如果没死
 		{
 			FGameplayTagContainer TagsContainer;
 			TagsContainer.AddTag(FAuraGameplayTags::Get().Effect_HitReact);
 			Props.TargetASC->TryActivateAbilitiesByTag(TagsContainer);
+
+			//收到了技能的伤害，然后添加一个冲击力，让受击的敌人后退一点点
+			const FVector& KnockbackForce = UAuraAbilitySystemLibrary::GetKnockbackForce(Props.EffectContextHandle);
+			if (!KnockbackForce.IsNearlyZero(1.f))
+			{
+				/**LaunchCharacter
+	 * 为角色设置一个待处理的发射速度。该速度将在角色移动组件的下一次更新时被处理，
+	 * 并将角色状态设置为"下落"状态。触发OnLaunched事件。
+	 * @PARAM LaunchVelocity 要赋予该角色的速度
+	 * @PARAM bXYOverride 若为true，将替换而非累加角色速度的XY部分
+	 * @PARAM bZOverride 若为true，将替换而非累加角色速度的Z轴分量
+	 */
+				Props.TargetCharacter->LaunchCharacter(KnockbackForce, true, true);
+			}
 		}
 
 

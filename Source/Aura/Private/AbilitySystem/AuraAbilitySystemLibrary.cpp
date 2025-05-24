@@ -213,6 +213,16 @@ FVector UAuraAbilitySystemLibrary::GetDamageImpulse(const FGameplayEffectContext
 	return FVector::ZeroVector;
 }
 
+FVector UAuraAbilitySystemLibrary::GetKnockbackForce(const FGameplayEffectContextHandle& EffectContextHandle)
+{
+	if(const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		return AuraEffectContext->GetKnockbackForce();
+	}
+	
+	return FVector::ZeroVector;
+}
+
 bool UAuraAbilitySystemLibrary::IsCriticalHit(const FGameplayEffectContextHandle& EffectContextHandle)
 {
 	if(const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
@@ -283,8 +293,7 @@ void UAuraAbilitySystemLibrary::SetDebuffDamageType(FGameplayEffectContextHandle
 	}
 }
 
-void UAuraAbilitySystemLibrary::SetDeathImpulse(FGameplayEffectContextHandle& EffectContextHandle,
-	const FVector& InImpulse)
+void UAuraAbilitySystemLibrary::SetDeathImpulse(FGameplayEffectContextHandle& EffectContextHandle, const FVector& InImpulse)
 {
 	if(FAuraGameplayEffectContext* AuraEffectContext = static_cast<FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
 	{
@@ -292,9 +301,15 @@ void UAuraAbilitySystemLibrary::SetDeathImpulse(FGameplayEffectContextHandle& Ef
 	}
 }
 
-void UAuraAbilitySystemLibrary::GetLivePlayersWithRadius(const UObject* WorldContextObject,
-                                                         TArray<AActor*>& OutOverlappingActors, const TArray<AActor*>& ActorToIgnore, float Radius,
-                                                         const FVector& SphereOrigin)
+void UAuraAbilitySystemLibrary::SetKnockbackForce(FGameplayEffectContextHandle& EffectContextHandle, const FVector& InForce)
+{
+	if(FAuraGameplayEffectContext* AuraEffectContext = static_cast<FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		AuraEffectContext->SetKnockbackForce(InForce);
+	}
+}
+
+void UAuraAbilitySystemLibrary::GetLivePlayersWithRadius(const UObject* WorldContextObject, TArray<AActor*>& OutOverlappingActors, const TArray<AActor*>& ActorToIgnore, float Radius, const FVector& SphereOrigin)
 {
 	FCollisionQueryParams SphereParams;
 	SphereParams.AddIgnoredActors(ActorToIgnore);
@@ -353,6 +368,7 @@ FGameplayEffectContextHandle UAuraAbilitySystemLibrary::ApplyDamageEffect(const 
 	ContextHandle.AddSourceObject(SourcesAvatarActor);
 	
 	SetDeathImpulse(ContextHandle, DamageEffectParams.DeathImpulse);
+	SetKnockbackForce(ContextHandle, DamageEffectParams.KnockbackForce);
 	
 	const FGameplayEffectSpecHandle SpecHandle = DamageEffectParams.SourceAbilitySystemComponent->MakeOutgoingSpec(DamageEffectParams.DamageGameplayEffectClass, DamageEffectParams.AbilityLevel, ContextHandle);
 
