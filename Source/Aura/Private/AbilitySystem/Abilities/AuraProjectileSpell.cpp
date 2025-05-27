@@ -27,11 +27,11 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		GetAvatarActorFromActorInfo(),SocketTag);
 	
 	FRotator Rotation = (ProjectileTargetLocation - SocketLocation).Rotation();
-	//Rotation.Pitch = 0.f;//让弹道与地面平行
 
 	if(bOverridePitch)
 	{
 		Rotation.Pitch = PitchOverride;
+		//Rotation.Pitch = 0.f;//让弹道与地面平行
 	}
 	
 	FTransform SpawnTransform;

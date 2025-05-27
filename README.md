@@ -390,7 +390,7 @@
 测试 23： Section 25 Quiz
 
 第26节 What a Shock
-316. FireBolt Projectile Spread 29 分钟
+√316. FireBolt Projectile Spread 29 分钟
 
 317. Spawning Multiple Projectiles 15 分钟
 
