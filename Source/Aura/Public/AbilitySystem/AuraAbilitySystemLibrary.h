@@ -193,6 +193,12 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
 	static FGameplayEffectContextHandle ApplyDamageEffect(const FDamageEffectParams& DamageEffectParams);
+
+	UFUNCTION(BlueprintPure, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static TArray<FRotator> EvenlySpacedRotators(const FVector& Forward, const FVector& Axis, float Spread, int32 NumRotators);
+
+	UFUNCTION(BlueprintPure, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static TArray<FVector> EvenlyRotatedVectors(const FVector& Forward, const FVector& Axis, float Spread, int32 NumVectors);
 	
 	/**
 	 * ECharacterClass中获取对应等级的经验（针对怪物）
