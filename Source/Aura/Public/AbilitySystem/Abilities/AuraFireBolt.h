@@ -40,6 +40,18 @@ protected:
 	//最大抛射物数量
 	UPROPERTY(EditDefaultsOnly, Category = "FireBolt")
 	int32 NumProjectiles = 5;
+
+	//追踪最小速度
+	UPROPERTY(EditDefaultsOnly, Category = "FireBolt")
+	float HomingAccelerationMin = 1600.f;
+
+	//追踪最大速度
+	UPROPERTY(EditDefaultsOnly, Category = "FireBolt")
+	float HomingAccelerationMax = 3200.f;
+
+	//如果这是true，我们将加速飞向我们的归航目标。HomingTargetComponent必须在弹丸被生成后设置。
+	UPROPERTY(EditDefaultsOnly, Category = "FireBolt")
+	bool bLaunchHomingProjectiles = true;
 	
 private:
 	

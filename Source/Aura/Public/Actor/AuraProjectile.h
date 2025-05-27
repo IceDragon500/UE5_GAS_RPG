@@ -28,6 +28,9 @@ public:
 	FDamageEffectParams DamageEffectParams;
 	//FGameplayEffectSpecHandle DamageEffectSpecHandle;
 
+	UPROPERTY()
+	TObjectPtr<USceneComponent> HomingTargetSceneComponent;
+
 protected:
 	virtual void BeginPlay() override;
 	void OnHit();
