@@ -392,10 +392,8 @@
 第26节 What a Shock
 √316. FireBolt Projectile Spread 29 分钟
 √317. Spawning Multiple Projectiles 15 分钟
-
-318. Homing Projectiles 21 分钟
-
-319. Click Niagara System 4 分钟
+√318. Homing Projectiles 21 分钟
+√319. Click Niagara System 4 分钟
 
 320. Invoke Replicated Event 25 分钟
 

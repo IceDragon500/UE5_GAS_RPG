@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NiagaraSystem.h"
 #include "GameFramework/PlayerController.h"
 #include "Input/AuraInputConfig.h"
 #include "UI/Widgets/DamageTextComponent.h"
@@ -101,6 +102,10 @@ private:
 	//标记行走的样条线
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USplineComponent> Spline;
+
+	//鼠标点击特效
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UNiagaraSystem> ClickNiagaraSystem;
 
 	void AutoRun();
 
