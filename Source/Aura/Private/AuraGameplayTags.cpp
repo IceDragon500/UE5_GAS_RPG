@@ -142,4 +142,10 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	GameplayTags.Event_Montage_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Event.Montage.FireBolt"), FString("发射火球的Tag"));
 	//发射电击的Tag
 	GameplayTags.Event_Montage_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Event.Montage.Electrocute"), FString("发射电击的Tag"));
+
+	//用于按键状态之间的互斥检测
+	GameplayTags.Player_Block_InputHeld = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Player.Block.InputHeld"), FString("按下不放Tag"));
+	GameplayTags.Player_Block_InputPressed = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Player.Block.InputPressed"), FString("按下Tag"));
+	GameplayTags.Player_Block_InputReleased = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Player.Block.InputReleased"), FString("松开Tag"));
+	GameplayTags.Player_Block_InputCursorTrace = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Player.Block.InputCursorTrace"), FString("停止鼠标射线检测Tag"));
 }

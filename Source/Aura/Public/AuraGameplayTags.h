@@ -131,6 +131,14 @@ public:
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToDebuffs;
 
+
+	//用于按键状态之间的互斥检测
+	FGameplayTag Player_Block_InputPressed;//按下
+	FGameplayTag Player_Block_InputHeld;//按下不放
+	FGameplayTag Player_Block_InputReleased;//松开
+	FGameplayTag Player_Block_InputCursorTrace;//停止鼠标射线检测
+	
+
 protected:
 
 private:
