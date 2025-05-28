@@ -55,6 +55,8 @@ void UAuraAbilitySystemComponent::AbilityInputTagPressed(const FGameplayTag& Inp
 			
 			if(AbilitySpec.IsActive())
 			{
+				//InvokeReplicatedEvent
+				//调用在给定的通用复制事件中注册的本地回调
 				InvokeReplicatedEvent(EAbilityGenericReplicatedEvent::InputPressed, AbilitySpec.Handle, AbilitySpec.ActivationInfo.GetActivationPredictionKey());
 			}
 		}
