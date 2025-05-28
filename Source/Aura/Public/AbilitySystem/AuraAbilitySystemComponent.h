@@ -43,6 +43,8 @@ public:
 	// 标记是否已经赋予了初始能力
 	bool bStartupAbilitiesGiven = false;
 
+	void AbilityInputTagPressed(const FGameplayTag& InputTag);
+
 	// 处理能力输入标签按住事件
 	void AbilityInputTagHeld(const FGameplayTag& InputTag);
 
