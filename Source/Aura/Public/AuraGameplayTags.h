@@ -125,6 +125,8 @@ public:
 
 	//发射火球的Tag
 	FGameplayTag Event_Montage_FireBolt;
+	//发射电击的Tag
+	FGameplayTag Event_Montage_Electrocute;
 
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToDebuffs;

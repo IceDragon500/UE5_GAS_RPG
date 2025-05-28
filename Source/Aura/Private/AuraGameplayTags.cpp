@@ -140,4 +140,6 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 
 	//发射火球的Tag
 	GameplayTags.Event_Montage_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Event.Montage.FireBolt"), FString("发射火球的Tag"));
+	//发射电击的Tag
+	GameplayTags.Event_Montage_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Event.Montage.Electrocute"), FString("发射电击的Tag"));
 }

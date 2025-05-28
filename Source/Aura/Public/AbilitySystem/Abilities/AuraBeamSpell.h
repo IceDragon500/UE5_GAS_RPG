@@ -19,9 +19,9 @@ public:
 	//用来获取鼠标点击命中的结果
 	void StoreMouseDataInfo(const FHitResult& HitResult);
 
-	//用来获取所有者的PlayerController
+	//用来获取所有者的Character变量
 	UFUNCTION(BlueprintCallable)
-	void StoreOwnerPlayerController();
+	void StoreOwnerVariables();
 protected:
 
 	UPROPERTY(BlueprintReadWrite)
@@ -32,6 +32,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 	TObjectPtr<APlayerController> OwnerPlayerController;
+
+	UPROPERTY(BlueprintReadWrite)
+	TObjectPtr<ACharacter> OwnerCharacter;
 private:
 	
 };
