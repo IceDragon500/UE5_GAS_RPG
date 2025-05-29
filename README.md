@@ -400,8 +400,7 @@
 √323. Player Block Tags 14 分钟
 √324. GameplayCue Notify Paths 14 分钟
 √325. Gameplay Cue Notify Actor 19 分钟
-
-326. Electrocute Looping Sound 6 分钟
+√326. Electrocute Looping Sound 6 分钟
 
 327. Target Trace Channel 10 分钟
 
