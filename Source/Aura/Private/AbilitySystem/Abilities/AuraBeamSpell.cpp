@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/Abilities/AuraBeamSpell.h"
 #include "GameFramework/Character.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 void UAuraBeamSpell::StoreMouseDataInfo(const FHitResult& HitResult)
 {
@@ -25,6 +26,39 @@ void UAuraBeamSpell::StoreOwnerVariables()
 	{
 		OwnerPlayerController = CurrentActorInfo->PlayerController.Get();//使用弱指针给普通指针赋值，需要用到Get方法
 		OwnerCharacter = Cast<ACharacter>(CurrentActorInfo->AvatarActor);
+	}
+	
+}
+
+void UAuraBeamSpell::TraceFirstTarget(const FVector& BeamTargetLocation)
+{
+	check(OwnerCharacter)
+	if (OwnerCharacter->Implements<UCombatInterface>())
+	{
+		if (USkeletalMeshComponent* Weapon = ICombatInterface::Execute_GetWeapon(OwnerCharacter))
+		{
+			TArray<AActor*> ActorToIgnore;
+			ActorToIgnore.Add(OwnerCharacter);
+			FHitResult HitResult;
+			const FVector SocketLocatioin = Weapon->GetSocketLocation(FName("TipSocket"));
+			UKismetSystemLibrary::SphereTraceSingle(
+				OwnerCharacter,
+				SocketLocatioin,
+				BeamTargetLocation,
+				10.f,
+				TraceTypeQuery1,
+				false,
+				ActorToIgnore,
+				EDrawDebugTrace::ForDuration,
+				HitResult,
+				true);
+
+			if (HitResult.bBlockingHit)
+			{
+				MouseHitLocation = HitResult.ImpactPoint;
+				MouseHitActor = HitResult.GetActor();
+			}
+		}
 	}
 	
 }

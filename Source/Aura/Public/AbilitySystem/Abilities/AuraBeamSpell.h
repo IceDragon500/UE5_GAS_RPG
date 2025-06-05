@@ -22,6 +22,10 @@ public:
 	//用来获取所有者的Character变量
 	UFUNCTION(BlueprintCallable)
 	void StoreOwnerVariables();
+
+	UFUNCTION(BlueprintCallable)
+	void TraceFirstTarget(const FVector& BeamTargetLocation);
+	
 protected:
 
 	UPROPERTY(BlueprintReadWrite)
