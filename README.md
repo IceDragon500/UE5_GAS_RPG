@@ -405,8 +405,7 @@
 √328. First Trace Target 29 分钟
 √329. Additional Targets 24 分钟
 √330. Shock Loop Cues on Additional Targets 16 分钟
-
-331. Electrocute Cost Cooldown and Damage 9 分钟
+√331. Electrocute Cost Cooldown and Damage 9 分钟
 
 332. Applying Electrocute Cost and Damage 14 分钟
 
