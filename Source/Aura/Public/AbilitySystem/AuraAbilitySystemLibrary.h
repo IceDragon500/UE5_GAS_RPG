@@ -76,7 +76,7 @@ public:
 	static void GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC, ECharacterClass CharacterClass);
 
 	/**
-	 * 
+	 * 获取存储在GameMode中的CharacterClassInfo结构体
 	 * @param WorldContextObject 
 	 * @return 
 	 */
@@ -84,7 +84,7 @@ public:
 	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
 
 	/**
-	 * 
+	 * 获取存储在GameMode中的AbilityInfo
 	 * @param WorldContextObject 
 	 * @return 
 	 */
@@ -169,13 +169,22 @@ public:
 	 * 尝试在一个指定点的球形范围内，获取到指定的Actor
 	 * 用来作为武器上的攻击检测，从武器端点，设置一个球形，获取在这个球体中是否存在指定的Actor
 	 * @param WorldContextObject  传入当前的角色
-	 * @param OutOverlappingActors  传入一个Actor数组，用这个方法来获取哪些Actor是在这个范围内的
+	 * @param OutOverlappingActors  传入一个Actor数组，将找到的Actor存储在这个数组中
 	 * @param ActorToIgnore 传入一个应该被忽略的Actor
 	 * @param Radius 球的半径大小
 	 * @param SphereOrigin 球中心的位置 
 	 */
 	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void GetLivePlayersWithRadius(const UObject* WorldContextObject, TArray<AActor*>& OutOverlappingActors, const TArray<AActor*>& ActorToIgnore, float Radius, const FVector& SphereOrigin);
+
+	/**
+	 * 寻找离得最近的Actor
+	 * @param MaxTargets 需要找到指定Actor最大的数量
+	 * @param Actors 传入一个找到指定Actor的数组
+	 * @param OutClosestTargets 剔除掉Actors中不需要的部分，作为OutClosestTargets结果传出
+	 */
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void GetClosestTargets(int32 MaxTargets, const TArray<AActor*>& Actors, TArray<AActor*>& OutClosestTargets, const FVector& Origin);
 
 	/**
 	 * 比较两个Actor是否为同一组 或者叫同一阵营

@@ -4,6 +4,7 @@
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AuraAbilityTypes.h"
+#include "NetworkMessage.h"
 #include "Game/AuraGameModeBase.h"
 #include "Interaction/CombatInterface.h"
 #include "Kismet/GameplayStatics.h"
@@ -323,26 +324,61 @@ void UAuraAbilitySystemLibrary::GetLivePlayersWithRadius(const UObject* WorldCon
 		World->OverlapMultiByObjectType(Overlaps, SphereOrigin, FQuat::Identity, FCollisionObjectQueryParams(FCollisionObjectQueryParams::InitType::AllDynamicObjects), FCollisionShape::MakeSphere(Radius), SphereParams);
 		for(FOverlapResult& Overlap : Overlaps)
 		{
-			//const bool ImplementsCombatInterface = Overlap.GetActor()->Implements<UCombatInterface>();
-			//const bool IsAlive = !ICombatInterface::Execute_IsDead(Overlap.GetActor());
 			if(Overlap.GetActor()->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsDead(Overlap.GetActor()))
 			{
 				OutOverlappingActors.AddUnique(Overlap.GetActor());
 			}
 		}
 	}
+}
 
-	
+void UAuraAbilitySystemLibrary::GetClosestTargets(int32 MaxTargets, const TArray<AActor*>& Actors, TArray<AActor*>& OutClosestTargets, const FVector& Origin)
+{
+	/*
+	 * 我们先在外部制作一个指定范围类所有的Actors数组
+	 * 然后传入这里进行筛选
+	 * 将结果作为OutClosestTargets传出
+	 */
+	if (Actors.Num() <= MaxTargets)
+	{
+		OutClosestTargets = Actors;
+		return;
+	}
 
+	TArray<AActor*> ActorsToCheck = Actors;
+	int32 NumTargetsFound = 0;
+
+	while (NumTargetsFound < MaxTargets)
+	{
+		if (ActorsToCheck.Num() == 0) break;
+		
+		double ClosestDistance = TNumericLimits<double>::Max(); //设定一个距离值，我们先把这个值使用TNumericLimits<double>::Max()设置为double类型的最大
+		AActor* ClosestActor;
+		for (AActor* PotentialTarget : ActorsToCheck)
+		{
+			double Distance = FVector::Dist(Origin, PotentialTarget->GetActorLocation());
+			//FVector::Dist() 是UE5内置的静态函数，直接计算两个FVector之间的直线距离。 原教程内容如下：
+			//const double Distance = (PotentialTarget->GetActorLocation() - Origin).Length();
+			
+			if (Distance < ClosestDistance)
+			{
+				ClosestDistance = Distance;
+				ClosestActor = PotentialTarget;
+				
+			}
+		}
+		ActorsToCheck.Remove(ClosestActor);
+		OutClosestTargets.AddUnique(ClosestActor);
+		++NumTargetsFound;
+	}
 }
 
 bool UAuraAbilitySystemLibrary::IsNotFriend(AActor* FirstActor, AActor* SecondActor)
 {
 	const bool bBothArePlayer = FirstActor->ActorHasTag(FName("Player")) && SecondActor->ActorHasTag(FName("Player"));
 	const bool bBothAreEnemy = FirstActor->ActorHasTag(FName("Enemy")) && SecondActor->ActorHasTag(FName("Enemy"));
-
 	const bool bFriends = bBothArePlayer || bBothAreEnemy;
-
+	
 	return !bFriends;
 }
 
@@ -354,8 +390,7 @@ int32 UAuraAbilitySystemLibrary::GetXPRewardForClassAndLevel(const UObject* Worl
 
 	const FCharacterClassDefaultInfo Info = CharacterClassInfo->GetCLassDefaultInfo(CharacterClass);
 	const float XPReward = Info.XPReward.GetValueAtLevel(CharacterLevel);
-
-
+	
 	return static_cast<int32>(XPReward);
 }
 

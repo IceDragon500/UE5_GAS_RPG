@@ -403,8 +403,7 @@
 √326. Electrocute Looping Sound 6 分钟
 √327. Target Trace Channel 10 分钟
 √328. First Trace Target 29 分钟
-
-329. Additional Targets 24 分钟
+√329. Additional Targets 24 分钟
 
 330. Shock Loop Cues on Additional Targets 16 分钟
 
