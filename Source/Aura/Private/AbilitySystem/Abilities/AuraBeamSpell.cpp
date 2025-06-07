@@ -2,7 +2,6 @@
 
 
 #include "AbilitySystem/Abilities/AuraBeamSpell.h"
-
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "GameFramework/Character.h"
 #include "Kismet/KismetSystemLibrary.h"

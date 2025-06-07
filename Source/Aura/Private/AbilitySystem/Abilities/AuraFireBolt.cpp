@@ -2,11 +2,8 @@
 
 
 #include "AbilitySystem/Abilities/AuraFireBolt.h"
-
-#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "GameFramework/ProjectileMovementComponent.h"
-#include "Kismet/KismetSystemLibrary.h"
 
 FString UAuraFireBolt::GetDescription(int32 Level)
 {
