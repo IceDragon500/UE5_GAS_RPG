@@ -407,8 +407,7 @@
 √330. Shock Loop Cues on Additional Targets 16 分钟
 √331. Electrocute Cost Cooldown and Damage 9 分钟
 √332. Applying Electrocute Cost and Damage 14 分钟
-
-333. Electrocute Polish 25 分钟
+√333. Electrocute Polish 25 分钟
 
 334. Explode Dem FireBoltz 8 分钟
 
