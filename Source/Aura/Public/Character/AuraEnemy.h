@@ -91,9 +91,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category="角色|命中反应")
 	bool bHitReacting = false;
 
-	//基础移动速度
-	UPROPERTY(EditAnywhere, Category="角色|属性", meta = (DisplayName = "基础移动速度"))
-	float BaseWalkSpeed = 250.f;
+	
 
 	//尸体存在时间
 	UPROPERTY(EditAnywhere, Category="角色|属性", meta = (DisplayName = "尸体存在时间"))
@@ -118,6 +116,8 @@ protected:
 
 	//初始化角色的属性值
 	virtual void InitializeDefaultAttributes() const override;
+
+	virtual void StunTagChanged(const FGameplayTag CallbackTag, int32 NewCount) override;
 
 	//角色等级
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="角色|属性")

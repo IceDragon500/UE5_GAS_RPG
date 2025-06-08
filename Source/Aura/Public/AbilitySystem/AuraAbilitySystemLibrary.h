@@ -196,8 +196,8 @@ public:
 	static bool IsNotFriend(AActor* FirstActor, AActor* SecondActor);
 
 	/**
-	 * 
-	 * @param DamageEffectParams 
+	 * 创建一个伤害性的 Gameplay Effect (GE) 并应用到目标角色，同时支持物理效果（击退/死亡冲力）和减益效果（Debuff）的参数化配置。
+	 * @param DamageEffectParams 被传入的Effect参数，参数来自一个自定义的结构体FDamageEffectParams
 	 * @return 
 	 */
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")

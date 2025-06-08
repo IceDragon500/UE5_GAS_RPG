@@ -222,12 +222,12 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 			if (!KnockbackForce.IsNearlyZero(1.f))
 			{
 				/**LaunchCharacter
-	 * 为角色设置一个待处理的发射速度。该速度将在角色移动组件的下一次更新时被处理，
-	 * 并将角色状态设置为"下落"状态。触发OnLaunched事件。
-	 * @PARAM LaunchVelocity 要赋予该角色的速度
-	 * @PARAM bXYOverride 若为true，将替换而非累加角色速度的XY部分
-	 * @PARAM bZOverride 若为true，将替换而非累加角色速度的Z轴分量
-	 */
+				 * 为角色设置一个待处理的发射速度。该速度将在角色移动组件的下一次更新时被处理，
+				 * 并将角色状态设置为"下落"状态。触发OnLaunched事件。
+				 * @PARAM LaunchVelocity 要赋予该角色的速度
+				 * @PARAM bXYOverride 若为true，将替换而非累加角色速度的XY部分
+				 * @PARAM bZOverride 若为true，将替换而非累加角色速度的Z轴分量
+				 */
 				Props.TargetCharacter->LaunchCharacter(KnockbackForce, true, true);
 			}
 		}
@@ -308,8 +308,18 @@ void UAuraAttributeSet::Debuff(const FEffectProperties Props)
 	//下面这个是上面这个逻辑符合5.4的写法
 	FInheritedTagContainer TagContainer = FInheritedTagContainer();
 	UTargetTagsGameplayEffectComponent& Component = Effect->FindOrAddComponent<UTargetTagsGameplayEffectComponent>();
-	TagContainer.Added.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
-	//TagContainer.CombinedTags.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]); 不用写这个 CombinedTags 会自动更新，因此无需进行此调用
+
+	const FGameplayTag DebuffTag = GameplayTags.DamageTypesToDebuffs[DamageType];
+	TagContainer.Added.AddTag(DebuffTag);
+
+	if (DebuffTag.MatchesTagExact(GameplayTags.Debuff_Stun))
+	{
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputHeld);
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputPressed);
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputReleased);
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputCursorTrace);
+	}
+	
 	Component.SetAndApplyTargetTagChanges(TagContainer);
 
 	Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;

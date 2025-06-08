@@ -50,15 +50,15 @@ public:
 	/**
 	 * Debuff Tag
 	 */
-	FGameplayTag Debuff_Fire_Burn;
-	FGameplayTag Debuff_Lighting_Stun;
-	FGameplayTag Debuff_Arcane;
-	FGameplayTag Debuff_Physical;
+	FGameplayTag Debuff_Burn;//自身开始燃烧
+	FGameplayTag Debuff_Stun;//眩晕
+	FGameplayTag Debuff_Arcane;//奥术Debuff
+	FGameplayTag Debuff_Physical;//物理伤害Debuff
 
-	FGameplayTag Debuff_Chance;
-	FGameplayTag Debuff_Damage;
-	FGameplayTag Debuff_Duration;
-	FGameplayTag Debuff_Frequency;
+	FGameplayTag Debuff_Chance;//debuff的概率
+	FGameplayTag Debuff_Damage;//debuff的伤害值
+	FGameplayTag Debuff_Duration;//debuff的持续时间
+	FGameplayTag Debuff_Frequency;//debuff伤害的间隔时间、频率
 
 	/**
 	 * 输入Tag

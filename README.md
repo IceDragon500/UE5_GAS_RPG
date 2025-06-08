@@ -409,8 +409,7 @@
 √332. Applying Electrocute Cost and Damage 14 分钟
 √333. Electrocute Polish 25 分钟
 √334. Explode Dem FireBoltz 8 分钟
-
-335. Stun 48 分钟
+√335. Stun 48 分钟
 
 336. Stun Niagara System 17 分钟
 

@@ -6,7 +6,9 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "Aura/Aura.h"
 #include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 AAuraCharacterBase::AAuraCharacterBase()
 {
@@ -14,7 +16,7 @@ AAuraCharacterBase::AAuraCharacterBase()
 
 	FireDebuffComponent = CreateDefaultSubobject<UDebuffNiagaraComponent>("FireDebuff");
 	FireDebuffComponent->SetupAttachment(GetRootComponent());
-	FireDebuffComponent->DebuffTag = FAuraGameplayTags::Get().Debuff_Fire_Burn;
+	FireDebuffComponent->DebuffTag = FAuraGameplayTags::Get().Debuff_Burn;
 
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	GetCapsuleComponent()->SetGenerateOverlapEvents(false);//设置碰撞盒子不会触发碰撞事件 这样只有网格体才可以触发碰撞事件
@@ -30,6 +32,13 @@ AAuraCharacterBase::AAuraCharacterBase()
 
 	
 
+}
+
+void AAuraCharacterBase::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AAuraCharacterBase, bIsStunned);
 }
 
 UAbilitySystemComponent* AAuraCharacterBase::GetAbilitySystemComponent() const
@@ -69,6 +78,16 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation(const FVector& Deat
 	FireDebuffComponent->Deactivate();
 
 	OnDeathDelegate.Broadcast(this);
+}
+
+void AAuraCharacterBase::StunTagChanged(const FGameplayTag CallbackTag, int32 NewCount)
+{
+	bIsStunned = NewCount > 0;
+	GetCharacterMovement()->MaxWalkSpeed = bIsStunned ? 0.f : BaseWalkSpeed;
+}
+
+void AAuraCharacterBase::OnRep_Stunned()
+{
 }
 
 void AAuraCharacterBase::BeginPlay()

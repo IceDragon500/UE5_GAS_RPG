@@ -63,13 +63,13 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	/**
 	 * Debuff Tag
 	 */
-	GameplayTags.Debuff_Fire_Burn = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Fire_Burn"), FString("持续燃烧Debuff"));
-	GameplayTags.Debuff_Lighting_Stun = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Lighting_Stun"), FString("雷电Debuff"));
+	GameplayTags.Debuff_Burn = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Burn"), FString("持续燃烧Debuff"));
+	GameplayTags.Debuff_Stun = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Stun"), FString("雷电Debuff"));
 	GameplayTags.Debuff_Arcane = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Arcane"), FString("奥术Debuff"));
 	GameplayTags.Debuff_Physical = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Debuff.Physical"), FString("物理伤害Debuff"));
 
-	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Fire, GameplayTags.Debuff_Fire_Burn);
-	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Lightning, GameplayTags.Debuff_Lighting_Stun);
+	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Fire, GameplayTags.Debuff_Burn);
+	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Lightning, GameplayTags.Debuff_Stun);
 	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Arcane, GameplayTags.Debuff_Arcane);
 	GameplayTags.DamageTypesToDebuffs.Add(GameplayTags.Damage_Physical, GameplayTags.Debuff_Physical);
 

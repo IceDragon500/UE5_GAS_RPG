@@ -22,6 +22,19 @@ void UAuraBeamSpell::StoreMouseDataInfo(const FHitResult& HitResult)
 
 void UAuraBeamSpell::StoreOwnerVariables()
 {
+	/**
+	 * CurrentActorInfo 的解释如下：
+	 *  这是关于使用此能力的实体的共享缓存信息。
+	 *  例如：Actor*（角色指针）、MovementComponent*（移动组件指针）、AnimInstance（动画实例）等。
+	 *  理想情况下，此信息为每个 Actor 分配一次，并被多个能力共享。
+	 *  实际的结构体可以在具体游戏中被重写，以包含特定于游戏的数据。
+	 *  （例如，派生类可能希望将其转换为 FMyGameAbilityActorInfo 类型）
+	 *  mutable const FGameplayAbilityActorInfo* CurrentActorInfo;
+	 *
+	 *  mutable: 表示即使在 const 成员函数中，这个指针指向的内容也可以被修改（通常是指针本身不会被修改，但它指向的 FGameplayAbilityActorInfo 对象内部可能有可变状态）
+	 * 
+	 */
+	
 	if (CurrentActorInfo) //这里CurrentActorInfo里面的PlayerController是个弱指针TWeakObjectPtr 所以这需要先检查一下CurrentActorInfo是否有效
 	{
 		OwnerPlayerController = CurrentActorInfo->PlayerController.Get(); //使用弱指针给普通指针赋值，需要用到Get方法

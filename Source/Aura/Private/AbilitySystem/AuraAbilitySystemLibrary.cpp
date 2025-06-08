@@ -396,24 +396,31 @@ int32 UAuraAbilitySystemLibrary::GetXPRewardForClassAndLevel(const UObject* Worl
 
 FGameplayEffectContextHandle UAuraAbilitySystemLibrary::ApplyDamageEffect(const FDamageEffectParams& DamageEffectParams)
 {
-	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
-	const AActor* SourcesAvatarActor = DamageEffectParams.SourceAbilitySystemComponent->GetAvatarActor();
-	
-	FGameplayEffectContextHandle ContextHandle = DamageEffectParams.SourceAbilitySystemComponent->MakeEffectContext();
-	ContextHandle.AddSourceObject(SourcesAvatarActor);
-	
+	//准备数据源
+	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();//获取项目的全局标签容器
+	const AActor* SourcesAvatarActor = DamageEffectParams.SourceAbilitySystemComponent->GetAvatarActor();//从伤害来源的能力系统组件 (ASC) 获取其代表的角色（玩家/敌人）
+
+	//创建效果上下文
+	FGameplayEffectContextHandle ContextHandle = DamageEffectParams.SourceAbilitySystemComponent->MakeEffectContext();//创建 GE 的上下文句柄（记录伤害来源、目标等元数据）
+	ContextHandle.AddSourceObject(SourcesAvatarActor);//绑定伤害来源角色（用于后续追溯伤害来源）
+
+	//注入物理参数
 	SetDeathImpulse(ContextHandle, DamageEffectParams.DeathImpulse);
 	SetKnockbackForce(ContextHandle, DamageEffectParams.KnockbackForce);
-	
+
+	//构建效果规格 (Spec)
 	const FGameplayEffectSpecHandle SpecHandle = DamageEffectParams.SourceAbilitySystemComponent->MakeOutgoingSpec(DamageEffectParams.DamageGameplayEffectClass, DamageEffectParams.AbilityLevel, ContextHandle);
 
-	//设置一个由调用者大小值设置的游戏标签
+	//动态配置伤害参数
 	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, DamageEffectParams.DamageType, DamageEffectParams.BaseDamage);
+
+	//配置减益效果 (Debuff)
 	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, GameplayTags.Debuff_Chance, DamageEffectParams.DebuffChance);
 	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, GameplayTags.Debuff_Damage, DamageEffectParams.DebuffDamage);
 	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, GameplayTags.Debuff_Duration, DamageEffectParams.DebuffDuration);
 	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, GameplayTags.Debuff_Frequency, DamageEffectParams.DebuffFrequency);
-	
+
+	//应用伤害到目标
 	DamageEffectParams.TargetAbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data);
 
 	return ContextHandle;
