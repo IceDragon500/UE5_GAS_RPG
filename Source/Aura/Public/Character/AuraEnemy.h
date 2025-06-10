@@ -90,9 +90,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category="角色|命中反应")
 	bool bHitReacting = false;
-
 	
-
 	//尸体存在时间
 	UPROPERTY(EditAnywhere, Category="角色|属性", meta = (DisplayName = "尸体存在时间"))
 	float LifeSpan = 5.f;

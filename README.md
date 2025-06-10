@@ -411,9 +411,7 @@
 √334. Explode Dem FireBoltz 8 分钟
 √335. Stun 48 分钟
 √336. Stun Niagara System 17 分钟
-
-337. Shock Loop Animations 20 分钟
-
+√337. Shock Loop Animations 20 分钟
 测试 24： Section 26 Quiz
 
 338. Passive Spell tags 3 分钟

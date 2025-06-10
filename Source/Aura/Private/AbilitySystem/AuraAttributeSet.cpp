@@ -211,11 +211,15 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 			//添加经验
 			SendXPEvent(Props);
 		}
-		else//如果没死
+		else//如果没死 则需要播放一下受击动画
 		{
-			FGameplayTagContainer TagsContainer;
-			TagsContainer.AddTag(FAuraGameplayTags::Get().Effect_HitReact);
-			Props.TargetASC->TryActivateAbilitiesByTag(TagsContainer);
+			if (Props.TargetCharacter->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsBeingShocked(Props.TargetCharacter))
+			{
+				FGameplayTagContainer TagsContainer;
+				TagsContainer.AddTag(FAuraGameplayTags::Get().Effect_HitReact);
+				Props.TargetASC->TryActivateAbilitiesByTag(TagsContainer);
+			}
+			
 
 			//收到了技能的伤害，然后添加一个冲击力，让受击的敌人后退一点点
 			const FVector& KnockbackForce = UAuraAbilitySystemLibrary::GetKnockbackForce(Props.EffectContextHandle);

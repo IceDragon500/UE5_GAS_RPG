@@ -26,8 +26,8 @@ public:
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 	/* combat interface */
-	//处理死亡是应该做的事情，这里
-	virtual void Die(const FVector& DeathImpulse) override;
+	
+	virtual void Die(const FVector& DeathImpulse) override;//处理死亡是应该做的事情，这里
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
 	virtual FVector GetCombatSocketLocation_Implementation(const FGameplayTag& MontageTag) override;
 	virtual bool IsDead_Implementation() const override;
@@ -41,6 +41,8 @@ public:
 	virtual FOnASCRegistered& GetOnASCRegisteredDelegate() override;
 	virtual FOnDeathSignature& GetOnDeathDelegate() override;
 	virtual USkeletalMeshComponent* GetWeapon_Implementation() override;
+	virtual void SetIsBeingShocked_Implementation(bool bInShock) override;
+	virtual bool IsBeingShocked_Implementation() const override;
 	/* combat interface end */
 
 	FOnASCRegistered OnASCRegistered;
@@ -56,18 +58,20 @@ public:
 	UPROPERTY(ReplicatedUsing=OnRep_Stunned, BlueprintReadOnly)
 	bool bIsStunned = false;
 
-	//是否被眩晕
+	//是否被点燃
 	UPROPERTY(ReplicatedUsing=OnRep_Burned, BlueprintReadOnly)
 	bool bIsBurned = false;
+
+	//是否被电击
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	bool IsBeingShocked = false;
 
 	UFUNCTION()
 	virtual void OnRep_Stunned();
 
 	UFUNCTION()
 	virtual void OnRep_Burned();
-
 	
-
 protected:
 
 	virtual void BeginPlay() override;
