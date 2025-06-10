@@ -16,6 +16,7 @@ AAuraProjectile::AAuraProjectile()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	bReplicates = true;
+	SetReplicateMovement(true);
 
 	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
 	SetRootComponent(Sphere);
@@ -71,6 +72,8 @@ void AAuraProjectile::Destroyed()
 
 void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	if (DamageEffectParams.SourceAbilitySystemComponent == nullptr ) return;
+	
 	AActor* SourcesAvatarActor = DamageEffectParams.SourceAbilitySystemComponent->GetAvatarActor();
 	
 	if(SourcesAvatarActor == OtherActor) return;

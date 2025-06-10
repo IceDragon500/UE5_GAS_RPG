@@ -184,11 +184,25 @@ void AAuraCharacter::OnRep_Stunned()
 		if (bIsStunned)
 		{
 			AuraASC->AddLooseGameplayTags(BlockedTags);
+			StunDebuffComponent->Activate();
 		}
 		else
 		{
 			AuraASC->RemoveLooseGameplayTags(BlockedTags);
+			StunDebuffComponent->Deactivate();
 		}
+	}
+}
+
+void AAuraCharacter::OnRep_Burned()
+{
+	if (bIsBurned)
+	{
+		FireDebuffComponent->Activate();
+	}
+	else
+	{
+		FireDebuffComponent->Deactivate();
 	}
 }
 

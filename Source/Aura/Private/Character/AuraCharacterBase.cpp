@@ -18,6 +18,10 @@ AAuraCharacterBase::AAuraCharacterBase()
 	FireDebuffComponent->SetupAttachment(GetRootComponent());
 	FireDebuffComponent->DebuffTag = FAuraGameplayTags::Get().Debuff_Burn;
 
+	StunDebuffComponent = CreateDefaultSubobject<UDebuffNiagaraComponent>("StunDebuff");
+	StunDebuffComponent->SetupAttachment(GetRootComponent());
+	StunDebuffComponent->DebuffTag = FAuraGameplayTags::Get().Debuff_Stun;
+
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
 	GetCapsuleComponent()->SetGenerateOverlapEvents(false);//设置碰撞盒子不会触发碰撞事件 这样只有网格体才可以触发碰撞事件
 	
@@ -39,6 +43,7 @@ void AAuraCharacterBase::GetLifetimeReplicatedProps(TArray<class FLifetimeProper
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AAuraCharacterBase, bIsStunned);
+	DOREPLIFETIME(AAuraCharacterBase, bIsBurned);
 }
 
 UAbilitySystemComponent* AAuraCharacterBase::GetAbilitySystemComponent() const
@@ -76,6 +81,7 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation(const FVector& Deat
 	Dissolve();
 	bDead = true;
 	FireDebuffComponent->Deactivate();
+	StunDebuffComponent->Deactivate();
 
 	OnDeathDelegate.Broadcast(this);
 }
@@ -87,6 +93,10 @@ void AAuraCharacterBase::StunTagChanged(const FGameplayTag CallbackTag, int32 Ne
 }
 
 void AAuraCharacterBase::OnRep_Stunned()
+{
+}
+
+void AAuraCharacterBase::OnRep_Burned()
 {
 }
 
@@ -169,7 +179,7 @@ ECharacterClass AAuraCharacterBase::GetCharacterClass_Implementation()
 	return CharacterClass;
 }
 
-FOnASCRegistered AAuraCharacterBase::GetOnASCRegisteredDelegate()
+FOnASCRegistered& AAuraCharacterBase::GetOnASCRegisteredDelegate()
 {
 	return OnASCRegistered;
 }
