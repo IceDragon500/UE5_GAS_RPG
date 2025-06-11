@@ -414,9 +414,9 @@
 √337. Shock Loop Animations 20 分钟
 测试 24： Section 26 Quiz
 
-338. Passive Spell tags 3 分钟
-
-339. Aura Passive Ability 8 分钟
+第27节 Passive Spells 被动技能
+√338. Passive Spell tags 3 分钟
+√339. Aura Passive Ability 8 分钟
 
 340. Passive Ability Info 8 分钟
 

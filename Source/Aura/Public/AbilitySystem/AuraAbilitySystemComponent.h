@@ -11,6 +11,7 @@ DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
 DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
 DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/,  int32 /* Level*/);
 DECLARE_MULTICAST_DELEGATE_FourParams(FAbilityEquipped, const FGameplayTag& /*AbilityTag*/, const FGameplayTag&/* Status*/, const FGameplayTag& /* InputTagSlot*/, const FGameplayTag& /*PreviousSlot*/);
+DECLARE_MULTICAST_DELEGATE_OneParam(FDeactivatePassiveAbility, const FGameplayTag&/*AbilityTag*/);
 
 /**
  * 
@@ -33,6 +34,8 @@ public:
 	FAbilityStatusChanged AbilityStatusChanged;
 
 	FAbilityEquipped AbilityEquipped;
+
+	FDeactivatePassiveAbility DeactivatePassiveAbility;
 
 	// 添加角色能力
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InAbilities);

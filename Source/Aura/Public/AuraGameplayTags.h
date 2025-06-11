@@ -137,6 +137,13 @@ public:
 	FGameplayTag Player_Block_InputHeld;//按下不放
 	FGameplayTag Player_Block_InputReleased;//松开
 	FGameplayTag Player_Block_InputCursorTrace;//停止鼠标射线检测
+
+	//被动技能
+	
+	FGameplayTag Abilities_Passive_HaloOfProtection;//保护光环
+	FGameplayTag Abilities_Passive_LifeSiphon;//生命虹吸
+	FGameplayTag Abilities_Passive_ManaSiphon;//法力虹吸
+	
 	
 
 protected:
