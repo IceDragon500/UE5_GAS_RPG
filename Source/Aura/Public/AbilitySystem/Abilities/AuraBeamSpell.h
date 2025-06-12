@@ -15,6 +15,11 @@ class AURA_API UAuraBeamSpell : public UAuraDamageGameplayAbility
 	GENERATED_BODY()
 
 public:
+	//获取当前技能描述
+	virtual FString GetDescription(int32 Level) override;
+	//获取下一级的技能描述
+	virtual FString GetNextLevelDescription(int32 Level) override;
+	
 	UFUNCTION(BlueprintCallable)
 	//用来获取鼠标点击命中的结果
 	void StoreMouseDataInfo(const FHitResult& HitResult);
