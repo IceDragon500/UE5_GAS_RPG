@@ -163,7 +163,8 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 	SetEffectProperties(Data, Props);
 
 	//死亡检测
-	if (Props.TargetCharacter->Implements<UCombatInterface>() && ICombatInterface::Execute_IsDead(Props.TargetCharacter)) return;
+	if (Props.TargetCharacter->Implements<UCombatInterface>() &&
+		ICombatInterface::Execute_IsDead(Props.TargetCharacter)) return;
 
 	//这里做这个设置，是为了当补充了HP大于上限，而我们又处在被伤害的过程中，当伤害无法抵消掉补充时，界面上血量不会减少
 	//相当于就是HP溢出了，伤害执行在了溢出的部分
@@ -200,9 +201,10 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 		const float NewHealth = GetHealth() - LocalIncomingDamage;
 		SetHealth(FMath::Clamp(NewHealth, 0.f, GetMaxHealth()));
 
-		const bool bFatal = NewHealth <= 0.f;//如果收到这次伤害死了
+		const bool bFatal = NewHealth <= 0.f; //如果收到这次伤害死了
 		if (bFatal)
-		{//如果死了
+		{
+			//如果死了
 			//死亡的时候 添加一个冲击力 让尸体看上去是被技能击飞的			
 			if (ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor))
 			{
@@ -211,15 +213,16 @@ void UAuraAttributeSet::HandleInComingDamage(const FEffectProperties Props)
 			//添加经验
 			SendXPEvent(Props);
 		}
-		else//如果没死 则需要播放一下受击动画
+		else //如果没死 则需要播放一下受击动画
 		{
-			if (Props.TargetCharacter->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsBeingShocked(Props.TargetCharacter))
+			if (Props.TargetCharacter->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsBeingShocked(
+				Props.TargetCharacter))
 			{
 				FGameplayTagContainer TagsContainer;
 				TagsContainer.AddTag(FAuraGameplayTags::Get().Effect_HitReact);
 				Props.TargetASC->TryActivateAbilitiesByTag(TagsContainer);
 			}
-			
+
 
 			//收到了技能的伤害，然后添加一个冲击力，让受击的敌人后退一点点
 			const FVector& KnockbackForce = UAuraAbilitySystemLibrary::GetKnockbackForce(Props.EffectContextHandle);
@@ -262,18 +265,24 @@ void UAuraAttributeSet::HandleIncomingXP(FEffectProperties Props)
 		const int32 CurrentLevel = ICombatInterface::Execute_GetPlayerLevel(Props.SourceCharacter);
 		const int32 CurrentXP = IPlayerInterface::Execute_GetXP(Props.SourceCharacter);
 
-		const int32 NewLevel = IPlayerInterface::Execute_FindLevelForXP(
-			Props.SourceCharacter, CurrentXP + LocalIncomingXP);
+		const int32 NewLevel = IPlayerInterface::Execute_FindLevelForXP(Props.SourceCharacter, CurrentXP + LocalIncomingXP);
 		const int32 NumOfLevelUps = NewLevel - CurrentLevel;
 
 		if (NumOfLevelUps > 0)
 		{
-			const int32 AttributePointReward = IPlayerInterface::Execute_GetAttributePointsReward(
-				Props.SourceCharacter, CurrentLevel);
-			const int32 SpellPointsReward = IPlayerInterface::Execute_GetSpellPointsReward(
-				Props.SourceCharacter, CurrentLevel);
+			
 
 			IPlayerInterface::Execute_AddToPlayerLevel(Props.SourceCharacter, NumOfLevelUps);
+
+			int32 AttributePointReward = 0;
+			int32 SpellPointsReward = 0;
+
+			for (int32 i = 0; i < NumOfLevelUps; ++i)
+			{
+				SpellPointsReward += IPlayerInterface::Execute_GetSpellPointsReward(Props.SourceCharacter, CurrentLevel + 1);
+				AttributePointReward += IPlayerInterface::Execute_GetAttributePointsReward(Props.SourceCharacter, CurrentLevel + 1);
+			}
+			
 			IPlayerInterface::Execute_AddToAttributePoints(Props.SourceCharacter, AttributePointReward);
 			IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
 
@@ -290,7 +299,7 @@ void UAuraAttributeSet::HandleIncomingXP(FEffectProperties Props)
 void UAuraAttributeSet::Debuff(const FEffectProperties Props)
 {
 	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
-	
+
 	FGameplayEffectContextHandle EffectContext = Props.SourceASC->MakeEffectContext();
 	EffectContext.AddSourceObject(Props.SourceAvatarActor);
 
@@ -302,7 +311,7 @@ void UAuraAttributeSet::Debuff(const FEffectProperties Props)
 	FString DebuffName = FString::Printf(TEXT("DynamicDebuff_%s"), *DamageType.ToString());
 	UGameplayEffect* Effect = NewObject<UGameplayEffect>(GetTransientPackage(), FName(DebuffName));
 
-	Effect->DurationPolicy = EGameplayEffectDurationType::HasDuration;//设置持续时间的类型，这里设置为有限的时间
+	Effect->DurationPolicy = EGameplayEffectDurationType::HasDuration; //设置持续时间的类型，这里设置为有限的时间
 	Effect->Period = DebuffFrequency;
 	Effect->DurationMagnitude = FScalableFloat(DebuffDuratioin);
 
@@ -323,7 +332,7 @@ void UAuraAttributeSet::Debuff(const FEffectProperties Props)
 		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputReleased);
 		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputCursorTrace);
 	}
-	
+
 	Component.SetAndApplyTargetTagChanges(TagContainer);
 
 	Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;
@@ -340,7 +349,8 @@ void UAuraAttributeSet::Debuff(const FEffectProperties Props)
 	FGameplayEffectSpec* MutableSpec = new FGameplayEffectSpec(Effect, EffectContext, 1.f);
 	if (MutableSpec)
 	{
-		FAuraGameplayEffectContext* AuraContext = static_cast<FAuraGameplayEffectContext*>(MutableSpec->GetContext().Get());
+		FAuraGameplayEffectContext* AuraContext = static_cast<FAuraGameplayEffectContext*>(MutableSpec->GetContext().
+			Get());
 		TSharedPtr<FGameplayTag> DebuffDamageType = MakeShareable(new FGameplayTag(DamageType));
 		AuraContext->SetDamageType(DebuffDamageType);
 	}

@@ -75,11 +75,18 @@ public:
 	//检查是否可以从指定的AbilityTag来查询是否有Spec
 	FGameplayAbilitySpec* GetSpecFromAbilityTag(const FGameplayTag& AbilityTag);
 
+	//更新属性点
 	void UpgradeAttribute(const FGameplayTag& AttributeTag);
 
+	//服务器端 更新属性点
 	UFUNCTION(Server, Reliable)
 	void ServerUpgradeAttribute(const FGameplayTag& AttributeTag);
 
+	/**
+	 * 更新Ability的状态
+	 * 更新当Ability不满足等级、满足等级未升级，满足等级已升级3种状态
+	 * 这3中状态改变技能在界面上图标的样式
+	 */
 	void UpdateAbilityStatuses(int32 Level);
 
 	UFUNCTION(Server, Reliable)
@@ -88,6 +95,7 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerEquipAbility(const FGameplayTag& AbilityTag, const FGameplayTag& InputTagSlot);
 
+	UFUNCTION(Client, Reliable)
 	void ClientEquipAbility(const FGameplayTag& AbilityTag, const FGameplayTag& Status, const FGameplayTag& InputTagSlot, const FGameplayTag& PreviousSlot);
 	
 	bool GetDescriptionsByAbilityTag(const FGameplayTag& AbilityTag, FString& OutDescription, FString& OutNextLevelDescription);

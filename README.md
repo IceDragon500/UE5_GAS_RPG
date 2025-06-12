@@ -419,8 +419,7 @@
 √339. Aura Passive Ability 8 分钟
 √340. Passive Ability Info 8 分钟
 √341. Passive Tags in Spell Tree 7 分钟
-
-342. Multiple Level Up Rewards 10 分钟
+√342. Multiple Level Up Rewards 10 分钟
 
 343. Passive Ability Activation 38 分钟
 

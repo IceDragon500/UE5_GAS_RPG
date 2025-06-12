@@ -316,9 +316,17 @@ private:
 	 * @param Props 
 	 */
 	void HandleInComingDamage(const FEffectProperties Props);
-	
+
+	/**
+	 * 处理即将到来的经验
+	 * @param Props 
+	 */
 	void HandleIncomingXP(const FEffectProperties Props);
 
+	/**
+	 * 处理技能触发的debuff效果
+	 * @param Props 
+	 */
 	void Debuff(const FEffectProperties Props);
 
 	/**
