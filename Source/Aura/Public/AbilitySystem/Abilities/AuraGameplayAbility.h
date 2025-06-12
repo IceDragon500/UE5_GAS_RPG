@@ -7,7 +7,8 @@
 #include "AuraGameplayAbility.generated.h"
 
 /**
- * 
+ * 继承自GameplayAbility的Aura子类
+ * 在这里实现了读取技能描述的功能
  */
 UCLASS()
 class AURA_API UAuraGameplayAbility : public UGameplayAbility
@@ -18,12 +19,19 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|Input")
 	FGameplayTag StartupInputTag;
 
+	//获取当前技能描述
 	virtual FString GetDescription(int32 Level);
+
+	//获取下一级的技能描述
 	virtual FString GetNextLevelDescription(int32 Level);
+
+	//当技能被锁定时的描述
 	static FString GetLockedDescription(int32 Level);
 
 protected:
+	
 	float GetManaCost(int32 InLevel = 1) const;
+	
 	float GetCooldown(int32 InLevel = 1) const;
 
 private:

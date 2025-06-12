@@ -7,7 +7,7 @@
 #include "AuraBeamSpell.generated.h"
 
 /**
- * 
+ * 一种能够发射光束或能量束的魔法或技能
  */
 UCLASS()
 class AURA_API UAuraBeamSpell : public UAuraDamageGameplayAbility

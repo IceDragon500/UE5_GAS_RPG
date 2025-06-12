@@ -7,12 +7,15 @@
 #include "Interaction/CombatInterface.h"
 #include "AuraDamageGameplayAbility.generated.h"
 
+/**
+ * 所有伤害性技能的父类
+ */
 UCLASS()
 class AURA_API UAuraDamageGameplayAbility: public UAuraGameplayAbility
 {
 	GENERATED_BODY()
 public:
-	
+	//造成伤害
 	UFUNCTION(BlueprintCallable)
 	void CauseDamage(AActor* TargetActor);
 

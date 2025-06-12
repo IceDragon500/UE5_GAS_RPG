@@ -417,8 +417,7 @@
 第27节 Passive Spells 被动技能
 √338. Passive Spell tags 3 分钟
 √339. Aura Passive Ability 8 分钟
-
-340. Passive Ability Info 8 分钟
+√340. Passive Ability Info 8 分钟
 
 341. Passive Tags in Spell Tree 7 分钟
 
