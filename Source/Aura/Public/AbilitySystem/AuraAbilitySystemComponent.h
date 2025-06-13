@@ -12,6 +12,7 @@ DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
 DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/,  int32 /* Level*/);
 DECLARE_MULTICAST_DELEGATE_FourParams(FAbilityEquipped, const FGameplayTag& /*AbilityTag*/, const FGameplayTag&/* Status*/, const FGameplayTag& /* InputTagSlot*/, const FGameplayTag& /*PreviousSlot*/);
 DECLARE_MULTICAST_DELEGATE_OneParam(FDeactivatePassiveAbility, const FGameplayTag&/*AbilityTag*/);
+DECLARE_MULTICAST_DELEGATE_TwoParams(FActivatePassiveEffect, const FGameplayTag& /*AbilityTag*/, bool /*bActivate*/)
 
 /**
  * 
@@ -36,6 +37,8 @@ public:
 	FAbilityEquipped AbilityEquipped;
 
 	FDeactivatePassiveAbility DeactivatePassiveAbility;
+
+	FActivatePassiveEffect ActivatePassiveEffect;
 
 //-----角色初始化-------------------------
 	// 添加角色能力
@@ -98,7 +101,11 @@ public:
 	 */
 	static void AssignSlotToAbility(FGameplayAbilitySpec& AbilitySpec, const FGameplayTag& Slot);
 	
-//-----从Spec中获取需要的信息-------------------------
+//------------------------------
+	//广播被动的特效
+	UFUNCTION(NetMulticast, Unreliable)
+	void MulticastActivatePassiveEffect(const FGameplayTag& AbilityTag, bool bActivate);
+	
 	//检查是否可以从指定的AbilityTag来查询是否有Spec
 	FGameplayAbilitySpec* GetSpecFromAbilityTag(const FGameplayTag& AbilityTag);
 
@@ -111,7 +118,7 @@ public:
 
 	/**
 	 * 更新Ability的状态
-	 * 更新当Ability不满足等级、满足等级未升级，满足等级已升级3种状态
+	 * 根据传入的等级Level，更新当Ability不满足等级、满足等级未升级，满足等级已升级3种状态
 	 * 这3中状态改变技能在界面上图标的样式
 	 */
 	void UpdateAbilityStatuses(int32 Level);

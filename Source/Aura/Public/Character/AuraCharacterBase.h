@@ -6,6 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemInterface.h"
 #include "AbilitySystem/Debuff/DebuffNiagaraComponent.h"
+#include "AbilitySystem/Passive/PassiveNiagaraComponent.h"
 #include "GameFramework/Character.h"
 #include "Interaction/CombatInterface.h"
 #include "AuraCharacterBase.generated.h"
@@ -21,6 +22,7 @@ class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInte
 public:
 
 	AAuraCharacterBase();
+	virtual void Tick(float DeltaTime) override;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
@@ -188,6 +190,18 @@ private:
 	//收集动画
 	UPROPERTY(EditAnywhere, Category="角色|属性")
 	TObjectPtr<UAnimMontage> HitReactMontage;
+
+	UPROPERTY(VisibleAnywhere, Category="角色|属性")
+	TObjectPtr<UPassiveNiagaraComponent> HaloPassiveComponent;
+
+	UPROPERTY(VisibleAnywhere, Category="角色|属性")
+	TObjectPtr<UPassiveNiagaraComponent> LifeSpihonPassiveComponent;
+
+	UPROPERTY(VisibleAnywhere, Category="角色|属性")
+	TObjectPtr<UPassiveNiagaraComponent> ManaSpihonPassiveComponent;
+
+	UPROPERTY(VisibleAnywhere, Category="角色|属性")
+	TObjectPtr<USceneComponent> EffectAttachComponent;
 
 public:
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return Weapon; }

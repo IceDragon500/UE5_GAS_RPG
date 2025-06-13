@@ -12,7 +12,7 @@
 
 AAuraCharacterBase::AAuraCharacterBase()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	FireDebuffComponent = CreateDefaultSubobject<UDebuffNiagaraComponent>("FireDebuff");
 	FireDebuffComponent->SetupAttachment(GetRootComponent());
@@ -34,8 +34,24 @@ AAuraCharacterBase::AAuraCharacterBase()
 	Weapon->SetupAttachment(GetMesh(), FName("WeaponHandSocket"));
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	
+	EffectAttachComponent = CreateDefaultSubobject<USceneComponent>(TEXT("EffectAttachPoint"));
+	EffectAttachComponent->SetupAttachment(GetRootComponent());
 
+	HaloPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("HaloPassive"));
+	HaloPassiveComponent->SetupAttachment(EffectAttachComponent);
+
+	LifeSpihonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("LifeSpihonPassive"));
+	LifeSpihonPassiveComponent->SetupAttachment(EffectAttachComponent);
+
+	ManaSpihonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("ManaSpihonPassive"));
+	ManaSpihonPassiveComponent->SetupAttachment(EffectAttachComponent);
+
+}
+
+void AAuraCharacterBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	EffectAttachComponent->SetWorldRotation(FRotator::ZeroRotator);//不希望特效组件跟随角色一起转动
 }
 
 void AAuraCharacterBase::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

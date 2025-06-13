@@ -421,11 +421,10 @@
 √341. Passive Tags in Spell Tree 7 分钟
 √342. Multiple Level Up Rewards 10 分钟
 √343. Passive Ability Activation 38 分钟
-
-344. Passive Niagara Component 31 分钟
-
+√344. Passive Niagara Component 31 分钟
 测试 25： Section 27 Quiz
 
+第28节 Arcane Shards 神秘的碎片
 345. Magic Circle 12 分钟
 
 346. Spawning Magic Circles 12 分钟
