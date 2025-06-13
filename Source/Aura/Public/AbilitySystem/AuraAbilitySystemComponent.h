@@ -37,6 +37,7 @@ public:
 
 	FDeactivatePassiveAbility DeactivatePassiveAbility;
 
+//-----角色初始化-------------------------
 	// 添加角色能力
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& InAbilities);
 
@@ -45,7 +46,9 @@ public:
 	
 	// 标记是否已经赋予了初始能力
 	bool bStartupAbilitiesGiven = false;
-
+	
+//-----按键相关-------------------------
+	//处理能力输入标签按下事件
 	void AbilityInputTagPressed(const FGameplayTag& InputTag);
 
 	// 处理能力输入标签按住事件
@@ -57,11 +60,13 @@ public:
 	// 遍历每个能力并执行委托
 	void ForEachAbility(const FForEachAbility& Delegate);
 
+
+//-----从Spec中获取需要的信息-------------------------
 	// 从能力规格中获取能力标签
-	FGameplayTag GetAbilityTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
+	static FGameplayTag GetAbilityTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 
 	// 从能力规格中获取输入标签
-	FGameplayTag GetInputTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
+	static FGameplayTag GetInputTagFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 
 	//从能力规格中获取当前状态信息Status
 	static FGameplayTag GetStatusFromSpec(const FGameplayAbilitySpec& AbilitySpec);
@@ -70,8 +75,30 @@ public:
 	FGameplayTag GetStatusFromAbilityTag(const FGameplayTag& AbilityTag);
 
 	//从AbilityTag中获取InputTag
-	FGameplayTag GetInputTagFromAbilityTag(const FGameplayTag& AbilityTag);
+	FGameplayTag GetSlotFromAbilityTag(const FGameplayTag& AbilityTag);
 
+	//检查当前这个技能槽是否是空的
+	bool SlotIsEmpty(const FGameplayTag& Slot);
+
+	//检查传入的技能AbilitySpec，是否有对应的按键槽位Slot
+	static bool AbilityHasSlot(const FGameplayAbilitySpec& AbilitySpec, const FGameplayTag& Slot);
+	
+	static bool AbilityHasAnySlot(const FGameplayAbilitySpec& AbilitySpec);
+
+	//通过按键槽位的Tag来获得对应按键技能的Spec
+	FGameplayAbilitySpec* GetSpecWithSlot(const FGameplayTag& Slot);
+
+	//判断技能是否是被动技能
+	bool IsPassiveAbility(const FGameplayAbilitySpec& AbilitySpec) const;
+
+	/**
+	 * 给AbilitySpec分配一个按键槽位Slot
+	 * @param AbilitySpec 需要分配的Spec
+	 * @param Slot 需要指定到的按键槽位
+	 */
+	static void AssignSlotToAbility(FGameplayAbilitySpec& AbilitySpec, const FGameplayTag& Slot);
+	
+//-----从Spec中获取需要的信息-------------------------
 	//检查是否可以从指定的AbilityTag来查询是否有Spec
 	FGameplayAbilitySpec* GetSpecFromAbilityTag(const FGameplayTag& AbilityTag);
 
@@ -101,7 +128,7 @@ public:
 	bool GetDescriptionsByAbilityTag(const FGameplayTag& AbilityTag, FString& OutDescription, FString& OutNextLevelDescription);
 
 	//移除一个指定的FGameplayAbilitySpec上面的InputTag
-	void ClearSlot(FGameplayAbilitySpec* Spec);
+	static void ClearSlot(FGameplayAbilitySpec* Spec);
 
 	//具有指定InputTag的Slot（技能槽）如果有，就把他清除
 	//当前指定按键上对应如果有技能，则把这个技能清除掉
