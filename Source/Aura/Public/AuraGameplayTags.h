@@ -111,6 +111,10 @@ public:
 	FGameplayTag Abilities_Lighting_Electrocute;
 	FGameplayTag Cooldown_Lighting_Electrocute;
 
+	//Arcane技能
+	FGameplayTag Abilities_Arcane_ArcaneShards;
+	FGameplayTag Cooldown_Arcane_ArcaneShards;
+
 	//武器Socket的几种Tag
 	FGameplayTag CombatSocket_Weapon; //表示有武器Mesh，Socket在武器上
 	FGameplayTag CombatSocket_RightHand; //表示Socket在右手上 右手攻击
