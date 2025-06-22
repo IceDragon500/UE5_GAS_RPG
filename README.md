@@ -427,8 +427,7 @@
 第28节 Arcane Shards 神秘的碎片
 √345. Magic Circle 12 分钟
 √346. Spawning Magic Circles 12 分钟
-
-347. Magic Circle Interface Functions 10 分钟
+√347. Magic Circle Interface Functions 10 分钟
 
 348. Arcane Shards Spell 13 分钟
 
