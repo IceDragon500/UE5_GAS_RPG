@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NiagaraSystem.h"
+#include "Actor/MagicCircle.h"
 #include "GameFramework/PlayerController.h"
 #include "Input/AuraInputConfig.h"
 #include "UI/Widgets/DamageTextComponent.h"
@@ -33,6 +34,12 @@ public:
 
 	UFUNCTION(Client, Reliable)
 	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter, bool bBlockHit, bool bCriticalHit);
+
+	UFUNCTION(BlueprintCallable)
+	void ShowMagicCircle();
+	
+	UFUNCTION(BlueprintCallable)
+	void HideMagicCircle();
 	
 protected:
 	virtual void BeginPlay() override;
@@ -112,5 +119,14 @@ private:
 	//设置伤害文本显示的类
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|伤害文本")
 	TSubclassOf<UDamageTextComponent> DamageTextComponentClass;
+
+	//设置鼠标上显示的贴画类 用来表示技能释放的范围
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|技能范围显示")
+	TSubclassOf<AMagicCircle> MagicCircleClass;
+
+	UPROPERTY()
+	TObjectPtr<AMagicCircle> MagicCircle;
+
+	void UpdateMagicCircleLocation();
 	
 };
