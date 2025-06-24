@@ -432,8 +432,7 @@
 √349. Wait Input Press 9 分钟
 √350. Anti Aliasing and Moving Decals 4 分钟
 √351. Point Collection 47 分钟
-
-352. Async Point Locations 10 分钟
+√352. Async Point Locations 10 分钟
 
 353. Gameplay Cue Notify Burst 17 分钟
 
