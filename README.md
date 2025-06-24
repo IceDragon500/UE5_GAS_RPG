@@ -430,10 +430,8 @@
 √347. Magic Circle Interface Functions 10 分钟
 √348. Arcane Shards Spell 13 分钟
 √349. Wait Input Press 9 分钟
-
-350. Anti Aliasing and Moving Decals 4 分钟
-
-351. Point Collection 47 分钟
+√350. Anti Aliasing and Moving Decals 4 分钟
+√351. Point Collection 47 分钟
 
 352. Async Point Locations 10 分钟
 
