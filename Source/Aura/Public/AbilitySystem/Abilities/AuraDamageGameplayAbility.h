@@ -103,6 +103,22 @@ protected:
 	UFUNCTION(BlueprintPure)
 	FTaggedMontage GetRandomTaggedMontageFromArray(const TArray<FTaggedMontage>& TaggedMontages) const;
 
+	//是否存在范围伤害
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	bool bIsRadiaDamage = false;
+
+	//范围伤害的内径，内径之内造成全额伤害
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	float RadiaDamageInnerRadius = 0.f;
+
+	//范围伤害的外径，外径与内径之间造成线性衰减的伤害，外径之外没有伤害
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	float RadiaDamageOuterRadius = 0.f;
+
+	//范围伤害的中心点
+	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	FVector RadiaDamageOrigin = FVector::ZeroVector;
+
 	//303讲中被移除
 	//float GetDamageByDamageType(float InLevel, const FGameplayTag& DamageType);
 	

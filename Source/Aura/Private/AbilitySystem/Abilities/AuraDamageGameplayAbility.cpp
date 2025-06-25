@@ -35,6 +35,7 @@ FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassD
 	Params.DeathImpulseMagnitude = DeathImpulseMagnitude;
 	Params.KnockbackForceMagnitude = KnockbackForceMagnitude;
 	Params.KnockbackChance = KnockbackChance;
+	
 
 	if (IsValid(TargetActor))
 	{
@@ -43,6 +44,14 @@ FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassD
 		const FVector ToTarget = Rotation.Vector();
 		Params.DeathImpulse = ToTarget * DeathImpulseMagnitude;
 		Params.KnockbackForce = ToTarget * KnockbackForceMagnitude;
+	}
+
+	if (bIsRadiaDamage)
+	{
+		Params.bIsRadiaDamage = bIsRadiaDamage;
+		Params.RadiaDamageInnerRadius = RadiaDamageInnerRadius;
+		Params.RadiaDamageOuterRadius = RadiaDamageOuterRadius;
+		Params.RadiaDamageOrigin = RadiaDamageOrigin;
 	}
 	
 	return Params;

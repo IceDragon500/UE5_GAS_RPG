@@ -74,6 +74,21 @@ struct FDamageEffectParams
 	UPROPERTY(BlueprintReadWrite)
 	FVector KnockbackForce = FVector::ZeroVector;
 
+	//是否存在范围伤害
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsRadiaDamage = false;
+
+	//范围伤害的内径，内径之内造成全额伤害
+	UPROPERTY(BlueprintReadWrite)
+	float RadiaDamageInnerRadius = 0.f;
+
+	//范围伤害的外径，外径与内径之间造成线性衰减的伤害，外径之外没有伤害
+	UPROPERTY(BlueprintReadWrite)
+	float RadiaDamageOuterRadius = 0.f;
+
+	//范围伤害的中心点
+	UPROPERTY(BlueprintReadWrite)
+	FVector RadiaDamageOrigin = FVector::ZeroVector;
 	
 };
 
@@ -94,6 +109,10 @@ public:
 	TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }//获取debuff的类型
 	FVector GetDeathImpulse() const { return DeathImpulse; }//获取死亡时冲击量
 	FVector GetKnockbackForce() const { return KnockbackForce; }//获取受伤害时被击退量
+	bool IsRadiaDamage() const { return bIsRadiaDamage; }//查询当前是否为范围伤害
+	float GetRadiaDamageInnerRadius() const { return RadiaDamageInnerRadius; }//查询当前范围伤害的内径
+	float GetRadiaDamageOuterRadius() const { return RadiaDamageOuterRadius; }//查询当前范围伤害的外径
+	FVector GetRadiaDamageOrigin() const { return RadiaDamageOrigin; }//查询当前范围伤害的中心坐标
 
 	void SetCriticalHit(bool bInIsCriticalHit)  { bIsCriticalHit = bInIsCriticalHit; }//设置是否被暴击
 	void SetBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }//设置是否被格挡伤害
@@ -104,6 +123,10 @@ public:
 	void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }//设置debuff的伤害类型
 	void SetDeathImpulse(const FVector& Impulse) { DeathImpulse = Impulse; }//设置死亡时的冲击量
 	void SetKnockbackForce(const FVector& InForce) { KnockbackForce = InForce; }//设置收到伤害时的冲击量
+	void SetIsRadiaDamage(bool bInIsRadiaDamage) {	bIsRadiaDamage = bInIsRadiaDamage; }//设置是否为范围伤害
+	void SetRadiaDamageInnerRadius(float InInnerRadius) { RadiaDamageInnerRadius = InInnerRadius; }//设置范围伤害的内径
+	void SetRadiaDamageOuterRadius(float InOuterRadius) { RadiaDamageOuterRadius = InOuterRadius; }//设置范围伤害的外径
+	void SetRadiaDamageOrigin(FVector InOrigin) { RadiaDamageOrigin = InOrigin; }//设置范围伤害的中心坐标
 
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	/* 返回序列化所用的实际结构体，子类必须重载该结构体 */
@@ -165,6 +188,22 @@ protected:
 	//技能击飞目标的方向
 	UPROPERTY()
 	FVector KnockbackForce = FVector::ZeroVector;
+
+	//是否存在范围伤害
+	UPROPERTY()
+	bool bIsRadiaDamage = false;
+
+	//范围伤害的内径，内径之内造成全额伤害
+	UPROPERTY()
+	float RadiaDamageInnerRadius = 0.f;
+
+	//范围伤害的外径，外径与内径之间造成线性衰减的伤害，外径之外没有伤害
+	UPROPERTY()
+	float RadiaDamageOuterRadius = 0.f;
+
+	//范围伤害的中心点
+	UPROPERTY()
+	FVector RadiaDamageOrigin = FVector::ZeroVector;
 
 private:
 	
