@@ -127,10 +127,12 @@ public:
 	FGameplayTag Montage_Attack_3;
 	FGameplayTag Montage_Attack_4;
 
-	//发射火球的Tag
+	//发射火球的MontageTag
 	FGameplayTag Event_Montage_FireBolt;
-	//发射电击的Tag
+	//发射电击的MontageTag
 	FGameplayTag Event_Montage_Electrocute;
+	//发射岩石碎片的MontageTag
+	FGameplayTag Event_Montage_ArcaneShards;
 
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToDebuffs;
