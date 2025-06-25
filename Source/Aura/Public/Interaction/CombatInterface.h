@@ -11,7 +11,8 @@
 class UNiagaraSystem;
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnASCRegistered, UAbilitySystemComponent*)
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeathSignature, AActor*, DeadActor);//
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeathSignature, AActor*, DeadActor);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnDamageSignature, float /*DamageAmount*/);
 
 
 
@@ -68,6 +69,8 @@ public:
 
 	virtual void Die(const FVector& DeathImpulse) = 0;//纯虚函数 处理死亡相关的逻辑 必须重写这个方法
 	virtual FOnDeathSignature& GetOnDeathDelegate() = 0;//纯虚函数 必须重写这个方法
+
+	virtual FOnDamageSignature& GetOnDamageSignature() = 0;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool IsDead() const;
