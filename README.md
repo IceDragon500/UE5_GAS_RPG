@@ -436,8 +436,7 @@
 √353. Gameplay Cue Notify Burst 17 分钟
 √354. Arcane Shards Montage 15 分钟
 √355. Radial Damage Parameters 19 分钟
-
-356. Setting Radial Damage Parameters 10 分钟
+√356. Setting Radial Damage Parameters 10 分钟
 
 357. Radial Damage with Falloff 21 分钟
 

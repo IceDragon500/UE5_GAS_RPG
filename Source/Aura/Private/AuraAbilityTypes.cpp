@@ -34,12 +34,12 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* M
 		if (DamageType.IsValid()) RepBits |= 1 << 13;
 		if (!DeathImpulse.IsZero()) RepBits |= 1 << 14;
 		if (!KnockbackForce.IsZero()) RepBits |= 1 << 15;
-		if (bIsRadiaDamage) //355课设置的
+		if (bIsRadialDamage) //355课设置的
 		{
 			RepBits |= 1 << 16;
-			if (RadiaDamageInnerRadius > 0.f) RepBits |= 1 << 17;
-			if (RadiaDamageOuterRadius > 0.f) RepBits |= 1 << 18;
-			if (!RadiaDamageOrigin.IsZero()) RepBits |= 1 << 19;
+			if (RadialDamageInnerRadius > 0.f) RepBits |= 1 << 17;
+			if (RadialDamageOuterRadius > 0.f) RepBits |= 1 << 18;
+			if (!RadialDamageOrigin.IsZero()) RepBits |= 1 << 19;
 		}
 	}
 
@@ -97,19 +97,19 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, class UPackageMap* M
 	}
 	if (RepBits & (1 << 16)) //355课设置的
 	{
-		Ar << bIsRadiaDamage;
+		Ar << bIsRadialDamage;
 		
 		if (RepBits & (1 << 17))
 		{
-			Ar << RadiaDamageInnerRadius;
+			Ar << RadialDamageInnerRadius;
 		}
 		if (RepBits & (1 << 18))
 		{
-			Ar << RadiaDamageOuterRadius;
+			Ar << RadialDamageOuterRadius;
 		}
 		if (RepBits & (1 << 19))
 		{
-			RadiaDamageOrigin.NetSerialize(Ar, Map, bOutSuccess);
+			RadialDamageOrigin.NetSerialize(Ar, Map, bOutSuccess);
 		}
 	}
 	

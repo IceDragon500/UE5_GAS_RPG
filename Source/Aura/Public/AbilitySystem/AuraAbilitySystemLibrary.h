@@ -91,6 +91,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
 	static UAbilityInfo* GetAbilityInfo(const UObject* WorldContextObject);
 
+//---------effect context getters-----------------------------------
+	
 	/**
 	 * 传入一个GameplayEffectContextHandle  来检查伤害是否需要计算BlockHit
 	 * @param EffectContextHandle 
@@ -128,6 +130,19 @@ public:
 	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
 	static  bool IsCriticalHit(const FGameplayEffectContextHandle& EffectContextHandle);
 
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static bool IsRaidalDamage(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static float GetRadialDamageInnerRadius(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static float GetRadialDamageOuterRadius(const FGameplayEffectContextHandle& EffectContextHandle);
+
+	UFUNCTION(BlueprintPure, Category = "角色控制|GameplayEffects")
+	static FVector GetRadialDamageOrigin(const FGameplayEffectContextHandle& EffectContextHandle);
+
+//-----------effect context setters---------------------------------
 	/**
 	 * 传入FGameplayEffectContextHandle  来设置这个伤害是否需要计算BlockHit
 	 * @param EffectContextHandle 
@@ -165,6 +180,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
 	static void SetKnockbackForce(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, const FVector& InForce);
 
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetIsRadialDamage(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, bool bInIsRadialDamage);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetRadialDamageInnerRadius(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InInnerRadius);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetRadialDamageOuterRadius(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, float InOuterRadius);
+
+	UFUNCTION(BlueprintCallable, Category = "角色控制|GameplayEffects")
+	static void SetRadialDamageOrigin(UPARAM(ref) FGameplayEffectContextHandle& EffectContextHandle, const FVector& InOrigin);
+
+//-----------Gameplay Mechanics 游戏机制算法---------------------------------
 	/**
 	 * 尝试在一个指定点的球形范围内，获取到指定的Actor
 	 * 用来作为武器上的攻击检测，从武器端点，设置一个球形，获取在这个球体中是否存在指定的Actor
