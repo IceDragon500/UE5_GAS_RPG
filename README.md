@@ -438,8 +438,7 @@
 √355. Radial Damage Parameters 19 分钟
 √356. Setting Radial Damage Parameters 10 分钟
 √357. Radial Damage with Falloff 21 分钟
-
-358. Tying Radial Damage All Together 27 分钟
+√358. Tying Radial Damage All Together 27 分钟
 
 359. Ignore Enemies while Magic Circle Active 7 分钟
 

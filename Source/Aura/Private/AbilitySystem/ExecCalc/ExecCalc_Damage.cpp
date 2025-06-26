@@ -183,6 +183,11 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
 		float DamageTypeValue = Spec.GetSetByCallerMagnitude(Pair.Key, false);
 
+		if (DamageTypeValue <= 0.f)
+		{
+			continue;
+		}
+		
 		float Resistance = 0.f;
 		ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(CaptureDef, EvaluationParameters, Resistance);
 		Resistance = FMath::Clamp(Resistance, 0.f, 100.f);
@@ -208,6 +213,10 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 				CombatInterface->GetOnDamageSignature().AddLambda([&](float DamageAmount)
 				{
 					DamageTypeValue = DamageAmount;
+					CombatInterface->GetOnDamageSignature().Clear();//在358课下面的评论中，给出了一个问题的解决方法
+					//链接在这里
+					//https://www.udemy.com/course/unreal-engine-5-gas-top-down-rpg/learn/lecture/42141184#questions/22011727
+					//Stephen的评论：事后看来，长期使用虚幻引擎遗留的伤害系统带来的麻烦多于便利。回想起来，我宁愿自己计算衰减，考虑距离因素并用 GetMappedRangeValueClamped 来缩放伤害值。
 				});
 				
 			}

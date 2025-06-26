@@ -51,7 +51,7 @@ public:
 	 * @注意 返回结构体包含蓝图可访问参数，支持视觉化编程
 	 */
 	UFUNCTION(BlueprintPure)
-	FDamageEffectParams MakeDamageEffectParamsFromClassDefault(AActor* TargetActor = nullptr) const;
+	FDamageEffectParams MakeDamageEffectParamsFromClassDefault(AActor* TargetActor = nullptr, FVector InRadialDamageOrigin = FVector::ZeroVector) const;
 
 	UFUNCTION(BlueprintPure)
 	float GetDamageAtLevel()  const;
@@ -108,16 +108,12 @@ protected:
 	bool bIsRadialDamage = false;
 
 	//范围伤害的内径，内径之内造成全额伤害
-	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="属性设置|DamageType")
 	float RadialDamageInnerRadius = 0.f;
 
 	//范围伤害的外径，外径与内径之间造成线性衰减的伤害，外径之外没有伤害
-	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="属性设置|DamageType")
 	float RadialDamageOuterRadius = 0.f;
-
-	//范围伤害的中心点
-	UPROPERTY(EditDefaultsOnly, Category="属性设置|DamageType")
-	FVector RadialDamageOrigin = FVector::ZeroVector;
 
 	//303讲中被移除
 	//float GetDamageByDamageType(float InLevel, const FGameplayTag& DamageType);
