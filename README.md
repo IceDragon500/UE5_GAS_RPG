@@ -440,8 +440,7 @@
 √357. Radial Damage with Falloff 21 分钟
 √358. Tying Radial Damage All Together 27 分钟
 √359. Ignore Enemies while Magic Circle Active 7 分钟
-
-360. Knockback Force and Death Impulse Overrides 16 分钟
+√360. Knockback Force and Death Impulse Overrides 16 分钟
 
 361. Spell Descriptions 14 分钟
 

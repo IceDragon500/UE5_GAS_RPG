@@ -51,7 +51,15 @@ public:
 	 * @注意 返回结构体包含蓝图可访问参数，支持视觉化编程
 	 */
 	UFUNCTION(BlueprintPure)
-	FDamageEffectParams MakeDamageEffectParamsFromClassDefault(AActor* TargetActor = nullptr, FVector InRadialDamageOrigin = FVector::ZeroVector) const;
+	FDamageEffectParams MakeDamageEffectParamsFromClassDefault(
+		AActor* TargetActor = nullptr,
+		FVector InRadialDamageOrigin = FVector::ZeroVector,
+		bool bOverrideKnockbackDirection = false,
+		FVector KnockbackDirectionOverride = FVector::ZeroVector,
+		bool bOverrideDeathImpulse = false,
+		FVector DeathImpulseOverride = FVector::ZeroVector,
+		bool bOverridePitch = false,
+		float PitchOverride = 0.f) const;
 
 	UFUNCTION(BlueprintPure)
 	float GetDamageAtLevel()  const;

@@ -17,7 +17,9 @@ void UAuraDamageGameplayAbility::CauseDamage(AActor* TargetActor)
 	
 }
 
-FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassDefault(AActor* TargetActor, FVector InRadialDamageOrigin) const
+FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassDefault(AActor* TargetActor,
+	FVector InRadialDamageOrigin, bool bOverrideKnockbackDirection, FVector KnockbackDirectionOverride,
+	bool bOverrideDeathImpulse, FVector DeathImpulseOverride, bool bOverridePitch, float PitchOverride) const
 {
 	FDamageEffectParams Params;
 
@@ -35,15 +37,53 @@ FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassD
 	Params.DeathImpulseMagnitude = DeathImpulseMagnitude;
 	Params.KnockbackForceMagnitude = KnockbackForceMagnitude;
 	Params.KnockbackChance = KnockbackChance;
-	
 
 	if (IsValid(TargetActor))
 	{
 		FRotator Rotation = (TargetActor->GetActorLocation() - GetAvatarActorFromActorInfo()->GetActorLocation()).Rotation();
-		Rotation.Pitch = 45.f;
+	
+		if (bOverridePitch)
+		{
+			Rotation.Pitch = PitchOverride;
+		}
+	
 		const FVector ToTarget = Rotation.Vector();
-		Params.DeathImpulse = ToTarget * DeathImpulseMagnitude;
-		Params.KnockbackForce = ToTarget * KnockbackForceMagnitude;
+
+		if (!bOverrideDeathImpulse)
+		{
+			Params.DeathImpulse = ToTarget * DeathImpulseMagnitude;
+		}
+		if (!bOverrideKnockbackDirection)
+		{
+			Params.KnockbackForce = ToTarget * KnockbackForceMagnitude;
+		}
+	}
+
+	
+	
+	if (bOverrideKnockbackDirection)
+	{
+		KnockbackDirectionOverride.Normalize();
+		Params.KnockbackForce = KnockbackDirectionOverride * KnockbackForceMagnitude;
+		if (bOverridePitch)
+		{
+			FRotator KnockbackRotation = KnockbackDirectionOverride.Rotation();
+			KnockbackRotation.Pitch = PitchOverride;
+			Params.KnockbackForce = KnockbackRotation.Vector() * KnockbackForceMagnitude;
+		}
+	}
+
+
+	if (bOverrideDeathImpulse)
+	{
+		DeathImpulseOverride.Normalize();
+		Params.DeathImpulse = DeathImpulseOverride * DeathImpulseMagnitude;
+		if (bOverridePitch)
+		{
+			FRotator DeathImpulseRotation = DeathImpulseOverride.Rotation();
+			DeathImpulseRotation.Pitch = PitchOverride;
+			Params.DeathImpulse = DeathImpulseRotation.Vector() * DeathImpulseMagnitude;
+		}
 	}
 
 	if (bIsRadialDamage)
@@ -53,7 +93,16 @@ FDamageEffectParams UAuraDamageGameplayAbility::MakeDamageEffectParamsFromClassD
 		Params.RadialDamageOuterRadius = RadialDamageOuterRadius;
 		Params.RadialDamageOrigin = InRadialDamageOrigin;
 	}
-	
+	/**
+	* Source of the bug for the Goblin Spear
+	* 哥布林长矛问题的根源
+	* 31 张赞成票
+	* Pierre · 讲座 360 · 1 年前
+	* It is the HitReact Montage. The animation using it (HitReact_Spear_Cut) have EnableRootMotion activated.
+	* 这是受击反应蒙太奇动画。使用该动画（HitReact_Spear_Cut）已启用了根骨骼运动(EnableRootMotion)。
+	* Uncheck the checkbox, and it is fixed, and you dont need to recreate another Goblin Spear.
+	* 取消勾选该选项即可修复，无需重新创建另一个哥布林长矛角色。
+	 */
 	return Params;
 }
 
