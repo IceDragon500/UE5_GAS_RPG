@@ -13,10 +13,6 @@
 class UBehaviorTree;
 class AAuraAIController;
 
-#define CUSTOM_DEPTH_RED 250
-#define CUSTOM_DEPTH_BLUE 251
-#define CUSTOM_DEPTH_TAN 252
-
 /**
  * 这里定义一个Enemy的数据结构类型，这样可以在UE中使用表格管理所有怪物类型的设置
  */
@@ -67,18 +63,20 @@ public:
 	
 	//重新设置Controller
 	virtual void PossessedBy(AController* NewController) override;
-	
+
+	/** Enemy Interface */
 	//高亮选中的目标
 	virtual void HighlightActor() override;
 	//取消高亮选中的目标
 	virtual void UnHighlightActor() override;
+	/** end Enemy Interface */
 
+	/** Combat Interface */
 	virtual int32 GetPlayerLevel_Implementation() override;
-
 	virtual void Die(const FVector& DeathImpulse) override;
-
 	virtual void SetCombatTarget_Implementation(AActor* InCombatTarget) override;
 	virtual AActor* GetCombatTarget_Implementation() const override;
+	/** end Combat Interface */
 
 	UPROPERTY(BlueprintAssignable)
 	FOnAttributeChangedSignature OnHealthChanged;
@@ -99,11 +97,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="角色|属性", meta = (DisplayName = "攻击目标"))
 	TObjectPtr<AActor> CombatTarget;
 
-	/*
-	//集中设置怪物属性
-	UPROPERTY(EditAnywhere, Category="角色|属性")
-	FEnemyDataRow EnemyData;
-	*/
 	
 protected:
 

@@ -70,9 +70,9 @@ private:
 	void CursorTrace();
 
 	//当前鼠标指向的目标
-	TScriptInterface<IEnemyInterface> LastActor;
+	IEnemyInterface* LastActor;
 	//鼠标最后一次指向的目标
-	TScriptInterface<IEnemyInterface> ThisActor;
+	IEnemyInterface* ThisActor;
 
 	FHitResult CursorHit;
 

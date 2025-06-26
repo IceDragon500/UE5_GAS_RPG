@@ -3,6 +3,7 @@
 
 #include "Character/AuraEnemy.h"
 #include "AuraGameplayTags.h"
+#include "Aura/Aura.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/AuraAttributeSet.h"
@@ -41,8 +42,6 @@ void AAuraEnemy::PossessedBy(AController* NewController)
 	AuraAIController = Cast<AAuraAIController>(NewController);
 	AuraAIController->GetBlackboardComponent()->InitializeBlackboard(*BehaviorTree->BlackboardAsset);
 	AuraAIController->RunBehaviorTree(BehaviorTree);
-	
-	//
 	AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("HitReacting"), false);
 	AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("RangedAttacker"), CharacterClass != ECharacterClass::Warrior);
 
@@ -53,18 +52,14 @@ void AAuraEnemy::HighlightActor()
 {
 	GetMesh()->SetRenderCustomDepth(true);
 	GetMesh()->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
-	GetMesh()->MarkRenderStateDirty();
-	GetWeaponMesh()->SetRenderCustomDepth(true);
-	GetWeaponMesh()->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
-	GetWeaponMesh()->MarkRenderStateDirty();
+	Weapon->SetRenderCustomDepth(true);
+	Weapon->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
 }
 
 void AAuraEnemy::UnHighlightActor()
 {
 	GetMesh()->SetRenderCustomDepth(false);
-	GetWeaponMesh()->SetRenderCustomDepth(false);
-	GetMesh()->MarkRenderStateDirty();
-	GetWeaponMesh()->MarkRenderStateDirty();
+	Weapon->SetRenderCustomDepth(false);
 }
 
 int32 AAuraEnemy::GetPlayerLevel_Implementation()

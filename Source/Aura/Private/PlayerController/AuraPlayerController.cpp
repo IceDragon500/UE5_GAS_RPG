@@ -11,6 +11,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "Aura/Aura.h"
 #include "Components/SplineComponent.h"
 #include "Input/AuraInputComponent.h"
 #include "Interaction/EnemyInterface.h"
@@ -94,60 +95,24 @@ void AAuraPlayerController::CursorTrace()
 		ThisActor = nullptr;
 		return;
 	}
+
+	const ECollisionChannel TraceChannel = IsValid(MagicCircle) ? ECC_ExcludePlayers : ECC_Visibility;
+	
 	//UE原生方法：返回在屏幕上某一位置进行碰撞查询的命中结果
-	GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, CursorHit);
+	GetHitResultUnderCursor(TraceChannel, false, CursorHit);
+	
 	if(!CursorHit.bBlockingHit) return;
 
 	//将上一次结果的ThisActor赋值给LastActor
 	LastActor = ThisActor;
 	//这次从CursorHit里面获取Actor
-	ThisActor = CursorHit.GetActor();
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
 
 	if(LastActor != ThisActor)
 	{
 		if(LastActor) LastActor->UnHighlightActor();
 		if(ThisActor) ThisActor->HighlightActor();
 	}
-
-	/**
-	 * Cursor光标的追踪接口有以下几种情况
-	 * a LastActor 和 ThisActor都是null  说明鼠标没有指到Enemy，不需要有操作
-	 * b LastActor是Null 和 ThisActor有效 说明鼠标指到了Enemy，需要执行ThisActor打开高亮的操作
-	 * c LastActor有效 和 ThisActor是Null 说明鼠标从Enemy身上移走了，需要执行LastActor关闭高亮的操作
-	 * d 两个Actor都有效，这时候我们需要判断一下这两个是否一致，如果两个不一致，说明鼠标很快从一个敌人移动到另外一个敌人身上了，我们需要关闭LastActor高亮，打开ThisActor高亮
-	 * e 如果一致，说明在鼠标一直在一个Enemy身上，不需要有操作
-	 */
-
-	/*
-	if(LastActor == nullptr)//LastActor是无效的
-	{
-		if(ThisActor != nullptr)//ThisActor有效的
-		{
-			//B情况
-			ThisActor->HighlightActor();
-		}
-		//else ThisActor也是无效 A情况
-	}
-	else //LastActor是有效的
-	{
-		if(ThisActor == nullptr)//ThisActor无效的
-		{
-			//C情况
-			LastActor->UnHighlightActor();
-		}
-		else//ThisActor有效的
-		{
-			//D情况
-			if(LastActor != ThisActor)
-			{
-				LastActor->UnHighlightActor();
-				ThisActor->HighlightActor();
-			}
-			//else E情况 就不写了
-		}
-	}
-	*/	
-
 }
 
 void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
