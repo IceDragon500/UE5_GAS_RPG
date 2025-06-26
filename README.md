@@ -442,11 +442,10 @@
 √359. Ignore Enemies while Magic Circle Active 7 分钟
 √360. Knockback Force and Death Impulse Overrides 16 分钟
 √361. Spell Descriptions 14 分钟
-
-362. Arcane Shards Cost and Cooldown 14 分钟
-
+√362. Arcane Shards Cost and Cooldown 14 分钟
 测试 26： Section 28 Quiz
 
+第29节 Fire Blast爆炸火球
 363. FireBlast Ability 13 分钟
 
 364. FireBlast Cost and Cooldown 6 分钟
