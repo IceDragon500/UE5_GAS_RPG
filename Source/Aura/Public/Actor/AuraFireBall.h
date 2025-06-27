@@ -18,6 +18,10 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<AActor> ReturnActor;
 
+	//用来处理火球爆炸的伤害
+	UPROPERTY(blueprintReadWrite)
+	FDamageEffectParams ExplosionDamageParams;
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -30,6 +34,8 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<AActor*> IgnoreList;
+
+	
 
 private:
 	

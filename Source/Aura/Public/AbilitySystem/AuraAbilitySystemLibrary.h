@@ -246,6 +246,42 @@ public:
 	 */
 	static int32 GetXPRewardForClassAndLevel(const UObject* WorldContextObject, ECharacterClass CharacterClass, int32 CharacterLevel);
 
+	/**
+	 * 设置DamageEffectParams参数集中，关于范围伤害的相关内容
+	 * @param DamageEffectParams 传入需要设置的参数集
+	 * @param bIsRadial 是否范围伤害
+	 * @param InnerRadius 内径大小
+	 * @param OuterRadius 外径大小
+	 * @param Origin 中心坐标
+	 */
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static void SetIsRadialDamageEffectParam(UPARAM(ref) FDamageEffectParams& DamageEffectParams, bool bIsRadial, float InnerRadius, float OuterRadius, FVector Origin);
+
+	/**
+	 * 设置DamageEffectParams参数集中，关于受击方向和力度相关内容
+	 * @param DamageEffectParams 传入需要设置的参数集
+	 * @param KnockbackDirection 需要飞出去的方向
+	 * @param Magnitude 受击的力度，如果为0，则使用参数集中对应的力度
+	 */
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static void SetKnockbackDirection(UPARAM(ref) FDamageEffectParams& DamageEffectParams,FVector KnockbackDirection, float Magnitude = 0.f);
+
+	/**
+	 * 设置DamageEffectParams参数集中，关于死亡击飞方向和力度相关内容
+	 * @param DamageEffectParams 传入需要设置的参数集
+	 * @param ImpulseDirection 需要飞出去的方向
+	 * @param Magnitude 受击的力度，如果为0，则使用参数集中对应的力度
+	 */
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static void SetDeathImpulseDirection(UPARAM(ref) FDamageEffectParams& DamageEffectParams,FVector ImpulseDirection, float Magnitude = 0.f);
+
+	/**
+	 * 设置DamageEffectParams参数集中，关于Target的AbilitySystemComponent
+	 * @param DamageEffectParams 传入需要设置的参数集
+	 * @param InASC 需要设置的AbilitySystemComponent
+	 */
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|DamageEffect")
+	static void SetTargetEffectParamASC(UPARAM(ref) FDamageEffectParams& DamageEffectParams,UAbilitySystemComponent* InASC);
 	
 protected:
 private:
