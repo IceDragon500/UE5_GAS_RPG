@@ -24,6 +24,13 @@ protected:
 
 	virtual void OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 
+	//在蓝图上调用，用来清空IgnoreList里面的Actor 这一段来自于368课下面的评论
+	UFUNCTION(BlueprintCallable)
+	void EmptyIgnoreList();
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AActor*> IgnoreList;
+
 private:
 	
 };

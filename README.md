@@ -451,8 +451,7 @@
 √365. Aura Fire Ball 12 分钟
 √366. Spawning FireBalls 10 分钟
 √367. FireBall Timelines 18 分钟
-
-368. Causing FireBall Damage 11 分钟
+√368. Causing FireBall Damage 11 分钟
 
 369. FireBall Explosive Damage 31 分钟
 
