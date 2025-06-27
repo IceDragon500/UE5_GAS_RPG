@@ -22,9 +22,10 @@ FString UAuraFireBlast::GetDescription(int32 Level)
 
 FString UAuraFireBlast::GetNextLevelDescription(int32 Level)
 {
+	/*363课使用了这种方式
 	return GetDescription(Level);
-	
-	/* 363课使用了上述的方法
+	*/
+	 
 	const int32 ScaledDamage = Damage.GetValueAtLevel(Level);
 	const float ManaCost = FMath::Abs(GetManaCost(Level));
 	const float Cooldown = GetCooldown(Level);
@@ -38,5 +39,10 @@ FString UAuraFireBlast::GetNextLevelDescription(int32 Level)
 		"<Default>exploding upon return,causing</>"
 		"<Damage>%d</><Default>radial fire damage with a chance to burn</>\n"
 	), Level, ManaCost, Cooldown, MaxNumFireBalls, ScaledDamage);
-	*/
+	
+}
+
+TArray<AAuraFireBall*> UAuraFireBlast::SpawnFireBalls()
+{
+	return TArray<AAuraFireBall*>();
 }

@@ -7,6 +7,7 @@
 #include "AuraGameModeBase.generated.h"
 
 class UCharacterClassInfo;
+class UAbilityInfo;
 /**
  * 
  */

@@ -55,7 +55,7 @@ private:
 	TObjectPtr<UNiagaraSystem> ImpactEffect;
 	
 	//击中特效
-	UPROPERTY(EditAnywhere, Category= "命中设置", meta = (DisplayName = "击中特效"))
+	UPROPERTY(EditAnywhere, Category= "命中设置", meta = (DisplayName = "击中音效"))
 	TObjectPtr<USoundBase> ImpactSound;
 
 	//飞行音效

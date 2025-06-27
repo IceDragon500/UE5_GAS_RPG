@@ -6,6 +6,7 @@
 #include "AbilitySystem/Abilities/AuraDamageGameplayAbility.h"
 #include "AuraFireBlast.generated.h"
 
+class AAuraFireBall;
 /**
  * 
  */
@@ -19,6 +20,9 @@ public:
 	virtual FString GetDescription(int32 Level) override;
 	//获取下一级的技能描述
 	virtual FString GetNextLevelDescription(int32 Level) override;
+
+	UFUNCTION(BlueprintCallable)
+	TArray<AAuraFireBall*> SpawnFireBalls();
 	
 protected:
 
@@ -28,6 +32,9 @@ protected:
 	
 	
 private:
-	
+
+	//最大火球数量
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AAuraFireBall> FireBallClass;
 	
 };
