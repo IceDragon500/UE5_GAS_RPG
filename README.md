@@ -453,8 +453,7 @@
 √367. FireBall Timelines 18 分钟
 √368. Causing FireBall Damage 11 分钟
 √369. FireBall Explosive Damage 31 分钟
-
-370. Empty Cooldown Texture 5 分钟
+√370. Empty Cooldown Texture 5 分钟
 
 371. Execute Local Gameplay Cues 13 分钟
 
