@@ -13,9 +13,9 @@ FString UElectrocute::GetDescription(int32 Level)
 	{
 		return FString::Printf(TEXT(
 			"<Title>ELECTROCUTE</>\n"
-			"<Small>Level:</><Level>%d</>\n"
-			"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-			"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+			"<Small>Level: </><Level>%d</>\n"
+			"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+			"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 			"<Default>connecting with the target, repeatedly causing</>"
 			"<Damage>%d</><Default> lightning damage with a chance to stun</>\n\n"
 
@@ -25,9 +25,9 @@ FString UElectrocute::GetDescription(int32 Level)
 	{
 		return FString::Printf(TEXT(
 			"<Title>ELECTROCUTE</>\n"
-			"<Small>Level:</>""<Level>%d</>\n"
-			"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-			"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+			"<Small>Level: </>""<Level>%d</>\n"
+			"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+			"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 			"<Default>Emits a beam of lightning , propagating to %d additional targets nearby</>"
 			"<Damage>%d</><Default> "
 			"lightning damage with a chance to stun</>\n"
@@ -43,9 +43,9 @@ FString UElectrocute::GetNextLevelDescription(int32 Level)
 
 	return FString::Printf(TEXT(
 		"<Title>NEXT LEVEL:</>\n"
-		"<Small>Level:</>""<Level>%d</>\n"
-		"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-		"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+		"<Small>Level: </>""<Level>%d</>\n"
+		"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+		"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 		"<Default>Emits a beam of lightning , propagating to %d additional targets nearby</>"
 		"<Damage>%d</><Default> "
 		"lightning damage with a chance to stun</>\n"

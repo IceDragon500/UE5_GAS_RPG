@@ -13,9 +13,9 @@ FString UArcanShards::GetDescription(int32 Level)
 	{
 		return FString::Printf(TEXT(
 			"<Title>Arcane Shards</>\n"
-			"<Small>Level:</><Level>%d</>\n"
-			"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-			"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+			"<Small>Level: </><Level>%d</>\n"
+			"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+			"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 			"<Default>Summon shards of arcane energy causing radial damage of</>"
 			"<Damage>%d</><Default>Shards damage with a chance to 击飞</>\n\n"
 
@@ -25,9 +25,9 @@ FString UArcanShards::GetDescription(int32 Level)
 	{
 		return FString::Printf(TEXT(
 			"<Title>Arcane Shards</>\n"
-			"<Small>Level:</>""<Level>%d</>\n"
-			"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-			"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+			"<Small>Level: </>""<Level>%d</>\n"
+			"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+			"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 			"<Default>Summon %d shards of arcane energy causing radial damage of</>"
 			"<Damage>%d</><Default> "
 			"Shards damage with a chance to 击飞</>\n"
@@ -43,9 +43,9 @@ FString UArcanShards::GetNextLevelDescription(int32 Level)
 
 	return FString::Printf(TEXT(
 		"<Title>NEXT LEVEL:</>\n"
-		"<Small>Level:</>""<Level>%d</>\n"
-		"<Small>ManaCost:</><ManaCost>%.1f</>\n"
-		"<Small>Cooldown :</><Cooldown>%.1f</>\n\n"
+		"<Small>Level: </>""<Level>%d</>\n"
+		"<Small>ManaCost: </><ManaCost>%.1f</>\n"
+		"<Small>Cooldown: </><Cooldown>%.1f</>\n\n"
 		"<Default>Summon %d shards of arcane energy causing radial damage of</>"
 		"<Damage>%d</><Default> "
 		"Shards damage with a chance to 击飞</>\n"

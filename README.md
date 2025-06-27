@@ -446,7 +446,7 @@
 测试 26： Section 28 Quiz
 
 第29节 Fire Blast爆炸火球
-363. FireBlast Ability 13 分钟
+√363. FireBlast Ability 13 分钟
 
 364. FireBlast Cost and Cooldown 6 分钟
 
