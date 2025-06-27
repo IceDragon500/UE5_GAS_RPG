@@ -449,8 +449,7 @@
 √363. FireBlast Ability 13 分钟
 √364. FireBlast Cost and Cooldown 6 分钟
 √365. Aura Fire Ball 12 分钟
-
-366. Spawning FireBalls 10 分钟
+√366. Spawning FireBalls 10 分钟
 
 367. FireBall Timelines 18 分钟
 
