@@ -12,9 +12,11 @@ class AURA_API AAuraFireBall : public AAuraProjectile
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintImplementableEvent)
+	void StarOutgoingTimeline();
 
-	AAuraFireBall();
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(BlueprintReadOnly)
+	TObjectPtr<AActor> ReturnActor;
 
 protected:
 
