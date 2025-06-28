@@ -152,7 +152,12 @@ public:
 	FGameplayTag Abilities_Passive_HaloOfProtection;//保护光环
 	FGameplayTag Abilities_Passive_LifeSiphon;//生命虹吸
 	FGameplayTag Abilities_Passive_ManaSiphon;//法力虹吸
-	
+
+	/**
+	 * GameplayCue
+	 * 游戏技能队列
+	 */
+	FGameplayTag GameplayCue_FireBlast;
 	
 
 protected:

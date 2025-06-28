@@ -454,11 +454,10 @@
 √368. Causing FireBall Damage 11 分钟
 √369. FireBall Explosive Damage 31 分钟
 √370. Empty Cooldown Texture 5 分钟
-
-371. Execute Local Gameplay Cues 13 分钟
-
+√371. Execute Local Gameplay Cues 13 分钟
 测试 27： Section 29 Quiz
 
+第30节 Saving Progress 进度保存
 372. Saving Progress 9 分钟
 
 373. Main Menu 33 分钟
@@ -504,9 +503,9 @@
 393. Saving the Map Name 4 分钟
 
 394. Traveling to the Saved Map 14 分钟
-
 测试 28： Section 30 Quiz
 
+第31节 Checkpoints 检查点
 395. Choosing the Player Start 10 分钟
 
 396. Setting the Default Player Start 13 分钟

@@ -32,6 +32,8 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void EmptyIgnoreList();
 
+	virtual void OnHit() override;
+
 	UPROPERTY(BlueprintReadWrite)
 	TArray<AActor*> IgnoreList;
 

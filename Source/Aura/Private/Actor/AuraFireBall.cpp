@@ -2,8 +2,10 @@
 
 
 #include "Actor/AuraFireBall.h"
-
+#include "Components/AudioComponent.h"
+#include "GameplayCueManager.h"
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AuraGameplayTags.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 
 
@@ -39,4 +41,26 @@ void AAuraFireBall::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AA
 void AAuraFireBall::EmptyIgnoreList()
 {
 	IgnoreList.Empty();
+}
+
+void AAuraFireBall::OnHit()
+{
+	if (GetOwner() != nullptr)
+	{
+		FGameplayCueParameters CueParameters;
+		CueParameters.Location = GetActorLocation();
+		UGameplayCueManager::ExecuteGameplayCue_NonReplicated(
+			GetOwner(),
+			FAuraGameplayTags::Get().GameplayCue_FireBlast,
+			CueParameters);
+	}
+	
+	
+	if(LoopingSoundComponent)
+	{
+		LoopingSoundComponent->Stop();
+		LoopingSoundComponent->DestroyComponent();
+	}
+
+	bHit = true;
 }
