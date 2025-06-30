@@ -458,12 +458,9 @@
 测试 27： Section 29 Quiz
 
 第30节 Saving Progress 进度保存
-372. Saving Progress 9 分钟
-
-373. Main Menu 33 分钟
-
-374. Play and Quit Buttons 12 分钟
-
+√372. Saving Progress 9 分钟
+√373. Main Menu 33 分钟
+√374. Play and Quit Buttons 12 分钟
 375. Vacant Load Slot 14 分钟
 
 376. Enter Name Load Slot 4 分钟
