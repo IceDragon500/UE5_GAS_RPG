@@ -462,8 +462,7 @@
 √373. Main Menu 33 分钟
 √374. Play and Quit Buttons 12 分钟
 √375. Vacant Load Slot 14 分钟
-376. Enter Name Load Slot 4 分钟
-
+√376. Enter Name Load Slot 4 分钟
 377. Taken Load Slot 5 分钟
 
 378. Load Menu 12 分钟
