@@ -468,8 +468,7 @@
 √379. MVVM 8 分钟
 380. Changed Needed for 5.3+ 35 分钟(完成397之后再过来看这个)
 √381. View Model Class 13 分钟
-
-382. Constructing a View Model 20 分钟
+√382. Constructing a View Model 20 分钟
 
 383. Load Slot View Model 24 分钟
 
