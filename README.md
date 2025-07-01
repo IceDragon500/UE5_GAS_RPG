@@ -465,12 +465,9 @@
 √376. Enter Name Load Slot 4 分钟
 √377. Taken Load Slot 5 分钟
 √378. Load Menu 12 分钟
-
-379. MVVM 8 分钟
-
-380. Changed Needed for 5.3+ 35 分钟
-
-381. View Model Class 13 分钟
+√379. MVVM 8 分钟
+380. Changed Needed for 5.3+ 35 分钟(完成397之后再过来看这个)
+√381. View Model Class 13 分钟
 
 382. Constructing a View Model 20 分钟
 

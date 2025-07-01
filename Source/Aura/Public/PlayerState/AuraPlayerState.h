@@ -8,6 +8,7 @@
 #include "AuraPlayerState.generated.h"
 
 class ULevelUpInfo;
+class UAttributeSet;
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerStatChanged, int32 /*StatValue*/)
 
 /**
