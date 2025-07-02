@@ -7,11 +7,7 @@
 #include "LoadScreenWidget.generated.h"
 
 /**
- * BlueprintImplementableEvent
- * 该功能可以在Blueprint或Level Blueprint图中实现
- *
- * BlueprintCallable
- * 该函数可以在Blueprint或Level Blueprint图中执行
+ * 
  */
 UCLASS()
 class AURA_API ULoadScreenWidget : public UUserWidget
