@@ -373,15 +373,13 @@ void UAuraAttributeSet::SendXPEvent(const FEffectProperties& Props)
 		 */
 		const ECharacterClass TargetClass = ICombatInterface::Execute_GetCharacterClass(Props.TargetCharacter);
 
-		const int32 XPReward = UAuraAbilitySystemLibrary::GetXPRewardForClassAndLevel(
-			Props.TargetCharacter, TargetClass, TargetLevel);
+		const int32 XPReward = UAuraAbilitySystemLibrary::GetXPRewardForClassAndLevel(Props.TargetCharacter, TargetClass, TargetLevel);
 
 		const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
 		FGameplayEventData Playload;
 		Playload.EventTag = GameplayTags.Attributes_Meta_IncomingXP;
 		Playload.EventMagnitude = XPReward;
-		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Props.SourceCharacter,
-		                                                         GameplayTags.Attributes_Meta_IncomingXP, Playload);
+		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Props.SourceCharacter, GameplayTags.Attributes_Meta_IncomingXP, Playload);
 	}
 }
 
@@ -414,7 +412,7 @@ void UAuraAttributeSet::PostAttributeChange(const FGameplayAttribute& Attribute,
 
 	if (Attribute == GetMaxManaAttribute() && bTopOffMana)
 	{
-		SetMana(GetMaxHealth());
+		SetMana(GetMaxMana());
 		bTopOffMana = false;
 	}
 }

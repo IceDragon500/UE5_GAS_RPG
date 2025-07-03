@@ -36,6 +36,14 @@ public:
 
 	AAuraEffectActor();
 
+	//这里是举例说明 如果出入引用 并且在蓝图左侧，需要加入UPARAM(ref)来表示将引用是为参数
+
+	UFUNCTION(BlueprintCallable)
+	void SetPlayerName(FString PlayerName, int32 PlayerLevel);
+
+	UFUNCTION(BlueprintCallable)
+	void SetPlayerLevel(UPARAM(ref)FString& PlayerName, int32 PlayerLevel);
+
 
 protected:
 

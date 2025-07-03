@@ -21,7 +21,7 @@ UMVVM_LoadSlot* UMVVM_LoadScreen::GetLoadSlotViewModelByIndex(int32 Index)
 	return LoadSlots.FindChecked(Index);
 }
 
-void UMVVM_LoadScreen::NewSlotButtonPressed(int32 Slot, FString& EnteredName)
+void UMVVM_LoadScreen::NewSlotButtonPressed(FString& EnteredName, int32 Slot)
 {
 	
 }

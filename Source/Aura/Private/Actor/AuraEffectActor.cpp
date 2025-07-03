@@ -14,6 +14,13 @@ AAuraEffectActor::AAuraEffectActor()
 	
 }
 
+void AAuraEffectActor::SetPlayerName(FString PlayerName, int32 PlayerLevel)
+{
+}
+
+void AAuraEffectActor::SetPlayerLevel(FString& PlayerName, int32 PlayerLevel)
+{
+}
 
 
 void AAuraEffectActor::BeginPlay()

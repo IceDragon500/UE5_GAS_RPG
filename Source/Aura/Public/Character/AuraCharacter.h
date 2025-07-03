@@ -52,6 +52,8 @@ public:
 	virtual void OnRep_Burned() override;
 	
 protected:
+
+	
 private:
 	virtual void InitAbilityActorInfo() override;
 	

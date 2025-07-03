@@ -316,7 +316,7 @@ void UAuraAbilitySystemComponent::UpdateAbilityStatuses(int32 Level)
 			GiveAbility(AbilitySpec);
 			MarkAbilitySpecDirty(AbilitySpec);//调用来标记一个能力规格已经被修改  立刻进行修改
 
-			ClientupdateAbilityStatus(Info.AbilityTag, FAuraGameplayTags::Get().Abilities_Status_Eligible, 1);
+			ClientUpdateAbilityStatus(Info.AbilityTag, FAuraGameplayTags::Get().Abilities_Status_Eligible, 1);
 		}
 	}
 }
@@ -345,7 +345,7 @@ void UAuraAbilitySystemComponent::ServerSpendSpellPoint_Implementation(const FGa
 			AbilitySpec->Level += 1;
 		}
 
-		ClientupdateAbilityStatus(AbilityTag, Status, AbilitySpec->Level);
+		ClientUpdateAbilityStatus(AbilityTag, Status, AbilitySpec->Level);
 		MarkAbilitySpecDirty(*AbilitySpec);
 		
 	}
@@ -483,7 +483,7 @@ void UAuraAbilitySystemComponent::OnRep_ActivateAbilities()
 	
 }
 
-void UAuraAbilitySystemComponent::ClientupdateAbilityStatus_Implementation(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag, int32 AbilityLevel)
+void UAuraAbilitySystemComponent::ClientUpdateAbilityStatus_Implementation(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag, int32 AbilityLevel)
 {
 	AbilityStatusChanged.Broadcast(AbilityTag, StatusTag, AbilityLevel);
 }
