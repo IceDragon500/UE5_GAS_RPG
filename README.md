@@ -20,7 +20,7 @@
 √15. Post Process Highlight 13 分钟
 测试 1： Section 2 Quiz
 
-第3节 Intro to the Gameplay Ability System
+第3节 Intro to the Gameplay Ability System  GAS简介
 √16. The Gameplay Ability System 12 分钟
 √17. The Main Parts of GAS 9 分钟
 √18. The Player State 4 分钟
@@ -38,7 +38,7 @@
 √27. Effect Actor 24 分钟
 测试 3： Section 4 Quiz
 
-第5节 RPG Game UI
+第5节 RPG Game UI RPG游戏的界面设计
 √28. Game UI Architecture 8 分钟
 √29. Aura User Widget and Widget Controller 11 分钟
 √30. Globe Progress Bar 29 分钟
@@ -84,7 +84,7 @@
 √64. Properly Clamping Attributes 10 分钟
 测试 6： Section 7 Quiz
 
-第8节 RPG Attributes
+第8节 RPG Attributes RPG游戏的属性设计
 √65. Initialize Attributes from a Data Table 15 分钟
 √66. Initialize Attributes with Gameplay Effects 16 分钟
 √67. Attribute Based Modifiers 9 分钟
@@ -98,7 +98,7 @@
 √75. Initializing Vital Attributes 8 分钟
 测试 7： Section 8 Quiz
 
-第9节 Attribute Menu
+第9节 Attribute Menu 属性菜单
 √76. Attribute Menu - Game Plan 5 分钟
 √77. Attribute Menu - Framed Value 11 分钟
 √78. Attribute Menu - Text Value Row 8 分钟
@@ -122,7 +122,7 @@
 √96. Responding to Attribute Changes 16 分钟
 测试 8： Section 9 Quiz
 
-第10节 Gameplay Abilities
+第10节 Gameplay Abilities 游戏能力/技能
 √97. Gameplay Abilities 5 分钟
 √98. Granting Abilities 15 分钟
 √99. Settings on Gameplay Abilities 19 分钟
@@ -471,8 +471,7 @@
 √382. Constructing a View Model 20 分钟
 √383. Load Slot View Model 24 分钟
 √384. Switching the Widget Switcher 20 分钟
-
-385. Save Game Object 15 分钟
+√385. Save Game Object 15 分钟
 
 386. Binding Variables to ViewModels 11 分钟
 

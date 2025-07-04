@@ -33,7 +33,7 @@ float UMMC_MaxMana::CalculateBaseMagnitude_Implementation(const FGameplayEffectS
 		PlayerLevel = ICombatInterface::Execute_GetPlayerLevel(Spec.GetContext().GetSourceObject());
 	}
 
-	return 25.f * Int + PlayerLevel * 10;
+	return 5.f * Int + PlayerLevel * 10;
 
 	//return 50.f + 25.f * Int + 100.f * PlayerLevel;
 }
