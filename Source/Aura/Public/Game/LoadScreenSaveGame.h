@@ -6,8 +6,18 @@
 #include "GameFramework/SaveGame.h"
 #include "LoadScreenSaveGame.generated.h"
 
+
+UENUM(BlueprintType)
+enum ESaveSlotStatus
+{
+	Vacant,  //空
+	EnterName, //输入名称
+	Taken //已读取
+};
+
 /**
- * 
+ * ULoadScreenSaveGame用来处理数据保存，即 这里是具体的存档内容
+ * 需要从这个读取之后 传递给MVVM的类，再由那个类，传递给界面
  */
 UCLASS()
 class AURA_API ULoadScreenSaveGame : public USaveGame
@@ -23,6 +33,9 @@ public:
 
 	UPROPERTY()
 	FString PlayerName = FString("Default Name");
+
+	UPROPERTY()
+	TEnumAsByte<ESaveSlotStatus> SaveSlotStatus = Vacant;
 	
 protected:
 

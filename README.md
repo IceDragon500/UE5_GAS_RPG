@@ -473,8 +473,7 @@
 √384. Switching the Widget Switcher 20 分钟
 √385. Save Game Object 15 分钟
 √386. Binding Variables to ViewModels 11 分钟
-
-387. Load Slot Status 17 分钟
+√387. Load Slot Status 17 分钟
 
 388. Enabling the Select Slot Button 9 分钟
 

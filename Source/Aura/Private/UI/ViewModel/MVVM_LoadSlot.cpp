@@ -5,7 +5,8 @@
 
 void UMVVM_LoadSlot::InitializeSlot()
 {
-	SetWidgetSwitcherIndex.Broadcast(2);
+	const int32 WidgetSwitchIndex = SlotStatus.GetValue();
+	SetWidgetSwitcherIndex.Broadcast(WidgetSwitchIndex);
 }
 
 void UMVVM_LoadSlot::SetLoadSlotName(FString SlotName)
@@ -21,4 +22,9 @@ void UMVVM_LoadSlot::SetPlayerName(FString inName)
 void UMVVM_LoadSlot::SetSlotIndex(FString inIndex)
 {
 	UE_MVVM_SET_PROPERTY_VALUE(SlotIndex, inIndex);
+}
+
+void UMVVM_LoadSlot::SetSlotStatus(ESaveSlotStatus inStatus)
+{
+	SlotStatus = inStatus;
 }

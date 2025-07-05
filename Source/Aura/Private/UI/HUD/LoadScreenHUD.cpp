@@ -29,8 +29,7 @@ void ALoadScreenHUD::BeginPlay()
 	GetOwningPlayerController()->SetInputMode(InputMode);
 	GetOwningPlayerController()->SetShowMouseCursor(true);
 
-	
-
+	LoadScreenViewModel->LoadData();
 	
 	
 }

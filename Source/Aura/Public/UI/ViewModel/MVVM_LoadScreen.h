@@ -8,8 +8,11 @@
 #include "MVVM_LoadScreen.generated.h"
 
 /**
- *BlueprintPure
- * 该函数不会以任何方式影响所属对象，并且可以在蓝图或级别蓝图图中执行
+ * UMVVM_LoadScreen 用来处理存档界面上的数据操作逻辑
+ * 我们用TObjectPtr<UMVVM_LoadSlot> LoadSlot_0  来表示界面上设置的3个存档对象
+ * 用Slot为其编号，从0至2，表示3个存档
+ * 使用void NewSlotButtonPressed() void NewGameButtonPressed() void SelectSlotButtonPressed()
+ * 来表示存档界面上三个按钮按下之后的逻辑
  */
 UCLASS()
 class AURA_API UMVVM_LoadScreen : public UMVVMViewModelBase
@@ -47,6 +50,8 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void SelectSlotButtonPressed(int32 Slot);
+
+	void LoadData();
 
 protected:
 	
