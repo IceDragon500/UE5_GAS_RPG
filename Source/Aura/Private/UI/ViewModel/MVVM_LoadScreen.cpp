@@ -85,6 +85,7 @@ void UMVVM_LoadScreen::LoadData()
 		ULoadScreenSaveGame* SaveObject = AuraGameModeBase->GetSaveSlotData(LoadSlot.Value->GetLoadSlotName(), LoadSlot.Key);
 
 		const FString PlayerName = SaveObject->PlayerName;
+		const FString MapName = SaveObject->MapName;
 		TEnumAsByte<ESaveSlotStatus> SaveSlotStatus = SaveObject->SaveSlotStatus;
 		
 		if (SaveObject)
@@ -92,6 +93,7 @@ void UMVVM_LoadScreen::LoadData()
 			LoadSlot.Value->SetSlotStatus(SaveSlotStatus);
 			LoadSlot.Value->SetPlayerName(PlayerName);
 			LoadSlot.Value->InitializeSlot();
+			LoadSlot.Value->SetMapName(MapName);
 		}
 		
 	}

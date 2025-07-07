@@ -479,8 +479,7 @@
 √390. Are You Sure Widget 24 分钟
 √391. Deleting a Slot 17 分钟
 √392. Map Name Field Notify 16 分钟
-
-393. Saving the Map Name 4 分钟
+√393. Saving the Map Name 4 分钟
 
 394. Traveling to the Saved Map 14 分钟
 测试 28： Section 30 Quiz
