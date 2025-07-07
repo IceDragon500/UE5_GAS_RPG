@@ -7,6 +7,8 @@
 #include "MVVM_LoadSlot.h"
 #include "MVVM_LoadScreen.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSlotSelected);
+
 /**
  * UMVVM_LoadScreen 用来处理存档界面上的数据操作逻辑
  * 我们用TObjectPtr<UMVVM_LoadSlot> LoadSlot_0  来表示界面上设置的3个存档对象
@@ -22,6 +24,9 @@ class AURA_API UMVVM_LoadScreen : public UMVVMViewModelBase
 public:
 
 	void InitializeLoadSlots();
+
+	UPROPERTY(BlueprintAssignable)
+	FSlotSelected SelectSlot;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UMVVM_LoadSlot> LoadSlotViewModelClass;
