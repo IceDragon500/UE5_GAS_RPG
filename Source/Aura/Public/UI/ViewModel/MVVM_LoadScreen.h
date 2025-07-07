@@ -62,6 +62,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void DeleteButtonPressed();
 
+	/**
+	 * 按下游戏开始按钮，切换关卡到第一关
+	 */
+	UFUNCTION(BlueprintCallable)
+	void PlayButtonPressed();
+
 	void LoadData();
 
 protected:
