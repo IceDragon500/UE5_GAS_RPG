@@ -56,6 +56,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SelectSlotButtonPressed(int32 Slot);
 
+	/**
+	 * 按下删除按钮，执行删除存档的逻辑
+	 */
+	UFUNCTION(BlueprintCallable)
+	void DeleteButtonPressed();
+
 	void LoadData();
 
 protected:
@@ -64,15 +70,18 @@ protected:
 private:
 
 	UPROPERTY()
-	TMap<int32, UMVVM_LoadSlot*> LoadSlots;
+	TMap<int32, UMVVM_LoadSlot*> LoadSlots;//存档位合集
 
 	UPROPERTY()
-	TObjectPtr<UMVVM_LoadSlot> LoadSlot_0;
+	TObjectPtr<UMVVM_LoadSlot> LoadSlot_0;//界面上第一个存档位
 
 	UPROPERTY()
-	TObjectPtr<UMVVM_LoadSlot> LoadSlot_1;
+	TObjectPtr<UMVVM_LoadSlot> LoadSlot_1;//界面上第二个存档位
 
 	UPROPERTY()
-	TObjectPtr<UMVVM_LoadSlot> LoadSlot_2;
+	TObjectPtr<UMVVM_LoadSlot> LoadSlot_2;//界面上第三个存档位
+
+	UPROPERTY()
+	UMVVM_LoadSlot* SelectedSlot;//当前选中的存档位 yes, it can be a tobjectptr rather than a raw pointer 是的，它可以是一个对象而不是一个原始指针
 	
 };

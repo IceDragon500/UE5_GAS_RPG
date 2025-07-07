@@ -41,3 +41,12 @@ ULoadScreenSaveGame* AAuraGameModeBase::GetSaveSlotData(const FString& SlotName,
 
 	return LoadScreenSaveGame;
 }
+
+void AAuraGameModeBase::DeleteSlot(const FString& SlotName, int32 SlotIndex)
+{
+	if (UGameplayStatics::DoesSaveGameExist(SlotName, SlotIndex))
+	{
+		//若该槽位已存在存档，我们将先删除，因为我们要覆盖保存，然后再创建
+		UGameplayStatics::DeleteGameInSlot(SlotName, SlotIndex);
+	}
+}

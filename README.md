@@ -477,8 +477,7 @@
 √388. Enabling the Select Slot Button 9 分钟
 √389. Enabling Play and Delete Buttons 9 分钟
 √390. Are You Sure Widget 24 分钟
-
-391. Deleting a Slot 17 分钟
+√391. Deleting a Slot 17 分钟
 
 392. Map Name Field Notify 16 分钟
 

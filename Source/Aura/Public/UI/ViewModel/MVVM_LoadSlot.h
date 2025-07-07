@@ -39,8 +39,8 @@ public:
 	void SetPlayerName(FString inName);
 	FString GetPlayerName() const { return PlayerName; }
 	
-	void SetSlotIndex(FString inIndex);
-	FString GetSlotIndex() const { return SlotIndex; }
+	void SetSlotIndex(int32 inIndex);
+	int32 GetSlotIndex() const { return SlotIndex; }
 
 	void SetSlotStatus(ESaveSlotStatus inStatus);
 
@@ -58,7 +58,7 @@ private:
 	FString PlayerName = FString();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, FieldNotify, Setter, Getter, meta=(AllowPrivateAccess=true))
-	FString SlotIndex = FString();
+	int32 SlotIndex = 0;
 
 	UPROPERTY(meta=(AllowPrivateAccess=true))
 	TEnumAsByte<ESaveSlotStatus> SlotStatus;
