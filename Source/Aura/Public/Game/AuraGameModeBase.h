@@ -32,9 +32,26 @@ public:
 
 	static void DeleteSlot(const FString& SlotName, int32 SlotIndex);
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
 	TSubclassOf<USaveGame> LoadScreenSaveGameClass;
+
+	//初始地图的名称
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
+	FString DefaultMapName;
+
+	//初始地图
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
+	TSoftObjectPtr<UWorld> DefaultMap;
+
+	/**
+	 * 地图合集  组合方式为：
+	 * 地图名称+地图
+	 */
+	UPROPERTY()
+	TMap<FString, TSoftObjectPtr<UWorld>> Maps;
 	
 protected:
+
+	virtual void BeginPlay() override;
 private:
 };

@@ -2,7 +2,6 @@
 
 
 #include "Game/AuraGameModeBase.h"
-
 #include "Game/LoadScreenSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 #include "UI/ViewModel/MVVM_LoadSlot.h"
@@ -49,4 +48,10 @@ void AAuraGameModeBase::DeleteSlot(const FString& SlotName, int32 SlotIndex)
 		//若该槽位已存在存档，我们将先删除，因为我们要覆盖保存，然后再创建
 		UGameplayStatics::DeleteGameInSlot(SlotName, SlotIndex);
 	}
+}
+
+void AAuraGameModeBase::BeginPlay()
+{
+	Super::BeginPlay();
+	Maps.Add(DefaultMapName, DefaultMap);
 }

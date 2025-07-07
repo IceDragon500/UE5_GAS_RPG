@@ -24,6 +24,11 @@ void UMVVM_LoadSlot::SetSlotIndex(int32 inIndex)
 	UE_MVVM_SET_PROPERTY_VALUE(SlotIndex, inIndex);
 }
 
+void UMVVM_LoadSlot::SetMapName(FString inName)
+{
+	UE_MVVM_SET_PROPERTY_VALUE(MapName, inName);
+}
+
 void UMVVM_LoadSlot::SetSlotStatus(ESaveSlotStatus inStatus)
 {
 	SlotStatus = inStatus;
