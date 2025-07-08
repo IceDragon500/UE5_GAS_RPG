@@ -68,6 +68,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void PlayButtonPressed();
 
+	//读取存档
 	void LoadData();
 
 protected:

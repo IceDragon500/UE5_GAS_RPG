@@ -28,8 +28,19 @@ public:
 
 	void SaveSlotData(UMVVM_LoadSlot* LoadSlot, int32 SlotIndex);
 
+	/**
+	 * 读取存档
+	 * @param SlotName 传入存档的名称
+	 * @param SlotIndex 传入存档的序号
+	 * @return 
+	 */
 	ULoadScreenSaveGame* GetSaveSlotData(const FString& SlotName, int32 SlotIndex) const;
 
+	/**
+	 * 删除存档
+	 * @param SlotName 传入的存档名称
+	 * @param SlotIndex 传入存档的序号
+	 */
 	static void DeleteSlot(const FString& SlotName, int32 SlotIndex);
 
 	void TravelToMap(UMVVM_LoadSlot* Slot);
@@ -51,6 +62,13 @@ public:
 	 */
 	UPROPERTY()
 	TMap<FString, TSoftObjectPtr<UWorld>> Maps;
+
+	/**
+	 * 返回这个玩家从默认执行中生成的“最佳”玩家开始寻找一个随机的未被占用的位置
+	 * @param Player 是我们为其选择playerstart的控制器
+	 * @return 
+	 */
+	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
 	
 protected:
 
