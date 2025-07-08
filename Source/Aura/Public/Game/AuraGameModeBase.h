@@ -69,6 +69,10 @@ public:
 	 * @return 
 	 */
 	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
+
+	//初始玩家起点的Tag
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
+	FName DefaultPlayerStartTag;
 	
 protected:
 

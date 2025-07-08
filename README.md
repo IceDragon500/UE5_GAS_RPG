@@ -485,7 +485,7 @@
 
 第31节 Checkpoints 检查点
 √395. Choosing the Player Start 10 分钟
-396. Setting the Default Player Start 13 分钟
+√396. Setting the Default Player Start 13 分钟
 
 397. Save the Player Start Tag 8 分钟
 
