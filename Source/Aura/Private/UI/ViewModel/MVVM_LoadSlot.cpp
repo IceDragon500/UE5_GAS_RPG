@@ -33,3 +33,8 @@ void UMVVM_LoadSlot::SetSlotStatus(ESaveSlotStatus inStatus)
 {
 	SlotStatus = inStatus;
 }
+
+void UMVVM_LoadSlot::SetPlayerStartTag(FName inName)
+{
+	PlayerStartTag = inName;
+}

@@ -47,6 +47,9 @@ public:
 
 	void SetSlotStatus(ESaveSlotStatus inStatus);
 
+	void SetPlayerStartTag(FName inName);
+	FName GetPlayerStartTag() const { return PlayerStartTag; }
+
 protected:
 
 
@@ -76,6 +79,8 @@ private:
 	 */
 	UPROPERTY(meta=(AllowPrivateAccess=true))
 	TEnumAsByte<ESaveSlotStatus> SlotStatus;
+	
+	FName PlayerStartTag = FName();
 
 	
 };
