@@ -487,8 +487,7 @@
 √395. Choosing the Player Start 10 分钟
 √396. Setting the Default Player Start 13 分钟
 √397. Save the Player Start Tag 8 分钟
-
-398. Checkpoints 21 分钟
+√398. Checkpoints 21 分钟
 
 399. Interface Function for Saving Progress 20 分钟
 
