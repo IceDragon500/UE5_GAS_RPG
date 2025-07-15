@@ -25,23 +25,64 @@ class AURA_API ULoadScreenSaveGame : public USaveGame
 	GENERATED_BODY()
 
 public:
+	//存档的文件名称
 	UPROPERTY()
 	FString SlotName = FString();
 
+	//存档的序号，从0开始
 	UPROPERTY()
 	int32 SlotIndex = 0;
 
+	//玩家创建的角色名称
 	UPROPERTY()
 	FString PlayerName = FString("Default Name");
 
+	//地图名称
 	UPROPERTY()
 	FString MapName = FString();
 
+	//存档的状态
 	UPROPERTY()
 	TEnumAsByte<ESaveSlotStatus> SaveSlotStatus = Vacant;
 
+	//玩家起点的tag
 	UPROPERTY()
 	FName PlayerStartTag;
+
+	/* player 需要保存的玩家数据*/
+
+	//
+	UPROPERTY()
+	int32 Save_PlayerLevel = 1;
+
+	//
+	UPROPERTY()
+	int32 Save_XP = 0;
+
+	//
+	UPROPERTY()
+	int32 Save_SpellPoints = 0;
+
+	//
+	UPROPERTY()
+	int32 Save_AttributePoints = 0;
+
+	//
+	UPROPERTY()
+	float Save_Strength = 0;
+
+	//
+	UPROPERTY()
+	float Save_Intelligence = 0;
+
+	//
+	UPROPERTY()
+	float Save_Resilience = 0;
+
+	//
+	UPROPERTY()
+	float Save_Vigor = 0;
+	
 	
 protected:
 

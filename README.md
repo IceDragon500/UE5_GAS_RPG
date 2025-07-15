@@ -489,8 +489,7 @@
 √397. Save the Player Start Tag 8 分钟
 √398. Checkpoints 21 分钟
 √399. Interface Function for Saving Progress 20 分钟
-
-400. Saving Player Data 9 分钟
+√400. Saving Player Data 9 分钟
 
 401. Loading Player Data 16 分钟
 
