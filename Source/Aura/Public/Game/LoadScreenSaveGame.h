@@ -45,6 +45,10 @@ public:
 	UPROPERTY()
 	TEnumAsByte<ESaveSlotStatus> SaveSlotStatus = Vacant;
 
+	//是否是首次加载
+	UPROPERTY()
+	bool bFirstTimeLoadIn = true;
+
 	//玩家起点的tag
 	UPROPERTY()
 	FName PlayerStartTag;

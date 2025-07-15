@@ -10,7 +10,6 @@
 #include "PlayerState/AuraPlayerState.h"
 #include "NiagaraComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
-#include "Game/AuraGameInstance.h"
 #include "Game/AuraGameModeBase.h"
 #include "Game/LoadScreenSaveGame.h"
 #include "Kismet/GameplayStatics.h"
@@ -58,8 +57,40 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 
 	//Init Ability Actor info for the server
 	InitAbilityActorInfo();
+
+	LoadProgress();
+
+	//TODO:Load in Abilities from disk
 	AddCharacterAbilities();
 
+}
+
+void AAuraCharacter::LoadProgress()
+{
+	if (AAuraGameModeBase* AuraGameMode = Cast<AAuraGameModeBase>(UGameplayStatics::GetGameMode(this)))
+	{
+		ULoadScreenSaveGame* SaveData = AuraGameMode->RetriveveInGameSaveData();
+		if (SaveData == nullptr) return;
+
+		if (AAuraPlayerState* AuraPlayerState = Cast<AAuraPlayerState>(GetPlayerState()))
+		{
+			AuraPlayerState->SetLevel(SaveData->Save_PlayerLevel);
+			AuraPlayerState->SetXP(SaveData->Save_XP);
+			AuraPlayerState->SetSpellPoints(SaveData->Save_SpellPoints);
+			AuraPlayerState->SetAttributePoints(SaveData->Save_AttributePoints);
+			//PlayerState->
+		}
+
+		if (SaveData->bFirstTimeLoadIn)//如果玩家第一次建档进游戏 重新初始化属性点
+		{
+			InitializeDefaultAttributes();
+			AddCharacterAbilities();
+		}
+		else //玩家通过加载存档的方式进入游戏 需要读取存档中的属性值
+		{
+			
+		}
+	}
 }
 
 void AAuraCharacter::OnRep_PlayerState()
@@ -208,6 +239,7 @@ void AAuraCharacter::SaveProgress_Implementation(const FName& CheckpointTag)
 		SaveData->Save_Resilience = UAuraAttributeSet::GetResilienceAttribute().GetNumericValue(GetAttributeSet());
 		SaveData->Save_Vigor = UAuraAttributeSet::GetVigorAttribute().GetNumericValue(GetAttributeSet());
 
+		SaveData->bFirstTimeLoadIn = false;
 		AuraGameMode->SaveInGameProgressData(SaveData);
 	}
 }
@@ -288,5 +320,5 @@ void AAuraCharacter::InitAbilityActorInfo()
 		}
 	}
 
-	InitializeDefaultAttributes();
+	//InitializeDefaultAttributes(); 401讲中 使用读取存档的方式初始化属性
 }

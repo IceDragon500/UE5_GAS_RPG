@@ -130,9 +130,11 @@ protected:
 	//创建GameplayEffect的方式
 	void ApplyEffetToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
 
-	//对属性进行初始化
-	//增加了一个注释
-	//没有问题
+	/**
+	 * 硬编码的方式初始化了角色属性
+	 * 这种方式我们只需要在玩家第一次建档进游戏的时候使用
+	 * 将Primary，Secondary，Vital三个属性赋予角色
+	 */
 	virtual void InitializeDefaultAttributes() const;
 
 	void AddCharacterAbilities();

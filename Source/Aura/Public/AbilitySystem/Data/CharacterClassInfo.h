@@ -49,6 +49,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "角色属性打包")
 	TMap<ECharacterClass, FCharacterClassDefaultInfo> CharacterClassInfoMap;
 
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
+	TSubclassOf<UGameplayEffect> PrimaryAttributes_SetByCaller;
+
 	//所有Enemy类型都共用一套公共属性
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TSubclassOf<UGameplayEffect> SecondaryAttributes;

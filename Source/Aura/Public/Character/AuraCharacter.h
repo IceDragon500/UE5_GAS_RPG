@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Actor/AuraProjectile.h"
 #include "Camera/CameraComponent.h"
 #include "Character/AuraCharacterBase.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -52,6 +51,8 @@ public:
 
 	virtual void OnRep_Stunned() override;
 	virtual void OnRep_Burned() override;
+
+	void LoadProgress();
 	
 protected:
 
