@@ -32,7 +32,7 @@ public:
 	 * 读取存档
 	 * @param SlotName 传入存档的名称
 	 * @param SlotIndex 传入存档的序号
-	 * @return 
+	 * @return 返回一个ULoadScreenSaveGame类型的存档对象
 	 */
 	ULoadScreenSaveGame* GetSaveSlotData(const FString& SlotName, int32 SlotIndex) const;
 
@@ -42,6 +42,15 @@ public:
 	 * @param SlotIndex 传入存档的序号
 	 */
 	static void DeleteSlot(const FString& SlotName, int32 SlotIndex);
+
+	/**
+	 * 检索游戏保存数据
+	 * @return 返回一个ULoadScreenSaveGame类型的存档对象
+	 */
+	ULoadScreenSaveGame* RetriveveInGameSaveData();
+
+	/***/
+	void SaveInGameProgressData(ULoadScreenSaveGame* SaveSlot);
 
 	void TravelToMap(UMVVM_LoadSlot* Slot);
 
