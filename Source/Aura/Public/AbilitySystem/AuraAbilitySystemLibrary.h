@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AuraAbilityTypes.h"
 #include "Data/CharacterClassInfo.h"
+#include "Game/LoadScreenSaveGame.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
@@ -65,6 +66,15 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
 	static void InitializeDefaultAttributes(const UObject* WorldContextObject, ECharacterClass CharacterClass, float Level, UAbilitySystemComponent* ASC);
+
+	/**
+	 * 通过读取存档中的内容来初始化属性Attribute
+	 * @param WorldContextObject 传入角色Actor
+	 * @param ASC 角色的AbilitySystemComponent
+	 * @param SaveGame 包含角色属性信息的存档
+	 */
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
+	static void InitializeDefaultAttributesFromSaveData(const UObject* WorldContextObject, UAbilitySystemComponent* ASC, ULoadScreenSaveGame* SaveGame);
 
 	/**
 	 * 给角色赋予初始的Ability 

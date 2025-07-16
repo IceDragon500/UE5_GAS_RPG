@@ -49,12 +49,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "角色属性打包")
 	TMap<ECharacterClass, FCharacterClassDefaultInfo> CharacterClassInfoMap;
 
+	//用来从存档中读取主要属性，应用于Aura
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TSubclassOf<UGameplayEffect> PrimaryAttributes_SetByCaller;
 
 	//所有Enemy类型都共用一套公共属性
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
 	TSubclassOf<UGameplayEffect> SecondaryAttributes;
+
+	//用来从存档中读取次要属性，应用于Aura
+	UPROPERTY(EditDefaultsOnly, Category = "公共属性")
+	TSubclassOf<UGameplayEffect> SecondaryAttributes_Infinite;
 
 	//所有Enemy类型都共用一套公共属性
 	UPROPERTY(EditDefaultsOnly, Category = "公共属性")

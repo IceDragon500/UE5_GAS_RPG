@@ -491,8 +491,7 @@
 √399. Interface Function for Saving Progress 20 分钟
 √400. Saving Player Data 9 分钟
 √401. Loading Player Data 16 分钟
-
-402. Initializing Attributes From Disk 25 分钟
+√402. Initializing Attributes From Disk 25 分钟
 
 403. Showing Player Level in Load Screen 6 分钟
 

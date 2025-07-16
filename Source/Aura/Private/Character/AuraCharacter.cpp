@@ -9,6 +9,7 @@
 #include "PlayerController/AuraPlayerController.h"
 #include "PlayerState/AuraPlayerState.h"
 #include "NiagaraComponent.h"
+#include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Game/AuraGameModeBase.h"
 #include "Game/LoadScreenSaveGame.h"
@@ -60,9 +61,6 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 
 	LoadProgress();
 
-	//TODO:Load in Abilities from disk
-	AddCharacterAbilities();
-
 }
 
 void AAuraCharacter::LoadProgress()
@@ -71,16 +69,7 @@ void AAuraCharacter::LoadProgress()
 	{
 		ULoadScreenSaveGame* SaveData = AuraGameMode->RetriveveInGameSaveData();
 		if (SaveData == nullptr) return;
-
-		if (AAuraPlayerState* AuraPlayerState = Cast<AAuraPlayerState>(GetPlayerState()))
-		{
-			AuraPlayerState->SetLevel(SaveData->Save_PlayerLevel);
-			AuraPlayerState->SetXP(SaveData->Save_XP);
-			AuraPlayerState->SetSpellPoints(SaveData->Save_SpellPoints);
-			AuraPlayerState->SetAttributePoints(SaveData->Save_AttributePoints);
-			//PlayerState->
-		}
-
+		
 		if (SaveData->bFirstTimeLoadIn)//如果玩家第一次建档进游戏 重新初始化属性点
 		{
 			InitializeDefaultAttributes();
@@ -88,7 +77,17 @@ void AAuraCharacter::LoadProgress()
 		}
 		else //玩家通过加载存档的方式进入游戏 需要读取存档中的属性值
 		{
+			//TODO:Load in Abilities from disk
 			
+			if (AAuraPlayerState* AuraPlayerState = Cast<AAuraPlayerState>(GetPlayerState()))
+			{
+				AuraPlayerState->SetLevel(SaveData->Save_PlayerLevel);
+				AuraPlayerState->SetXP(SaveData->Save_XP);
+				AuraPlayerState->SetSpellPoints(SaveData->Save_SpellPoints);
+				AuraPlayerState->SetAttributePoints(SaveData->Save_AttributePoints);
+			}
+			
+			UAuraAbilitySystemLibrary::InitializeDefaultAttributesFromSaveData(this, AbilitySystemComponent, SaveData);
 		}
 	}
 }
