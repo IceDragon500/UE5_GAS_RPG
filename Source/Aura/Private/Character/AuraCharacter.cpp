@@ -11,6 +11,7 @@
 #include "NiagaraComponent.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "AbilitySystem/Data/AbilityInfo.h"
 #include "Game/AuraGameModeBase.h"
 #include "Game/LoadScreenSaveGame.h"
 #include "Kismet/GameplayStatics.h"
@@ -239,6 +240,42 @@ void AAuraCharacter::SaveProgress_Implementation(const FName& CheckpointTag)
 		SaveData->Save_Vigor = UAuraAttributeSet::GetVigorAttribute().GetNumericValue(GetAttributeSet());
 
 		SaveData->bFirstTimeLoadIn = false;
+
+		if (HasAuthority())
+		{
+			UAuraAbilitySystemComponent* AuraASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+			
+			FForEachAbility SaveAbilityDelegate;
+			
+			SaveAbilityDelegate.BindLambda([this, AuraASC, SaveData](const FGameplayAbilitySpec& AbilitySpec)
+			{
+				const FGameplayTag AbilityTag = AuraASC->GetAbilityTagFromSpec(AbilitySpec);
+				UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(this);
+				FAuraAbilityInfo AuraAbilityInfo = AbilityInfo->FindAbilityInfoForTag(AbilityTag);
+				
+				FSavedAbility SavedAbility;
+				SavedAbility.GamepplayAbility = AuraAbilityInfo.Ability;
+				SavedAbility.AbilityLevel = AbilitySpec.Level;
+				SavedAbility.AbilitySlot = AuraASC->GetSlotFromAbilityTag(AbilityTag);
+				SavedAbility.AbilityStatus = AuraASC->GetStatusFromAbilityTag(AbilityTag);
+				SavedAbility.AbilityTag = AbilityTag;
+				SavedAbility.AbilityType = AuraAbilityInfo.AbilityType;
+				
+				SaveData->SavedAbilities.Add(SavedAbility);
+			});
+
+			AuraASC->ForEachAbility(SaveAbilityDelegate);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Ability Save Filed"));
+		}
+		
+		
+
+		
+		
+		
 		AuraGameMode->SaveInGameProgressData(SaveData);
 	}
 }

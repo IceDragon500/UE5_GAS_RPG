@@ -493,8 +493,7 @@
 √401. Loading Player Data 16 分钟
 √402. Initializing Attributes From Disk 25 分钟
 √403. Showing Player Level in Load Screen 6 分钟
-
-404. Saving Abilities 15 分钟
+√404. Saving Abilities 15 分钟
 
 405. Notes on this lecture 1 分钟
 

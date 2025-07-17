@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Abilities/GameplayAbility.h"
 #include "GameFramework/SaveGame.h"
 #include "LoadScreenSaveGame.generated.h"
 
@@ -13,6 +14,40 @@ enum ESaveSlotStatus
 	Vacant,  //空
 	EnterName, //输入名称
 	Taken //已读取
+};
+
+/**
+ * 定义一个用来保存技能的结构体
+ */
+USTRUCT(BlueprintType)
+struct FSavedAbility
+{
+	GENERATED_BODY()
+
+	//技能类
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="ClassDefaults")
+	TSubclassOf<UGameplayAbility> GamepplayAbility;
+
+	//技能对应的Tag
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FGameplayTag AbilityTag = FGameplayTag();
+
+	//技能状态的Tag
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FGameplayTag AbilityStatus = FGameplayTag();
+
+	//技能在按键上的Tag
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FGameplayTag AbilitySlot = FGameplayTag();
+
+	//技能在按键上的Tag
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FGameplayTag AbilityType = FGameplayTag();
+
+	//技能的等级
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	int32 AbilityLevel = 0;
+	
 };
 
 /**
@@ -55,38 +90,41 @@ public:
 
 	/* player 需要保存的玩家数据*/
 
-	//
+	//需要保存玩家等级
 	UPROPERTY()
 	int32 Save_PlayerLevel = 1;
 
-	//
+	//需要保存玩家当前经验
 	UPROPERTY()
 	int32 Save_XP = 0;
 
-	//
+	//需要保存玩家当前的属性点数
 	UPROPERTY()
 	int32 Save_SpellPoints = 0;
 
-	//
+	//需要保存玩家当前的技能点数
 	UPROPERTY()
 	int32 Save_AttributePoints = 0;
 
-	//
+	//需要保存玩家当前基础属性值
 	UPROPERTY()
 	float Save_Strength = 0;
 
-	//
+	//需要保存玩家当前基础属性值
 	UPROPERTY()
 	float Save_Intelligence = 0;
 
-	//
+	//需要保存玩家当前基础属性值
 	UPROPERTY()
 	float Save_Resilience = 0;
 
-	//
+	//需要保存玩家当前基础属性值
 	UPROPERTY()
 	float Save_Vigor = 0;
-	
+
+	//需要保存玩家当前技能组（队列）
+	UPROPERTY()
+	TArray<FSavedAbility> SavedAbilities;
 	
 protected:
 
