@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AuraGameplayAbility.h"
+#include "AbilitySystem/Abilities/AuraGameplayAbility.h"
 #include "AuraPassiveAbility.generated.h"
 
 /**
- * 
+ * 被动技能的基类
  */
 UCLASS()
 class AURA_API UAuraPassiveAbility : public UAuraGameplayAbility
@@ -17,6 +17,7 @@ public:
 	//重写ActivateAbility方法
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
+	//处理禁用被动的逻辑
 	void ReceiveDeactivate(const FGameplayTag& AbilityTag);
 protected:
 	

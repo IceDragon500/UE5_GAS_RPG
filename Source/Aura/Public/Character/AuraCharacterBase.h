@@ -200,10 +200,10 @@ private:
 	TObjectPtr<UPassiveNiagaraComponent> HaloPassiveComponent;
 
 	UPROPERTY(VisibleAnywhere, Category="角色|属性")
-	TObjectPtr<UPassiveNiagaraComponent> LifeSpihonPassiveComponent;
+	TObjectPtr<UPassiveNiagaraComponent> LifeSiphonPassiveComponent;
 
 	UPROPERTY(VisibleAnywhere, Category="角色|属性")
-	TObjectPtr<UPassiveNiagaraComponent> ManaSpihonPassiveComponent;
+	TObjectPtr<UPassiveNiagaraComponent> ManaSiphonPassiveComponent;
 
 	UPROPERTY(VisibleAnywhere, Category="角色|属性")
 	TObjectPtr<USceneComponent> EffectAttachComponent;

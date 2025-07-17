@@ -40,11 +40,11 @@ AAuraCharacterBase::AAuraCharacterBase()
 	HaloPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("HaloPassive"));
 	HaloPassiveComponent->SetupAttachment(EffectAttachComponent);
 
-	LifeSpihonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("LifeSpihonPassive"));
-	LifeSpihonPassiveComponent->SetupAttachment(EffectAttachComponent);
+	LifeSiphonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("LifeSpihonPassive"));
+	LifeSiphonPassiveComponent->SetupAttachment(EffectAttachComponent);
 
-	ManaSpihonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("ManaSpihonPassive"));
-	ManaSpihonPassiveComponent->SetupAttachment(EffectAttachComponent);
+	ManaSiphonPassiveComponent = CreateDefaultSubobject<UPassiveNiagaraComponent>(TEXT("ManaSpihonPassive"));
+	ManaSiphonPassiveComponent->SetupAttachment(EffectAttachComponent);
 
 }
 

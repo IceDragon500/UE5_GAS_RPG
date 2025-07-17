@@ -1,7 +1,7 @@
 // 我自己用来学习的试作品 -- 来自icedragon500
 
 
-#include "AbilitySystem/Abilities/AuraFireBolt.h"
+#include "AbilitySystem/Abilities/Offensive/AuraFireBolt.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 

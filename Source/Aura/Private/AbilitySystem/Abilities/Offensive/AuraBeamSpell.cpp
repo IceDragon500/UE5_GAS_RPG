@@ -1,7 +1,7 @@
 // 我自己用来学习的试作品 -- 来自icedragon500
 
 
-#include "AbilitySystem/Abilities/AuraBeamSpell.h"
+#include "AbilitySystem/Abilities/Offensive/AuraBeamSpell.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "GameFramework/Character.h"
 #include "Kismet/KismetSystemLibrary.h"

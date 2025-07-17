@@ -19,7 +19,7 @@ class UAbilityInfo;
 
 
 /**
- * 创建游戏的基本参数
+ * 我们创建一个结构体，包含了游戏4个基础信息
  * PlayerController
  * PlayerState
  * AbilitySystemComponent
@@ -51,13 +51,20 @@ struct FWidgetControllerParams
 
 
 /**
- * 
+ * 定义了一个AuraWidgetController 用来处理界面上的数据与后台之间的交换
+ * 这里保存了一些游戏基础信息
+ * 包括AbilityInfo、PlayerController、PlayerState、AbilitySystemComponent、AttributeSet
+ * 和派生的Aura相关的以上信息
  */
 UCLASS()
 class AURA_API UAuraWidgetController : public UObject
 {
 	GENERATED_BODY()
 public:
+	/**
+	 * 对FWidgetControllerParams进行赋值、初始化
+	 * @param WCParams 传入一个FWidgetControllerParams结构体
+	 */
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
 
@@ -73,6 +80,8 @@ public:
 	void BroadcastAbilityInfo();
 	
 protected:
+	//-----基础---------------
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
 	TObjectPtr<UAbilityInfo> AbilityInfo;
 	
@@ -88,6 +97,9 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<UAttributeSet> AttributeSet;
 
+	//-----Aura---------------
+
+	
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<AAuraPlayerController> AuraPlayerController;
 	
@@ -99,6 +111,8 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
 	TObjectPtr<UAuraAttributeSet> AuraAttributeSet;
+
+	//-----从基数转换成Aura---------------
 	
 	AAuraPlayerController* GetAuraPC();
 	AAuraPlayerState* GetAuraPS();

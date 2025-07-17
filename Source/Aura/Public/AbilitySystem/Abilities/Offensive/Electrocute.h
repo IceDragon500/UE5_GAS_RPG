@@ -7,7 +7,8 @@
 #include "Electrocute.generated.h"
 
 /**
- * 
+ * 闪电技能
+ * 这里主要用来添加技能描述
  */
 UCLASS()
 class AURA_API UElectrocute : public UAuraBeamSpell

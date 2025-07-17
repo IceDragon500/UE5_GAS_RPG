@@ -6,11 +6,13 @@
 #include "AbilitySystemComponent.h"
 #include "AuraAbilitySystemComponent.generated.h"
 
+class ULoadScreenSaveGame;
+
 DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContainer& /* AssetTags*/);
-DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
+DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)//当Ability被赋予角色时，进行一个广播
 DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
-DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/,  int32 /* Level*/);
-DECLARE_MULTICAST_DELEGATE_FourParams(FAbilityEquipped, const FGameplayTag& /*AbilityTag*/, const FGameplayTag&/* Status*/, const FGameplayTag& /* InputTagSlot*/, const FGameplayTag& /*PreviousSlot*/);
+DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /* AbilityTags*/, const FGameplayTag& /* StatusTags*/,  int32 /* Level*/);//当AbilityStatus改变时，进行一个广播
+DECLARE_MULTICAST_DELEGATE_FourParams(FAbilityEquipped, const FGameplayTag& /*AbilityTag*/, const FGameplayTag&/* Status*/, const FGameplayTag& /* InputTagSlot*/, const FGameplayTag& /*PreviousSlot*/);//当Ability被装备时，进行一个广播
 DECLARE_MULTICAST_DELEGATE_OneParam(FDeactivatePassiveAbility, const FGameplayTag&/*AbilityTag*/);
 DECLARE_MULTICAST_DELEGATE_TwoParams(FActivatePassiveEffect, const FGameplayTag& /*AbilityTag*/, bool /*bActivate*/)
 
@@ -28,16 +30,29 @@ public:
 	// 效果资产标签的多播委托
 	FEffectAssetTags EffectAssetTags;
 
-	// 能力赋予的多播委托
+	/**
+	 * 当Ability被赋予时，将内容广播出去
+	 */
 	FAbilitiesGiven AbilitiesGivenDelegate;
 
-	//能力状态的多播
+	/**
+	 * 当AbilityStatus改变时，将内容广播出去
+	 */
 	FAbilityStatusChanged AbilityStatusChanged;
 
+	/**
+	 * 当Ability被装备的时候，将内容广播出去
+	 */
 	FAbilityEquipped AbilityEquipped;
 
+	/**
+	 * 当被动Ability被禁用的时候，将内容广播出去
+	 */
 	FDeactivatePassiveAbility DeactivatePassiveAbility;
 
+	/**
+	 * 当被动Ability被激活的时候，将内容广播出去
+	 */
 	FActivatePassiveEffect ActivatePassiveEffect;
 
 //-----角色初始化-------------------------
@@ -49,6 +64,9 @@ public:
 	
 	// 标记是否已经赋予了初始能力
 	bool bStartupAbilitiesGiven = false;
+
+	//从存档读取玩家的Ability信息 并进行初始化
+	void AddCharacterAbilityFromSaveData(ULoadScreenSaveGame* SaveData);
 	
 //-----按键相关-------------------------
 	//处理能力输入标签按下事件
@@ -75,6 +93,7 @@ public:
 	static FGameplayTag GetStatusFromSpec(const FGameplayAbilitySpec& AbilitySpec);
 
 	//从AbilityTag中获取AbilityStatus
+	UFUNCTION(BlueprintCallable)
 	FGameplayTag GetStatusFromAbilityTag(const FGameplayTag& AbilityTag);
 
 	//从AbilityTag中获取InputTag

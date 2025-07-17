@@ -116,9 +116,11 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	/**
 	 * 被动技能
 	 */
+	GameplayTags.Abilities_Passive_ListenForEvent = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.ListenForEvent"), FString("用来监听一些事件"));
 	GameplayTags.Abilities_Passive_HaloOfProtection = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.HaloOfProtection"), FString("保护光环"));
 	GameplayTags.Abilities_Passive_LifeSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.LifeSiphon"), FString("生命虹吸"));
 	GameplayTags.Abilities_Passive_ManaSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(FName("Abilities.Passive.ManaSiphon"), FString("法力虹吸"));
+	
 	
 	/**
 	 * 在角色网格体对应的骨骼上，参与攻击判断的Socket名称Tag

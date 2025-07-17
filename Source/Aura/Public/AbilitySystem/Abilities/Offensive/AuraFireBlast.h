@@ -7,8 +7,10 @@
 #include "AuraFireBlast.generated.h"
 
 class AAuraFireBall;
+
 /**
- * 
+ * 召唤向四周飞行的火球
+ * 这里用来处理技能描述和火球数量
  */
 UCLASS()
 class AURA_API UAuraFireBlast : public UAuraDamageGameplayAbility

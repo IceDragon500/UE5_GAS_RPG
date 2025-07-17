@@ -7,7 +7,10 @@
 #include "AuraFireBolt.generated.h"
 
 /**
- * 
+ * 发射一个火球
+ * 用来处理技能描述
+ * 生成需要发射的火球（一个bp蓝图类）
+ * 可以设置飞行速度和抛射物夹角
  */
 UCLASS()
 class AURA_API UAuraFireBolt : public UAuraProjectileSpell

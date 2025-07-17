@@ -8,6 +8,8 @@
 
 /**
  * 一种能够发射光束或能量束的魔法或技能
+ * 这里处理描述
+ * 检测鼠标点击和技能释放特效
  */
 UCLASS()
 class AURA_API UAuraBeamSpell : public UAuraDamageGameplayAbility

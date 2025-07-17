@@ -57,9 +57,10 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
-	//Init Ability Actor info for the server
+	//在服务器上初始化玩家的AbilityInfo
 	InitAbilityActorInfo();
 
+	//处理存档读取
 	LoadProgress();
 
 }
@@ -78,7 +79,10 @@ void AAuraCharacter::LoadProgress()
 		}
 		else //玩家通过加载存档的方式进入游戏 需要读取存档中的属性值
 		{
-			//TODO:Load in Abilities from disk
+			if (UAuraAbilitySystemComponent* AuraASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent))
+			{
+				AuraASC->AddCharacterAbilityFromSaveData(SaveData);
+			}
 			
 			if (AAuraPlayerState* AuraPlayerState = Cast<AAuraPlayerState>(GetPlayerState()))
 			{
@@ -241,40 +245,31 @@ void AAuraCharacter::SaveProgress_Implementation(const FName& CheckpointTag)
 
 		SaveData->bFirstTimeLoadIn = false;
 
-		if (HasAuthority())
-		{
-			UAuraAbilitySystemComponent* AuraASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
-			
-			FForEachAbility SaveAbilityDelegate;
-			
-			SaveAbilityDelegate.BindLambda([this, AuraASC, SaveData](const FGameplayAbilitySpec& AbilitySpec)
-			{
-				const FGameplayTag AbilityTag = AuraASC->GetAbilityTagFromSpec(AbilitySpec);
-				UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(this);
-				FAuraAbilityInfo AuraAbilityInfo = AbilityInfo->FindAbilityInfoForTag(AbilityTag);
-				
-				FSavedAbility SavedAbility;
-				SavedAbility.GamepplayAbility = AuraAbilityInfo.Ability;
-				SavedAbility.AbilityLevel = AbilitySpec.Level;
-				SavedAbility.AbilitySlot = AuraASC->GetSlotFromAbilityTag(AbilityTag);
-				SavedAbility.AbilityStatus = AuraASC->GetStatusFromAbilityTag(AbilityTag);
-				SavedAbility.AbilityTag = AbilityTag;
-				SavedAbility.AbilityType = AuraAbilityInfo.AbilityType;
-				
-				SaveData->SavedAbilities.Add(SavedAbility);
-			});
+		if (!HasAuthority()) return;
+		SaveData->SavedAbilities.Empty();
 
-			AuraASC->ForEachAbility(SaveAbilityDelegate);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Ability Save Filed"));
-		}
-		
-		
+		UAuraAbilitySystemComponent* AuraASC = Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent);
 
-		
-		
+		FForEachAbility SaveAbilityDelegate;
+
+		SaveAbilityDelegate.BindLambda([this, AuraASC, SaveData](const FGameplayAbilitySpec& AbilitySpec)
+		{
+			const FGameplayTag AbilityTag = AuraASC->GetAbilityTagFromSpec(AbilitySpec);
+			UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(this);
+			FAuraAbilityInfo AuraAbilityInfo = AbilityInfo->FindAbilityInfoForTag(AbilityTag);
+
+			FSavedAbility SavedAbility;
+			SavedAbility.GamepplayAbility = AuraAbilityInfo.Ability;
+			SavedAbility.AbilityLevel = AbilitySpec.Level;
+			SavedAbility.AbilitySlot = AuraASC->GetSlotFromAbilityTag(AbilityTag);
+			SavedAbility.AbilityStatus = AuraASC->GetStatusFromAbilityTag(AbilityTag);
+			SavedAbility.AbilityTag = AbilityTag;
+			SavedAbility.AbilityType = AuraAbilityInfo.AbilityType;
+
+			SaveData->SavedAbilities.Add(SavedAbility);//这里我没有使用406讲 18:21秒的内容 我想直接在保存前清空这个 避免重复保存
+		});
+
+		AuraASC->ForEachAbility(SaveAbilityDelegate);
 		
 		AuraGameMode->SaveInGameProgressData(SaveData);
 	}
