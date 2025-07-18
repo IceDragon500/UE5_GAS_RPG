@@ -17,6 +17,52 @@ enum ESaveSlotStatus
 };
 
 /**
+ * 指定的一个存档点Actor，我们需要保存他的FName，他的变换Transform，以及一个Bytes包含的数据结构
+ * 在Bytes中，我们可以记录是否亮起 等等布尔信息
+ * 将这些信息打包成一个结构体
+ * 我们使用FName来区分每一个存档点
+ * 重载了==运算符，用来判断两个结构体中保存的是否是同一个存档点
+ * 甚至我们在这里 不仅可以保存存档前Actor，还可以保存其他类型的Actor
+ */
+USTRUCT(BlueprintType)
+struct FSavedActor
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	FName ActorName = FName();
+
+	UPROPERTY()
+	FTransform ActorTransform = FTransform();
+
+	//从该Actor序列化的变量 进标记了保存游戏说明符的那些
+	//Serialized variables from the actor, only those marked with SaveGame specifier
+	UPROPERTY()
+	TArray<uint8> Bytes;
+};
+
+inline bool operator==(const FSavedActor& Left, const FSavedActor& Right)
+{
+	return Left.ActorName == Right.ActorName;
+}
+
+/**
+ * 将地图信息和地图上需要保存的Actor打包成一个结构体
+ * 相当于保存了指定地图上存档点、开关门之类的所有信息
+ */
+USTRUCT(BlueprintType)
+struct FSavedMap
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	FString MapAssetName = FString();
+
+	UPROPERTY()
+	TArray<FSavedActor> SavedActors;
+};
+
+/**
  * 定义一个用来保存技能的结构体
  */
 USTRUCT(BlueprintType)
@@ -125,6 +171,19 @@ public:
 	//需要保存玩家当前技能组（队列）
 	UPROPERTY()
 	TArray<FSavedAbility> SavedAbilities;
+
+	//需要保存当前地图上的一系列信息
+	UPROPERTY()
+	TArray<FSavedMap> SavedMaps;
+
+	/**
+	 * 通过地图名称返回地图本身的引用
+	 * @param InMapName 需要查询的地图名称
+	 * @return 返回查找到的地图引用
+	 */
+	FSavedMap GetSavedMapWithMapName(const FString& InMapName);
+	
+	bool HasMap(const FString& InMapName);//检查当前保存的地图信息中，是否有指定的地图
 	
 protected:
 
