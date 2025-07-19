@@ -3,10 +3,14 @@
 
 #include "Game/AuraGameModeBase.h"
 
+#include "EngineUtils.h"
+#include "ShaderPrintParameters.h"
 #include "Game/AuraGameInstance.h"
 #include "Game/LoadScreenSaveGame.h"
 #include "GameFramework/PlayerStart.h"
+#include "Interaction/SaveInterface.h"
 #include "Kismet/GameplayStatics.h"
+#include "Serialization/ObjectAndNameAsStringProxyArchive.h"
 #include "UI/ViewModel/MVVM_LoadSlot.h"
 
 void AAuraGameModeBase::SaveSlotData(UMVVM_LoadSlot* LoadSlot, int32 SlotIndex)
@@ -75,6 +79,58 @@ void AAuraGameModeBase::SaveInGameProgressData(ULoadScreenSaveGame* SaveSlot)
 	AuraGameInstance->PlayerStartTag = SaveSlot->PlayerStartTag;
 
 	UGameplayStatics::SaveGameToSlot(SaveSlot, InGameLoadSlotName, InGameLoadSlotIndex);
+}
+
+void AAuraGameModeBase::SaveWorldState(UWorld* World)
+{
+	FString WorldName = World->GetMapName();
+	WorldName.RemoveFromStart(World->StreamingLevelsPrefix);
+
+	UAuraGameInstance* AuraGI = Cast<UAuraGameInstance>(GetGameInstance());
+	check(AuraGI)
+
+	if (ULoadScreenSaveGame* SaveGame = GetSaveSlotData(AuraGI->LoadSlotName,AuraGI->LoadSlotIndex))
+	{
+		if (!SaveGame->HasMap(WorldName))
+		{
+			FSavedMap NewSavedMap;
+			NewSavedMap.MapAssetName = WorldName;
+			SaveGame->SavedMaps.Add(NewSavedMap);
+		}
+
+		FSavedMap SavedMap = SaveGame->GetSavedMapWithMapName(WorldName);
+		SavedMap.SavedActors.Empty();
+
+		for (FActorIterator It(World); It; ++It)
+		{
+			AActor* Actor = *It;
+			if (!IsValid(Actor) || !Actor->Implements<USaveInterface>()) continue;
+			
+			FSavedActor SavedActor;
+			SavedActor.ActorName = Actor->GetFName();
+			SavedActor.ActorTransform = Actor->GetActorTransform();
+
+			FMemoryWriter MemoryWriter(SavedActor.Bytes);
+
+			FObjectAndNameAsStringProxyArchive Archive(MemoryWriter, true);
+			Archive.ArIsSaveGame = true;
+
+			Actor->Serialize(Archive);
+
+			SavedMap.SavedActors.AddUnique(SavedActor);
+			
+		}
+
+		for (FSavedMap& MapToReplace: SaveGame->SavedMaps)
+		{
+			if (MapToReplace.MapAssetName == WorldName)
+			{
+				MapToReplace = SavedMap;
+			}
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveGame, AuraGI->LoadSlotName,AuraGI->LoadSlotIndex);
+	}
 }
 
 void AAuraGameModeBase::TravelToMap(UMVVM_LoadSlot* Slot)

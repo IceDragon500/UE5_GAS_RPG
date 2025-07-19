@@ -52,6 +52,8 @@ public:
 	/***/
 	void SaveInGameProgressData(ULoadScreenSaveGame* SaveSlot);
 
+	void SaveWorldState(UWorld* World);
+
 	void TravelToMap(UMVVM_LoadSlot* Slot);
 
 	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
