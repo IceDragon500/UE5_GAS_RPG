@@ -498,11 +498,10 @@
 √406. Loading Abilities 30 分钟
 √407. Data Structures for Saving Data 13 分钟
 √408. Saving World State 22 分钟
-
-409. Loading World State 16 分钟
-
+√409. Loading World State 16 分钟
 测试 29： Section 31 Quiz
 
+第32节 Map Entrance 地图入口
 410. Different Highlight Colors 10 分钟
 
 411. Highlight Interface 7 分钟
@@ -539,6 +538,7 @@
 
 测试 30： Section 32 Quiz
 
+第33节 Course Conclusion 课程总结
 427. Quest - Levels 1 分钟
 
 428. Conclusion - Bonus Video 6 分钟

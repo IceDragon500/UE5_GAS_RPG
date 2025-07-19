@@ -63,6 +63,10 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 	//处理存档读取
 	LoadProgress();
 
+	if (AAuraGameModeBase* AuraGameMode = Cast<AAuraGameModeBase>(UGameplayStatics::GetGameMode(this)))
+	{
+		AuraGameMode->LoadWordState(GetWorld());
+	}
 }
 
 void AAuraCharacter::LoadProgress()

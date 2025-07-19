@@ -20,6 +20,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, SaveGame)
 	bool bReached = false;//是否到达过
 
+	/* SaveInterface */
+	virtual bool ShouldLoadTransform_Implementation() override { return false; };
+	virtual void LoadActor_Implementation() override;
+	
+	/* End SaveInterface */
+
 
 protected:
 	

@@ -22,4 +22,12 @@ class AURA_API ISaveInterface
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+
+	//是否需要读取Transform信息
+	//例如 有一些Actor不需要保存 比如存档点
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	bool ShouldLoadTransform();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void LoadActor();
 };

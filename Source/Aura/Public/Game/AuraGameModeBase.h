@@ -52,7 +52,9 @@ public:
 	/***/
 	void SaveInGameProgressData(ULoadScreenSaveGame* SaveSlot);
 
-	void SaveWorldState(UWorld* World);
+	void SaveWorldState(UWorld* World) const;
+
+	void LoadWordState(UWorld* World) const;
 
 	void TravelToMap(UMVVM_LoadSlot* Slot);
 
