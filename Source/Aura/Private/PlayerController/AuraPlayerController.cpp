@@ -14,7 +14,7 @@
 #include "Aura/Aura.h"
 #include "Components/SplineComponent.h"
 #include "Input/AuraInputComponent.h"
-#include "Interaction/EnemyInterface.h"
+#include "Interaction/HighlightInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -106,7 +106,7 @@ void AAuraPlayerController::CursorTrace()
 	//将上一次结果的ThisActor赋值给LastActor
 	LastActor = ThisActor;
 	//这次从CursorHit里面获取Actor
-	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+	ThisActor = Cast<IHighlightInterface>(CursorHit.GetActor());
 
 	if(LastActor != ThisActor)
 	{

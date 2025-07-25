@@ -7,6 +7,7 @@
 #include "Actor/MagicCircle.h"
 #include "GameFramework/PlayerController.h"
 #include "Input/AuraInputConfig.h"
+#include "Interaction/HighlightInterface.h"
 #include "UI/Widgets/DamageTextComponent.h"
 
 #include "AuraPlayerController.generated.h"
@@ -70,9 +71,9 @@ private:
 	void CursorTrace();
 
 	//当前鼠标指向的目标
-	IEnemyInterface* LastActor;
+	IHighlightInterface* LastActor;
 	//鼠标最后一次指向的目标
-	IEnemyInterface* ThisActor;
+	IHighlightInterface* ThisActor;
 
 	FHitResult CursorHit;
 

@@ -503,8 +503,7 @@
 
 第32节 Map Entrance 地图入口
 ✅410. Different Highlight Colors 10 分钟
-411. Highlight Interface 7 分钟
-
+✅411. Highlight Interface 7 分钟
 412. Targeting Status 24 分钟
 
 413. Highlighting Non-Enemies 6 分钟

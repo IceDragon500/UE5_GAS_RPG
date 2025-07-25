@@ -5,11 +5,12 @@
 #include "CoreMinimal.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/PlayerStart.h"
+#include "Interaction/HighlightInterface.h"
 #include "Interaction/SaveInterface.h"
 #include "Checkpoint.generated.h"
 
 UCLASS()
-class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface
+class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface, public IHighlightInterface
 {
 	GENERATED_BODY()
 
@@ -25,6 +26,11 @@ public:
 	virtual void LoadActor_Implementation() override;
 	
 	/* End SaveInterface */
+
+	/* Highlight Interface*/
+	virtual void HighlightActor() override;
+	virtual void UnHighlightActor() override;
+	/* End Highlight Interface*/
 
 
 protected:

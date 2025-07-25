@@ -33,6 +33,14 @@ void ACheckpoint::LoadActor_Implementation()
 	}
 }
 
+void ACheckpoint::HighlightActor()
+{
+}
+
+void ACheckpoint::UnHighlightActor()
+{
+}
+
 void ACheckpoint::BeginPlay()
 {
 	Super::BeginPlay();
