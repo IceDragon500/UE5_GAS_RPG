@@ -7,7 +7,7 @@
 #include "HighlightInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI)
+UINTERFACE(MinimalAPI, BlueprintType)//添加BlueprintType，这样可以在蓝图中使用，从而不需要在C++上进行操作
 class UHighlightInterface : public UInterface
 {
 	GENERATED_BODY()
