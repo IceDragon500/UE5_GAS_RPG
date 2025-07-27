@@ -18,8 +18,21 @@ struct FInputActionValue;
 class IEnemyInterface;
 class UAuraAbilitySystemComponent;
 class USplineComponent;
+
 /**
- * 
+ * 创建一个枚举状态
+ * 用来区分鼠标当前指向的目标是敌人、地图入口、其他
+ */
+enum class ETargetingStatus : uint8
+{
+	TargetingEnemy,//瞄准敌人
+	TargetingNonEnemy,//瞄准地图入口
+	NotTargeting//没有瞄准特定的东西
+};
+
+/**
+ * 玩家控制器类 AuraPlayerController
+ * 用来处理玩家按键、鼠标指向相关逻辑
  */
 UCLASS()
 class AURA_API AAuraPlayerController : public APlayerController
@@ -71,11 +84,15 @@ private:
 	void CursorTrace();
 
 	//当前鼠标指向的目标
-	IHighlightInterface* LastActor;
+	TObjectPtr<AActor> LastActor;
+	
 	//鼠标最后一次指向的目标
-	IHighlightInterface* ThisActor;
+	TObjectPtr<AActor> ThisActor;
 
 	FHitResult CursorHit;
+
+	static void HighlightActor(AActor* InActor);
+	static void UnHighlightActor(AActor* InActor);
 
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagRelease(FGameplayTag InputTag);
@@ -101,7 +118,8 @@ private:
 	//是否在自动行走
 	bool bAutoRunning = false;
 
-	bool bTargeting = false;
+	//鼠标是否指向特定的目标
+	ETargetingStatus TargetingStatus = ETargetingStatus::NotTargeting;
 
 	//自动行走的半径
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|自动行走")

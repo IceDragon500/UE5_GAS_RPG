@@ -10,7 +10,7 @@
 #include "Checkpoint.generated.h"
 
 UCLASS()
-class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface, public IHighlightInterface
+class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface
 {
 	GENERATED_BODY()
 
@@ -27,10 +27,6 @@ public:
 	
 	/* End SaveInterface */
 
-	/* Highlight Interface*/
-	virtual void HighlightActor() override;
-	virtual void UnHighlightActor() override;
-	/* End Highlight Interface*/
 
 
 protected:

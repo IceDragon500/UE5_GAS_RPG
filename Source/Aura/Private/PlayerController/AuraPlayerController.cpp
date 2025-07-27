@@ -14,6 +14,7 @@
 #include "Aura/Aura.h"
 #include "Components/SplineComponent.h"
 #include "Input/AuraInputComponent.h"
+#include "Interaction/EnemyInterface.h"
 #include "Interaction/HighlightInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
@@ -85,12 +86,30 @@ void AAuraPlayerController::AutoRun()
 	}
 }
 
+void AAuraPlayerController::HighlightActor(AActor* InActor)
+{
+	if (IsValid(InActor) && InActor->Implements<UHighlightInterface>())
+	{
+		IHighlightInterface::Execute_HighlightActor(InActor);
+	}
+}
+
+void AAuraPlayerController::UnHighlightActor(AActor* InActor)
+{
+	if (IsValid(InActor) && InActor->Implements<UHighlightInterface>())
+	{
+		IHighlightInterface::Execute_UnHighlightActor(InActor);
+	}
+}
+
 void AAuraPlayerController::CursorTrace()
 {
 	if (GetASC() && GetASC()->HasMatchingGameplayTag(FAuraGameplayTags::Get().Player_Block_InputCursorTrace))
 	{
-		if(LastActor) LastActor->UnHighlightActor();
-		if(ThisActor) ThisActor->HighlightActor();
+		UnHighlightActor(LastActor);
+		UnHighlightActor(ThisActor);
+		if (IsValid(ThisActor) && ThisActor->Implements<UHighlightInterface>())
+			
 		LastActor = nullptr;
 		ThisActor = nullptr;
 		return;
@@ -105,13 +124,21 @@ void AAuraPlayerController::CursorTrace()
 
 	//将上一次结果的ThisActor赋值给LastActor
 	LastActor = ThisActor;
-	//这次从CursorHit里面获取Actor
-	ThisActor = Cast<IHighlightInterface>(CursorHit.GetActor());
+	if (IsValid(CursorHit.GetActor()) && CursorHit.GetActor()->Implements<UHighlightInterface>())
+	{
+		//这次从CursorHit里面获取Actor
+		ThisActor = CursorHit.GetActor();
+	}
+	else
+	{
+		ThisActor = nullptr;
+	}
+	
 
 	if(LastActor != ThisActor)
 	{
-		if(LastActor) LastActor->UnHighlightActor();
-		if(ThisActor) ThisActor->HighlightActor();
+		UnHighlightActor(LastActor);
+		HighlightActor(ThisActor);
 	}
 }
 
@@ -121,11 +148,17 @@ void AAuraPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 	{
 		return;
 	}
-	//GEngine->AddOnScreenDebugMessage(0, 2.f, FColor::Red, TEXT("按下"));
 	if(InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
-		bTargeting = ThisActor ? true : false;
-		bAutoRunning = false;
+		if (IsValid(ThisActor))
+		{
+			TargetingStatus = ThisActor->Implements<UEnemyInterface>() ? ETargetingStatus::TargetingEnemy : ETargetingStatus::TargetingNonEnemy;
+			bAutoRunning = false;
+		}
+		else
+		{
+			TargetingStatus = ETargetingStatus::NotTargeting;
+		}
 	}
 	if (GetASC()) GetASC()->AbilityInputTagPressed(InputTag);
 }
@@ -146,7 +179,7 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 
 	if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 
-	if(!bTargeting && !IsShiftPressed)
+	if(TargetingStatus != ETargetingStatus::TargetingEnemy && !IsShiftPressed)
 	{
 		const APawn* ControlledPawn = GetPawn();
 		if (FollowTime <= ShortPressThreshold && ControlledPawn)
@@ -172,7 +205,7 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 			
 		}
 		FollowTime = 0.f;
-		bTargeting = false;
+		TargetingStatus = ETargetingStatus::NotTargeting;
 	}
 }
 
@@ -183,14 +216,13 @@ void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 		return;
 	}
 	
-	//GEngine->AddOnScreenDebugMessage(2, 2.f, FColor::Red, TEXT("保持"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 		return;
 	}
 
-	if(bTargeting || IsShiftPressed)
+	if(TargetingStatus == ETargetingStatus::TargetingEnemy || IsShiftPressed)
 	{
 		if(GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 	}

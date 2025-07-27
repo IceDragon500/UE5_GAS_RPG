@@ -66,8 +66,8 @@ public:
 	virtual void PossessedBy(AController* NewController) override;
 
 	/** Highlight Interface */
-	virtual void HighlightActor() override;//高亮选中的目标
-	virtual void UnHighlightActor() override;//取消高亮选中的目标
+	virtual void HighlightActor_Implementation() override;//高亮选中的目标
+	virtual void UnHighlightActor_Implementation() override;//取消高亮选中的目标
 	/** end Highlight Interface */
 
 	/** Combat Interface */
