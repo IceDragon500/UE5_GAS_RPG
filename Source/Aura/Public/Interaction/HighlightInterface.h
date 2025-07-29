@@ -23,9 +23,15 @@ class AURA_API IHighlightInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
+	//高亮Actor的逻辑，需要在蓝图中进行实现
 	UFUNCTION(BlueprintNativeEvent)
 	void HighlightActor();
 
+	//取消高亮Actor的逻辑，需要在蓝图中进行实现
 	UFUNCTION(BlueprintNativeEvent)
 	void UnHighlightActor();
+
+	//设置移动到的位置，需要在蓝图中进行实现
+	UFUNCTION(BlueprintNativeEvent)
+	void SetMoveToLocation(FVector& OutDestination);
 };

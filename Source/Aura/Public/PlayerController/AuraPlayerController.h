@@ -118,6 +118,8 @@ private:
 	//是否在自动行走
 	bool bAutoRunning = false;
 
+	void AutoRun();
+
 	//鼠标是否指向特定的目标
 	ETargetingStatus TargetingStatus = ETargetingStatus::NotTargeting;
 
@@ -132,8 +134,6 @@ private:
 	//鼠标点击特效
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UNiagaraSystem> ClickNiagaraSystem;
-
-	void AutoRun();
 
 	//设置伤害文本显示的类
 	UPROPERTY(EditDefaultsOnly, Category="属性设置|伤害文本")

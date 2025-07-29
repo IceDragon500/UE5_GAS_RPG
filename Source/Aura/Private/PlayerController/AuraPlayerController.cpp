@@ -170,7 +170,6 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 		return;
 	}
 	
-	//GEngine->AddOnScreenDebugMessage(1, 2.f, FColor::Red, TEXT("抬起"));
 	if(!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		if(GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
@@ -184,13 +183,22 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 		const APawn* ControlledPawn = GetPawn();
 		if (FollowTime <= ShortPressThreshold && ControlledPawn)
 		{
+			if (IsValid(ThisActor) && ThisActor->Implements<UHighlightInterface>())
+			{
+				IHighlightInterface::Execute_SetMoveToLocation(ThisActor, CachedDestinaion);
+			}
+			else if (GetASC() && !GetASC()->HasMatchingGameplayTag(FAuraGameplayTags::Get().Player_Block_InputPressed))
+			{
+				UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ClickNiagaraSystem, CachedDestinaion);
+			}
+			
 			if(UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(),CachedDestinaion))
 			{
 				Spline->ClearSplinePoints();
 				for (const FVector& PointLoc : NavPath->PathPoints)
 				{
 					Spline->AddSplinePoint(PointLoc, ESplineCoordinateSpace::World);
-					//DrawDebugSphere(GetWorld(), PointLoc, 8.f, 8, FColor::Green, false, 5.f);
+					DrawDebugSphere(GetWorld(), PointLoc, 8.f, 8, FColor::Green, false, 5.f);
 				}
 				if(NavPath->PathPoints.Num() > 0)
 				{
@@ -198,10 +206,7 @@ void AAuraPlayerController::AbilityInputTagRelease(FGameplayTag InputTag)
 					bAutoRunning = true;
 				}
 			}
-			if (GetASC() && !GetASC()->HasMatchingGameplayTag(FAuraGameplayTags::Get().Player_Block_InputPressed))
-			{
-				UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ClickNiagaraSystem, CachedDestinaion);
-			}
+			
 			
 		}
 		FollowTime = 0.f;

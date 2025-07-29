@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Aura/Aura.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/PlayerStart.h"
 #include "Interaction/HighlightInterface.h"
@@ -10,7 +11,7 @@
 #include "Checkpoint.generated.h"
 
 UCLASS()
-class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface
+class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface, public IHighlightInterface
 {
 	GENERATED_BODY()
 
@@ -24,10 +25,7 @@ public:
 	/* SaveInterface */
 	virtual bool ShouldLoadTransform_Implementation() override { return false; };
 	virtual void LoadActor_Implementation() override;
-	
 	/* End SaveInterface */
-
-
 
 protected:
 	
@@ -36,6 +34,15 @@ protected:
 	UFUNCTION()
 	virtual void OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	/* HighlightInterface */
+	virtual void HighlightActor_Implementation() override;
+	virtual void UnHighlightActor_Implementation() override;
+	virtual void SetMoveToLocation_Implementation(FVector& OutDestination) override;
+	/* End HighlightInterface */
+
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USceneComponent> MoveToComponent;
+	
 	/**
 	 * 在蓝图上，替换检查点模型上的材质
 	 * 不需要在C++上实现这个方法
@@ -51,6 +58,10 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UStaticMeshComponent> CheckpointMesh;
+
+	//设置鼠标指向高亮的颜色
+	UPROPERTY(EditDefaultsOnly)
+	int32 CustomDepthStencilOverride = CUSTOM_DEPTH_TAN;
 
 private:
 	
