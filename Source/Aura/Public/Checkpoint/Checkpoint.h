@@ -19,8 +19,11 @@ public:
 
 	ACheckpoint(const FObjectInitializer& ObjectInitializer);
 
-	UPROPERTY(BlueprintReadOnly, SaveGame)
+	UPROPERTY(BlueprintReadWrite, SaveGame)
 	bool bReached = false;//是否到达过
+
+	UPROPERTY(EditAnywhere)
+	bool bBindOverlapCallback{false};
 
 	/* SaveInterface */
 	virtual bool ShouldLoadTransform_Implementation() override { return false; };
@@ -54,6 +57,7 @@ protected:
 	/**
 	 * 处理发光效果
 	 */
+	UFUNCTION(BlueprintCallable)
 	void HandleGlowEffects();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

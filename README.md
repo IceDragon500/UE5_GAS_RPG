@@ -507,8 +507,7 @@
 ✅412. Targeting Status 24 分钟
 ✅413. Highlighting Non-Enemies 6 分钟
 ✅414. Set Move-To Location 16 分钟
-
-415. Beacons 16 分钟
+✅415. Beacons 16 分钟
 
 416. Map Entrance 31 分钟
 
