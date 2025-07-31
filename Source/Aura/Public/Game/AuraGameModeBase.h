@@ -52,7 +52,7 @@ public:
 	/***/
 	void SaveInGameProgressData(ULoadScreenSaveGame* SaveSlot);
 
-	void SaveWorldState(UWorld* World) const;
+	void SaveWorldState(UWorld* World, const FString& DestinationMapAssetName = FString("")) const;
 
 	void LoadWordState(UWorld* World) const;
 
@@ -73,8 +73,10 @@ public:
 	 * 地图合集  组合方式为：
 	 * 地图名称+地图
 	 */
-	UPROPERTY()
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
 	TMap<FString, TSoftObjectPtr<UWorld>> Maps;
+
+	FString GetMapNameForMapAssetName(const FString& MapAssetName) const;
 
 	/**
 	 * 返回这个玩家从默认执行中生成的“最佳”玩家开始寻找一个随机的未被占用的位置
@@ -90,5 +92,9 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+
+	
 private:
+	
 };
+

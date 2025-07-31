@@ -116,11 +116,15 @@ public:
 
 	//玩家创建的角色名称
 	UPROPERTY()
-	FString PlayerName = FString("Default Name");
+	FString PlayerName {FString("Default Name")};
 
-	//地图名称
+	//地图名称，在游戏中的名称
 	UPROPERTY()
-	FString MapName = FString();
+	FString MapName {FString("Default MapName")};
+	
+	//地图名称，在UE资源里面的名称
+	UPROPERTY()
+	FString MapAssetName {FString("Default Map Asset Name")};
 
 	//存档的状态
 	UPROPERTY()

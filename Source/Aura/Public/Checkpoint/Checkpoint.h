@@ -4,11 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Aura/Aura.h"
-#include "Components/SphereComponent.h"
 #include "GameFramework/PlayerStart.h"
 #include "Interaction/HighlightInterface.h"
 #include "Interaction/SaveInterface.h"
 #include "Checkpoint.generated.h"
+
+class USphereComponent;
+
 
 UCLASS()
 class AURA_API ACheckpoint : public APlayerStart, public ISaveInterface, public IHighlightInterface
@@ -22,7 +24,8 @@ public:
 	UPROPERTY(BlueprintReadWrite, SaveGame)
 	bool bReached = false;//是否到达过
 
-	UPROPERTY(EditAnywhere)
+	//是否在重叠之后有调用效果
+	UPROPERTY(EditAnywhere, Category= "属性设置")
 	bool bBindOverlapCallback{false};
 
 	/* SaveInterface */
@@ -66,10 +69,10 @@ protected:
 	//设置鼠标指向高亮的颜色
 	UPROPERTY(EditDefaultsOnly)
 	int32 CustomDepthStencilOverride = CUSTOM_DEPTH_TAN;
-
-private:
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USphereComponent> SphereComponent;
+
+private:
 	
 };

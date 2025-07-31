@@ -2,6 +2,8 @@
 
 
 #include "Checkpoint/Checkpoint.h"
+
+#include "Components/SphereComponent.h"
 #include "Game/AuraGameModeBase.h"
 #include "Interaction/PlayerInterface.h"
 #include "Kismet/GameplayStatics.h"
@@ -63,10 +65,8 @@ void ACheckpoint::BeginPlay()
 
 	if (bBindOverlapCallback)
 	{
-		SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ThisClass::OnSphereOverlap);
+		SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ACheckpoint::OnSphereOverlap);
 	}
-	
-	
 }
 
 void ACheckpoint::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
