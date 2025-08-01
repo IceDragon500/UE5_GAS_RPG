@@ -509,12 +509,9 @@
 ✅414. Set Move-To Location 16 分钟
 ✅415. Beacons 16 分钟
 ✅416. Map Entrance 31 分钟
-
-417. Dungeon Stair Entrance 14 分钟
-
-418. Dungeon Entrance Blueprints 15 分钟
-
-419. Polish Menu 5 分钟
+✅417. Dungeon Stair Entrance 14 分钟
+✅418. Dungeon Entrance Blueprints 15 分钟
+✅419. Polish Menu 5 分钟
 
 420. Spawn Volumes 25 分钟
 
