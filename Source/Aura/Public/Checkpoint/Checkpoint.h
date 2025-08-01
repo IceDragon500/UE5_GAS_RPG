@@ -21,8 +21,9 @@ public:
 
 	ACheckpoint(const FObjectInitializer& ObjectInitializer);
 
+	//检查是否到达过，如果已经到达过存档点特效就不会熄灭，并且将这个值保存进存档
 	UPROPERTY(BlueprintReadWrite, SaveGame)
-	bool bReached = false;//是否到达过
+	bool bReached = false;
 
 	//是否在重叠之后有调用效果
 	UPROPERTY(EditAnywhere, Category= "属性设置")

@@ -97,6 +97,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="角色|属性", meta = (DisplayName = "攻击目标"))
 	TObjectPtr<AActor> CombatTarget;
 
+	void SetEnemyLevel(int32 InLevel) { Level = InLevel; }
 	
 protected:
 
