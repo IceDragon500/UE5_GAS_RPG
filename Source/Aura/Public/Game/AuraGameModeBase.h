@@ -26,6 +26,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "属性设置|Character Class Defaults")
 	TObjectPtr<UAbilityInfo> AbilityInfo;
 
+	/**
+	 * 将数据保存至指定的Slot
+	 * @param LoadSlot  指定的Slot
+	 * @param SlotIndex 指定Slot的Index
+	 */
 	void SaveSlotData(UMVVM_LoadSlot* LoadSlot, int32 SlotIndex);
 
 	/**
@@ -88,6 +93,8 @@ public:
 	//初始玩家起点的Tag
 	UPROPERTY(EditDefaultsOnly, Category = "属性设置")
 	FName DefaultPlayerStartTag;
+
+	void PlayerDied(ACharacter* DeadCharacter);
 	
 protected:
 

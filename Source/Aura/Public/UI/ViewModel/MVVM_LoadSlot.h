@@ -53,6 +53,9 @@ public:
 	void SetPlayerStartTag(FName inName);
 	FName GetPlayerStartTag() const { return PlayerStartTag; }
 
+	void SetMapAssetName(FString inName);
+	FString GetMapAssetName() const { return MapAssetName; }
+
 protected:
 
 
@@ -88,6 +91,10 @@ private:
 	TEnumAsByte<ESaveSlotStatus> SlotStatus;
 	
 	FName PlayerStartTag = FName();
+
+	//保存地图对应的资源名称
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, FieldNotify, Setter, Getter, meta=(AllowPrivateAccess=true))
+	FString MapAssetName = FString();
 
 	
 };

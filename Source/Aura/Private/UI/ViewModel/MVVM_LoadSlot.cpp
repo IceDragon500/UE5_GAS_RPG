@@ -43,3 +43,8 @@ void UMVVM_LoadSlot::SetPlayerStartTag(FName inName)
 {
 	PlayerStartTag = inName;
 }
+
+void UMVVM_LoadSlot::SetMapAssetName(FString inName)
+{
+	MapAssetName = inName;
+}

@@ -104,6 +104,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category= "角色|Combat", meta =(DisplayName = "尾部的SocketName"))
 	FName TrailSocketName;
 
+
+	UPROPERTY(BlueprintReadOnly)
 	bool bDead = false;
 
 	virtual void StunTagChanged(const FGameplayTag CallbackTag, int32 NewCount);
