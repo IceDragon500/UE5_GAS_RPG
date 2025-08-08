@@ -11,6 +11,7 @@
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AuraAbilitySystemLibrary.generated.h"
 
+class ULootTiers;
 class AAuraHUD;
 class USpellMenuWidgetController;
 /**
@@ -96,10 +97,18 @@ public:
 	/**
 	 * 获取存储在GameMode中的AbilityInfo
 	 * @param WorldContextObject 
-	 * @return 
+	 * @return 返回一个AbilityInfo对象指针
 	 */
-	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo")
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo", meta = (DefaultToSelf = "WorldContextObject"))
 	static UAbilityInfo* GetAbilityInfo(const UObject* WorldContextObject);
+
+	/**
+ * 获取存储在GameMode中的LootTiers掉落物信息
+ * @param WorldContextObject 
+ * @return 返回一个LootTiers对象指针
+ */
+	UFUNCTION(BlueprintCallable, Category = "角色控制|CharacterClassInfo", meta = (DefaultToSelf = "WorldContextObject"))
+	static ULootTiers* GetLootTiers(const UObject* WorldContextObject);
 
 //---------effect context getters-----------------------------------
 	

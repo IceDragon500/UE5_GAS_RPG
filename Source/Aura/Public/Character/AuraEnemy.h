@@ -125,6 +125,10 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<AAuraAIController> AuraAIController;
+
+	//生成掉落物的逻辑，在蓝图上诗仙
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnLoot();
 	
 private:
 	

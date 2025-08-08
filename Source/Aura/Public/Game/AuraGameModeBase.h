@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "AuraGameModeBase.generated.h"
 
+class ULootTiers;
 class USaveGame;
 class UMVVM_LoadSlot;
 class UCharacterClassInfo;
@@ -25,6 +26,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "属性设置|Character Class Defaults")
 	TObjectPtr<UAbilityInfo> AbilityInfo;
+
+	UPROPERTY(EditDefaultsOnly, Category = "属性设置|LootTiers")
+	TObjectPtr<ULootTiers> LootTiers;
 
 	/**
 	 * 将数据保存至指定的Slot
