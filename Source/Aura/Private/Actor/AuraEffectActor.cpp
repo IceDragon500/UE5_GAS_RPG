@@ -4,14 +4,45 @@
 #include "Actor/AuraEffectActor.h"
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemBlueprintLibrary.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 AAuraEffectActor::AAuraEffectActor()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>(TEXT("Root")));
 	
+}
+
+void AAuraEffectActor::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	RunningTime += DeltaSeconds;
+	const float SinePeriod = 2.f * PI / SinePeriodConstant;
+	if (RunningTime > SinePeriod) RunningTime = 0.f;
+	ItemMovement(DeltaSeconds);
+}
+
+void AAuraEffectActor::BeginPlay()
+{
+	Super::BeginPlay();
+	InitialLocation = GetActorLocation();
+	CalculatedLocation = InitialLocation;
+	CalculatedRotation = GetActorRotation();
+}
+
+void AAuraEffectActor::StartSinusoidalMovement()
+{
+	bSinusoidalMovement = true;
+	InitialLocation = GetActorLocation();
+	CalculatedLocation = InitialLocation;
+}
+
+void AAuraEffectActor::StartRotation()
+{
+	bRotates = true;
+	CalculatedRotation = GetActorRotation();
 }
 
 void AAuraEffectActor::SetPlayerName(FString PlayerName, int32 PlayerLevel)
@@ -22,12 +53,19 @@ void AAuraEffectActor::SetPlayerLevel(FString& PlayerName, int32 PlayerLevel)
 {
 }
 
-
-void AAuraEffectActor::BeginPlay()
+void AAuraEffectActor::ItemMovement(float DeltaTime)
 {
-	Super::BeginPlay();
-
-	
+	if (bRotates)
+	{
+		const FRotator DeltaRotation(0.f, DeltaTime * RotationRate, 0.f);
+		//它将两个旋转按照顺序应用：先应用第一个旋转，然后在这个基础上应用第二个旋转。这相当于将两个旋转的变换矩阵相乘，然后从结果矩阵中提取旋转。
+		CalculatedRotation = UKismetMathLibrary::ComposeRotators(CalculatedRotation, DeltaRotation);
+	}
+	if (bSinusoidalMovement)
+	{
+		const float Sine = SineAmplitude * FMath::Sin(RunningTime * SinePeriodConstant);
+		CalculatedLocation = InitialLocation + FVector(0.f, 0.f, Sine);
+	}
 }
 
 void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)

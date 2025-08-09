@@ -36,6 +36,8 @@ public:
 
 	AAuraEffectActor();
 
+	virtual void Tick(float DeltaSeconds) override;
+
 	//这里是举例说明 如果出入引用 并且在蓝图左侧，需要加入UPARAM(ref)来表示将引用是为参数
 
 	UFUNCTION(BlueprintCallable)
@@ -48,6 +50,48 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+
+	UPROPERTY(BlueprintReadOnly)
+	FVector CalculatedLocation;
+
+	UPROPERTY(BlueprintReadOnly)
+	FRotator CalculatedRotation;
+
+	//是否触发旋转
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置", meta = (DisplayName = "是否触发旋转"))
+	bool bRotates = false;
+
+	//旋转速率
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置")
+	float RotationRate = 45.f;
+
+	//是否进行正弦上下波动
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置", meta = (DisplayName = "是否进行正弦上下波动"))
+	bool bSinusoidalMovement = false;
+
+	/**
+	 * 开始进行正弦上下波动
+	 */
+	UFUNCTION(BlueprintCallable)
+	void StartSinusoidalMovement();
+
+	/**
+	 * 开始进行旋转
+	 */
+	UFUNCTION(BlueprintCallable)
+	void StartRotation();
+	
+	//正弦上下波动幅度
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置", meta = (DisplayName = "正弦上下波动幅度"))
+	float SineAmplitude = 1.f;
+
+	//正弦上下波动周期
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置", meta = (DisplayName = "正弦上下波动周期度"))
+	float SinePeriodConstant = 1.f; //2π
+
+	//道具的初始位置
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="属性设置")
+	FVector InitialLocation = FVector(0, 0, 0);
 
 	//将Effect应用给目标
 	UFUNCTION(BlueprintCallable)
@@ -104,7 +148,10 @@ protected:
 	float ActorLevel = 1.f;
 
 private:
-	
 
-	
+
+	//用来更新正弦运动的运行时间
+	float RunningTime = 0.f;
+
+	void ItemMovement(float DeltaTime);
 };
