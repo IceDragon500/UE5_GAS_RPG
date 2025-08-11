@@ -51,10 +51,10 @@ protected:
 
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	FVector CalculatedLocation;
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	FRotator CalculatedRotation;
 
 	//是否触发旋转
