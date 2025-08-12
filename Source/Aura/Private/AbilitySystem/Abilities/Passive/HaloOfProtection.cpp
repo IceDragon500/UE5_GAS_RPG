@@ -19,7 +19,7 @@ FString UHaloOfProtection::GetDescription(int32 Level)
 		return FString::Printf(TEXT(
 			"<Title>HaloOfProtection</>\n"
 			"<Small>Level: </>""<Level>%d</>\n"
-			"<Default>Summon %d shards of arcane energy causing radial damage of</>"
+			"<Default>Summon shards of arcane energy causing radial damage of</>"
 		), Level);
 	}
 }
